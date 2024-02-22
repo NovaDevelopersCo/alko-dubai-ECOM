@@ -1,4 +1,4 @@
-import { Injectable, UploadedFile } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Items } from './items.model';
 import { FilesService } from 'src/files/files.service';
@@ -16,7 +16,7 @@ export class ItemsService {
     return items;
   }
 
-  async create(dto, @UploadedFile() image) {
+  async create(dto, image: any) {
     const fileName = await this.fileService.createFile(image);
     const item = await this.itemsRepository.create({ ...dto, image: fileName });
     return item;
