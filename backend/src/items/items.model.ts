@@ -4,6 +4,7 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
 interface ItemsCreationAttrs {
   name: string;
   description: string;
+  image: string;
 }
 @Table({ tableName: 'items' })
 export class Items extends Model<ItemsCreationAttrs> {

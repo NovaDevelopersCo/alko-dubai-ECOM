@@ -6,9 +6,9 @@ import { Items } from './items.model';
 export class ItemsService {
   constructor(@InjectModel(Items) private itemsRepository: typeof Items) {}
   async getAllItems() {
-    const users = await this.itemsRepository.findAll({
+    const items = await this.itemsRepository.findAll({
       include: { all: true },
     });
-    return users;
+    return items;
   }
 }
