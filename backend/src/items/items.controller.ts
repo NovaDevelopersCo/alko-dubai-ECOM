@@ -5,8 +5,8 @@ import { ItemsService } from './items.service';
 export class ItemsController {
   constructor(private readonly appService: ItemsService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('/api/items')
+  getAllItems(): string {
+    return this.appService.getAllItems();
   }
 }
