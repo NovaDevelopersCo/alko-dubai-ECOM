@@ -1,7 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { Items } from './items.model';
 import { ApiResponse } from '@nestjs/swagger';
+import { CreateItemDto } from './dto/create-item.dto';
 
 @Controller('items')
 export class ItemsController {
@@ -11,5 +12,11 @@ export class ItemsController {
   @ApiResponse({ status: 200, type: [Items] })
   getAllItems() {
     return this.itemsService.getAllItems();
+  }
+
+  @Post()
+  @ApiResponse({ status: 200, type: [Items] })
+  createItem(dto: CreateItemDto, image: any) {
+    return this.itemsService.create(dto, image);
   }
 }
