@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, UploadedFile } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { Items } from './items.model';
 import { ApiResponse } from '@nestjs/swagger';
@@ -16,7 +16,7 @@ export class ItemsController {
 
   @Post()
   @ApiResponse({ status: 200, type: Items })
-  createItem(dto: CreateItemDto, image: any) {
+  createItem(dto: CreateItemDto, @UploadedFile() image) {
     return this.itemsService.create(dto, image);
   }
 }
