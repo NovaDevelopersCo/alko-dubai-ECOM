@@ -5,11 +5,11 @@ import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('items')
 export class ItemsController {
-  constructor(private readonly appService: ItemsService) {}
+  constructor(private itemsService: ItemsService) {}
 
   @Get('/api/items')
   @ApiResponse({ status: 200, type: [Items] })
   getAllItems() {
-    return this.appService.getAllItems();
+    return this.itemsService.getAllItems();
   }
 }
