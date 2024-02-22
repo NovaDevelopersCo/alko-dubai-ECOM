@@ -1,4 +1,5 @@
 import {
+    Body,
   Controller,
   Get,
   Post,
@@ -24,7 +25,7 @@ export class ItemsController {
   @Post()
   @ApiResponse({ status: 200, type: Items })
   @UseInterceptors(FileInterceptor('image'))
-  createItem(dto: CreateItemDto, @UploadedFile() image) {
+  createItem(@Body() dto: CreateItemDto, @UploadedFile() image) {
     return this.itemsService.create(dto, image);
   }
 }
