@@ -7,7 +7,7 @@ import { ApiResponse } from '@nestjs/swagger';
 export class ItemsController {
   constructor(private itemsService: ItemsService) {}
 
-  @Get('/api/items')
+  @Get()
   @ApiResponse({ status: 200, type: [Items] })
   getAllItems() {
     return this.itemsService.getAllItems();

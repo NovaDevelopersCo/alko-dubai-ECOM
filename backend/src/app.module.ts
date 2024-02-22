@@ -5,7 +5,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ItemsModule } from './items/items.module';
 import { Items } from './items/items.model';
-console.log(path.resolve(__dirname, 'static'));
+console.log(path);
 console.log(process.env.NODE_ENV);
 
 @Module({
