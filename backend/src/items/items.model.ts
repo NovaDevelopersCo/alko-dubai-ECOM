@@ -45,18 +45,18 @@ export class Items extends Model<ItemsCreationAttrs> {
   category: string;
 
   @ApiProperty({ example: '1202AED', description: 'Цена' })
-  @Column({ type: DataType.INTEGER, allowNull: false })
+  @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 0 })
   price: number;
 
   @ApiProperty({ example: '1500AED', description: 'Старая цена' })
-  @Column({ type: DataType.INTEGER, allowNull: true })
+  @Column({ type: DataType.INTEGER, allowNull: true, defaultValue: null })
   oldPrice: number;
 
   @ApiProperty({ example: true, description: 'Есть ли скидка' })
-  @Column({ type: DataType.BOOLEAN, allowNull: true })
+  @Column({ type: DataType.BOOLEAN, allowNull: false, defaultValue: false })
   sale: boolean;
 
   @ApiProperty({ example: false, description: 'Распродано ли' })
-  @Column({ type: DataType.BOOLEAN, allowNull: true })
+  @Column({ type: DataType.BOOLEAN, allowNull: false, defaultValue: false })
   soldOut: boolean;
 }
