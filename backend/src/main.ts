@@ -8,9 +8,9 @@ async function start() {
   const PORT = Number(process.env.PORT) || 5000;
 
   const config = new DocumentBuilder()
-    .setTitle('NestJS-Learn')
+    .setTitle('alko-dubai-ECOM')
     .setVersion('1.0.0')
-    .addTag('NestJS')
+    .addTag('alko-dubai')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
