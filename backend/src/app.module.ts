@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as path from 'path';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { ItemsModule } from './items/items.module';
 console.log(path.resolve(__dirname, 'static'));
 console.log(process.env.NODE_ENV);
 
@@ -33,6 +34,7 @@ console.log(process.env.NODE_ENV);
       autoLoadModels: true,
       synchronize: true,
     }),
+    ItemsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
