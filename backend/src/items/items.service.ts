@@ -8,6 +8,10 @@ export class ItemsService {
   async getAllItems() {
     const items = await this.itemsRepository.findAll({
       include: { all: true },
+      order: [['name', 'ASC']],
+      attributes: ['name', 'email'],
+      offset: 10,
+      limit: 10,
     });
     return items;
   }
