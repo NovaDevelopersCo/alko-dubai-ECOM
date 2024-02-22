@@ -15,7 +15,7 @@ export class ItemsController {
   }
 
   @Post()
-  @ApiResponse({ status: 200, type: [Items] })
+  @ApiResponse({ status: 200, type: Items })
   createItem(dto: CreateItemDto, image: any) {
     return this.itemsService.create(dto, image);
   }

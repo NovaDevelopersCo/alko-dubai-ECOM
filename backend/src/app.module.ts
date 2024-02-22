@@ -5,6 +5,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ItemsModule } from './items/items.module';
 import { Items } from './items/items.model';
+import { FilesModule } from './files/files.module';
 console.log(path);
 console.log(process.env.NODE_ENV);
 
@@ -35,6 +36,7 @@ console.log(process.env.NODE_ENV);
       synchronize: true,
     }),
     ItemsModule,
+    FilesModule,
   ],
   controllers: [],
   providers: [],
