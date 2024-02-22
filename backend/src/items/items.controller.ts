@@ -1,12 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
 import { ItemsService } from './items.service';
+import { Items } from './items.model';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('items')
 export class ItemsController {
   constructor(private readonly appService: ItemsService) {}
 
   @Get('/api/items')
-  getAllItems(): string {
+  @ApiResponse({ status: 200, type: [Items] })
+  getAllItems() {
     return this.appService.getAllItems();
   }
 }
