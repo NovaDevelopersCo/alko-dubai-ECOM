@@ -34,7 +34,7 @@ export class Items extends Model<ItemsCreationAttrs> {
   description: string;
 
   @ApiProperty({ example: 'Картинка', description: 'Захватывающая картинка' })
-  @Column({ type: DataType.STRING, allowNull: true })
+  @Column({ type: DataType.STRING, allowNull: true, defaultValue: null })
   image: string;
 
   @ApiProperty({
