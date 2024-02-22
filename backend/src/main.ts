@@ -18,7 +18,9 @@ async function start() {
 
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(PORT, () => console.log(`Server run on ${PORT}`));
+  await app.listen(PORT, () =>
+    console.log(`Server run on http://localhost:${PORT}`),
+  );
 }
 
 start();
