@@ -26,9 +26,12 @@ export class ItemsService {
       include: { all: true },
     });
     if (price) {
-      items = await items.filter(
-        (item) => item.price !== undefined && item.price <= Number(price),
-      );
+      if (price == 'asc') {
+        items.sort();
+      }
+      if (price == 'desc') {
+        items.sort((a, b) => b.price - a.price);
+      }
     }
     if (search) {
       items = await items.filter(
