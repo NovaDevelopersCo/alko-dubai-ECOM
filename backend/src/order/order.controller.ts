@@ -12,8 +12,8 @@ export class OrderController {
   @ApiOperation({ summary: 'Получить все заказы (с параметрами)' })
   @Get()
   @ApiResponse({ status: 200, type: [Order] })
-  getOrders(): Order[] {
-    return;
+  getOrders() {
+    return this.ordersService.getAllOrders();
   }
 
   @ApiOperation({ summary: 'Создать заказ' })

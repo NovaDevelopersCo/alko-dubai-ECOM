@@ -7,7 +7,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 export class OrderService {
   constructor(@InjectModel(Order) private ordersRepository: typeof Order) {}
 
-  async getAllItems() {
+  async getAllOrders() {
     const orders = await this.ordersRepository.findAll({
       include: { all: true },
     });
