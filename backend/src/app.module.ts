@@ -7,8 +7,7 @@ import { ItemsModule } from './items/items.module';
 import { Items } from './items/items.model';
 import { FilesModule } from './files/files.module';
 import { OrderModule } from './order/order.module';
-console.log(path);
-console.log(process.env.NODE_ENV);
+import { Order } from './order/order.model';
 
 @Module({
   imports: [
@@ -32,7 +31,7 @@ console.log(process.env.NODE_ENV);
           rejectUnauthorized: false,
         },
       },
-      models: [Items],
+      models: [Items, Order],
       autoLoadModels: true,
       synchronize: true,
     }),

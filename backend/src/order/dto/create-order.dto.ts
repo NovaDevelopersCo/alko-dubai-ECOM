@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Items } from 'src/items/items.model';
 
 export class CreateOrderDto {
   @ApiProperty({
@@ -6,49 +7,34 @@ export class CreateOrderDto {
     description: 'Название',
     required: true,
   })
-  readonly title: string;
+  readonly items: Array<Items>;
 
   @ApiProperty({
     example: 'Очень вкусное вино',
     description: 'Описание товара',
   })
-  readonly description: string;
+  readonly name: string;
 
   @ApiProperty({
     example: 'Белое полусухое',
     description: 'Категория',
     required: true,
   })
-  readonly category: string;
+  readonly details: string;
 
   @ApiProperty({ example: '1560AED', description: 'Цена', required: true })
   readonly price: number;
 
   @ApiProperty({
-    example: 155,
-    description: 'Количество просмотров',
-    required: false,
+    example: 'Очень вкусное вино',
+    description: 'Описание товара',
   })
-  readonly viewsCount: number;
+  readonly address: string;
 
   @ApiProperty({
-    example: '1500AED',
-    description: 'Старая цена',
-    required: false,
+    example: 'Белое полусухое',
+    description: 'Категория',
+    required: true,
   })
-  readonly oldPrice: number;
-
-  @ApiProperty({
-    example: true,
-    description: 'Есть ли скидка',
-    required: false,
-  })
-  readonly sale: boolean;
-
-  @ApiProperty({
-    example: false,
-    description: 'Распродано ли',
-    required: false,
-  })
-  readonly soldOut: boolean;
+  readonly status: string;
 }
