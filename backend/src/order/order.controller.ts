@@ -4,8 +4,6 @@ import {
   Get,
   Param,
   Post,
-  Query,
-  UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
