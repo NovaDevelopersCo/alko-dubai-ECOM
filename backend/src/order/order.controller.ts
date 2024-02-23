@@ -1,13 +1,5 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express';
 import { OrderService } from './order.service';
 import { Order } from './order.model';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -27,7 +19,6 @@ export class OrderController {
   @ApiOperation({ summary: 'Создать заказ' })
   @Post()
   @ApiResponse({ status: 200, type: Order })
-  @UseInterceptors(FileInterceptor('image'))
   createItem(@Body() dto: CreateOrderDto) {
     return this.ordersService.create(dto);
   }
