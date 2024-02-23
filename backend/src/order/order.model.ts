@@ -11,6 +11,7 @@ interface OrdersCreationAttrs {
   address: string;
   status: string;
 }
+
 @Table({ tableName: 'orders' })
 export class Order extends Model<OrdersCreationAttrs> {
   @ApiProperty({ example: 1, description: 'Уникальный идентефикатор' })
@@ -22,35 +23,51 @@ export class Order extends Model<OrdersCreationAttrs> {
   })
   id: number;
 
-  @ApiProperty({ example: 'testItem', description: 'Название товара' })
+  @ApiProperty({
+    example: [
+      {
+        id: 1,
+        title: 'testItem',
+        description: 'Старая цена',
+        image: '12345',
+        category: '12345',
+        price: 12345,
+        oldPrice: 12345,
+        viewsCount: 12345,
+        sale: true,
+        soldOut: true,
+      },
+    ],
+    description: 'Массив товаров в заказе',
+  })
   @Column({ type: DataType.ARRAY })
   items: Array<Items>;
 
-  @ApiProperty({ example: 'testItem', description: 'Название товара' })
+  @ApiProperty({ example: 'Вася Пупкин', description: 'Имя заказчика' })
   @Column({ type: DataType.STRING, allowNull: false })
   name: string;
 
   @ApiProperty({
-    example: 'Очень вкусный алкоголь',
-    description: 'Описание товара',
+    example: 'хочу быстрее',
+    description: 'Примечание к заказу',
   })
   @Column({ type: DataType.STRING, allowNull: true })
   details: string;
 
-  @ApiProperty({ example: '1202AED', description: 'Цена' })
+  @ApiProperty({ example: '1202AED', description: 'Цена заказа' })
   @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 0 })
   price: number;
 
   @ApiProperty({
-    example: 'Очень вкусный алкоголь',
-    description: 'Описание товара',
+    example: 'Улица пушкина дом колотушкина',
+    description: 'Адрес',
   })
   @Column({ type: DataType.STRING, allowNull: false })
   address: string;
 
   @ApiProperty({
-    example: 'Очень вкусный алкоголь',
-    description: 'Описание товара',
+    example: 'В обарботке',
+    description: 'Статус заказа',
   })
   @Column({
     type: DataType.STRING,
