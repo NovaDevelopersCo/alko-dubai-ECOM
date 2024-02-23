@@ -1,15 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateItemDto {
-  @ApiProperty({ example: 'test@gmail.com', description: 'Почтовый адрес' })
+  @ApiProperty({ example: 'Шато Марго 1958', description: 'Название' })
   readonly title: string;
 
-  @ApiProperty({ example: '12345', description: 'Пароль пользователя' })
+  @ApiProperty({
+    example: 'Очень вкусное вино',
+    description: 'Описание товара',
+  })
   readonly description: string;
 
-  @ApiProperty({ example: '12345', description: 'Пароль пользователя' })
+  @ApiProperty({ example: 'Белое полусухое', description: 'Категория' })
   readonly category: string;
 
-  @ApiProperty({ example: '12345', description: 'Пароль пользователя' })
+  @ApiProperty({ example: '1560AED', description: 'Цена' })
   readonly price: number;
 }
