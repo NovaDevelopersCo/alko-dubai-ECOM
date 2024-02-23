@@ -20,7 +20,7 @@ export class ItemsService {
   }
 
   async getItemsWithFilters(filterDto: GetItemsFilterDto) {
-    const { search, price } = filterDto;
+    const { search, price, popularity, news } = filterDto;
 
     let items = await this.itemsRepository.findAll({
       include: { all: true },
@@ -36,6 +36,11 @@ export class ItemsService {
           return b.price - a.price;
         });
       }
+    }
+    if (news) {
+      items.sort(function (a, b) {
+        return a.updatedAt - b.updatedAt;
+      });
     }
     if (search) {
       items = await items.filter(
