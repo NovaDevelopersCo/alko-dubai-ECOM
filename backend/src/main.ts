@@ -10,7 +10,6 @@ async function start() {
   const config = new DocumentBuilder()
     .setTitle('alko-dubai-ECOM')
     .setVersion('1.0.0')
-    .addTag('alko-dubai')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
