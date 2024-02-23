@@ -20,6 +20,7 @@ export class OrderController {
   @Post()
   @ApiResponse({ status: 200, type: Order })
   createOrder(@Body() dto: CreateOrderDto) {
+    console.log(dto);
     return this.ordersService.create(dto);
   }
 

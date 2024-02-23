@@ -35,7 +35,7 @@ export class CreateOrderDto {
   })
   readonly details: string;
 
-  @ApiProperty({ example: '1560AED', description: 'Цена', required: true })
+  @ApiProperty({ example: 1560, description: 'Цена', required: true })
   readonly price: number;
 
   @ApiProperty({

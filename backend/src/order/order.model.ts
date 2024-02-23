@@ -54,7 +54,7 @@ export class Order extends Model<OrdersCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: true })
   details: string;
 
-  @ApiProperty({ example: '1202AED', description: 'Цена заказа' })
+  @ApiProperty({ example: 1202, description: 'Цена заказа' })
   @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 0 })
   price: number;
 
