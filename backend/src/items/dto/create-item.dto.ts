@@ -15,4 +15,16 @@ export class CreateItemDto {
 
   @ApiProperty({ example: '1560AED', description: 'Цена' })
   readonly price: number;
+
+  @ApiProperty({ example: '1500AED', description: 'Старая цена' })
+  readonly oldPrice: number;
+
+  @ApiProperty({ example: true, description: 'Есть ли скидка' })
+  readonly sale: boolean;
+
+  @ApiProperty({ example: false, description: 'Распродано ли' })
+  readonly soldOut: boolean;
+
+  @ApiProperty({ example: 155, description: 'Количество просмотров' })
+  readonly viewsCount: number;
 }
