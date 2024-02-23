@@ -11,6 +11,7 @@ interface OrdersCreationAttrs {
   address: string;
   status: string;
 }
+console.log(typeof Items);
 
 @Table({ tableName: 'orders' })
 export class Order extends Model<OrdersCreationAttrs> {
@@ -40,8 +41,8 @@ export class Order extends Model<OrdersCreationAttrs> {
     ],
     description: 'Массив товаров в заказе',
   })
-  @Column({ type: DataType.ARRAY })
-  items: Array<Items>;
+  @Column(DataType.ARRAY(DataType.STRING))
+  items: Items[];
 
   @ApiProperty({ example: 'Вася Пупкин', description: 'Имя заказчика' })
   @Column({ type: DataType.STRING, allowNull: false })
