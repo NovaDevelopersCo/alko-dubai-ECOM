@@ -6,6 +6,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { ItemsModule } from './items/items.module';
 import { Items } from './items/items.model';
 import { FilesModule } from './files/files.module';
+import { OrderModule } from './order/order.module';
 console.log(path);
 console.log(process.env.NODE_ENV);
 
@@ -37,6 +38,7 @@ console.log(process.env.NODE_ENV);
     }),
     ItemsModule,
     FilesModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [],
