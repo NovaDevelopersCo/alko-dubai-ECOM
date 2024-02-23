@@ -12,21 +12,21 @@ export class OrderController {
   @ApiOperation({ summary: 'Получить все заказы (с параметрами)' })
   @Get()
   @ApiResponse({ status: 200, type: [Order] })
-  getItems(): Order[] {
+  getOrders(): Order[] {
     return;
   }
 
   @ApiOperation({ summary: 'Создать заказ' })
   @Post()
   @ApiResponse({ status: 200, type: Order })
-  createItem(@Body() dto: CreateOrderDto) {
+  createOrder(@Body() dto: CreateOrderDto) {
     return this.ordersService.create(dto);
   }
 
   @ApiOperation({ summary: 'Получить заказ по id' })
   @Get('/:id')
   @ApiResponse({ status: 200, type: Order })
-  getByValue(@Param('id') id: number) {
+  getById(@Param('id') id: number) {
     return this.ordersService.getItemById(id);
   }
 }
