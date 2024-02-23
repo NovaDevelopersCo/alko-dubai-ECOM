@@ -11,7 +11,6 @@ interface OrdersCreationAttrs {
   address: string;
   status: string;
 }
-console.log(typeof Items);
 
 @Table({ tableName: 'orders' })
 export class Order extends Model<OrdersCreationAttrs> {
