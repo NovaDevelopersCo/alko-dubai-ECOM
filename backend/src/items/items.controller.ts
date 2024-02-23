@@ -8,11 +8,12 @@ import {
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { Items } from './items.model';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateItemDto } from './dto/create-item.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('items')
+@ApiTags('Items')
+@Controller('api/items')
 export class ItemsController {
   constructor(private itemsService: ItemsService) {}
 
