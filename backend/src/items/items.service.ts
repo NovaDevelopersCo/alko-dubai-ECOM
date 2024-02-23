@@ -27,10 +27,14 @@ export class ItemsService {
     });
     if (price) {
       if (price == 'asc') {
-        items.sort();
+        items.sort(function (a, b) {
+          return a.price - b.price;
+        });
       }
       if (price == 'desc') {
-        items.sort().reverse();
+        items.sort(function (a, b) {
+          return b.price - a.price;
+        });
       }
     }
     if (search) {
