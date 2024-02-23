@@ -67,8 +67,15 @@ export class ItemsService {
   }
 
   async create(dto: CreateItemDto, image: any) {
-    const fileName = await this.fileService.createFile(image);
-    const item = await this.itemsRepository.create({ ...dto, image: fileName });
+    if (image !== undefined) {
+      const fileName = await this.fileService.createFile(image);
+      const item = await this.itemsRepository.create({
+        ...dto,
+        image: fileName,
+      });
+      return item;
+    }
+    const item = await this.itemsRepository.create({ ...dto });
     return item;
   }
 
