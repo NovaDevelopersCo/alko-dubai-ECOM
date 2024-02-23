@@ -1,7 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateItemDto {
-  @ApiProperty({ example: 'Шато Марго 1958', description: 'Название' })
+  @ApiProperty({
+    example: 'Шато Марго 1958',
+    description: 'Название',
+    required: true,
+  })
   readonly title: string;
 
   @ApiProperty({
@@ -10,21 +14,41 @@ export class CreateItemDto {
   })
   readonly description: string;
 
-  @ApiProperty({ example: 'Белое полусухое', description: 'Категория' })
+  @ApiProperty({
+    example: 'Белое полусухое',
+    description: 'Категория',
+    required: true,
+  })
   readonly category: string;
 
-  @ApiProperty({ example: '1560AED', description: 'Цена' })
+  @ApiProperty({ example: '1560AED', description: 'Цена', required: true })
   readonly price: number;
 
-  @ApiProperty({ example: 155, description: 'Количество просмотров' })
+  @ApiProperty({
+    example: 155,
+    description: 'Количество просмотров',
+    required: false,
+  })
   readonly viewsCount: number;
 
-  @ApiProperty({ example: '1500AED', description: 'Старая цена' })
+  @ApiProperty({
+    example: '1500AED',
+    description: 'Старая цена',
+    required: false,
+  })
   readonly oldPrice: number;
 
-  @ApiProperty({ example: true, description: 'Есть ли скидка' })
+  @ApiProperty({
+    example: true,
+    description: 'Есть ли скидка',
+    required: false,
+  })
   readonly sale: boolean;
 
-  @ApiProperty({ example: false, description: 'Распродано ли' })
+  @ApiProperty({
+    example: false,
+    description: 'Распродано ли',
+    required: false,
+  })
   readonly soldOut: boolean;
 }
