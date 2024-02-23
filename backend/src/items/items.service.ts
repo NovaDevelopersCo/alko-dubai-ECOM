@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Items } from './items.model';
 import { FilesService } from 'src/files/files.service';
 import { CreateItemDto } from './dto/create-item.dto';
+import { GetItemsFilterDto } from './dto/get-items-filter.dto';
 
 @Injectable()
 export class ItemsService {
@@ -10,10 +11,32 @@ export class ItemsService {
     @InjectModel(Items) private itemsRepository: typeof Items,
     private fileService: FilesService,
   ) {}
+
   async getAllItems() {
     const items = await this.itemsRepository.findAll({
       include: { all: true },
     });
+    return items;
+  }
+
+  async getItemsWithFilters(filterDto: GetItemsFilterDto) {
+    const { search, price } = filterDto;
+
+    let items = await this.itemsRepository.findAll({
+      include: { all: true },
+    });
+    if (price) {
+      items = await items.filter(
+        (item) => item.price !== undefined && item.price <= Number(price),
+      );
+    }
+    if (search) {
+      items = await items.filter(
+        (item) =>
+          item.title.toLowerCase().includes(search.toLowerCase()) ||
+          item.description.toLowerCase().includes(search.toLowerCase()),
+      );
+    }
     return items;
   }
 
