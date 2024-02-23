@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   Query,
   UploadedFile,
@@ -36,5 +37,10 @@ export class ItemsController {
   @UseInterceptors(FileInterceptor('image'))
   createItem(@Body() dto: CreateItemDto, @UploadedFile() image) {
     return this.itemsService.create(dto, image);
+  }
+
+  @Get('/:id')
+  getByValue(@Param('id') id: number) {
+    return this.itemsService.getItemById(id);
   }
 }

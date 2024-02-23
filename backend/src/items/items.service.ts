@@ -41,13 +41,13 @@ export class ItemsService {
 
     if (news) {
       items.sort(function (a, b) {
-        return a.updatedAt - b.updatedAt;
+        return b.updatedAt - a.updatedAt;
       });
     }
 
     if (popularity) {
       items.sort(function (a, b) {
-        return a.updatedAt - b.updatedAt;
+        return b.updatedAt - a.updatedAt;
       });
     }
 
@@ -69,6 +69,15 @@ export class ItemsService {
   async create(dto: CreateItemDto, image: any) {
     const fileName = await this.fileService.createFile(image);
     const item = await this.itemsRepository.create({ ...dto, image: fileName });
+    return item;
+  }
+
+  async getItemById(id: number) {
+    const item = await this.itemsRepository.findOne({
+      where: { id },
+    });
+    item.viewsCount++;
+    item.save();
     return item;
   }
 }

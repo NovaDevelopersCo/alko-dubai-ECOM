@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 interface ItemsCreationAttrs {
+  id: number;
   title: string;
   price: number;
   oldPrice: number;
@@ -10,6 +11,7 @@ interface ItemsCreationAttrs {
   soldOut: boolean;
   description: string;
   image: string;
+  viewsCount: number;
 }
 @Table({ tableName: 'items' })
 export class Items extends Model<ItemsCreationAttrs> {
@@ -51,6 +53,10 @@ export class Items extends Model<ItemsCreationAttrs> {
   @ApiProperty({ example: '1500AED', description: 'Старая цена' })
   @Column({ type: DataType.INTEGER, allowNull: true, defaultValue: null })
   oldPrice: number;
+
+  @ApiProperty({ example: 155, description: 'Количество просмотров' })
+  @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 0 })
+  viewsCount: number;
 
   @ApiProperty({ example: true, description: 'Есть ли скидка' })
   @Column({ type: DataType.BOOLEAN, allowNull: false, defaultValue: false })
