@@ -25,6 +25,7 @@ export class ItemsService {
     let items = await this.itemsRepository.findAll({
       include: { all: true },
     });
+
     if (price) {
       if (price == 'asc') {
         items.sort(function (a, b) {
@@ -37,11 +38,19 @@ export class ItemsService {
         });
       }
     }
+
     if (news) {
       items.sort(function (a, b) {
         return a.updatedAt - b.updatedAt;
       });
     }
+
+    if (popularity) {
+      items.sort(function (a, b) {
+        return a.updatedAt - b.updatedAt;
+      });
+    }
+
     if (search) {
       items = await items.filter(
         (item) =>
