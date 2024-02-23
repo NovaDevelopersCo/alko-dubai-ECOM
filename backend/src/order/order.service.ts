@@ -15,6 +15,7 @@ export class OrderService {
   }
 
   async create(dto: CreateOrderDto) {
+    console.log(dto);
     const order = await this.ordersRepository.create(dto);
     return order;
   }

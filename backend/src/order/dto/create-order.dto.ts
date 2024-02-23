@@ -17,21 +17,20 @@ export class CreateOrderDto {
         soldOut: true,
       },
     ],
-    description: 'Название',
-    required: true,
+    description: 'Массив товаров в заказе',
   })
   readonly items: Array<Items>;
 
   @ApiProperty({
-    example: 'Очень вкусное вино',
-    description: 'Описание товара',
+    example: 'Вася Пупкин',
+    description: 'Имя заказчика',
     required: true,
   })
   readonly name: string;
 
   @ApiProperty({
-    example: 'Белое полусухое',
-    description: 'Категория',
+    example: 'хочу быстрее',
+    description: 'Примечание к заказу',
     required: false,
   })
   readonly details: string;
@@ -40,15 +39,15 @@ export class CreateOrderDto {
   readonly price: number;
 
   @ApiProperty({
-    example: 'Очень вкусное вино',
-    description: 'Описание товара',
+    example: 'Улица пушкина дом колотушкина',
+    description: 'Адрес',
     required: true,
   })
   readonly address: string;
 
   @ApiProperty({
-    example: 'Белое полусухое',
-    description: 'Категория',
+    example: 'В обарботке',
+    description: 'Статус заказа',
     required: false,
   })
   readonly status: string;
