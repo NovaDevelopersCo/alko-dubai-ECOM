@@ -12,13 +12,14 @@ export class CreateOrderDto {
   @ApiProperty({
     example: 'Очень вкусное вино',
     description: 'Описание товара',
+    required: true,
   })
   readonly name: string;
 
   @ApiProperty({
     example: 'Белое полусухое',
     description: 'Категория',
-    required: true,
+    required: false,
   })
   readonly details: string;
 
@@ -28,6 +29,7 @@ export class CreateOrderDto {
   @ApiProperty({
     example: 'Очень вкусное вино',
     description: 'Описание товара',
+    required: true,
   })
   readonly address: string;
 
