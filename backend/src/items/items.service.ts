@@ -30,7 +30,7 @@ export class ItemsService {
         items.sort();
       }
       if (price == 'desc') {
-        items.sort((a, b) => b.price - a.price);
+        items.sort().reverse();
       }
     }
     if (search) {
