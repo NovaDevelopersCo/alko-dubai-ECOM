@@ -40,7 +40,12 @@ export class ItemsService {
           item.description.toLowerCase().includes(search.toLowerCase()),
       );
     }
-    return items;
+    const totalPages = Math.ceil(items.length / 100);
+    const response = {
+      totalPages: totalPages,
+      items: items,
+    };
+    return response;
   }
 
   async create(dto: CreateItemDto, image: any) {
