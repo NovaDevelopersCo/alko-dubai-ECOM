@@ -11,6 +11,11 @@ export class OrderService {
     const orders = await this.ordersRepository.findAll({
       include: { all: true },
     });
+    orders.map((order) => {
+      if (order.items) {
+        order.items = order.items.map((item) => JSON.parse(item));
+      }
+    });
     return orders;
   }
 
