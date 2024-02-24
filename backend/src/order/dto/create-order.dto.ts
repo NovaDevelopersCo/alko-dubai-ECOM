@@ -17,6 +17,7 @@ export class CreateOrderDto {
       },
     ],
     description: 'Массив товаров в заказе',
+    required: true,
   })
   readonly items: Array<string>;
 
