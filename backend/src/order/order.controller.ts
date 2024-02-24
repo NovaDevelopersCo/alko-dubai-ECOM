@@ -9,7 +9,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 export class OrderController {
   constructor(private ordersService: OrderService) {}
 
-  @ApiOperation({ summary: 'Получить все заказы (с параметрами)' })
+  @ApiOperation({ summary: 'Получить все заказы' })
   @Get()
   @ApiResponse({ status: 200, type: [Order] })
   getOrders() {
