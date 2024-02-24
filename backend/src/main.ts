@@ -19,7 +19,8 @@ async function start() {
 
   await app.listen(PORT, () => {
     console.log(`Server run on http://localhost:${PORT}`),
-      console.log(`Docs on http://localhost:${PORT}/api/docs`);
+      console.log(`Docs on http://localhost:${PORT}/api/docs`),
+      console.log(`AdminJS on http://localhost:${PORT}/admin`);
   });
 }
 
