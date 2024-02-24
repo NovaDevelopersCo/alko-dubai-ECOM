@@ -1,10 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
-import { Items } from 'src/items/items.model';
 
 interface OrdersCreationAttrs {
   id: number;
-  items: Array<Items>;
+  items: Array<string>;
   name: string;
   details: string;
   price: number;
@@ -41,7 +40,7 @@ export class Order extends Model<OrdersCreationAttrs> {
     description: 'Массив товаров в заказе',
   })
   @Column(DataType.ARRAY(DataType.STRING))
-  items: Items[];
+  items: string;
 
   @ApiProperty({ example: 'Вася Пупкин', description: 'Имя заказчика' })
   @Column({ type: DataType.STRING, allowNull: false })

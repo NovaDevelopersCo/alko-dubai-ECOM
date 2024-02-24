@@ -1,5 +1,4 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Items } from 'src/items/items.model';
 
 export class CreateOrderDto {
   @ApiProperty({
@@ -19,7 +18,7 @@ export class CreateOrderDto {
     ],
     description: 'Массив товаров в заказе',
   })
-  readonly items: Array<Items>;
+  readonly items: Array<string>;
 
   @ApiProperty({
     example: 'Вася Пупкин',

@@ -23,6 +23,8 @@ export class OrderService {
     const order = await this.ordersRepository.findOne({
       where: { id },
     });
+    const items: any = JSON.parse(order.items);
+    order.items = items;
     return order;
   }
 }
