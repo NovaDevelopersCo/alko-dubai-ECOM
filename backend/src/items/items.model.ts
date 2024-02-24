@@ -46,11 +46,11 @@ export class Items extends Model<ItemsCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   category: string;
 
-  @ApiProperty({ example: '1202AED', description: 'Цена' })
+  @ApiProperty({ example: 1202, description: 'Цена' })
   @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 0 })
   price: number;
 
-  @ApiProperty({ example: '1500AED', description: 'Старая цена' })
+  @ApiProperty({ example: 1500, description: 'Старая цена' })
   @Column({ type: DataType.INTEGER, allowNull: true, defaultValue: null })
   oldPrice: number;
 

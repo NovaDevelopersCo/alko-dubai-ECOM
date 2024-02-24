@@ -21,7 +21,7 @@ export class CreateItemDto {
   })
   readonly category: string;
 
-  @ApiProperty({ example: '1560AED', description: 'Цена', required: true })
+  @ApiProperty({ example: 1560, description: 'Цена', required: true })
   readonly price: number;
 
   @ApiProperty({
@@ -32,7 +32,7 @@ export class CreateItemDto {
   readonly viewsCount: number;
 
   @ApiProperty({
-    example: '1500AED',
+    example: 1500,
     description: 'Старая цена',
     required: false,
   })
