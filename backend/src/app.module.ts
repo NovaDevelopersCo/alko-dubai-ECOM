@@ -9,6 +9,18 @@ import { FilesModule } from './files/files.module';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/order.model';
 
+const DEFAULT_ADMIN = {
+  email: 'admin@example.com',
+  password: 'password',
+};
+
+const authenticate = async (email: string, password: string) => {
+  if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
+    return Promise.resolve(DEFAULT_ADMIN);
+  }
+  return null;
+};
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -35,6 +47,26 @@ import { Order } from './order/order.model';
       autoLoadModels: true,
       synchronize: true,
     }),
+    import('@adminjs/nestjs').then(({ AdminModule }) =>
+        AdminModule.createAdminAsync({
+          useFactory: () => ({
+            adminJsOptions: {
+              rootPath: '/admin',
+              resources: [],
+            },
+            auth: {
+              authenticate,
+              cookieName: 'adminjs',
+              cookiePassword: 'secret',
+            },
+            sessionOptions: {
+              resave: true,
+              saveUninitialized: true,
+              secret: 'secret',
+            },
+          }),
+        }),
+    ),
     ItemsModule,
     FilesModule,
     OrderModule,
