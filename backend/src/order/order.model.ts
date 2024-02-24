@@ -40,7 +40,7 @@ export class Order extends Model<OrdersCreationAttrs> {
     description: 'Массив товаров в заказе',
   })
   @Column(DataType.ARRAY(DataType.STRING))
-  items: string;
+  items: string[];
 
   @ApiProperty({ example: 'Вася Пупкин', description: 'Имя заказчика' })
   @Column({ type: DataType.STRING, allowNull: false })
