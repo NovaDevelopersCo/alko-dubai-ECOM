@@ -1,9 +1,10 @@
-import { Counter } from '@/Components/Counter/Counter'
 import { Button } from 'antd'
+import Container from "@/Components/ui/Container/Container"
+import Test from '@/Components/ui/Test/test'
 export default function Home() {
   return (
-    <div>
-      <Counter></Counter>
-    </div>
+      <Container>
+        <Test></Test>
+      </Container>
   )
 }
