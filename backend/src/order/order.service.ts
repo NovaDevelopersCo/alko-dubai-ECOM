@@ -14,7 +14,7 @@ export class OrderService {
   async sendMail() {
     this.mailerService.sendMail({
       to: 'egor147536987@gmail.com',
-      from: 'egor1475369@gmail.com',
+      from: 'zazoom1475369@gmail.com',
       subject: 'Hello ✔',
       text: 'Hello world!',
       html: '<b>Hello world!</b>',
