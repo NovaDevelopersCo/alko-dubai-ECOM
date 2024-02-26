@@ -50,7 +50,7 @@ const authenticate = async (email: string, password: string) => {
     }),
     MailerModule.forRoot({
         transport: {
-            host: String(process.env.MAIL_HOST),
+            host: process.env.MAIL_HOST,
             port: Number(process.env.MAIL_PORT),
             secure: false,
             auth: {
