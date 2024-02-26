@@ -6,9 +6,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 import StoreProvider from './StoreProvider'
 
-
 import './global.css'
 import Header from '@/Components/ui/Header/Header'
+import Footer from '@/Components/ui/Footer/Footer'
 
 const montserrat = Montserrat({
   style: ['normal'],
@@ -89,8 +89,12 @@ export default function RootLayout({
       >
         <StoreProvider>
           <AntdRegistry>
-            <Header />
-            {children}
+            <div className={clsx('flex flex-col min-h-screen')}>
+              <Header />
+              <main className="flex-grow">{children}</main>
+
+              <Footer />
+            </div>
           </AntdRegistry>
         </StoreProvider>
       </body>

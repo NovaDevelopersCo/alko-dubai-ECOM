@@ -15,7 +15,7 @@ const Container: FC<TContainer> = ({
 }) => {
 	return (
 		<div
-			className={clsx('max-w-screen-xl mx-auto px-5', additionalStyles)}
+			className={clsx('max-w-screen-xl mx-auto px-5 flex-grow', additionalStyles)}
 			style={style}
 		>
 			{children}
