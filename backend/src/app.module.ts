@@ -49,15 +49,16 @@ const authenticate = async (email: string, password: string) => {
       synchronize: true,
     }),
     MailerModule.forRoot({
-        transport: {
-            host: process.env.MAIL_HOST,
-            port: Number(process.env.MAIL_PORT),
-            secure: false,
-            auth: {
-              user: process.env.MAIL_USER,
-              pass: process.env.MAIL_PASS,
-            },
-          },
+      transport: {
+        host: process.env.MAIL_HOST,
+        port: Number(process.env.MAIL_PORT),
+        logger: true,
+        secure: false,
+        auth: {
+          user: process.env.MAIL_USER,
+          pass: process.env.MAIL_PASS,
+        },
+      },
     }),
     (async () => {
       const AdminModule = (await import('@adminjs/nestjs')).AdminModule;
