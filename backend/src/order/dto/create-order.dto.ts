@@ -29,6 +29,13 @@ export class CreateOrderDto {
   readonly name: string;
 
   @ApiProperty({
+    example: 'test@gmail.com',
+    description: 'Почта пользователя',
+    required: true,
+  })
+  readonly email: string;
+
+  @ApiProperty({
     example: 'хочу быстрее',
     description: 'Примечание к заказу',
     required: false,
