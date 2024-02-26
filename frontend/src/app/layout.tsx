@@ -6,6 +6,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 import StoreProvider from './StoreProvider'
 
+
+import './global.css'
+import Header from '@/Components/ui/Header/Header'
+
 const montserrat = Montserrat({
   style: ['normal'],
   subsets: ['latin'],
@@ -84,7 +88,10 @@ export default function RootLayout({
         )}
       >
         <StoreProvider>
-          <AntdRegistry>{children}</AntdRegistry>
+          <AntdRegistry>
+            <Header />
+            {children}
+          </AntdRegistry>
         </StoreProvider>
       </body>
     </html>

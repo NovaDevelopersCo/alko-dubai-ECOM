@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	* {
+		position: relative;	
+		color: white;
+		font-family: theme('fontFamily.montserrat');
+	}
+	body,
+	html {
+		background-color: theme('colors.customBlack');
+	}
+	body.fixed {
+		overflow: hidden;
+	}
+}
