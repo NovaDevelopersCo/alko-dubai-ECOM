@@ -31,7 +31,7 @@ function FooterLinks() {
             </a>
           </li>
           <li>
-            <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">
+            <a href="#" className="hover:underline">
               Контакты
             </a>
           </li>

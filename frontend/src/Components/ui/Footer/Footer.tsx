@@ -10,7 +10,7 @@ function Footer() {
         <div className="mx-auto w-full max-w-screen-xl py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
-              <a href="https://flowbite.com/" className="flex items-center">
+              <a href="/" className="flex items-center">
                 {/* <Image></Image> */}
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                   Алко-Дубай
