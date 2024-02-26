@@ -9,7 +9,6 @@ import { FilesModule } from './files/files.module';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/order.model';
 import { MailerModule } from '@nestjs-modules/mailer';
-import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
 
 const DEFAULT_ADMIN = {
   email: 'admin@example.com',
@@ -50,15 +49,14 @@ const authenticate = async (email: string, password: string) => {
       synchronize: true,
     }),
     MailerModule.forRoot({
-      transport: 'smtps://user@domain.com:pass@smtp.domain.com',
-      defaults: {
-        from: '"nest-modules" <modules@nestjs.com>',
-      },
-      template: {
-        dir: __dirname + '/templates',
-        adapter: new PugAdapter(),
-        options: {
-          strict: true,
+      transport: {
+        host: 'smtp-relay.gmail.com',
+        port: 465,
+        ignoreTLS: true,
+        secure: false,
+        auth: {
+          user: 'Egor',
+          pass: '12345',
         },
       },
     }),

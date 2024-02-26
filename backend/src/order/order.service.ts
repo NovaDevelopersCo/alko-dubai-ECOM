@@ -2,10 +2,24 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Order } from './order.model';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
 export class OrderService {
-  constructor(@InjectModel(Order) private ordersRepository: typeof Order) {}
+  constructor(
+    @InjectModel(Order) private ordersRepository: typeof Order,
+    private readonly mailerService: MailerService,
+  ) {}
+
+  async sendMail() {
+    this.mailerService.sendMail({
+      to: 'egor147536987@gmail.com',
+      from: 'egor147536987@gmail.com',
+      subject: 'Hello ✔',
+      text: 'Hello world!',
+      html: '<b>Hello world!</b>',
+    });
+  }
 
   async getAllOrders() {
     const orders = await this.ordersRepository.findAll({
@@ -21,6 +35,7 @@ export class OrderService {
 
   async create(dto: CreateOrderDto) {
     const order = await this.ordersRepository.create({ ...dto });
+    this.sendMail()
     return order;
   }
 
