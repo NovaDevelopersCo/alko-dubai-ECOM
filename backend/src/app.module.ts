@@ -50,13 +50,11 @@ const authenticate = async (email: string, password: string) => {
     }),
     MailerModule.forRoot({
       transport: {
-        host: 'smtp-relay.gmail.com',
-        port: 465,
-        ignoreTLS: true,
+        host: process.env.MAIL_HOST,
         secure: false,
         auth: {
-          user: 'Egor',
-          pass: '12345',
+          user: process.env.SMTP_USERNAME,
+          pass: process.env.SMTP_PASSWORD,
         },
       },
     }),
