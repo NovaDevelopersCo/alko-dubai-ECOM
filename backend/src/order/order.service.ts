@@ -12,13 +12,20 @@ export class OrderService {
   ) {}
 
   async sendMail() {
-    this.mailerService.sendMail({
-      to: 'egor147536987@gmail.com',
-      from: 'zazoom1475369@gmail.com',
-      subject: 'Hello ✔',
-      text: 'Hello world!',
-      html: '<b>Hello world!</b>',
-    });
+    this.mailerService
+      .sendMail({
+        to: 'egor147536987@gmail.com',
+        from: 'zazoom1475369@gmail.com',
+        subject: 'Hello ✔',
+        text: 'Hello world!',
+        html: '<b>Hello world!</b>',
+      })
+      .then(() => {
+        console.log('Email sent to' + 'egor147536987@gmail.com');
+      })
+      .catch((e) => {
+        console.log('Error sending email', e);
+      });
   }
 
   async getAllOrders() {
@@ -35,7 +42,7 @@ export class OrderService {
 
   async create(dto: CreateOrderDto) {
     const order = await this.ordersRepository.create({ ...dto });
-    this.sendMail()
+    this.sendMail();
     return order;
   }
 
