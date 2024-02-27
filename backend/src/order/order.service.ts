@@ -11,17 +11,16 @@ export class OrderService {
     private readonly mailerService: MailerService,
   ) {}
 
-  async sendMail() {
+  async sendMail(dto) {
+    const data = `<b>Dear &nbsp; ${dto.email}</b>`;
     this.mailerService
       .sendMail({
-        to: 'egor147536987@gmail.com',
-        from: 'zazoom1475369@gmail.com',
+        to: dto.email,
         subject: 'Hello ✔',
-        text: 'Hello world!',
-        html: '<b>Hello world!</b>',
+        html: data,
       })
       .then(() => {
-        console.log('Email sent to' + 'egor147536987@gmail.com');
+        console.log('Email sent to ' + dto.email);
       })
       .catch((e) => {
         console.log('Error sending email', e);
@@ -42,7 +41,7 @@ export class OrderService {
 
   async create(dto: CreateOrderDto) {
     const order = await this.ordersRepository.create({ ...dto });
-    this.sendMail();
+    this.sendMail(dto);
     return order;
   }
 
