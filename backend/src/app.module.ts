@@ -21,6 +21,7 @@ const authenticate = async (email: string, password: string) => {
   }
   return null;
 };
+console.log(process.env.MAIL_USER, process.env.MAIL_PASS);
 
 @Module({
   imports: [
@@ -50,10 +51,7 @@ const authenticate = async (email: string, password: string) => {
     }),
     MailerModule.forRoot({
       transport: {
-        host: process.env.MAIL_HOST,
-        port: Number(process.env.MAIL_PORT),
-        logger: true,
-        secure: false,
+        service: process.env.MAIL_HOST,
         auth: {
           user: process.env.MAIL_USER,
           pass: process.env.MAIL_PASS,
