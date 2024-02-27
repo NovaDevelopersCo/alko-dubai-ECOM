@@ -12,7 +12,12 @@ export class OrderService {
   ) {}
 
   async sendMail(dto) {
-    const data = `<b>Dear &nbsp; ${dto.email}</b>`;
+    const data = `<b>Dear ${dto.email}</b>
+    <p>Thank you for your order. We will contact you as soon as possible.</p>
+    <p>Your order details:</p>
+    <ul>
+      ${dto.items.map((item) => `<li>${item.title}</li>`)}
+    <p>Best regards, Alko team</p>`;
     this.mailerService
       .sendMail({
         to: dto.email,
