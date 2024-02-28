@@ -36,7 +36,7 @@ export class OrderService {
     this.mailerService
       .sendMail({
         to: dto.email,
-        subject: 'Hello ✔',
+        subject: 'Новый заказ на Alko!',
         html: data,
       })
       .then(() => {
