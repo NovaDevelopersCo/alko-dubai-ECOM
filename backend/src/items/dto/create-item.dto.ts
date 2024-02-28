@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { IsInt, IsNotEmpty } from 'class-validator';
 
 export class CreateItemDto {
   @IsNotEmpty()
@@ -25,10 +25,12 @@ export class CreateItemDto {
   })
   readonly category: string;
 
+  @IsInt()
   @IsNotEmpty()
   @ApiProperty({ example: 1560, description: 'Цена', required: true })
   readonly price: number;
 
+  @IsInt()
   @ApiProperty({
     example: 155,
     description: 'Количество просмотров',
@@ -36,6 +38,7 @@ export class CreateItemDto {
   })
   readonly viewsCount: number;
 
+  @IsInt()
   @ApiProperty({
     example: 1500,
     description: 'Старая цена',

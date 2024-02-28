@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsInt, IsNotEmpty } from 'class-validator';
 
 export class CreateOrderDto {
   @ApiProperty({
@@ -53,6 +53,7 @@ export class CreateOrderDto {
   })
   readonly details: string;
 
+  @IsInt()
   @ApiProperty({ example: 1560, description: 'Цена', required: true })
   readonly price: number;
 
