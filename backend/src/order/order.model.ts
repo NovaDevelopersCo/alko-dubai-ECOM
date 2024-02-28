@@ -32,6 +32,7 @@ export class Order extends Model<OrdersCreationAttrs> {
         image: '12345',
         category: '12345',
         price: 12345,
+        quantity: 1,
         oldPrice: 12345,
         viewsCount: 12345,
         sale: true,

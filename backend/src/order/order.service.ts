@@ -25,7 +25,8 @@ export class OrderService {
                 <p><strong>Название товара:</strong> ${product.title}</p>
                 <p><strong>Категория:</strong> ${product.category}</p>
                 <p><strong>Количество:</strong> ${product.quantity}</p>
-                <p><strong>Сумма товара:</strong> ${product.price}</p>
+                <p><strong>Цена за штуку:</strong> ${product.price}</p>
+                <p><strong>Сумма товара:</strong> ${product.quantity * product.price}</p>
             </li>`,
         )}
     </ul>
