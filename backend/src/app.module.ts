@@ -21,7 +21,6 @@ const authenticate = async (email: string, password: string) => {
   }
   return null;
 };
-console.log(process.env.MAIL_USER, process.env.MAIL_PASS);
 
 @Module({
   imports: [

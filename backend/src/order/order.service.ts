@@ -12,12 +12,26 @@ export class OrderService {
   ) {}
 
   async sendMail(dto) {
-    const data = `<b>Dear ${dto.email}</b>
-    <p>Thank you for your order. We will contact you as soon as possible.</p>
-    <p>Your order details:</p>
+    const data = `<div>
+    <h2>Уведомление о новом заказе!</h2>
+    <p><strong>Имя:</strong> ${dto.name}</p>
+    <p><strong>Телефон:</strong> ${dto.phone}</p>
+    <p><strong>Адрес:</strong> ${dto.address}</p>
+    <h3>Товары в заказе:</h3>
     <ul>
-      ${dto.items.map((item) => `<li>${item.title}</li>`)}
-    <p>Best regards, Alko team</p>`;
+        ${dto.items.map(
+          (product) =>
+            `<li key=${product.id}>
+                <p><strong>Название товара:</strong> ${product.name}</p>
+                <p><strong>Категория:</strong> ${product.category}</p>
+                <p><strong>Количество:</strong> ${product.quantity}</p>
+                <p><strong>Сумма товара:</strong> ${product.price}</p>
+            </li>`,
+        )}
+    </ul>
+    <p><strong>Общая сумма заказа:</strong> ${dto.price}</p>
+</div>
+`;
     this.mailerService
       .sendMail({
         to: dto.email,
