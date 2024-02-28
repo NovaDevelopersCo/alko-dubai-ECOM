@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class CreateOrderDto {
   @ApiProperty({
@@ -22,6 +23,7 @@ export class CreateOrderDto {
   })
   readonly items: Array<string>;
 
+  @IsNotEmpty()
   @ApiProperty({
     example: 'Вася Пупкин',
     description: 'Имя заказчика',
@@ -29,6 +31,7 @@ export class CreateOrderDto {
   })
   readonly name: string;
 
+  @IsEmail()
   @ApiProperty({
     example: 'test@gmail.com',
     description: 'Почта пользователя',
@@ -36,6 +39,7 @@ export class CreateOrderDto {
   })
   readonly email: string;
 
+  @IsNotEmpty()
   @ApiProperty({
     example: '+79094588426',
     description: 'Телефон заказчика',
@@ -52,6 +56,7 @@ export class CreateOrderDto {
   @ApiProperty({ example: 1560, description: 'Цена', required: true })
   readonly price: number;
 
+  @IsNotEmpty()
   @ApiProperty({
     example: 'Улица пушкина дом колотушкина',
     description: 'Адрес',
