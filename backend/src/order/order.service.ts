@@ -22,7 +22,7 @@ export class OrderService {
         ${dto.items.map(
           (product) =>
             `<li key=${product.id}>
-                <p><strong>Название товара:</strong> ${product.name}</p>
+                <p><strong>Название товара:</strong> ${product.title}</p>
                 <p><strong>Категория:</strong> ${product.category}</p>
                 <p><strong>Количество:</strong> ${product.quantity}</p>
                 <p><strong>Сумма товара:</strong> ${product.price}</p>
