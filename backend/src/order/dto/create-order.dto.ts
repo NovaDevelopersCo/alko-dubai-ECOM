@@ -37,10 +37,10 @@ export class CreateOrderDto {
   readonly email: string;
 
   @ApiProperty({
-    example: +76566556,
+    example: '+79094588426',
     description: 'Телефон заказчика',
   })
-  readonly phone: number;
+  readonly phone: string;
 
   @ApiProperty({
     example: 'хочу быстрее',

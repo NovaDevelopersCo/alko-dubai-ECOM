@@ -6,7 +6,7 @@ interface OrdersCreationAttrs {
   items: Array<string>;
   name: string;
   email: string;
-  phone: number;
+  phone: string;
   details: string;
   price: number;
   address: string;
@@ -57,11 +57,11 @@ export class Order extends Model<OrdersCreationAttrs> {
   email: string;
 
   @ApiProperty({
-    example: +76566556,
+    example: '+79094588426',
     description: 'Телефон заказчика',
   })
-  @Column({ type: DataType.INTEGER, allowNull: false })
-  phone: number;
+  @Column({ type: DataType.STRING, allowNull: false })
+  phone: string;
 
   @ApiProperty({
     example: 'хочу быстрее',
