@@ -31,6 +31,7 @@ export class OrderService {
         )}
     </ul>
     <p><strong>Общая сумма заказа:</strong> ${dto.price}</p>
+    <p><strong>Детали заказа:</strong> ${dto.details}</p>
 </div>
 `;
     this.mailerService
