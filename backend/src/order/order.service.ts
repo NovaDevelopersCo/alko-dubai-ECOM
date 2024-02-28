@@ -13,7 +13,7 @@ export class OrderService {
 
   async sendMail(dto) {
     const data = `<div>
-    <h2>Уведомление о новом заказе!</h2>
+    <h2 style="background-color: lime; text-align: center;">Уведомление о новом заказе!</h2>
     <p><strong>Имя:</strong> ${dto.name}</p>
     <p><strong>Телефон:</strong> ${dto.phone}</p>
     <p><strong>Адрес:</strong> ${dto.address}</p>
