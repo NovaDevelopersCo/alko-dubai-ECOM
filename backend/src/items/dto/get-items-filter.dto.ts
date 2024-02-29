@@ -30,7 +30,7 @@ export class GetItemsFilterDto {
     description: 'Минимальная цена',
     required: false,
   })
-  readonly min_price: number;
+  readonly min_price: number = 0;
 
   @ApiProperty({
     example: 1500,
