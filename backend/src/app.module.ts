@@ -9,6 +9,7 @@ import { FilesModule } from './files/files.module';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/order.model';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { CatalogModule } from './catalog/catalog.module';
 
 const DEFAULT_ADMIN = {
   email: 'admin@example.com',
@@ -88,6 +89,7 @@ const authenticate = async (email: string, password: string) => {
     ItemsModule,
     FilesModule,
     OrderModule,
+    CatalogModule,
   ],
   controllers: [],
   providers: [],
