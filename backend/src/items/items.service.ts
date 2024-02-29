@@ -16,7 +16,12 @@ export class ItemsService {
     const items = await this.itemsRepository.findAll({
       include: { all: true },
     });
-    return items;
+    const totalPages = Math.ceil(items.length / 100);
+    const response = {
+      totalPages: totalPages,
+      items: items,
+    };
+    return response;
   }
 
   async getItemsWithFilters(filterDto: GetItemsFilterDto) {
