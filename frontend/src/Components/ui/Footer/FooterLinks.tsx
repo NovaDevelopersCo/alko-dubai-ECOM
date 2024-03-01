@@ -4,7 +4,7 @@ function FooterLinks() {
   return (
     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
       <div>
-        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+        <h2 className="mb-6 text-sm font-semibold  uppercase text-white">
           Ассортимент
         </h2>
         <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -21,7 +21,7 @@ function FooterLinks() {
         </ul>
       </div>
       <div>
-        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+        <h2 className="mb-6 text-sm font-semibold  uppercase text-white">
           Информация
         </h2>
         <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -38,7 +38,7 @@ function FooterLinks() {
         </ul>
       </div>
       <div>
-        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+        <h2 className="mb-6 text-sm font-semibold  uppercase text-white">
           Доставка
         </h2>
         <ul className="text-gray-500 dark:text-gray-400 font-medium">
