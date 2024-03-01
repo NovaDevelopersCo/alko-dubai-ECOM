@@ -6,9 +6,9 @@ import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 export class CatalogController {
   constructor(private catalogService: CatalogService) {}
 
-  @ApiOperation({ summary: 'Получить все товары (с параметрами)' })
+  @ApiOperation({ summary: 'Получить все категории' })
   @Get()
-  @ApiResponse({ status: 200, type: Array })
+  @ApiResponse({ status: 200, type: Object })
   getItems() {
     return this.catalogService.getAllCatalog();
   }
