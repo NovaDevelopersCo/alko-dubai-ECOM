@@ -7,7 +7,12 @@ export class CatalogService {
   async getAllCatalog() {
     const items = (await this.itemsService.getAllItems()).items;
 
-    const response = items;
+    const response = items.reduce((acc, obj) => {
+      acc[obj.category] = (acc[obj.category] || 0) + 1;
+      return acc;
+    }, {});
+
+    console.log(response);
     return response;
   }
 }
