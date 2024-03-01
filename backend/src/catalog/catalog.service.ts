@@ -11,8 +11,6 @@ export class CatalogService {
       acc[obj.category] = (acc[obj.category] || 0) + 1;
       return acc;
     }, {});
-
-    console.log(response);
     return response;
   }
 }
