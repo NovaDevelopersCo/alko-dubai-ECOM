@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Montserrat, Nunito_Sans } from 'next/font/google'
+import { Inter, Montserrat,  Literata as LiterataFont } from 'next/font/google'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import clsx from 'clsx'
 const inter = Inter({ subsets: ['latin'] })
@@ -19,7 +19,7 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 })
 
-const nunito_sans = Nunito_Sans({
+const literata = LiterataFont({
   style: ['normal'],
   subsets: ['latin'],
   weight: ['400', '600'],
@@ -83,7 +83,7 @@ export default function RootLayout({
       <body
         className={clsx(
           montserrat.variable,
-          nunito_sans.variable,
+          literata.variable,
           'relative block z-0',
         )}
       >

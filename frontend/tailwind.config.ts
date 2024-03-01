@@ -14,16 +14,14 @@ const config: Config = {
             'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'customBlack': '#19191B',
-        'customGrey': '#BABABB',
-        'customPurple': '#262642',
-        'customOrange': '#FBA81C',
-        'customBlue': '#5454D4',
-        'customRed': '#F04037'
+        'customBlack': '#000000',
+        'customPink': '#D32B82',
+        'customGray': '#B3B3B3',
+        'customOrange': '#FFFFFF'
       },
       fontFamily: {
-        'montserrat': ['var(--font-montserrat)', 'Arial', 'sans-serif'],
-        'nunito_sans': ['var(--font-nunito_sans)', 'Arial', 'sans-serif']
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'literata': ['Literata', 'serif'],
       }
     },
   },
