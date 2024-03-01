@@ -5,6 +5,8 @@ interface OrdersCreationAttrs {
   id: number;
   items: Array<string>;
   name: string;
+  email: string;
+  phone: string;
   details: string;
   price: number;
   address: string;
@@ -31,6 +33,7 @@ export class Order extends Model<OrdersCreationAttrs> {
         image: '12345',
         category: '12345',
         price: 12345,
+        quantity: 1,
         oldPrice: 12345,
         viewsCount: 12345,
         sale: true,
@@ -45,6 +48,20 @@ export class Order extends Model<OrdersCreationAttrs> {
   @ApiProperty({ example: 'Вася Пупкин', description: 'Имя заказчика' })
   @Column({ type: DataType.STRING, allowNull: false })
   name: string;
+
+  @ApiProperty({
+    example: 'test@gmail.com',
+    description: 'Почта пользователя',
+  })
+  @Column({ type: DataType.STRING, allowNull: false })
+  email: string;
+
+  @ApiProperty({
+    example: '+79094588426',
+    description: 'Телефон заказчика',
+  })
+  @Column({ type: DataType.STRING, allowNull: false })
+  phone: string;
 
   @ApiProperty({
     example: 'хочу быстрее',

@@ -24,4 +24,18 @@ export class GetItemsFilterDto {
     required: false,
   })
   readonly news: boolean = false;
+
+  @ApiProperty({
+    example: 0,
+    description: 'Минимальная цена',
+    required: false,
+  })
+  readonly min_price: number = 0;
+
+  @ApiProperty({
+    example: 1500,
+    description: 'Максимальная цена',
+    required: false,
+  })
+  readonly max_price: number;
 }
