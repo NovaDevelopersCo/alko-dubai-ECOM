@@ -4,6 +4,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons'
 import HeaderLinks from './HeaderLinks'
 import { IoIosMenu } from 'react-icons/io'
 import Search from '../Search/Search'
+import { FiPhoneCall } from 'react-icons/fi'
 
 function Header() {
   return (
@@ -27,6 +28,13 @@ function Header() {
             </a>
             <div className="flex items-center lg:order-2">
               <Search></Search>
+
+              <a
+                href="#"
+                className=" dark:text-white hover:bg-gray-50  font-medium rounded-[50%] text-sm px-2 lg:px-2 py-2 lg:py-2 mr-1 focus:outline-none"
+              >
+                <FiPhoneCall style={{ fontSize: '23px', color: '#D32B82' }} />
+              </a>
               <a
                 href="#"
                 className=" dark:text-white hover:bg-gray-50  font-medium rounded-[50%] text-sm px-2 lg:px-2 py-2 lg:py-2 mr-1 focus:outline-none"
