@@ -5,14 +5,13 @@
 @layer base {
 	* {
 		position: relative;	
-		color: white;
 		font-family: theme('fontFamily.montserrat');
 	}
 	body,
-	html {
-		background-color: theme('colors.customBlack');
-	}
 	body.fixed {
 		overflow: hidden;
 	}
+    h1, h2, h3, h4, h5, h6 {
+        font-family: theme('fontFamily.literata');
+    }
 }
