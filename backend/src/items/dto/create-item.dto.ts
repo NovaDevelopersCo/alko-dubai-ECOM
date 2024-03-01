@@ -30,7 +30,6 @@ export class CreateItemDto {
   @ApiProperty({ example: 1560, description: 'Цена', required: true })
   readonly price: number;
 
-  @IsInt()
   @ApiProperty({
     example: 155,
     description: 'Количество просмотров',
@@ -38,7 +37,6 @@ export class CreateItemDto {
   })
   readonly viewsCount: number;
 
-  @IsInt()
   @ApiProperty({
     example: 1500,
     description: 'Старая цена',
