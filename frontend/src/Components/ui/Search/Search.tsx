@@ -3,7 +3,7 @@ import React from 'react'
 function Search() {
   return (
     <form
-      className="max-w-md mx-auto hidden justify-between items-center w-full lg:flex lg:w-auto"
+      className="max-w-md mx-auto hidden justify-between items-center w-full sm:flex sm:w-auto"
       id="mobile-menu-2"
     >
       <label

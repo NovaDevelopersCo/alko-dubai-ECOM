@@ -8,7 +8,10 @@ function Swaiper() {
         <div className="flex justify-center items-center h-full">
           <h1 className="uppercase text-white text-center text-xs md:w-[130px] lg:w-[500px] md:text-md lg:text-4xl">
             Доставка алкогольных напитков в Дубае
+            <br/>
+            <button className='bg-white font-montserrat mt-3 text-sm md:text-lg p-1.5 px-4 rounded-md text-black'>Выбрать напиток</button>
           </h1>
+          
           <span className="text-white text-2xl md:m-3 lg:m-6">
             <svg
               width="2"
