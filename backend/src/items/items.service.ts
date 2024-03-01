@@ -25,7 +25,7 @@ export class ItemsService {
   }
 
   async getItemsWithFilters(filterDto: GetItemsFilterDto) {
-    const { search, price, popularity, news } = filterDto;
+    const { search, price, popularity, news, max_price, min_price } = filterDto;
 
     let items = await this.itemsRepository.findAll({
       include: { all: true },
@@ -62,6 +62,13 @@ export class ItemsService {
           item.title.toLowerCase().includes(search.toLowerCase()) ||
           item.description.toLowerCase().includes(search.toLowerCase()),
       );
+    }
+    if (min_price) {
+      items = await items.filter((item) => item.price >= min_price);
+    }
+
+    if (max_price) {
+      items = await items.filter((item) => item.price <= max_price);
     }
     const totalPages = Math.ceil(items.length / 100);
     const response = {
