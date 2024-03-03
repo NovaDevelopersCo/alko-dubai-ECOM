@@ -1,19 +1,13 @@
-export type items = {
-    id: number
-    title: string
-    description: string
-    image?: string,
-    category: string,
-    price:number,
-    oldPrice?:number,
-    viewsCount:number,
-    sale?:boolean,
-    soldOut?:boolean,
+export type Tutorial = {
+    _id?: string
+    title?: string
+    description?: string
+    published?: string
     createdAt?: Date
     updatedAt?: Date
   };
-
-export type item = {
+  
+  export type Tutorials = {
     id: number
     title: string
     description: string
@@ -28,18 +22,16 @@ export type item = {
     updatedAt?: Date
   };
   
-  export interface itemsStateProps {
-    posts: {
-      items: items[];
-      totalPages: number;
-    };
+  
+  export interface TutorialStateProps {
+    tutorials: Tutorials[];
+    tutorial: Tutorial | null;
     error: object | string | null;
     success: object | string | null;
-    isLoading: boolean;
+    isLoading: boolean
   }
   
   export interface DefaultRootStateProps {
-    items: itemsStateProps;
-
+    tutorial: TutorialStateProps;
   }
    
