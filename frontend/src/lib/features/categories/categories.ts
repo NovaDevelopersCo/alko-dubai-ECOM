@@ -32,7 +32,7 @@ export function fetchCategories() {
 }
 
 const slice = createSlice({
-  name: 'category',
+  name: 'categories',
   initialState,
   reducers: {
     // TO INITIAL STATE
