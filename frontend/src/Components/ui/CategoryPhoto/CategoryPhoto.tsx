@@ -36,13 +36,13 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
         ref={emblaRef}
       >
         <div className="embla__container flex touch-action: pan-y">
-          {slides.map((index) => (
+          {Object.keys(categories).map((index) => (
             <div
               className="embla__slide min-w-0 flex-0 flex-shrink-0 w-1/6 px-2 md:w-1/4 lg:w-1/6 xl:w-1/6"
               key={index}
             >
               <div className="embla__slide__number p-6 shadow-inset-0.2rem rounded-1.8rem text-4xl font-semibold flex items-center justify-center h-var(--slide-height)">
-                {index + 1}
+                {index}
               </div>
             </div>
           ))}
