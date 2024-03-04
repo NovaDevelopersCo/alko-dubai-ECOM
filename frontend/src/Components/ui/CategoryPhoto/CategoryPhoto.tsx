@@ -20,13 +20,13 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
   })
 
   const dispatch = useAppDispatch()
-  const items = useAppSelector((state) => state)
+  const categories = useAppSelector((state) => state)
 
   useEffect(() => {
     dispatch(fetchCategories())
   }, [dispatch])
 
-  console.log(items);
+  console.log(categories);
   
 
   return (
