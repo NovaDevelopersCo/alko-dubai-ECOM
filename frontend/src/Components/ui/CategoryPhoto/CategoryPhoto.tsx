@@ -1,7 +1,9 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
+import { fetchItems } from '@/lib/features/items/items'
 type PropType = {
   slides: number[]
   options?: EmblaOptionsType
@@ -16,6 +18,16 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
     watchResize: false,
     loop: true,
   })
+
+  const dispatch = useAppDispatch()
+  const items = useAppSelector((state) => state.item.posts.items)
+
+  useEffect(() => {
+    dispatch(fetchItems())
+  }, [dispatch])
+
+  console.log(items);
+  
 
   return (
     <section className="embla max-w-70rem mx-auto">
