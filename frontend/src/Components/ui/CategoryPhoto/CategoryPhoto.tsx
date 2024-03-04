@@ -4,8 +4,10 @@ import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { fetchCategories } from '@/lib/features/categories/categories'
-import Skeleton from '@/Components/Skeleton/Skeleton'
 import Link from 'next/link'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 type PropType = {
   slides: number[]
   options?: EmblaOptionsType
@@ -28,7 +30,6 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
     dispatch(fetchCategories())
   }, [dispatch])
 
-  const items = Object.keys(categories).length > 1 ? categories : Array.from({ length: 6 }, (_, index) => <Skeleton key={index} />);
 
   return (
     <section className="embla max-w-70rem mx-auto">
@@ -51,7 +52,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
             </Link>
 
           ))
-            : Array.from({ length: 6 }, (_, index) => <Skeleton key={index} />)
+            : ''
           }
         </div>
       </div>
