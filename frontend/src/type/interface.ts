@@ -58,6 +58,5 @@ export interface categoriesStateProps {
 }
 
 export interface DefaultRootStateProps {
-  items: itemsStateProps
   categories: categoriesStateProps
 }

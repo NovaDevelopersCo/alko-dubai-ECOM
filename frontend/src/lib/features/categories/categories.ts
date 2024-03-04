@@ -22,7 +22,7 @@ export function fetchCategories() {
 
     try {
       const response = await axiosServices.get('api/catalog')
-      dispatch(slice.actions.fetchItemsSuccess(response.data))
+      dispatch(slice.actions.fetchCategoriesSuccess(response.data))
     } catch (error) {
       dispatch(slice.actions.hasError(error))
     } finally {
@@ -55,7 +55,7 @@ const slice = createSlice({
       state.isLoading = false
     },
     // GET ALL TUTORIALS
-    fetchItemsSuccess(state, action) {
+    fetchCategoriesSuccess(state, action) {
       state.posts = action.payload // Изменено
       state.success = null
     },
@@ -66,7 +66,7 @@ export const {
   hasError,
   startLoading,
   finishLoading,
-  fetchItemsSuccess,
+  fetchCategoriesSuccess,
 } = slice.actions
 
 export default slice.reducer
