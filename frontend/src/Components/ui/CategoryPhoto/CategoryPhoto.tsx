@@ -30,7 +30,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
   return (
     <section className="embla max-w-70rem mx-auto">
       <div
-        className="embla__viewport overflow-hidden w-full h-96 md:h-auto"
+        className="embla__viewport overflow-hidden w-full h-auto"
         ref={emblaRef}
       >
         <div className="embla__container flex touch-action: pan-y">
