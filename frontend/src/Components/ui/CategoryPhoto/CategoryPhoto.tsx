@@ -25,8 +25,6 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
   useEffect(() => {
     dispatch(fetchCategories())
   }, [dispatch])
-
-  console.log(categories);
   
 
   return (
@@ -38,7 +36,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
         <div className="embla__container flex touch-action: pan-y">
           {Object.keys(categories).map((index) => (
             <div
-              className="embla__slide min-w-0 flex-0 items-center justify-center flex-shrink-0 w-1/6 px-2 md:w-1/4 lg:w-1/6 xl:w-1/6"
+              className="embla__slide min-w-0 flex-0 items-center justify-center flex-shrink-0 w-1/6 px-2 md:w-1/4 lg:w-1/6 xl:w-1/6 mt-3"
               key={index}
             >
               <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALQAvwMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQYD/8QAGBABAQEBAQAAAAAAAAAAAAAAAAFRExH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A13t2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA685tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoD//2Q=="/>
