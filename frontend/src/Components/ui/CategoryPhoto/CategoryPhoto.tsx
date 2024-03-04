@@ -5,7 +5,8 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { fetchCategories } from '@/lib/features/categories/categories'
 import Link from 'next/link'
-import Skeletons from '@/Components/Skeleton/Skeleton'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 type PropType = {
   slides: number[]
@@ -51,7 +52,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
             </Link>
 
           ))
-            : <Skeletons/>
+            : <Skeleton count={3}/>
           }
         </div>
       </div>
