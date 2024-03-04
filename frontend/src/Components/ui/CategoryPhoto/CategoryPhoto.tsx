@@ -36,7 +36,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
         ref={emblaRef}
       >
         <div className="embla__container flex touch-action: pan-y">
-          {Object.keys(categories).map((index) => (
+          {Object.keys(categories).length > 1 ? Object.keys(categories).map((index) => (
             <div
               className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-1/2 px-2 sm:w-1/4 lg:w-1/6 xl:w-1/8 mt-3"
               key={index}
@@ -46,7 +46,9 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                 {index}
               </p>
             </div>
-          ))}
+          ))
+            : Array.from({ length: 6 }, (_, index) => <Skeleton key={index} />)
+          }
         </div>
       </div>
 
