@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import { fetchItems } from '@/lib/features/items/items'
 import { fetchCategories } from '@/lib/features/categories/categories'
 type PropType = {
   slides: number[]
@@ -21,7 +20,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
   })
 
   const dispatch = useAppDispatch()
-  const items = useAppSelector((state) => state.item.posts.items)
+  const items = useAppSelector((state) => state)
 
   useEffect(() => {
     dispatch(fetchCategories())

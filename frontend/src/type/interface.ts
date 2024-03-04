@@ -39,33 +39,13 @@ export interface itemsStateProps {
 }
 
 export type category = {
-  id: number
   title: string
-  description: string
   image?: string
-  category: string
-  price: number
-  oldPrice?: number
-  viewsCount: number
-  sale?: boolean
-  soldOut?: boolean
-  createdAt?: Date
-  updatedAt?: Date
 }
 
 export type categories = {
-  id: number
   title: string
-  description: string
   image?: string
-  category: string
-  price: number
-  oldPrice?: number
-  viewsCount: number
-  sale?: boolean
-  soldOut?: boolean
-  createdAt?: Date
-  updatedAt?: Date
 }
 
 export interface categoriesStateProps {
