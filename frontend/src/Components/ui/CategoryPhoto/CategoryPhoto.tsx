@@ -36,13 +36,13 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
         <div className="embla__container flex touch-action: pan-y">
           {Object.keys(categories).map((index) => (
             <div
-              className="embla__slide min-w-0 flex-0 items-center justify-center flex-shrink-0 w-1/6 px-2 md:w-1/4 lg:w-1/6 xl:w-1/6 mt-3"
+              className="embla__slide min-w-0 shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-1/2 px-2 md:w-1/8 lg:w-1/8 xl:w-1/8 mt-3"
               key={index}
             >
-              <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALQAvwMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQYD/8QAGBABAQEBAQAAAAAAAAAAAAAAAAFRExH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A13t2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA685tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoD//2Q=="/>
-              <div className="embla__slide__number p-2 shadow-inset-0.2rem rounded-1.8rem font-semibold flex items-center justify-center h-var(--slide-height)">
+              <img className="w-full h-auto" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALQAvwMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQYD/8QAGBABAQEBAQAAAAAAAAAAAAAAAAFRExH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A13t2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA685tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoD//2Q=="/>
+              <p className="embla__slide__number p-2 text-xs sm:text-sm md:text-lg xl:text-xl font-semibold text-center">
                 {index}
-              </div>
+              </p>
             </div>
           ))}
         </div>
