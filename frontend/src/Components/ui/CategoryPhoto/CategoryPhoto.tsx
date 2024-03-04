@@ -52,7 +52,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
             </Link>
 
           ))
-            : ''
+            : <Skeleton count={5} />
           }
         </div>
       </div>
