@@ -36,10 +36,10 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
         <div className="embla__container flex touch-action: pan-y">
           {Object.keys(categories).map((index) => (
             <div
-              className="embla__slide min-w-0 shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-1/2 px-2 sm:w-1/4 lg:w-1/6 xl:w-1/8 mt-3"
+              className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-1/2 px-2 sm:w-1/4 lg:w-1/6 xl:w-1/8 mt-3"
               key={index}
             >
-              <img className="w-full h-auto" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALQAvwMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQYD/8QAGBABAQEBAQAAAAAAAAAAAAAAAAFRExH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A13t2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAvt2nt2oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA685tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoCc5tOc2qAnObTnNqgJzm05zaoD//2Q=="/>
+              <img className="w-full h-auto rounded-md" src="https://e7.pngegg.com/pngimages/804/985/png-clipart-wine-glass-bottle-product-blueberry-hill-rose-glass-wine.png"/>
               <p className="embla__slide__number p-2 text-xs sm:text-xs md:text-sm xl:text-base font-semibold text-center">
                 {index}
               </p>
