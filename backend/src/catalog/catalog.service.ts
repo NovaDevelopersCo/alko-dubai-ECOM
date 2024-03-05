@@ -14,11 +14,17 @@ export class CatalogService {
   async getAllCatalog() {
     const items = (await this.itemsService.getAllItems()).items;
 
-    const response = items.reduce((acc, obj) => {
+    const catalog = items.reduce((acc, obj) => {
       acc[obj.category] = (acc[obj.category] || 0) + 1;
       return acc;
     }, {});
-    return response;
+    for (const key in catalog) {
+      await this.catalogRepository.create({
+        title: key,
+        items: catalog[key],
+      });
+    }
+    return await this.catalogRepository.findAll();
   }
 
   async getCatalogByName(title: string) {
