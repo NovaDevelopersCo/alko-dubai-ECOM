@@ -25,7 +25,7 @@ export class CatalogController {
 
   @Patch('/:id')
   @ApiResponse({ status: 200, type: Catalog })
-  update(@Param('id') id: string, @Body() dto: UpdateCatalogDto, image: any) {
-    return this.catalogService.update(+id, dto, image);
+  update(@Param('id') id: number, @Body() dto: UpdateCatalogDto, image: any) {
+    return this.catalogService.update(id, dto, image);
   }
 }
