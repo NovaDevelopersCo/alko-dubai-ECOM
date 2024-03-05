@@ -5,6 +5,7 @@ import { Item } from '@/Components/entity/item'
 export default function Home() {
   const SLIDE_COUNT = 12
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+
   return (
     <Container>
       <Swaiper />
