@@ -18,12 +18,7 @@ export class CatalogService {
       acc[obj.category] = (acc[obj.category] || 0) + 1;
       return acc;
     }, {});
-    for (const key in catalog) {
-      await this.catalogRepository.create({
-        title: key,
-        items: catalog[key],
-      });
-    }
+    this.update(catalog);
     return await this.catalogRepository.findAll();
   }
 
@@ -32,6 +27,13 @@ export class CatalogService {
       where: { title },
     });
     return item;
+  }
+
+  async update(catalog: any) {
+    console.log(catalog);
+    await this.catalogRepository.update(catalog, {
+      where: { title: catalog.title },
+    });
   }
 
   // async update(id: number, dto: UpdateCatalogDto, image: any) {
