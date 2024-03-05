@@ -1,6 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { CatalogService } from './catalog.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Catalog } from './catalog.model';
 
 @ApiTags('Catalog')
 @Controller('api/catalog')
@@ -15,9 +16,9 @@ export class CatalogController {
   }
 
   @ApiOperation({ summary: 'Получить категорию по названию' })
-  @Get('/:name')
-  @ApiResponse({ status: 200, type: Object })
-  getByValue(@Param('name') name: string) {
-    return this.catalogService.getCatalogByName(name);
+  @Get('/:title')
+  @ApiResponse({ status: 200, type: Catalog })
+  getByValue(@Param('title') title: string) {
+    return this.catalogService.getCatalogByName(title);
   }
 }
