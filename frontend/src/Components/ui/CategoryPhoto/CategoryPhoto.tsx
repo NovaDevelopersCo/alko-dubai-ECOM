@@ -52,7 +52,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
             </Link>
 
           ))
-            : Array.from({ length: 6 }, (_) => <Skeleton width={150} height={150} className="rounded m-4 " />)
+            : Array.from({ length: 6 }, (_, index) => <Skeleton width={150} height={150} className="rounded m-4" key={index}  />)
           }
         </div>
       </div>
