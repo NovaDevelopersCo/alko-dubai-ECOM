@@ -5,7 +5,7 @@ import FooterSocial from './FooterSocial'
 
 function Footer() {
   return (
-    <footer className="bg-black">
+    <footer className="bg-black shadow">
       <Container>
         <div className="mx-auto w-full max-w-screen-xl py-6 lg:py-8">
           <div className="md:flex md:justify-between">

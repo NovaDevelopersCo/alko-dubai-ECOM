@@ -8,7 +8,7 @@ import axiosServices from '@/utils/axios';
 
 // types 
 import { AppDispatch } from '@/lib/store';
-import { DefaultRootStateProps, Tutorial } from '@/type/interface';
+import { DefaultRootStateProps, Tutorial } from '@/type/tutorial';
 
 // ----------------------------------------------------------------------
 
