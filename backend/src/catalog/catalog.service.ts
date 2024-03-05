@@ -23,9 +23,6 @@ export class CatalogService {
   }
 
   async update(id: number, dto: UpdateCatalogDto, image: any) {
-    const category = await this.catalogRepository.findOne({
-      where: { id },
-    });
     if (image !== undefined) {
       const fileName = await this.fileService.createFile(image);
       const category = await this.catalogRepository.update(id, {
@@ -34,7 +31,7 @@ export class CatalogService {
       });
       return category;
     }
-    const item = await this.catalogRepository.create({ ...dto });
-    return item;
+    const category = await this.catalogRepository.update(id, { ...dto });
+    return category;
   }
 }
