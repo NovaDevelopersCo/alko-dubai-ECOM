@@ -22,7 +22,7 @@ export class CatalogService {
     return response;
   }
 
-  async update(id: number, dto: UpdateCatalogDto, image: any) {
+  async update(id: string, dto: UpdateCatalogDto, image: any) {
     if (image !== undefined) {
       const fileName = await this.fileService.createFile(image);
       const category = await this.catalogRepository.update(id, {

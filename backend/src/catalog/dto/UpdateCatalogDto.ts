@@ -9,12 +9,4 @@ export class UpdateCatalogDto {
     required: true,
   })
   readonly title: string;
-
-  @IsNotEmpty()
-  @ApiProperty({
-    example: 1560,
-    description: 'Количество товаров с категорией',
-    required: true,
-  })
-  readonly items: number;
 }
