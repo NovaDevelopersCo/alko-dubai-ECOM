@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
 import { CatalogService } from './catalog.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { UpdateCatalogDto } from './dto/UpdateCatalogDto';
 import { Catalog } from './catalog.model';
 
 @ApiTags('Catalog')
@@ -23,7 +24,7 @@ export class CatalogController {
   }
 
   @Patch('/:id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
+    return this.catalogService.update(+id, dto);
   }
 }

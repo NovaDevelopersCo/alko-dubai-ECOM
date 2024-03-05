@@ -3,7 +3,7 @@ import { FilesService } from 'src/files/files.service';
 import { ItemsService } from 'src/items/items.service';
 import { Catalog } from './catalog.model';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateCatalogDto } from './dto/CreateCatalogDto';
+import { UpdateCatalogDto } from './dto/UpdateCatalogDto';
 
 @Injectable()
 export class CatalogService {
@@ -22,14 +22,17 @@ export class CatalogService {
     return response;
   }
 
-  async create(dto: CreateCatalogDto, image: any) {
+  async update(id: number, dto: UpdateCatalogDto, image: any) {
+    const category = await this.catalogRepository.findOne({
+      where: { id },
+    });
     if (image !== undefined) {
       const fileName = await this.fileService.createFile(image);
-      const item = await this.catalogRepository.create({
+      const category = await this.catalogRepository.update(id, {
         ...dto,
         image: fileName,
       });
-      return item;
+      return category;
     }
     const item = await this.catalogRepository.create({ ...dto });
     return item;

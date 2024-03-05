@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
-export class CreateCatalogDto {
+export class UpdateCatalogDto {
   @IsNotEmpty()
   @ApiProperty({
     example: 'Шато Марго 1958',
