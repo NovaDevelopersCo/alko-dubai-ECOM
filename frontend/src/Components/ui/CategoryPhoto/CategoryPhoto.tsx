@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { fetchCategories } from '@/lib/features/categories/categories'
 import Link from 'next/link'
-import Skeleton from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 
 type PropType = {
@@ -52,7 +52,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
             </Link>
 
           ))
-            : Array.from({ length: 5 }, (_, index) => <Skeleton width={150} height={150} inline={true} key={index} />)
+            : Array.from({ length: 6 }, (_) => <Skeleton width={150} height={150} className="rounded m-4 " />)
           }
         </div>
       </div>
