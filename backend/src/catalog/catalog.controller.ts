@@ -33,7 +33,7 @@ export class CatalogController {
   @Patch('/:id')
   @ApiResponse({ status: 200, type: Catalog })
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() dto: UpdateCatalogDto,
     @UploadedFile() image,
   ) {
