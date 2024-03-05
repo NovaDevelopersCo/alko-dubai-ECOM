@@ -16,15 +16,16 @@ export class CatalogController {
     return this.catalogService.getAllCatalog();
   }
 
-  @ApiOperation({ summary: 'Получить категорию по названию' })
-  @Get('/:title')
-  @ApiResponse({ status: 200, type: Catalog })
-  getByValue(@Param('title') title: string) {
-    return this.catalogService.getCatalogByName(title);
-  }
+  // @ApiOperation({ summary: 'Получить категорию по названию' })
+  // @Get('/:title')
+  // @ApiResponse({ status: 200, type: Catalog })
+  // getByValue(@Param('title') title: string) {
+  //   return this.catalogService.getCatalogByName(title);
+  // }
 
   @Patch('/:id')
-  update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-    return this.catalogService.update(+id, dto);
+  @ApiResponse({ status: 200, type: Catalog })
+  update(@Param('id') id: string, @Body() dto: UpdateCatalogDto, image: any) {
+    return this.catalogService.update(+id, dto, image);
   }
 }
