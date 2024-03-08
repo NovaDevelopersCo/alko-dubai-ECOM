@@ -8,7 +8,9 @@ const ContactPage = () => {
     <div className="mt-[70px]">
       <Container>
         <div className="flex flex-col gap-[66px]">
-          <h2 className="text-[26px]">О КОМПАНИИ</h2>
+          <h2 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[26px]">
+            О КОМПАНИИ
+          </h2>
           <div className="flex flex-col gap-[43px] mb-[51px]">
             <div className="flex flex-start gap-[300px]">
               <ContactItem
@@ -20,7 +22,7 @@ const ContactPage = () => {
             <div className="flex flex-start gap-[300px]">
               <ContactItem text="+7 964 382 22 29" strong="Телефон" />
               <div className="flex flex-col gap-[18px]">
-                <strong className="text-[22px] font-medium">
+                <strong className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-medium">
                   Написать нам :
                 </strong>
                 <span>
