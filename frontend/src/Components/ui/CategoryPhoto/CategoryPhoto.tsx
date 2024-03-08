@@ -40,12 +40,12 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
         className="embla__viewport overflow-hidden w-full h-auto"
         ref={emblaRef}
       >
-        <div className="embla__container flex touch-action: pan-y gap-2">
+        <div className="embla__container flex touch-action: pan-y gap-4">
           {titles.length > 1 ? (
             titles.map((index) => (
               <Link key={index} href={`/catalog/${index}`}>
                 <div
-                  className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-32 lg:w-40 xl:w-44 max-w-48 mr-2 my-3 "
+                  className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-32 lg:w-40 xl:w-44 max-w-48 my-3 "
                   key={index}
                 >
                   <img
