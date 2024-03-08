@@ -35,11 +35,11 @@ export class CatalogService {
 
     // await this.catalogRepository;
     for (const key in catalog) {
-      const item = await this.catalogRepository.findOne({
+      const category = await this.catalogRepository.findOne({
         where: { title: key },
       });
-      item.items = catalog[key];
-      await item.save();
+      category.items = catalog[key];
+      await category.save();
     }
   }
 
