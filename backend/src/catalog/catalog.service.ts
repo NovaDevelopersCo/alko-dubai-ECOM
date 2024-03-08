@@ -36,7 +36,8 @@ export class CatalogService {
       const item = await this.catalogRepository.findOne({
         where: { title: key },
       });
-      console.log(item.items);
+      item.items = catalog[key];
+      await item.save();
     }
   }
 
