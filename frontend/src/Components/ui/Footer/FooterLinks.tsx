@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function FooterLinks() {
@@ -31,9 +32,9 @@ function FooterLinks() {
             </a>
           </li>
           <li>
-            <a href="#" className="hover:underline">
+            <Link href="/contact" className="hover:underline">
               Контакты
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

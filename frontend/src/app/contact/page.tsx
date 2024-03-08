@@ -1,13 +1,11 @@
 import { FaTelegram } from 'react-icons/fa'
-import Whatsapp from '@/assets/icons8-whatsapp-50.png'
-import Image from 'next/image'
 import Container from '@/Components/ui/Container/Container'
 import { GoogleMap } from '@/Components/ui/Map/GoogleMap'
 import { ContactItem } from '@/Components/ui/ContactItem.tsx/ContactItem'
 
-export const ContactPage = () => {
+const ContactPage = () => {
   return (
-    <div>
+    <div className="mt-[70px]">
       <Container>
         <div className="flex flex-col gap-[66px]">
           <h2 className="text-[26px]">О КОМПАНИИ</h2>
@@ -44,3 +42,4 @@ export const ContactPage = () => {
     </div>
   )
 }
+export default ContactPage
