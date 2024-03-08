@@ -1,43 +1,47 @@
-import React from 'react'
+"use client"
+import React, { useContext } from 'react'
 import Container from '../Container/Container'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import HeaderLinks from './HeaderLinks'
-import { IoIosMenu } from 'react-icons/io'
 import Search from '../Search/Search'
-import { FiPhoneCall } from 'react-icons/fi'
+import Image from 'next/image'
+import Link from 'next/link'
+import BurgerBtn from './BurgerBtn'
+import { BurgerContext } from '@/Components/context/AppContext'
+import ContactBtn from './ContactBtn'
 
 function Header() {
+  const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
+  React.useEffect(() => {
+    if (isBurgerOpen) {
+      document.body.classList.add('fixed')
+    } else {
+      document.body.classList.remove('fixed')
+    }
+    return () => {
+      document.body.classList.remove('fixed')
+    }
+  }, [isBurgerOpen])
   return (
     <header>
-      <nav className="bg-white border-gray-200 px-4 py-2.5 shadow">
+      <nav className="bg-white border-gray-200 px-4 py-2.5 shadow z-10">
         <Container>
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
-            <HeaderLinks />
-            <a href="/#" className="flex items-center">
-              {/* <Image></Image> */}
-              <button
-                data-collapse-toggle="mobile-menu-2"
-                type="button"
-                className="inline-flex items-center p-2 ml-1 text-sm rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
-                aria-controls="mobile-menu-2"
-                aria-expanded="false"
-              >
-                <span className="sr-only">Open main menu</span>
-                <IoIosMenu style={{ fontSize: '30px', color: '#D32B82' }} />
-              </button>
-            </a>
+          <div className="flex justify-between items-center mx-auto max-w-screen-2xl">
+            <div className="flex items-center">
+              <Link href="/">
+                <Image src="/logo.svg" alt="logo" width={35} height={35} />
+              </Link>
+              <HeaderLinks />
+              <span className="flex ml-5 items-center lg:hidden">
+                <BurgerBtn />
+              </span>
+            </div>
             <div className="flex items-center lg:order-2">
-              <Search></Search>
-
+              <Search />
+              <ContactBtn/>
               <a
                 href="#"
-                className=" dark:text-white hover:bg-gray-50  font-medium rounded-[50%] text-sm px-2 lg:px-2 py-2 lg:py-2 mr-1 focus:outline-none"
-              >
-                <FiPhoneCall style={{ fontSize: '23px', color: '#D32B82' }} />
-              </a>
-              <a
-                href="#"
-                className=" dark:text-white hover:bg-gray-50  font-medium rounded-[50%] text-sm px-2 lg:px-2 py-2 lg:py-2 mr-1 focus:outline-none"
+                className="dark:text-white hover:bg-gray-50 font-medium rounded-[50%] text-sm px-2 lg:px-2 py-2 lg:py-2 mr-1 focus:outline-none"
               >
                 <ShoppingCartOutlined
                   style={{ fontSize: '23px', color: '#D32B82' }}

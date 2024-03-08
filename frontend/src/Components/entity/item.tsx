@@ -1,16 +1,25 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import { fetchItems } from '@/lib/features/items/items'
+import { fetchItems, selectItems } from '@/lib/features/items/items'
+import { InputFetch } from '@/type/interface'
 
 export function Item() {
   const dispatch = useAppDispatch()
-  const items = useAppSelector((state) => state.item.posts.items)
+  const items = useAppSelector(selectItems)
+
+  const inputFetch:InputFetch = useMemo(() => ({
+    price: 'asc',
+    popularity: true,
+    news: true,
+    max_price: 12000,
+    min_price: 0,
+  }), []);
 
   useEffect(() => {
-    dispatch(fetchItems())
-  }, [dispatch])
-
+    dispatch(fetchItems(inputFetch))
+  }, [dispatch, inputFetch])
+  console.log(items)
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {items &&
