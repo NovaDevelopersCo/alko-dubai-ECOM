@@ -12,13 +12,7 @@ export class CatalogService {
     @InjectModel(Catalog) private catalogRepository: typeof Catalog,
   ) {}
   async getAllCatalog() {
-    const items = (await this.itemsService.getAllItems()).items;
-
-    const catalog = items.reduce((acc, obj) => {
-      acc[obj.category] = (acc[obj.category] || 0) + 1;
-      return acc;
-    }, {});
-    this.update(catalog);
+    await this.update();
     return await this.catalogRepository.findAll();
   }
 
@@ -29,11 +23,21 @@ export class CatalogService {
     return item;
   }
 
-  async update(catalog: any) {
-    console.log(catalog);
-    await this.catalogRepository.update(catalog, {
-      where: { title: catalog.title },
-    });
+  async update() {
+    const items = (await this.itemsService.getAllItems()).items;
+
+    const catalog = items.reduce((acc, obj) => {
+      acc[obj.category] = (acc[obj.category] || 0) + 1;
+      return acc;
+    }, {});
+
+    // await this.catalogRepository;
+    for (const key in catalog) {
+      const item = await this.catalogRepository.findOne({
+        where: { title: key },
+      });
+      console.log(item.items);
+    }
   }
 
   // async update(id: number, dto: UpdateCatalogDto, image: any) {
