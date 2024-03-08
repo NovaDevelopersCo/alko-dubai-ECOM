@@ -2,21 +2,21 @@ import Container from '@/Components/ui/Container/Container'
 import Image from 'next/image'
 import Wine from '@/assets/wine.png'
 
-export const CompanyPage = () => {
+const CompanyPage = () => {
   return (
     <Container>
-      <div className="flex justify-between h-content">
-        <div className="flex gap-[35px] flex-col text-Montserrat mt-[87px] mb-[125px] max-w-[789px]">
+      <div className="flex justify-between">
+        <div className="flex gap-[35px] flex-col text-Montserrat mt-[60px]">
           <h2 className="text-Literalla text-[18px] sm:text-[20px] md:text-[22px] lg:text-[26px]">
             О КОМПАНИИ
           </h2>
-          <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]">
+          <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] max-w-[789px]">
             Как ни странно, 50% туристов отменяют Дубай, как потенциальное место
             для отпуска, из-за распространенного мнения, что там нельзя
             употреблять алкоголь. Так ли это на самом деле? Отчасти, да! Но всё
             не так плохо.
           </p>
-          <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]">
+          <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] max-w-[769px] ">
             Дубай — самый удивительный и самый свободный эмират в ОАЭ.
             Разумеется, мусульманское население хранит верность традициям: не
             употребляет спиртного, соблюдает дресс-код и чтит иные законы
@@ -28,17 +28,19 @@ export const CompanyPage = () => {
             возникнет.
           </p>
           <span className="border border-t-customPink w-[120px]"></span>
-          <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]">
+          <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] max-w-[661px]">
             Наша компания прекрасно знает потребности наших клиентов и отлично
             знает законодательство ОАЭ. Благодаря этому мы можем осуществить
             доставку любого вида алкогольной продукции в Дубае высочайшего
             качества в кратчайшие сроки со 100% гарантией качества!
           </p>
         </div>
-        <div className="-mr-[139px]">
+        <div className="-mr-[139px] mt-[2px]">
           <Image src={Wine} alt="wine" />
         </div>
       </div>
     </Container>
   )
 }
+
+export default CompanyPage
