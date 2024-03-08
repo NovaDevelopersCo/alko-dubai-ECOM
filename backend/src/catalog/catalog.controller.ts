@@ -1,7 +1,15 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  UploadedFile,
+} from '@nestjs/common';
 import { CatalogService } from './catalog.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Catalog } from './catalog.model';
+import { UpdateCatalogDto } from './dto/UpdateCatalogDto';
 
 @ApiTags('Catalog')
 @Controller('api/catalog')
@@ -22,13 +30,13 @@ export class CatalogController {
     return this.catalogService.getCatalogByName(title);
   }
 
-  // @Patch('/:id')
-  // @ApiResponse({ status: 200, type: Catalog })
-  // update(
-  //   @Param('id') id: number,
-  //   @Body() dto: UpdateCatalogDto,
-  //   @UploadedFile() image,
-  // ) {
-  //   return this.catalogService.update(id, dto, image);
-  // }
+  @Patch('/:id')
+  @ApiResponse({ status: 200, type: Catalog })
+  updateCatalog(
+    @Param('id') id: number,
+    @Body() dto: UpdateCatalogDto,
+    @UploadedFile() image,
+  ) {
+    return this.catalogService.updateCatalog(id, dto, image);
+  }
 }
