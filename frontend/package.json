@@ -16,7 +16,7 @@
     "@nextui-org/react": "^2.2.10",
     "@reduxjs/toolkit": "^2.2.1",
     "@types/react-slick": "^0.23.13",
-    "antd": "^5.14.1",
+    "antd": "^5.15.1",
     "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "embla-carousel": "^8.0.0",
