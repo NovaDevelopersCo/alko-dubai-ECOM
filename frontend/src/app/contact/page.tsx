@@ -8,20 +8,20 @@ const ContactPage = () => {
     <div className="mt-[70px]">
       <Container>
         <div className="flex flex-col gap-[66px]">
-          <h2 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[26px]">
+          <h2 className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px]">
             О КОМПАНИИ
           </h2>
           <div className="flex flex-col gap-[43px] mb-[51px]">
-            <div className="flex flex-start gap-[300px]">
+            <div className="flex flex-start gap-[20px] sm:gap-[50px] md:gap-[150px] lg:gap-[300px] flex-wrap">
               <ContactItem
                 text="Building No.3, Jewellery & Gemplex, — Dubai — United Arab Emirates"
                 strong="Адрес"
               />
               <ContactItem text="Ежедневно и Круглосуточно " strong="График" />
             </div>
-            <div className="flex flex-start gap-[300px]">
+            <div className="flex flex-start gap-[20px] sm:gap-[50px] md:gap-[150px] lg:gap-[300px] flex-wrap">
               <ContactItem text="+7 964 382 22 29" strong="Телефон" />
-              <div className="flex flex-col gap-[18px]">
+              <div className="flex flex-col gap-[18px] w-[279.24px]">
                 <strong className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-medium">
                   Написать нам :
                 </strong>
