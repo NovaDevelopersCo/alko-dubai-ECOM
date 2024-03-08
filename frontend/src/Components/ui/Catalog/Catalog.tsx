@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useEffect } from 'react'
 import { Slider, Switch } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
@@ -10,8 +10,12 @@ export default function Catalog() {
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
     ) as any
-    const categoriesArray = Array.from(categories) as { title: string }[]
+    const categoriesArray = Array.from(categories) as {
+        title: string
+        items: number
+    }[]
     const titles = categoriesArray.map((category) => category.title)
+    const itemsCount = categoriesArray.map((category) => category.items)
 
     useEffect(() => {
         dispatch(fetchCategories())
@@ -27,7 +31,17 @@ export default function Catalog() {
                     max={12000}
                 />
             </div>
-            <h1>Каталог</h1>
+            <h1 className="text-3xl">Каталог</h1>
+            <div className='flex flex-col gap-3 mt-5'>
+                {categoriesArray.length > 0
+                    ? categoriesArray.map((category) => (
+                          <div className='flex justify-between w-48'>
+                              <div>{category.title}</div>
+                              <div className='border-solid flex justify-center w-7 border-2 rounded-full border-indigo-600'>{category.items}</div>
+                          </div>
+                      ))
+                    : ''}
+            </div>
         </div>
     )
 }
