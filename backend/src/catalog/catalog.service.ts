@@ -44,9 +44,6 @@ export class CatalogService {
   }
 
   async updateCatalog(id: number, dto: UpdateCatalogDto, image: any) {
-    const items = await this.catalogRepository.findAll({
-      where: { category = dto.title },
-    });
     const catalog = await this.catalogRepository.findOne({
       where: { id },
     });
