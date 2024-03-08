@@ -40,6 +40,7 @@ export class CatalogService {
         await this.catalogRepository.create({
           title: key,
           items: catalog[key],
+          image: null,
         });
         continue;
       }
