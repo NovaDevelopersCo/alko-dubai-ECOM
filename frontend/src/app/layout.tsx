@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Montserrat,  Literata as LiterataFont } from 'next/font/google'
+import { Inter, Montserrat, Literata as LiterataFont } from 'next/font/google'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import clsx from 'clsx'
 const inter = Inter({ subsets: ['latin'] })
@@ -9,7 +9,9 @@ import StoreProvider from './StoreProvider'
 import './global.css'
 import Header from '@/Components/ui/Header/Header'
 import Footer from '@/Components/ui/Footer/Footer'
-import OurBenefits from "@/Components/ui/ourBenefits/OurBenefits";
+import OurBenefits from '@/Components/ui/ourBenefits/OurBenefits'
+import AppProvider from '@/Components/ui/AppProvider'
+import Modal from 'antd/es/modal/Modal'
 
 const montserrat = Montserrat({
   style: ['normal'],
@@ -90,11 +92,15 @@ export default function RootLayout({
       >
         <StoreProvider>
           <AntdRegistry>
-            <div className={clsx('flex flex-col min-h-screen')}>
-              <Header />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
+            {' '}
+            <AppProvider>
+              <div className={clsx('flex flex-col min-h-screen')}>
+                <Header />
+                <main className="flex-grow">{children}</main>
+                <Footer />
+                <Modal/>
+              </div>
+            </AppProvider>
           </AntdRegistry>
         </StoreProvider>
       </body>

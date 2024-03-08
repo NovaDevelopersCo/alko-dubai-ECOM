@@ -1,7 +1,7 @@
 import { FaTelegram } from 'react-icons/fa'
 import Container from '@/Components/ui/Container/Container'
 import { GoogleMap } from '@/Components/ui/Map/GoogleMap'
-import { ContactItem } from '@/Components/ui/ContactItem.tsx/ContactItem'
+import { ContactItem } from '@/Components/ui/ContactItem/ContactItem'
 
 const ContactPage = () => {
   return (
