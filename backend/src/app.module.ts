@@ -10,6 +10,7 @@ import { OrderModule } from './order/order.module';
 import { Order } from './order/order.model';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { CatalogModule } from './catalog/catalog.module';
+import { Catalog } from './catalog/catalog.model';
 
 const DEFAULT_ADMIN = {
   email: 'admin@example.com',
@@ -71,7 +72,7 @@ const authenticate = async (email: string, password: string) => {
         useFactory: () => ({
           adminJsOptions: {
             rootPath: '/admin',
-            resources: [Items, Order],
+            resources: [Items, Order, Catalog],
           },
           auth: {
             authenticate,
