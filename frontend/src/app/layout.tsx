@@ -93,7 +93,6 @@ export default function RootLayout({
             <div className={clsx('flex flex-col min-h-screen')}>
               <Header />
               <main className="flex-grow">{children}</main>
-<OurBenefits></OurBenefits>
               <Footer />
             </div>
           </AntdRegistry>
