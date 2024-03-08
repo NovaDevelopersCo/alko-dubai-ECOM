@@ -9,6 +9,7 @@ import StoreProvider from './StoreProvider'
 import './global.css'
 import Header from '@/Components/ui/Header/Header'
 import Footer from '@/Components/ui/Footer/Footer'
+import Delivery from "@/Components/ui/Delivery/Delivery";
 
 const montserrat = Montserrat({
   style: ['normal'],
@@ -92,7 +93,7 @@ export default function RootLayout({
             <div className={clsx('flex flex-col min-h-screen')}>
               <Header />
               <main className="flex-grow">{children}</main>
-
+<Delivery/>
               <Footer />
             </div>
           </AntdRegistry>
