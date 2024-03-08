@@ -7,6 +7,7 @@ import { fetchCategories } from '@/lib/features/categories/categories'
 import Link from 'next/link'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { RootState } from '@/lib/store'
 
 type PropType = {
   slides: number[]
@@ -24,8 +25,11 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
   })
 
   const dispatch = useAppDispatch()
-  const categories = useAppSelector((state) => state.categories.posts)
-  console.log(Object.keys(categories))
+  const categories = useAppSelector(
+    (state: RootState) => state.categories.posts,
+  ) as any
+  const categoriesArray = Array.from(categories) as { title: string }[]
+  const titles = categoriesArray.map((category) => category.title)
 
   useEffect(() => {
     dispatch(fetchCategories())
@@ -38,8 +42,8 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
         ref={emblaRef}
       >
         <div className="embla__container flex touch-action: pan-y">
-          {Object.keys(categories).length > 1
-            ? Object.keys(categories).map((index) => (
+          {titles.length > 1
+            ? titles.map((index) => (
                 <Link key={index} href={`/catalog/${index}`}>
                   <div
                     className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-full max-w-48 px-2 mt-3 "
