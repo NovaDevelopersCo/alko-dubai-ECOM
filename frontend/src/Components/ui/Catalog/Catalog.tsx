@@ -31,7 +31,7 @@ export default function Catalog() {
                     max={12000}
                 />
             </div>
-            <h1 className="text-3xl">Каталог</h1>
+            <h1 className="text-3xl mt-5">Каталог</h1>
             <div className="flex flex-col gap-3 mt-5">
                 {categoriesArray.length > 0
                     ? categoriesArray.map((category) => (
