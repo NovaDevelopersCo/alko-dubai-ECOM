@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import Link from 'next/link'
 import React from 'react'
 
 function HeaderLinks() {
@@ -21,7 +22,7 @@ function HeaderLinks() {
       <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
         <li className="relative group">
           <a
-            href="#"
+            href="/"
             className="block py-2 pr-4 pl-3 text-black border-b border-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
             aria-current="page"
           >
@@ -31,7 +32,7 @@ function HeaderLinks() {
         </li>
         <li className="relative group">
           <a
-            href="#"
+            href="store"
             className="block py-2 pr-4 pl-3 text-black border-b  border-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0  "
           >
             Магазин
@@ -48,21 +49,21 @@ function HeaderLinks() {
           <span className={underlineClasses}></span>
         </li>
         <li className="relative group">
-          <a
-            href="#"
+          <Link
+            href="/company"
             className="block py-2 pr-4 pl-3 text-black border-b border-gray-100  lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
           >
             О компании
-          </a>
+          </Link>
           <span className={underlineClasses}></span>
         </li>
         <li className="relative group">
-          <a
-            href="#"
+          <Link
+            href="/contact"
             className="block py-2 pr-4 pl-3 text-black border-b border-gray-100  lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
           >
             Контакты
-          </a>
+          </Link>
           <span className={underlineClasses}></span>
         </li>
       </ul>
