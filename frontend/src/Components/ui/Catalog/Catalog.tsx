@@ -37,7 +37,7 @@ export default function Catalog() {
                     ? categoriesArray.map((category) => (
                           <div className="flex justify-between w-60">
                               <div>{category.title}</div>
-                              <div className="border-solid flex justify-center w-10 border-2 rounded-full border-indigo-600">
+                              <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
                                   <p>{category.items}</p>
                               </div>
                           </div>
