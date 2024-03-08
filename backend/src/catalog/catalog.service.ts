@@ -33,7 +33,6 @@ export class CatalogService {
       return acc;
     }, {});
 
-    // await this.catalogRepository;
     for (const key in catalog) {
       const category = await this.catalogRepository.findOne({
         where: { title: key },
