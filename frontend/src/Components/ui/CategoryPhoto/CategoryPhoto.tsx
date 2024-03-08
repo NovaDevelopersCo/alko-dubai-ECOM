@@ -46,7 +46,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
             titles.map((index) => (
               <Link key={index} href={`/catalog/${index}`}>
                 <div
-                  className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-full max-w-48 mr-2 my-3 "
+                  className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-32 max-w-48 mr-2 my-3 "
                   key={index}
                 >
                   <img

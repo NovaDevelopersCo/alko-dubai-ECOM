@@ -32,11 +32,17 @@ export class CatalogService {
       acc[obj.category] = (acc[obj.category] || 0) + 1;
       return acc;
     }, {});
-
     for (const key in catalog) {
       const category = await this.catalogRepository.findOne({
         where: { title: key },
       });
+      if (!category) {
+        await this.catalogRepository.create({
+          title: key,
+          items: catalog[key],
+        });
+        continue;
+      }
       category.items = catalog[key];
       await category.save();
     }
