@@ -18,7 +18,7 @@ export class CatalogController {
 
   @ApiOperation({ summary: 'Получить все категории' })
   @Get()
-  @ApiResponse({ status: 200, type: Object })
+  @ApiResponse({ status: 200, type: [Catalog] })
   getItems() {
     return this.catalogService.getAllCatalog();
   }
