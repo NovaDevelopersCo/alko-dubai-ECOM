@@ -41,7 +41,7 @@ function HeaderLinks() {
         </li>
         <li className="relative group">
           <a
-            href="#"
+            href="/delivery"
             className="block py-2 pr-4 pl-3 text-black border-b border-gray-100  lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
           >
             Доставка и оплата

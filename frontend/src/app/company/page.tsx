@@ -35,7 +35,7 @@ const CompanyPage = () => {
             качества в кратчайшие сроки со 100% гарантией качества!
           </p>
         </div>
-        <div className="WinePng">
+        <div className="hidden md:flex">
           <Image src={Wine} alt="wine" />
         </div>
       </div>
