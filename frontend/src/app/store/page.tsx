@@ -9,14 +9,12 @@ const store = () => {
                 <hr className="border-[#D32B82]" />
                 <p className="text-xl text-center sm:text-right sm:mr-8">
                     Сортировка по
-                    <div className="dropdown">
-                        <button className="dropbtn">Dropdown</button>
-                        <div className="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
+                    <select  name="sort-by" className='ml-2 text-[#D32B82] rounded'>
+                        <option value="asc" className='rounded'>цене (возрастание)</option>
+                        <option value="desc" className='rounded'>цене (убывание)</option>
+                        <option value="news" className='rounded'>новизне</option>
+                        <option value="popularity" className='rounded'>популярности</option>
+                    </select>
                 </p>
                 <hr className="border-[#D32B82]" />
             </div>
