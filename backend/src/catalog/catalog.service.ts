@@ -27,11 +27,17 @@ export class CatalogService {
 
   async update() {
     const items = (await this.itemsService.getAllItems()).items;
-
-    const catalog = items.reduce((acc, obj) => {
+    const categories = await this.catalogRepository.findAll();
+    const catalog = items.reduce((acc: Record<number, number>, obj) => {
       acc[obj.category] = (acc[obj.category] || 0) + 1;
       return acc;
     }, {});
+    const missingCategories = categories.filter(
+      (category) => !Object.keys(catalog).includes(category.title),
+    );
+    for (let i = 0; i < missingCategories.length; i++) {
+      this.delete(missingCategories[i].id);
+    }
     for (const key in catalog) {
       const category = await this.catalogRepository.findOne({
         where: { title: key },
@@ -47,6 +53,10 @@ export class CatalogService {
       category.items = catalog[key];
       await category.save();
     }
+  }
+
+  async delete(category: number) {
+    await this.catalogRepository.destroy({ where: { id: category } });
   }
 
   async updateCatalog(id: number, dto: UpdateCatalogDto, image: any) {
