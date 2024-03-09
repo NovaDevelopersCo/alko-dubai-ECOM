@@ -10,14 +10,14 @@ function FooterLinks() {
         </h2>
         <ul className="text-gray-500 dark:text-gray-400 font-medium">
           <li className="mb-4">
-            <a href="#" className="hover:underline">
+            <Link href="/store" className="hover:underline">
               Магазин
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:underline">
+            <Link href="/" className="hover:underline">
               Каталог
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -44,9 +44,9 @@ function FooterLinks() {
         </h2>
         <ul className="text-gray-500 dark:text-gray-400 font-medium">
           <li className="mb-4">
-            <a href="#" className="hover:underline">
+            <Link href="/" className="hover:underline">
               Доставка и Оплата
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

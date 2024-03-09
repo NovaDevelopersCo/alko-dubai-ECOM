@@ -63,3 +63,13 @@ export interface DefaultRootStateProps {
   items: itemsStateProps
   categories: categoriesStateProps
 }
+
+export type PriceSort = 'asc' | 'desc'
+
+export interface InputFetch {
+  price: PriceSort
+  popularity: boolean
+  news: boolean
+  max_price: number
+  min_price: number
+}
