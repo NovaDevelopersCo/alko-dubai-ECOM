@@ -23,13 +23,14 @@ export class ItemsController {
   @ApiOperation({ summary: 'Получить все товары (с параметрами)' })
   @Get()
   @ApiResponse({ status: 200, type: [Items] })
-  getItems(@Query() filterDto: GetItemsFilterDto): Items[] {
+  getItems(@Query() filterDto: GetItemsFilterDto, limit: number): Items[] {
     if (Object.keys(filterDto).length) {
       return this.itemsService.getItemsWithFilters(
         filterDto,
+        limit,
       ) as unknown as Items[];
     } else {
-      return this.itemsService.getAllItems() as unknown as Items[];
+      return this.itemsService.getAllItems(limit) as unknown as Items[];
     }
   }
 
