@@ -9,7 +9,7 @@ const Sort = () => {
                 <p className="text-xl text-center sm:text-right">
                     <select
                         name="sort-by"
-                        className="rounded cursor-pointer"
+                        className="rounded cursor-pointer before:bg-[#D32B82]"
                     >
                         <option value="asc" className="rounded">
                             Исходная сортировка
