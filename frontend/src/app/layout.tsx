@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import type {Metadata} from 'next'
-import {Inter, Montserrat, Literata as LiterataFont} from 'next/font/google'
-import {AntdRegistry} from '@ant-design/nextjs-registry'
-=======
 import type { Metadata } from 'next'
 import { Inter, Montserrat, Literata as LiterataFont } from 'next/font/google'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
->>>>>>> 35582a166cd20d81bdecff2c05250b60adeab92a
 import clsx from 'clsx'
 
 const inter = Inter({subsets: ['latin']})
@@ -16,13 +10,8 @@ import StoreProvider from './StoreProvider'
 import './global.css'
 import Header from '@/Components/ui/Header/Header'
 import Footer from '@/Components/ui/Footer/Footer'
-<<<<<<< HEAD
-
-=======
-import OurBenefits from '@/Components/ui/ourBenefits/OurBenefits'
 import AppProvider from '@/Components/ui/AppProvider'
 import Modal from 'antd/es/modal/Modal'
->>>>>>> 35582a166cd20d81bdecff2c05250b60adeab92a
 
 const montserrat = Montserrat({
     style: ['normal'],
@@ -102,17 +91,7 @@ export default function RootLayout({
             )}
         >
         <StoreProvider>
-<<<<<<< HEAD
-            <AntdRegistry>
-                <div className={clsx('flex flex-col min-h-screen')}>
-                    <Header/>
-                    <main className="flex-grow">{children}</main>
-                    <Footer/>
-                </div>
-            </AntdRegistry>
-=======
           <AntdRegistry>
-            {' '}
             <AppProvider>
               <div className={clsx('flex flex-col min-h-screen')}>
                 <Header />
@@ -122,7 +101,6 @@ export default function RootLayout({
               </div>
             </AppProvider>
           </AntdRegistry>
->>>>>>> 35582a166cd20d81bdecff2c05250b60adeab92a
         </StoreProvider>
         </body>
         </html>
