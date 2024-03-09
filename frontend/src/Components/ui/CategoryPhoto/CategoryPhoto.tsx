@@ -49,8 +49,8 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                   key={index}
                 >
                   <img
-                    className="w-full h-auto rounded-md"
-                    src="https://e7.pngegg.com/pngimages/804/985/png-clipart-wine-glass-bottle-product-blueberry-hill-rose-glass-wine.png"
+                    className="w-full max-h-44 object-contain h-auto rounded-md"
+                    src="https://simplewine.ru/upload/iblock/b82/b826c151bb826f2fd40fcbfc0d93ffaa.png"
                   />
                   <p className="embla__slide__number p-2 text-xs sm:text-xs md:text-sm xl:text-base font-semibold text-center">
                     {index}
