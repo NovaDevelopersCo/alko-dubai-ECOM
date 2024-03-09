@@ -23,7 +23,7 @@ export default function Catalog() {
         dispatch(fetchCategories())
     }, [dispatch])
     return (
-        <div className="w-80 flex justify-center flex-col mt-20">
+        <div className="w-80 flex justify-center flex-col mt-14 mb-8">
             <p>Цена</p>
             <div className="w-52">
                 <Slider
