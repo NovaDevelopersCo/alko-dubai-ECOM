@@ -80,7 +80,6 @@ export class ItemsService {
       items = await items.filter((item) => item.price <= max_price);
     }
     const totalPages = Math.ceil(items.length / limit);
-    console.log(items.length, filterDto);
     const response = {
       totalPages: totalPages,
       items: items,
