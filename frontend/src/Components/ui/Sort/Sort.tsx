@@ -6,7 +6,7 @@ const Sort = () => {
         <div>
             <hr className="border-[#D32B82]" />
             <Container>
-                <p className="text-xl text-center sm:text-right">
+                <p className="text-md text-center sm:text-right pr-2.5 rounded">
                     <select
                         name="sort-by"
                         className="rounded cursor-pointer before:bg-[#D32B82]"
