@@ -9,7 +9,7 @@ export class GetItemsFilterDto {
     description: 'desc/asc Сортировка по убыванию/по возрастанию',
     required: false,
   })
-  readonly price: string;
+  readonly price: string = 'asc';
 
   @ApiProperty({
     example: true,
@@ -38,4 +38,11 @@ export class GetItemsFilterDto {
     required: false,
   })
   readonly max_price: number;
+
+  @ApiProperty({
+    example: 1500,
+    description: 'Огранчение',
+    required: false,
+  })
+  readonly limit: number;
 }

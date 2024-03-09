@@ -12,11 +12,12 @@ export class ItemsService {
     private fileService: FilesService,
   ) {}
 
-  async getAllItems(limit: number = 100) {
+  async getAllItems() {
     const items = await this.itemsRepository.findAll({
       include: { all: true },
     });
-    const totalPages = Math.ceil(items.length / limit);
+    const totalPages = Math.ceil(items.length / 100);
+    console.log(items.length);
     const response = {
       totalPages: totalPages,
       items: items,
@@ -24,8 +25,16 @@ export class ItemsService {
     return response;
   }
 
-  async getItemsWithFilters(filterDto: GetItemsFilterDto, limit: number = 100) {
-    const { search, price, popularity, news, max_price, min_price } = filterDto;
+  async getItemsWithFilters(filterDto: GetItemsFilterDto) {
+    const {
+      search,
+      price,
+      popularity,
+      news,
+      max_price,
+      min_price,
+      limit = 100,
+    } = filterDto;
 
     let items = await this.itemsRepository.findAll({
       include: { all: true },
@@ -71,6 +80,7 @@ export class ItemsService {
       items = await items.filter((item) => item.price <= max_price);
     }
     const totalPages = Math.ceil(items.length / limit);
+    console.log(items.length, limit);
     const response = {
       totalPages: totalPages,
       items: items,
