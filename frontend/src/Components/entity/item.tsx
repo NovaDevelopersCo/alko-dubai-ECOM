@@ -8,24 +8,27 @@ export function Item() {
   const dispatch = useAppDispatch()
   const items = useAppSelector(selectItems)
 
-  const inputFetch:InputFetch = useMemo(() => ({
-    price: 'asc',
-    popularity: true,
-    news: true,
-    max_price: 12000,
-    min_price: 0,
-  }), []);
+  const inputFetch: InputFetch = useMemo(
+    () => ({
+      price: 'asc',
+      popularity: true,
+      news: true,
+      max_price: 12000,
+      min_price: 0,
+    }),
+    [],
+  )
 
   useEffect(() => {
     dispatch(fetchItems(inputFetch))
   }, [dispatch, inputFetch])
   console.log(items)
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <ul className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4">
       {items &&
         Array.isArray(items) &&
         items.map((product) => (
-          <li key={product.id} className="border p-4 rounded-md shadow-md">
+          <li key={product.id} className=" p-4 rounded-md hover:shadow-md">
             <article>
               <figure>
                 {product.image && (
@@ -36,13 +39,19 @@ export function Item() {
                   />
                 )}
               </figure>
-              <div className="mt-4">
-                <h1 className="text-lg font-semibold mb-2">{product.title}</h1>
-                <p className="text-sm mb-2">{product.description}</p>
-                <p className="text-xl font-bold text-blue-500">
-                  ${product.price}
+              <div className="mt-4 text-center">
+                <span className="text-sm mb-2">{product.category} </span>
+                <span className="opacity-70 text-sm">{product.title}</span>
+                <p className=" font-bold text-customPink ">
+                  {product.oldPrice > 0 && (
+                    <span className="text-sm font-bold line-through text-customGray ">
+                      {product.oldPrice}
+                      <span> AED </span>
+                    </span>
+                  )}
+                  {product.price}
+                  <span className="text-sm"> AED</span>
                 </p>
-                {/* Add a button if necessary */}
               </div>
             </article>
           </li>
