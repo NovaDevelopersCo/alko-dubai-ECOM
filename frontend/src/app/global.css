@@ -29,6 +29,6 @@
 
 select:focus-visible {
 	border: none;
-	outline: 1px solid #D32B82;
+	outline: none;
 }
 

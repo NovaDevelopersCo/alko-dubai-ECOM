@@ -7,22 +7,24 @@ const Sort = () => {
             <hr className="border-[#D32B82]" />
             <Container>
                 <p className="text-xl text-center sm:text-right">
-                    Сортировка по
                     <select
                         name="sort-by"
-                        className="ml-2 text-[#D32B82] rounded"
+                        className="rounded cursor-pointer"
                     >
                         <option value="asc" className="rounded">
-                            цене (возрастание)
+                            Исходная сортировка
+                        </option>
+                        <option value="asc" className="rounded">
+                            Цене (возрастание)
                         </option>
                         <option value="desc" className="rounded">
-                            цене (убывание)
+                            Цене (убывание)
                         </option>
                         <option value="news" className="rounded">
-                            новизне
+                            Новизне
                         </option>
                         <option value="popularity" className="rounded">
-                            популярности
+                            Популярности
                         </option>
                     </select>
                 </p>
