@@ -1,6 +1,4 @@
 import React from 'react';
-import { FaClock, FaGift, FaTruck, FaMoneyBill } from 'react-icons/fa';
-import { AiOutlineCheckCircle } from 'react-icons/ai';
 import Image from "next/image";
 
 const OurBenefits: React.FC = () => {
