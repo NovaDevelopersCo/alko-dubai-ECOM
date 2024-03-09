@@ -9,28 +9,28 @@ export class GetItemsFilterDto {
     description: 'desc/asc Сортировка по убыванию/по возрастанию',
     required: false,
   })
-  readonly price: string = 'asc';
+  readonly price: string;
 
   @ApiProperty({
     example: true,
     description: 'Сортировка по популярности',
     required: false,
   })
-  readonly popularity: boolean = false;
+  readonly popularity: boolean;
 
   @ApiProperty({
     example: true,
     description: 'Сортировка по новизне',
     required: false,
   })
-  readonly news: boolean = false;
+  readonly news: boolean;
 
   @ApiProperty({
     example: 0,
     description: 'Минимальная цена',
     required: false,
   })
-  readonly min_price: number = 0;
+  readonly min_price: number;
 
   @ApiProperty({
     example: 1500,

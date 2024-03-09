@@ -29,10 +29,10 @@ export class ItemsService {
     const {
       search,
       price,
-      popularity,
-      news,
+      popularity = false,
+      news = false,
       max_price,
-      min_price,
+      min_price = 0,
       limit = 100,
     } = filterDto;
 
@@ -80,7 +80,7 @@ export class ItemsService {
       items = await items.filter((item) => item.price <= max_price);
     }
     const totalPages = Math.ceil(items.length / limit);
-    console.log(items.length, limit);
+    console.log(items.length, filterDto);
     const response = {
       totalPages: totalPages,
       items: items,
