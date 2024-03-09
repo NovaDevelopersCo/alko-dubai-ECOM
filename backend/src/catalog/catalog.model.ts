@@ -9,9 +9,6 @@ interface CatalogCreationAttrs {
 }
 @Table({ tableName: 'Catalog' })
 export class Catalog extends Model<CatalogCreationAttrs> {
-  static delete(id: any) {
-    throw new Error('Method not implemented.');
-  }
   @ApiProperty({ example: 1, description: 'Уникальный идентефикатор' })
   @Column({
     type: DataType.INTEGER,
