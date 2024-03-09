@@ -45,8 +45,16 @@ export class CatalogService {
         continue;
       }
       category.items = catalog[key];
+      if (category.items === 0) {
+        console.log(category);
+        this.delete(category);
+      }
       await category.save();
     }
+  }
+
+  async delete(category) {
+    await this.catalogRepository.delete(category.id);
   }
 
   async updateCatalog(id: number, dto: UpdateCatalogDto, image: any) {
