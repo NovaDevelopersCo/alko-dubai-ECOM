@@ -28,18 +28,19 @@ export class CatalogService {
   async update() {
     const items = (await this.itemsService.getAllItems()).items;
     const categories = await this.catalogRepository.findAll();
-
-    const missingCategories = categories.filter((category) =>
-      Object.keys(catalog).includes(category),
-    );
-    console.log(missingCategories);
     const catalog = items.reduce((acc: Record<number, number>, obj) => {
       acc[obj.category] = (acc[obj.category] || 0) + 1;
       return acc;
     }, {});
+    const missingCategories = categories.filter(
+      (category) => !Object.keys(catalog).includes(category.title),
+    );
+    for (let i = 0; i < missingCategories.length; i++) {
+      this.delete(missingCategories[i].id);
+    }
     for (const key in catalog) {
       const category = await this.catalogRepository.findOne({
-        where: { id: Number(key) },
+        where: { title: key },
       });
       if (!category) {
         await this.catalogRepository.create({
