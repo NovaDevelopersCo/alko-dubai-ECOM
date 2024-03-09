@@ -7,15 +7,15 @@ const store = () => {
         <>
             <div>
                 <hr className="border-[#D32B82]" />
-                <h1 className="text-2xl text-center">
+                <p className="text-xl text-center sm:text-right sm:mr-8">
                     Сортировка по
-                    <select name="sort-by" className='ml-2 text-[#D32B82]'>
+                    <select name="sort-by" className='ml-2 text-[#D32B82] rounded'>
                         <option value="asc">цене (возрастание)</option>
                         <option value="desc">цене (убывание)</option>
                         <option value="news">новизне</option>
                         <option value="popularity">популярности</option>
                     </select>
-                </h1>
+                </p>
                 <hr className="border-[#D32B82]" />
             </div>
             <Container>
