@@ -32,11 +32,3 @@ select:focus-visible {
 	outline: 1px solid #D32B82;
 }
 
-select::part(listbox) {
-	background: #aa99a0;
-	box-shadow: 0 0 .3rem 0 #0003;
-	margin-top: .3rem;
-	border: 2px solid #aa99a0;
-	border-radius: .15rem;
-}
-
