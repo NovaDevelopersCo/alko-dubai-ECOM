@@ -4,17 +4,30 @@
 
 @layer base {
 	* {
-		position: relative;	
+		position: relative;
 		font-family: theme('fontFamily.montserrat');
 	}
+
 	body,
-    h1, h2, h3, h4, h5, h6 {
-        font-family: theme('fontFamily.literata');
-    }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: theme('fontFamily.literata');
+	}
 }
-:where(.css-dev-only-do-not-override-1uweeqc).ant-slider .ant-slider-track {
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-track {
 	background-color: #D32B82 !important;
 }
-:where(.css-dev-only-do-not-override-1uweeqc).ant-slider .ant-slider-handle::after {
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-handle::after {
 	box-shadow: 0 0 0 2px #D32B82 !important;
+}
+
+select:focus-visible {
+	border: none;
+	outline: 1px solid #D32B82;
 }
