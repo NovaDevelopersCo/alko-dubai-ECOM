@@ -4,6 +4,8 @@ import { Slider, Switch } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
 import { fetchCategories } from '@/lib/features/categories/categories'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Catalog() {
     const dispatch = useAppDispatch()
@@ -33,16 +35,25 @@ export default function Catalog() {
             </div>
             <h1 className="text-3xl mt-5">Каталог</h1>
             <div className="flex flex-col gap-3 mt-5">
-                {categoriesArray.length > 0
-                    ? categoriesArray.map((category) => (
-                          <div className="flex justify-between w-60">
-                              <div>{category.title}</div>
-                              <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
-                                  <p>{category.items}</p>
-                              </div>
-                          </div>
-                      ))
-                    : ''}
+                {categoriesArray.length > 0 ? (
+                    categoriesArray.map((category) => (
+                        <div className="flex justify-between w-60">
+                            <div>{category.title}</div>
+                            <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
+                                <p>{category.items}</p>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <div className="flex justify-between flex-col w-full">
+                        <Skeleton
+                            width={250}
+                            height={30}
+                            count={7}
+                            className="block my-3"
+                        />
+                    </div>
+                )}
             </div>
         </div>
     )
