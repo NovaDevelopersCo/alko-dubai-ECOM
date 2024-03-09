@@ -44,7 +44,7 @@ function FooterLinks() {
         </h2>
         <ul className="text-gray-500 dark:text-gray-400 font-medium">
           <li className="mb-4">
-            <Link href="/" className="hover:underline">
+            <Link href="/delivery" className="hover:underline">
               Доставка и Оплата
             </Link>
           </li>

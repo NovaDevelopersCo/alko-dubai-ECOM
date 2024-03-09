@@ -19,7 +19,7 @@ const Links: NavLink[] = [
   },
   {
     name: 'Доставка и оплата',
-    href: '/',
+    href: '/delivery',
   },
   {
     name: 'О компании',
