@@ -24,13 +24,9 @@ export class ItemsController {
   @Get()
   @ApiResponse({ status: 200, type: [Items] })
   getItems(@Query() filterDto: GetItemsFilterDto): Items[] {
-    if (Object.keys(filterDto).length) {
-      return this.itemsService.getItemsWithFilters(
-        filterDto,
-      ) as unknown as Items[];
-    } else {
-      return this.itemsService.getAllItems() as unknown as Items[];
-    }
+    return this.itemsService.getItemsWithFilters(
+      filterDto,
+    ) as unknown as Items[];
   }
 
   @ApiOperation({ summary: 'Создать товар' })

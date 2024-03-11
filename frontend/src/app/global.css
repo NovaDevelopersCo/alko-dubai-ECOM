@@ -28,9 +28,16 @@
     display: none;
   }
 }
-:where(.css-dev-only-do-not-override-1uweeqc).ant-slider .ant-slider-track {
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-track {
 	background-color: #D32B82 !important;
 }
-:where(.css-dev-only-do-not-override-1uweeqc).ant-slider .ant-slider-handle::after {
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-handle::after {
 	box-shadow: 0 0 0 2px #D32B82 !important;
+}
+
+select:focus-visible {
+	border: none;
+	outline: none;
 }

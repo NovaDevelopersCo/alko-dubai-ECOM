@@ -16,21 +16,21 @@ export class GetItemsFilterDto {
     description: 'Сортировка по популярности',
     required: false,
   })
-  readonly popularity: boolean = false;
+  readonly popularity: boolean;
 
   @ApiProperty({
     example: true,
     description: 'Сортировка по новизне',
     required: false,
   })
-  readonly news: boolean = false;
+  readonly news: boolean;
 
   @ApiProperty({
     example: 0,
     description: 'Минимальная цена',
     required: false,
   })
-  readonly min_price: number = 0;
+  readonly min_price: number;
 
   @ApiProperty({
     example: 1500,
@@ -38,4 +38,11 @@ export class GetItemsFilterDto {
     required: false,
   })
   readonly max_price: number;
+
+  @ApiProperty({
+    example: 1500,
+    description: 'Огранчение',
+    required: false,
+  })
+  readonly limit: number;
 }
