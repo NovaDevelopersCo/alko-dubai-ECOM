@@ -12,7 +12,7 @@ export default function Home() {
       <Container>
         <Swaiper />
         <CategoryPhoto slides={SLIDES} />
-        <div className='md:mx-16'>
+        <div className="md:mx-16">
           <Item />
         </div>
       </Container>
