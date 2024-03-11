@@ -4,7 +4,6 @@ import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import axiosServices from '@/utils/axios'
 
 // types
-import { AppDispatch } from '@/lib/store'
 import { DefaultRootStateProps, InputFetch } from '@/type/interface'
 
 const initialState: DefaultRootStateProps['items'] = {
@@ -31,7 +30,16 @@ const initialState: DefaultRootStateProps['items'] = {
 //     }
 //   }
 // }
-
+export const fetchItemById = createAsyncThunk(
+    'items/fetchItemById',
+    async (id: number) => {
+        try {
+            const response = await axiosServices.get(`/api/items/${id}`);
+            return response.data;
+        } catch (error) {
+            return error || 'Ошибка получения айтема по айди';
+        }
+    })
 export const fetchItems = createAsyncThunk(
   'items/fetchItems',
   async (inputFetch: InputFetch = { price: 'asc', popularity: true, news: true, max_price: 12000, min_price: 0 }) => {
@@ -50,28 +58,37 @@ export const fetchItems = createAsyncThunk(
 )
 
 const itemsSlice = createSlice({
-  name: 'item',
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchItems.pending, (state) => {
-        // Логика для состояния "pending"
-        state.isLoading = true
-      })
-      .addCase(fetchItems.fulfilled, (state, action) => {
-        // Логика для успешного завершения
-        state.isLoading = false
-        state.posts.items = action.payload
-        state.error = null
-      })
-      .addCase(fetchItems.rejected, (state) => {
-        // Логика для состояния "rejected"
-        state.isLoading = false
-        state.error = 'Failed to fetch items'
-      })
-  },
-})
+    name: 'item',
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchItems.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchItems.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.posts.items = action.payload;
+                state.error = null;
+            })
+            .addCase(fetchItems.rejected, (state) => {
+                state.isLoading = false;
+                state.error = 'Failed to fetch items';
+            })
+            .addCase(fetchItemById.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchItemById.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.posts.items = [action.payload]; // Update the state with the fetched item
+                state.error = null;
+            })
+            .addCase(fetchItemById.rejected, (state) => {
+                state.isLoading = false;
+                state.error = 'Failed to fetch item by ID';
+            });
+    },
+});
 
 export const selectItems = createSelector(
   (state) => state.items,
