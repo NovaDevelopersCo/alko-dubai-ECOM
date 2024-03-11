@@ -27,7 +27,7 @@ export function Item() {
         {items &&
             Array.isArray(items) &&
             items.map((product) => (
-                <Link href={`/item/${product.id}`} key={product.id} passHref>
+                <Link href={`/store/${product.id}`} key={product.id} passHref>
                   <div className="border p-4 rounded-md shadow-md">
                     <article>
                       <figure>
