@@ -16,11 +16,12 @@ import Modal from 'antd/es/modal/Modal'
 const montserrat = Montserrat({
     style: ['normal'],
     subsets: ['latin'],
-    weight: ['400', '700'],
+    weight: ['300', '400', '500', '700'],
     preload: true,
     display: 'swap',
     variable: '--font-montserrat',
 })
+
 
 const literata = LiterataFont({
     style: ['normal'],
@@ -28,7 +29,7 @@ const literata = LiterataFont({
     weight: ['400', '600'],
     preload: true,
     display: 'swap',
-    variable: '--font-nunito-sans',
+    variable: '--font-literata',
 })
 
 export const metadata: Metadata = {
