@@ -16,7 +16,7 @@ export const Modal = ({
     <div
       className={`
       ${active ? `opacity-1 scale-100` : `opacity-0 scale-75`}
-      relative transition-all duration-500 select-none cursor-pointer z-50 top-0 right-0 left-0 bottom-0 ;
+      relative transition-all duration-500 select-none cursor-pointer z-50 top-0 right-0 left-0 bottom-0
       `}
       onClick={() => setActive(false)}
     >
