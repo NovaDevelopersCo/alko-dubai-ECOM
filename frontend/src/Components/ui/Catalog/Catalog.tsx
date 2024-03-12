@@ -28,8 +28,6 @@ export default function Catalog() {
             className={clsx([
                 'w-80',
                 'justify-center',
-                'lg:flex',
-                'hidden',
                 visibleCatalog ? 'lg:flex' : 'hidden',
             ])}
         >
