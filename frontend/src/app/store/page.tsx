@@ -12,7 +12,7 @@ const store = () => {
             <Container>
                 <div className="flex w-full h-full">
                     <Catalog />
-                    <div className="w-max h-full my-6">
+                    <div className="w-full h-full my-6">
                         <Item />
                         <div className="mt-6">
                             <Pagination
