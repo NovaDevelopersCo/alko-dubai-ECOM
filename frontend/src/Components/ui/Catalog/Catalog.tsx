@@ -24,7 +24,7 @@ export default function Catalog() {
     }, [dispatch])
     return (
         <div className="w-80 flex justify-center flex-col mt-14 mb-8">
-            <p className='text-base'>Цена</p>
+            <p className="text-base">Цена</p>
             <div className="w-52">
                 <Slider
                     range
@@ -45,7 +45,7 @@ export default function Catalog() {
                         </div>
                     ))
                 ) : (
-                    <div className="flex justify-between flex-col w-full" >
+                    <div className="flex justify-between flex-col w-full">
                         <Skeleton
                             width={250}
                             height={30}

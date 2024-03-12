@@ -6,7 +6,7 @@ import React from 'react'
 const store = () => {
     return (
         <>
-            <Sort/>
+            <Sort />
             <Container>
                 <div className="flex w-full h-full">
                     <Catalog />
