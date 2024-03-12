@@ -16,7 +16,6 @@ const store = () => {
                         <Item />
                         <div className="mt-6">
                             <Pagination
-                                disabled={true}
                                 className="text-center"
                                 showSizeChanger={false}
                                 pageSize={10}
