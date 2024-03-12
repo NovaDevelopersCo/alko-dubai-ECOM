@@ -59,19 +59,9 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
           ) : (
             <div className="flex justify-between w-full">
               {Array.from({ length: 6 }, (_, index) => (
-                <div className="flex flex-col">
-                  <Skeleton
-                    width={150}
-                    height={150}
-                    className="rounded my-3"
-                    key={index}
-                  />
-                  <Skeleton
-                    width={150}
-                    height={30}
-                    className="rounded my-3"
-                    key={index}
-                  />
+                <div className="flex flex-col" key={index}>
+                  <Skeleton width={150} height={150} className="rounded my-3" />
+                  <Skeleton width={150} height={30} className="rounded my-3" />
                 </div>
               ))}
             </div>
