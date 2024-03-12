@@ -1,4 +1,5 @@
 'use client'
+import { useRef } from 'react'
 import Triangle from '@/assets/triangle.svg'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,6 +13,11 @@ export const Modal = ({
   active: boolean
   setActive: (a: boolean) => void
 }) => {
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
+  const handleClose = () => {
+    if (inputRef.current) inputRef.current.checked = false
+  }
   return (
     <div
       className={`
@@ -21,7 +27,7 @@ export const Modal = ({
       onClick={() => setActive(false)}
     >
       <div
-        className="p-[18px_17px] border border-customPink flex justify-center rounded-[10px] gap-1 absolute -right-[5px] top-[25px] bg-[rgba(255,75,75,0.1)]"
+        className="p-[18px_17px] border border-customPink flex justify-center rounded-[10px] gap-1 absolute -right-[15px] top-[15px] bg-[rgba(255,75,75,0.1)]"
         onClick={(e) => e.stopPropagation()}
       >
         <Image
@@ -31,10 +37,10 @@ export const Modal = ({
           alt="triangle"
           className="absolute right-[20px] -top-[9px]"
         />
-        <Link href="#">
+        <Link href="#" onClick={() => setActive(false)}>
           <FaTelegram className="w-[32px] h-[32px] text-[#3F9FD9]" />
         </Link>
-        <Link href="#">
+        <Link href="#" onClick={() => setActive(false)}>
           <FaWhatsapp className="w-[32px] h-[32px] text-[#49C252]" />
         </Link>
       </div>
