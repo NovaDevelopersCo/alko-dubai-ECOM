@@ -8,7 +8,7 @@ const Sort = () => {
             <Container>
                 <div className="flex justify-between items-center">
                     <pre>
-                        <p className="md:hidden w-max">
+                        <p className="md:hidden w-max cursor-pointer">
                             Фильтр{' '}
                             <span className="font-bold text-[#D32B82]">
                                 {'>'}
