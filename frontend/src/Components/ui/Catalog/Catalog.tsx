@@ -36,8 +36,8 @@ export default function Catalog() {
             <h1 className="text-3xl mt-5">Каталог</h1>
             <div className="flex flex-col gap-3 mt-5">
                 {categoriesArray.length > 0 ? (
-                    categoriesArray.map((category) => (
-                        <div className="flex justify-between w-60">
+                    categoriesArray.map((category, id) => (
+                        <div className="flex justify-between w-60" key={id}>
                             <div>{category.title}</div>
                             <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
                                 <p>{category.items}</p>
@@ -45,7 +45,7 @@ export default function Catalog() {
                         </div>
                     ))
                 ) : (
-                    <div className="flex justify-between flex-col w-full">
+                    <div className="flex justify-between flex-col w-full" >
                         <Skeleton
                             width={250}
                             height={30}
