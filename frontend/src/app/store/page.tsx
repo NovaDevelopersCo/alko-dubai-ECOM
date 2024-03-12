@@ -11,7 +11,7 @@ const store = () => {
             <Container>
                 <div className="flex w-full h-full">
                     <Catalog />
-                    <div className="w-max h-full">
+                    <div className="w-max h-full my-6">
                         <Item />
                     </div>
                 </div>
