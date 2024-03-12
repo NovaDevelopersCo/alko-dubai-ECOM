@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from '../Container/Container'
+import { CatalogContext } from '@/Components/context/AppContext'
 
 const Sort = () => {
+    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     return (
         <div>
             <hr className="border-[#D32B82]" />
             <Container>
                 <div className="flex justify-between items-center">
                     <pre>
-                        <p className="md:hidden w-max cursor-pointer">
+                        <p
+                            className="md:hidden w-max cursor-pointer"
+                            onClick={() => {
+                                setVisibleCatalog((state) => !state)
+                            }}
+                        >
                             Фильтр{' '}
                             <span className="font-bold text-[#D32B82]">
                                 {'>'}
