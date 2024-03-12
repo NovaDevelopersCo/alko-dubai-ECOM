@@ -1,10 +1,32 @@
 'use client'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Container from '../Container/Container'
 import { CatalogContext } from '@/Components/context/AppContext'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+    const ref = React.useRef(null)
+    const [width, setWidth] = React.useState(0)
+
+    const onResize = React.useCallback(() => {
+        if (window.innerWidth) setWidth(window.innerWidth)
+    }, [])
+
+    React.useEffect(() => {
+        window.addEventListener('resize', onResize)
+        onResize()
+        return () => {
+            window.removeEventListener('resize', onResize)
+        }
+    }, [])
+
+    if (width > 1024 && visibleCatalog === false) {
+        setVisibleCatalog(true)
+    } else if (width <= 1024 && visibleCatalog === true) {
+        setVisibleCatalog(false)
+    }
+    console.log(visibleCatalog)
+
     return (
         <div>
             <hr className="border-[#D32B82]" />
