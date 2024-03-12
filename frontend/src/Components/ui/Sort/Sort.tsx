@@ -12,7 +12,7 @@ const Sort = () => {
                 <div className="flex justify-between items-center">
                     <pre>
                         <p
-                            className="md:hidden w-max cursor-pointer"
+                            className="lg:hidden w-max cursor-pointer"
                             onClick={() => {
                                 setVisibleCatalog((state) => !state)
                             }}
