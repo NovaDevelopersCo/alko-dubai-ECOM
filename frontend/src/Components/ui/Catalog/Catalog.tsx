@@ -1,13 +1,15 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Slider, Switch } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
 import { fetchCategories } from '@/lib/features/categories/categories'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { CatalogContext } from '@/Components/context/AppContext'
 
 export default function Catalog() {
+    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
