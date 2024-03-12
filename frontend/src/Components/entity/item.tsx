@@ -66,8 +66,8 @@ export function Item() {
                 <Pagination
                     className="text-center"
                     showSizeChanger={false}
-                    pageSize={pages}
-                    total={Object.keys(items).length}
+                    pageSize={items ? Object.keys(items).length / pages : 2}
+                    total={items ? Object.keys(items).length : 2}
                 />
             </div>
         </div>
