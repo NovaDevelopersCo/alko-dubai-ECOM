@@ -16,8 +16,6 @@ export default function Catalog() {
         title: string
         items: number
     }[]
-    const titles = categoriesArray.map((category) => category.title)
-    const itemsCount = categoriesArray.map((category) => category.items)
 
     useEffect(() => {
         dispatch(fetchCategories())
