@@ -1,79 +1,49 @@
 'use client'
-
-import clsx from 'clsx'
-
+import { useRef } from 'react'
+import Triangle from '@/assets/triangle.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { FC, useContext } from 'react'
 
-import { ModalContext } from '@/Components/context/AppContext'
+import { FaTelegram, FaWhatsapp } from 'react-icons/fa'
 
-const MyModal: FC = () => {
-	const [visible, setVisible] = useContext(ModalContext)
+export const Modal = ({
+  active,
+  setActive,
+}: {
+  active: boolean
+  setActive: (a: boolean) => void
+}) => {
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
-	return (
-		<div
-			className={clsx(
-				'fixed',
-				'top-0',
-				'bottom-0',
-				'right-0',
-				'left-0',
-				'flex',
-				'items-center',
-				'justify-center',
-				'bg-opacity-75',
-				'bg-black',
-				'z-50',
-				visible ? 'flex' : 'hidden'
-			)}
-			onClick={() => {
-				setVisible(false)
-				document.body.classList.remove('fixed')
-			}}
-		>
-			<div
-				className='p-8 rounded-lg bg-customBlack caret-amber-50 text-amber-50'
-				onClick={e => e.stopPropagation()}
-			>
-				<div className='flex justify-between items-center gap-8'>
-					<Link
-						href='https://www.linkedin.com/company/nova-developers-co/'
-						target={'_blank'}
-					>
-						<Image
-							src='/icons/linkedIn.svg'
-							alt='LinkedIn'
-							width={50}
-							height={50}
-						/>
-					</Link>
-					<Link
-						href='https://www.instagram.com/nova_it_developers?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D'
-						target={'_blank'}
-					>
-						<Image
-							src='/icons/inst.svg'
-							alt='instagram'
-							width={50}
-							height={50}
-						/>
-					</Link>
-					<a
-						href='mailto:developersnova1@gmail.com'
-						target={'_blank'}
-					>
-						<Image
-							src='/icons/mail.svg'
-							alt='mail'
-							width={50}
-							height={50}
-						/>
-					</a>
-				</div>
-			</div>
-		</div>
-	)
+  const handleClose = () => {
+    if (inputRef.current) inputRef.current.checked = false
+  }
+  return (
+    <div
+      className={`
+      ${active ? `opacity-1 scale-100` : `opacity-0 scale-75`}
+      relative transition-all duration-500 select-none
+      `}
+      onClick={() => setActive(false)}
+    >
+      <div
+        className="p-[18px_17px] border border-customPink flex justify-center rounded-[10px] gap-1 absolute -right-[15px] top-[15px] bg-[#fff]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Image
+          width={10.5}
+          height={12.5}
+          src={Triangle}
+          alt="triangle"
+          className="absolute right-[20px] -top-[9px]"
+        />
+        <Link href="#" onClick={() => setActive(false)}>
+          <FaTelegram className="w-[32px] h-[32px] text-[#3F9FD9]" />
+        </Link>
+        <Link href="#" onClick={() => setActive(false)}>
+          <FaWhatsapp className="w-[32px] h-[32px] text-[#49C252]" />
+        </Link>
+      </div>
+    </div>
+  )
 }
-
-export default MyModal
