@@ -27,7 +27,7 @@ export const Modal = ({
       onClick={() => setActive(false)}
     >
       <div
-        className="p-[18px_17px] border border-customPink flex justify-center rounded-[10px] gap-1 absolute -right-[15px] top-[15px] bg-[rgba(255,75,75,0.1)]"
+        className="p-[18px_17px] border border-customPink flex justify-center rounded-[10px] gap-1 absolute -right-[15px] top-[15px] bg-[#fff]"
         onClick={(e) => e.stopPropagation()}
       >
         <Image
