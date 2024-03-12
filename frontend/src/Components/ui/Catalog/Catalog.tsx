@@ -7,6 +7,7 @@ import { fetchCategories } from '@/lib/features/categories/categories'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
+import clsx from 'clsx'
 
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -23,7 +24,15 @@ export default function Catalog() {
         dispatch(fetchCategories())
     }, [dispatch])
     return (
-        <div className="w-80 hidden justify-center md:flex">
+        <div
+            className={clsx([
+                'w-80',
+                'justify-center',
+                'lg:flex',
+                'hidden',
+                visibleCatalog ? 'lg:flex' : 'hidden',
+            ])}
+        >
             <div className="flex justify-start flex-col mt-14 mb-8 mr-10">
                 <p className="text-base">Цена</p>
                 <div className="w-52">
