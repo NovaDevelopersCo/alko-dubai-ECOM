@@ -36,6 +36,7 @@ export interface itemsStateProps {
   error: object | string | null
   success: object | string | null
   isLoading: boolean
+  item:item
 }
 
 export type category = {
@@ -62,6 +63,7 @@ export interface categoriesStateProps {
 export interface DefaultRootStateProps {
   items: itemsStateProps
   categories: categoriesStateProps
+  item:item
 }
 
 export type PriceSort = 'asc' | 'desc'

@@ -12,7 +12,9 @@ const initialState: DefaultRootStateProps['items'] = {
   posts: {
     items: [],
     totalPages: 0,
+
   },
+    item:item,
   isLoading: false,
 }
 
@@ -34,7 +36,7 @@ export const fetchItemById = createAsyncThunk(
     'items/fetchItemById',
     async (id: number) => {
         try {
-            const response = await axiosServices.get(`/api/items/${id}`);
+            const response = await axiosServices.get(`/api/items/${1}`);
             return response.data;
         } catch (error) {
             return error || 'Ошибка получения айтема по айди';
@@ -60,7 +62,24 @@ export const fetchItems = createAsyncThunk(
 const itemsSlice = createSlice({
     name: 'item',
     initialState,
-    reducers: {},
+    reducers: {
+        hasError(state, action) {
+            state.error = action.payload
+        },
+
+        startLoading(state) {
+            state.isLoading = true
+        },
+
+        finishLoading(state) {
+            state.isLoading = false
+        },
+        // GET ALL TUTORIALS
+        fetchItemsSuccess(state, action) {
+            state.posts.items = action.payload;
+            state.success = null
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchItems.pending, (state) => {
@@ -78,15 +97,6 @@ const itemsSlice = createSlice({
             .addCase(fetchItemById.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(fetchItemById.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.posts.items = [action.payload]; // Update the state with the fetched item
-                state.error = null;
-            })
-            .addCase(fetchItemById.rejected, (state) => {
-                state.isLoading = false;
-                state.error = 'Failed to fetch item by ID';
-            });
     },
 });
 
@@ -94,4 +104,10 @@ export const selectItems = createSelector(
   (state) => state.items,
   (items) => items.posts.items.items
 )
+export const {
+    hasError,
+    startLoading,
+    finishLoading,
+    fetchItemsSuccess
+} = itemsSlice.actions
 export default itemsSlice.reducer

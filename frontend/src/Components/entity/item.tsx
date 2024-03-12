@@ -3,13 +3,13 @@ import React, { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { fetchItems, selectItems } from '@/lib/features/items/items';
 import { InputFetch } from '@/type/interface';
-import Link from 'next/link';
+import Link from "next/link";
 
 // Компонент Item
 export function Item() {
   const dispatch = useAppDispatch();
   const items = useAppSelector(selectItems);
-
+console.log(items)
   const inputFetch: InputFetch = useMemo(
     () => ({
       price: 'asc',
@@ -30,7 +30,7 @@ export function Item() {
       {items &&
         Array.isArray(items) &&
         items.map((product) => (
-          <li key={product.id} className=" p-4 rounded-md hover:shadow-md">
+          <Link href={`/store/${product.id}`} key={product.id} className=" p-4 rounded-md hover:shadow-md">
             <article>
               <figure>
                 {product.image && (
@@ -56,7 +56,7 @@ export function Item() {
                 </p>
               </div>
             </article>
-          </li>
+          </Link>
         ))}
     </ul>
   )
