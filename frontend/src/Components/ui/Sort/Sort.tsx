@@ -6,8 +6,15 @@ const Sort = () => {
         <div>
             <hr className="border-[#D32B82]" />
             <Container>
-                <div className='flex justify-between items-center'>
-                    <p className="md:hidden w-max">Фильтр <span className='font-bold text-[#D32B82]'>{'>'}</span></p>
+                <div className="flex justify-between items-center">
+                    <pre>
+                        <p className="md:hidden w-max">
+                            Фильтр{' '}
+                            <span className="font-bold text-[#D32B82]">
+                                {'>'}
+                            </span>
+                        </p>
+                    </pre>
                     <p className="text-md text-center w-max sm:text-right pr-2.5 rounded">
                         <select
                             name="sort-by"

@@ -21,7 +21,7 @@ export default function Catalog() {
         dispatch(fetchCategories())
     }, [dispatch])
     return (
-        <div className="w-80 flex justify-center">
+        <div className="w-80 hidden justify-center md:flex">
             <div className="flex justify-start flex-col mt-14 mb-8 mr-10">
                 <p className="text-base">Цена</p>
                 <div className="w-52">
