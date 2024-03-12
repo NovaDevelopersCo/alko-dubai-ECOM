@@ -8,8 +8,8 @@ import { Pagination } from 'antd'
 export function Item() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
-    console.log(items);
-    
+    const pages = useAppSelector(selectItems).totalPages
+    console.log(items)
 
     const inputFetch: InputFetch = useMemo(
         () => ({
@@ -66,8 +66,8 @@ export function Item() {
                 <Pagination
                     className="text-center"
                     showSizeChanger={false}
-                    pageSize={10}
-                    total={items.lenght}
+                    pageSize={pages}
+                    total={Object.keys(items).length}
                 />
             </div>
         </div>
