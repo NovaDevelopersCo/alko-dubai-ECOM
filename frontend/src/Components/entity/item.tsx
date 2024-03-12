@@ -9,7 +9,6 @@ export function Item() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
-    console.log(items)
 
     const inputFetch: InputFetch = useMemo(
         () => ({
