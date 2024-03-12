@@ -16,7 +16,7 @@ export const Modal = ({
     <div
       className={`
       ${active ? `opacity-1 scale-100` : `opacity-0 scale-75`}
-      relative transition-all duration-500 select-none cursor-pointer z-50 top-0 right-0 left-0 bottom-0
+      relative transition-all duration-500 select-none
       `}
       onClick={() => setActive(false)}
     >
@@ -35,11 +35,6 @@ export const Modal = ({
           <FaTelegram className="w-[32px] h-[32px] text-[#3F9FD9]" />
         </Link>
         <Link href="#">
-          {/* <img
-            className="w-[34px] h-[34px]"
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="whatsapp"
-          /> */}
           <FaWhatsapp className="w-[32px] h-[32px] text-[#49C252]" />
         </Link>
       </div>
