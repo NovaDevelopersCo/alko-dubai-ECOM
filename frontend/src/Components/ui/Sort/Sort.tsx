@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useContext } from 'react'
 import Container from '../Container/Container'
 import { CatalogContext } from '@/Components/context/AppContext'
