@@ -75,6 +75,6 @@ const itemsSlice = createSlice({
 
 export const selectItems = createSelector(
   (state) => state.items,
-  (items) => items.posts.items.items
+  (items) => items.posts.items
 )
 export default itemsSlice.reducer
