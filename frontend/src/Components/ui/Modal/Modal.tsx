@@ -1,6 +1,6 @@
 'use client'
 import { useRef } from 'react'
-import Triangle from '@/assets/triangle.svg'
+import Triangle from '../../../../public/triangle.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 
