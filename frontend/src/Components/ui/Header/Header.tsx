@@ -11,7 +11,7 @@ import { BurgerContext } from '@/Components/context/AppContext'
 import ContactBtn from './ContactBtn'
 
 function Header() {
-  const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
+  const [isBurgerOpen] = useContext(BurgerContext)
   React.useEffect(() => {
     if (isBurgerOpen) {
       document.body.classList.add('fixed')

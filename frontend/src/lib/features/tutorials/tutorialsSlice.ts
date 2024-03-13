@@ -45,7 +45,7 @@ const slice = createSlice({
         },
 
         // POST TUTORIAL
-        addTutorialSuccess(state, action) {
+        addTutorialSuccess(state) {
             //   state.tutorials.push(action.payload);
             state.success = "Tutorial created successfully."
         },
@@ -63,7 +63,7 @@ const slice = createSlice({
         },
 
         // UPDATE TUTORIAL
-        updateTutorialSuccess(state, action) {
+        updateTutorialSuccess(state) {
             //   const updatedTutorialIndex = state.tutorials.findIndex(tutorial => tutorial._id === action.payload._id);
             //   if (updatedTutorialIndex !== -1) {
             //     state.tutorials[updatedTutorialIndex] = action.payload;
@@ -72,7 +72,7 @@ const slice = createSlice({
         },
 
         // DELETE TUTORIAL
-        deleteTutorialSuccess(state, action) {
+        deleteTutorialSuccess(state) {
             //   state.tutorials = state.tutorials.filter(tutorial => tutorial._id !== action.payload);
             state.success = "Tutorial deleted successfully."
         },

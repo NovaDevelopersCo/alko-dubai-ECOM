@@ -3,6 +3,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { fetchItems, selectItems } from '@/lib/features/items/items'
 import { InputFetch } from '@/type/interface'
+import Image from 'next/image'
 
 export function Item() {
   const dispatch = useAppDispatch()
@@ -22,7 +23,6 @@ export function Item() {
   useEffect(() => {
     dispatch(fetchItems(inputFetch))
   }, [dispatch, inputFetch])
-  console.log(items)
   return (
     <ul className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4">
       {items &&
@@ -32,7 +32,7 @@ export function Item() {
             <article>
               <figure>
                 {product.image && (
-                  <img
+                  <Image
                     src={product.image}
                     alt="png"
                     className="w-full h-auto rounded-md"

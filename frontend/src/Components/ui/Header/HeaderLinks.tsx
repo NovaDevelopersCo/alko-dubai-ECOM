@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import Link from 'next/link'
 import React, { FC, useContext, useEffect, useRef } from 'react'
 import { BurgerContext } from '@/Components/context/AppContext'
 

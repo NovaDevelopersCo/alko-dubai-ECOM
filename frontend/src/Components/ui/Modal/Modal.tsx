@@ -11,13 +11,13 @@ export const Modal = ({
   setActive,
 }: {
   active: boolean
-  setActive: (a: boolean) => void
+  setActive: (a: boolean) => void //eslint-disable-line no-unused-vars
 }) => {
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null) //eslint-disable-line no-unused-vars
 
-  const handleClose = () => {
-    if (inputRef.current) inputRef.current.checked = false
-  }
+  // const handleClose = () => {
+  //   if (inputRef.current) inputRef.current.checked = false
+  // }
   return (
     <div
       className={`

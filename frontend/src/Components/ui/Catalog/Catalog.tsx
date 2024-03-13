@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
-import { Slider, Switch } from 'antd'
+import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
 import { fetchCategories } from '@/lib/features/categories/categories'
@@ -16,8 +16,8 @@ export default function Catalog() {
         title: string
         items: number
     }[]
-    const titles = categoriesArray.map((category) => category.title)
-    const itemsCount = categoriesArray.map((category) => category.items)
+    // const titles = categoriesArray.map((category) => category.title)
+    // const itemsCount = categoriesArray.map((category) => category.items)
 
     useEffect(() => {
         dispatch(fetchCategories())
@@ -36,8 +36,8 @@ export default function Catalog() {
             <h1 className="text-3xl mt-5">Каталог</h1>
             <div className="flex flex-col gap-3 mt-5">
                 {categoriesArray.length > 0 ? (
-                    categoriesArray.map((category) => (
-                        <div className="flex justify-between w-60">
+                    categoriesArray.map((category, index) => (
+                        <div key={index} className="flex justify-between w-60">
                             <div>{category.title}</div>
                             <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
                                 <p>{category.items}</p>
