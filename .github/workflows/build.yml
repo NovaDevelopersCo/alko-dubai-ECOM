@@ -22,7 +22,7 @@ jobs:
               run: docker push ${{secrets.DOCKER_LOGIN}}/${{secrets.DOCKER_CLIENT_NAME}}:deploy
 
 
-    server_build:
+  server_build:
         runs-on: ubuntu-latest
         defaults:
             run:
