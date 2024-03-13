@@ -4,8 +4,9 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { fetchItems, selectItems } from '@/lib/features/items/items'
 import { InputFetch } from '@/type/interface'
 import { Pagination } from 'antd'
+import clsx from 'clsx'
 
-export function Item() {
+export function Item({disabled: disabled}: {disabled: boolean}) {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
@@ -61,12 +62,16 @@ export function Item() {
                         </li>
                     ))}
             </ul>
-            <div className="mt-6">
+            <div className={clsx([
+                'w-full mt-6',
+                disabled ? 'hidden' : '',
+            ])}>
                 <Pagination
                     className="text-center"
                     showSizeChanger={false}
                     pageSize={items ? Object.keys(items).length / pages : 2}
                     total={items ? Object.keys(items).length : 2}
+                    disabled={disabled}
                 />
             </div>
         </div>

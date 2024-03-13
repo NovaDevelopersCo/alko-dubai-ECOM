@@ -12,7 +12,7 @@ const store = () => {
                 <div className="flex w-full h-full">
                     <Catalog />
                     <div className="w-full h-full my-6">
-                        <Item />
+                        <Item disabled={false}/>
                     </div>
                 </div>
             </Container>

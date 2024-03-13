@@ -13,7 +13,7 @@ export default function Home() {
         <Swaiper />
         <CategoryPhoto slides={SLIDES} />
         <div className="md:mx-16">
-          <Item />
+          <Item disabled={true} />
         </div>
       </Container>
       <OurBenefits />
