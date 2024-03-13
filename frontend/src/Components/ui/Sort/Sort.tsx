@@ -1,31 +1,24 @@
 'use client'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from '../Container/Container'
 import { CatalogContext } from '@/Components/context/AppContext'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
-    const ref = React.useRef(null)
-    const [width, setWidth] = React.useState(0)
+    const [width, setWidth] = useState(true)
+    let flag = false
 
-    const onResize = React.useCallback(() => {
-        if (window.innerWidth) setWidth(window.innerWidth)
-    }, [])
-
-    React.useEffect(() => {
-        window.addEventListener('resize', onResize)
-        onResize()
-        return () => {
-            window.removeEventListener('resize', onResize)
+    window.addEventListener('resize', function resizeHandler() {
+        if (window.innerWidth < 1024 && !flag && width) {
+            setWidth(false)
+            setVisibleCatalog(false)
+            flag = true
+        } else if (window.innerWidth >= 1024 && flag && width) {
+            setWidth(true)
+            setVisibleCatalog(true)
+            flag = false
         }
-    }, [])
-
-    if (width > 1024 && visibleCatalog === false) {
-        setVisibleCatalog(true)
-    } else if (width <= 1024 && visibleCatalog === true) {
-        setVisibleCatalog(false)
-    }
-    console.log(visibleCatalog)
+    })
 
     return (
         <div>
