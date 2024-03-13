@@ -41,7 +41,7 @@ jobs:
          needs: [client_build, server_build]
          steps:
             - name: ssh connection
-            - uses: appleboy/ssh-action@v1.0.3
+              uses: appleboy/ssh-action@v1.0.3
               with:
                 host: ${{secrets.SSH_HOST}}
                 username: ${{secrets.SSH_USERNAME}}
