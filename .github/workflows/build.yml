@@ -36,3 +36,15 @@ jobs:
               run: docker build -t ${{secrets.DOCKER_LOGIN}}/${{secrets.DOCKER_SERVER_NAME}}:deploy -f Dockerfile .
             - name: push build
               run: docker push ${{secrets.DOCKER_LOGIN}}/${{secrets.DOCKER_SERVER_NAME}}:deploy
+  deploy:
+         runs-on: ubuntu-latest
+         needs: [client_build, server_build]
+         defaults:
+            - name: ssh connection
+            uses: appleboy/ssh-action@v1.0.3
+            with:
+              host: ${{secrets.SSH_HOST}}
+              username: ${{secrets.SSH_USERNAME}}
+              password: ${{secrets.SSH_PASSWORD}}
+              script: bash alko-deploy.sh
+        
