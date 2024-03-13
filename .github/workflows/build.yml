@@ -39,11 +39,12 @@ jobs:
   deploy:
          runs-on: ubuntu-latest
          needs: [client_build, server_build]
+         steps:
             - name: ssh connection
-            uses: appleboy/ssh-action@v1.0.3
-            with:
-              host: ${{secrets.SSH_HOST}}
-              username: ${{secrets.SSH_USERNAME}}
-              password: ${{secrets.SSH_PASSWORD}}
-              script: bash alko-deploy.sh
+            - uses: appleboy/ssh-action@v1.0.3
+              with:
+                host: ${{secrets.SSH_HOST}}
+                username: ${{secrets.SSH_USERNAME}}
+                password: ${{secrets.SSH_PASSWORD}}
+                script: bash alko-deploy.sh
         
