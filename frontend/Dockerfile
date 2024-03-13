@@ -16,14 +16,3 @@ COPY . .
 # Собираем приложение
 RUN npm run build
 
-# Используем образ Nginx для запуска в продакшн
-FROM nginx:alpine
-
-# Копируем собранные файлы фронтенда в директорию Nginx
-COPY --from=build /app/out /usr/share/nginx/html
-
-# Копируем конфигурацию Nginx
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Устанавливаем порт для Nginx
-EXPOSE 80
