@@ -19,14 +19,14 @@ const ItemPage = () => {
         <article>
           <figure>
             <div className="flex flex-wrap justify-center">
-              <div className="w-1/3 min-w-[206px] min-h-[250px] my-10 md:mr-auto ">
+              <div className="w-1/3 min-w-[206px] min-h-[250px] mt-10 lg:mb-10 md:mr-auto ">
                 <img
                     src={item?.image}
                     alt="png"
                     className="w-full ml-0"
                 />
               </div>
-              <div className="mt-28">
+              <div className=" md:mt-28">
               <span className="opacity-70 text-3xl ">
                 {item?.title}
               </span>
@@ -79,7 +79,7 @@ const ItemPage = () => {
 
                               <span className="text-sm font-bold line-through text-customGray ">
 
-                                <span> AED </span>
+                                <span>{item?.oldPrice}AED </span>
                     </span>
 
                   {item?.price}
