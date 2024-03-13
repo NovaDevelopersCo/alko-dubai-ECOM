@@ -39,7 +39,6 @@ jobs:
   deploy:
          runs-on: ubuntu-latest
          needs: [client_build, server_build]
-         defaults:
             - name: ssh connection
             uses: appleboy/ssh-action@v1.0.3
             with:
