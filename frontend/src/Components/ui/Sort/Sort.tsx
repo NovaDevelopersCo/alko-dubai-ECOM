@@ -19,6 +19,17 @@ const Sort = () => {
             flag = false
         }
     })
+    useEffect(() => {
+        if (window.innerWidth < 1024) {
+            setWidth(false)
+            setVisibleCatalog(false)
+            flag = true
+        } else if (window.innerWidth >= 1024) {
+            setWidth(true)
+            setVisibleCatalog(true)
+            flag = false
+        }
+    }, [])
 
     return (
         <div>
