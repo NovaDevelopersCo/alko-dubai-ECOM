@@ -76,3 +76,17 @@ select:focus-visible {
 	border: none;
 	outline: none;
 }
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-pagination .ant-pagination-item-active a {
+	color: #ffffff !important
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-pagination .ant-pagination-item-active {
+	background-color: #D32B82 !important;
+	border-color: transparent !important;
+	border-radius: 50% !important;
+	-webkit-border-radius: 50% !important;
+	-moz-border-radius: 50% !important;
+	-ms-border-radius: 50% !important;
+	-o-border-radius: 50% !important;
+}
