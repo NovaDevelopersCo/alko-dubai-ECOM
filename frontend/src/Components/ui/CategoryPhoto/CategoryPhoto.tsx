@@ -17,10 +17,8 @@ type PropType = {
 const CategoryPhoto: React.FC<PropType> = (props) => {
     const { slides, options } = props
     const [emblaRef] = useEmblaCarousel({
-        dragFree: true,
-        watchSlides: false,
-        watchResize: false,
         loop: true,
+        dragFree: true,
     })
 
     const dispatch = useAppDispatch()
@@ -61,30 +59,22 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                     ) : (
                         <div className="flex justify-between w-full">
                             {Array.from({ length: 6 }, (_, index) => (
-                                <div className='flex flex-col'>
+                                <div className="flex flex-col" key={index}>
                                     <Skeleton
                                         width={150}
                                         height={150}
                                         className="rounded my-3"
-                                        key={index}
                                     />
                                     <Skeleton
                                         width={150}
                                         height={30}
                                         className="rounded my-3"
-                                        key={index}
                                     />
                                 </div>
                             ))}
                         </div>
                     )}
                 </div>
-            </div>
-
-            <div className="embla__controls grid grid-cols-auto-1fr gap-1.2rem mt-1.8rem">
-                <div className="embla__buttons grid grid-cols-2 gap-0.6rem items-center"></div>
-
-                <div className="embla__dots flex flex-wrap justify-end items-center mr-[-0.6rem]"></div>
             </div>
         </section>
     )
