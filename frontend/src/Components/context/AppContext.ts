@@ -6,3 +6,6 @@ export const BurgerContext = createContext<
 export const ModalContext = createContext<
 	[boolean, Dispatch<SetStateAction<boolean>>]
 >([false, () => {}])
+export const CatalogContext = createContext<
+	[boolean, Dispatch<SetStateAction<boolean>>]
+>([false, () => {}])
