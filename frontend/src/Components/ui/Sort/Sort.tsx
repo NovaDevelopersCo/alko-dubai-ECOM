@@ -1,15 +1,19 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react'
 import Container from '../Container/Container'
-import { CatalogContext } from '@/Components/context/AppContext'
+import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+    const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
     let flag = false
 
     window.addEventListener('resize', function resizeHandler() {
         if (window.innerWidth < 1024 && !flag && width) {
+            if (isBurgerOpen) {
+                setIsBurgerOpen(false)
+            }
             setWidth(false)
             setVisibleCatalog(false)
             flag = true
