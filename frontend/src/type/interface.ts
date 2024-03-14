@@ -36,6 +36,7 @@ export interface itemsStateProps {
   error: object | string | null
   success: object | string | null
   isLoading: boolean
+  item: item | null;
 }
 
 export type category = {
