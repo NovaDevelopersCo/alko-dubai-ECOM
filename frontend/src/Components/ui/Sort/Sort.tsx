@@ -51,7 +51,7 @@ const Sort = () => {
                     <pre
                         className={clsx([
                             visibleCatalog
-                                ? 'fixed top-0 left-0 z-[101] lg:static'
+                                ? 'fixed top-7 left-56 z-[101] lg:static'
                                 : '',
                         ])}
                     >

@@ -38,11 +38,18 @@ export default function Catalog() {
                 className={clsx([
                     'w-80 bg-white',
                     'flex justify-center',
-                    visibleCatalog ? 'absolute z-20 lg:static' : '',
+                    visibleCatalog ? 'absolute h-screen lg:h-auto z-20 lg:static' : '',
                     visibleCatalog ? 'lg:flex' : 'hidden',
                 ])}
             >
-                <div className="flex justify-start flex-col mt-14 mb-8 mr-10">
+                <div
+                    className={clsx([
+                        "flex justify-start flex-col lg:mt-14 mb-8 mr-10",
+                        visibleCatalog
+                            ? 'mt-16'
+                            : '',
+                    ])}
+                >
                     <p className="text-base">Цена</p>
                     <div className="w-52">
                         <Slider
