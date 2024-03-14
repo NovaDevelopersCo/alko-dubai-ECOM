@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
+import clsx from 'clsx'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -38,9 +39,22 @@ const Sort = () => {
     return (
         <div>
             <hr className="border-[#D32B82]" />
+            <hr
+                className={clsx([
+                    visibleCatalog
+                        ? 'absolute top-0 left-0 z-[101] lg:hidden w-80 border-[#D32B82]'
+                        : '',
+                ])}
+            />
             <Container>
                 <div className="flex justify-between items-center">
-                    <pre>
+                    <pre
+                        className={clsx([
+                            visibleCatalog
+                                ? 'fixed top-0 left-0 z-[101] lg:static'
+                                : '',
+                        ])}
+                    >
                         <p
                             className="lg:hidden flex w-max cursor-pointer whitespace-nowrap"
                             onClick={() => {
