@@ -42,14 +42,18 @@ const Sort = () => {
                 <div className="flex justify-between items-center">
                     <pre>
                         <p
-                            className="lg:hidden w-max cursor-pointer"
+                            className="lg:hidden flex w-max cursor-pointer whitespace-nowrap"
                             onClick={() => {
                                 setVisibleCatalog((state) => !state)
                             }}
                         >
-                            Фильтр{' '}
+                            {!visibleCatalog ? 'Фильтр ' : 'Закрыть '}
                             <span className="font-bold text-[#D32B82]">
-                                {'>'}
+                                {!visibleCatalog ? (
+                                    '>'
+                                ) : (
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nGNgGAWDElzWbs68oFcvRqx6kFqQHiINb8y6rN30/7J202ViLIEY3nQZoqcxi6AF5wxaRS9rNV4Ca9Bqun5No0WSWLVXtOoliPIFMZacI9dwYiw5R6nh+Cw5Ry3DsVlySbv51hWtxmtUMxzZkkswg8EWNd2mmuG4LMCXukgC55DDHC2IKLYEW4SSkk9INpwBhxzJlhCTFM+Rawkp6fwcOZbQvLCjeXE9CugOALT+EUkssP+7AAAAAElFTkSuQmCC"></img>
+                                )}
                             </span>
                         </p>
                     </pre>
