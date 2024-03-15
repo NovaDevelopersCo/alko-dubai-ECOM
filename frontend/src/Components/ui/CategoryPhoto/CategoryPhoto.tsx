@@ -28,7 +28,6 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
     console.log(categories)
 
     const categoriesArray = Array.from(categories) as { title: string, image: string }[]
-    const titles = categoriesArray.map((category) => category.title)
 
     useEffect(() => {
         dispatch(fetchCategories())
@@ -41,7 +40,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                 ref={emblaRef}
             >
                 <div className="embla__container flex touch-action: pan-y gap-4">
-                    {titles.length > 1 ? (
+                    {Object.keys(categoriesArray).length > 1 ? (
                         categoriesArray.map((category, index) => (
                             <Link key={index} href={`/catalog/${category.title}`}>
                                 <div
