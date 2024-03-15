@@ -36,7 +36,7 @@ export default function Catalog() {
         >
             <div
                 className={clsx([
-                    'w-80 bg-white ease-in-out duration-1000',
+                    'w-80 bg-white transition ease-in-out duration-1000',
                     'flex justify-center',
                     visibleCatalog
                         ? 'absolute h-screen lg:h-auto z-20 lg:static'
