@@ -9,7 +9,6 @@ import Link from "next/link";
 export function Item() {
   const dispatch = useAppDispatch();
   const items = useAppSelector(selectItems);
-console.log(items)
   const inputFetch: InputFetch = useMemo(
     () => ({
       price: 'asc',
