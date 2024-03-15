@@ -36,18 +36,19 @@ export default function Catalog() {
         >
             <div
                 className={clsx([
-                    'w-80 bg-white',
+                    'w-80 bg-white ease-in-out duration-1000',
                     'flex justify-center',
-                    visibleCatalog ? 'absolute h-screen lg:h-auto z-20 lg:static' : '',
+                    visibleCatalog
+                        ? 'absolute h-screen lg:h-auto z-20 lg:static'
+                        : '',
+                    !visibleCatalog ? '-translate-x-80 ' : 'translate-x-0 ',
                     visibleCatalog ? 'lg:flex' : 'hidden',
                 ])}
             >
                 <div
                     className={clsx([
-                        "flex justify-start flex-col lg:mt-14 mb-8 mr-10",
-                        visibleCatalog
-                            ? 'mt-16'
-                            : '',
+                        'flex justify-start flex-col lg:mt-14 mb-8 mr-10',
+                        visibleCatalog ? 'mt-20' : '',
                     ])}
                 >
                     <p className="text-base">Цена</p>
