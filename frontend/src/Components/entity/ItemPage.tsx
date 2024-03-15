@@ -9,7 +9,6 @@ const ItemPage = () => {
   const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>() 
   const item = useAppSelector(selectItem)
-  console.log(item)
 
   useEffect(() => {
     dispatch(fetchItemById(id)) // Convert id to number using Number function
