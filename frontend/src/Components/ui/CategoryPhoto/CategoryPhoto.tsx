@@ -25,7 +25,6 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
     ) as any
-    console.log(categories)
 
     const categoriesArray = Array.from(categories) as { title: string, image: string }[]
 
