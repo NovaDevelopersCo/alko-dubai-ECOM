@@ -97,10 +97,10 @@ const itemsSlice = createSlice({
 
 export const selectItems = createSelector(
   (state) => state.items,
-  (items) => items.posts.items.items,
+  (items) => items.posts.items,
 )
 export const { hasError, startLoading, finishLoading, fetchItemSuccess } =
   itemsSlice.actions
 
-export const selectItem = (state: RootState) => state.items.item
+export const selectItem = (state: RootState) => state.items
 export default itemsSlice.reducer
