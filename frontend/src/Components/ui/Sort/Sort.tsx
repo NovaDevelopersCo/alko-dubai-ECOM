@@ -49,7 +49,7 @@ const Sort = () => {
                 ])}
             />
             <Container>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center px-5">
                     <pre
                         className={clsx([
                             visibleCatalog
