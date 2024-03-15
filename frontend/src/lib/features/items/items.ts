@@ -5,6 +5,7 @@ import axiosServices from '@/utils/axios'
 
 // types
 import { DefaultRootStateProps, InputFetch } from '@/type/interface'
+import { AppDispatch, RootState } from '@/lib/store'
 
 const initialState: DefaultRootStateProps['items'] = {
   error: null,
@@ -13,27 +14,36 @@ const initialState: DefaultRootStateProps['items'] = {
     items: [],
     totalPages: 0,
   },
+  item: null,
   isLoading: false,
 }
 
-// export function fetchItems() {
-//   return async (dispatch: AppDispatch) => {
-//     dispatch(slice.actions.startLoading())
+export function fetchItemById(id: string) {
+  return async (dispatch: AppDispatch) => {
+    dispatch(itemsSlice.actions.startLoading())
 
-//     try {
-//       const response = await axiosServices.get('api/items')
-//       dispatch(slice.actions.fetchItemsSuccess(response.data))
-//     } catch (error) {
-//       dispatch(slice.actions.hasError(error))
-//     } finally {
-//       dispatch(slice.actions.finishLoading())
-//     }
-//   }
-// }
+    try {
+      const response = await axiosServices.get(`/api/items/${id}`)
+      dispatch(itemsSlice.actions.fetchItemSuccess(response.data))
+    } catch (error) {
+      dispatch(itemsSlice.actions.hasError(error))
+    } finally {
+      dispatch(itemsSlice.actions.finishLoading())
+    }
+  }
+}
 
 export const fetchItems = createAsyncThunk(
   'items/fetchItems',
-  async (inputFetch: InputFetch = { price: 'asc', popularity: true, news: true, max_price: 12000, min_price: 0 }) => {
+  async (
+    inputFetch: InputFetch = {
+      price: 'asc',
+      popularity: true,
+      news: true,
+      max_price: 12000,
+      min_price: 0,
+    },
+  ) => {
     try {
       // Ваш код для запроса данных, используя inputFetch
       const response = await axiosServices.get('api/items', {
@@ -51,21 +61,34 @@ export const fetchItems = createAsyncThunk(
 const itemsSlice = createSlice({
   name: 'item',
   initialState,
-  reducers: {},
+  reducers: {
+    hasError(state, action) {
+      state.error = action.payload
+    },
+
+    startLoading(state) {
+      state.isLoading = true
+    },
+
+    finishLoading(state) {
+      state.isLoading = false
+    },
+    fetchItemSuccess(state, action) {
+      state.item = action.payload
+      state.success = null
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchItems.pending, (state) => {
-        // Логика для состояния "pending"
         state.isLoading = true
       })
       .addCase(fetchItems.fulfilled, (state, action) => {
-        // Логика для успешного завершения
         state.isLoading = false
         state.posts.items = action.payload
         state.error = null
       })
       .addCase(fetchItems.rejected, (state) => {
-        // Логика для состояния "rejected"
         state.isLoading = false
         state.error = 'Failed to fetch items'
       })
@@ -74,6 +97,10 @@ const itemsSlice = createSlice({
 
 export const selectItems = createSelector(
   (state) => state.items,
-  (items) => items.posts.items.items
+  (items) => items.posts.items,
 )
+export const { hasError, startLoading, finishLoading, fetchItemSuccess } =
+  itemsSlice.actions
+
+export const selectItem = (state: RootState) => state.items.item
 export default itemsSlice.reducer

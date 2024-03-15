@@ -3,49 +3,90 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    position: relative;
-    font-family: theme('fontFamily.montserrat');
-  }
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: theme('fontFamily.literata');
-  }
+	* {
+		position: relative;
+		font-family: theme('fontFamily.montserrat');
+	}
+
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: theme('fontFamily.literata');
+	}
 }
 
 .WinePng {
-  margin-right: -139px;
-  margin-top: 2px;
-  /* opacity: 1; */
+	margin-right: -139px;
+	margin-top: 2px;
+	/* opacity: 1; */
 }
+
 @media (max-width: 1104px) {
-  .WinePng {
-    display: none;
-  }
+	.WinePng {
+		display: none;
+	}
 }
 
 .triangle {
-  width: 0;
-  height: 0;
-  border-left: 50px solid #d32b82;
+	width: 0;
+	height: 0;
+	border-left: 50px solid #d32b82;
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider .ant-slider-track {
+	background-color: #D32B82 !important;
 }
 
 :where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-track {
-  background-color: #d32b82 !important;
+	background-color: #d32b82 !important;
 }
 
-:where(
-    .css-dev-only-do-not-override-1uweeqc
-  ).ant-slider.ant-slider-handle::after {
-  box-shadow: 0 0 0 2px #d32b82 !important;
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider .ant-slider-handle::after {
+	box-shadow: 0 0 0 2px #D32B82 !important;
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-handle::after {
+	box-shadow: 0 0 0 2px #d32b82 !important;
 }
 
 select:focus-visible {
-  border: none;
-  outline: none;
+	border: none;
+	outline: none;
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	border-left: 50px solid #d32b82;
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-track {
+	background-color: #d32b82 !important;
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-slider.ant-slider-handle::after {
+	box-shadow: 0 0 0 2px #d32b82 !important;
+}
+
+select:focus-visible {
+	border: none;
+	outline: none;
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-pagination .ant-pagination-item-active a {
+	color: #ffffff !important
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-pagination .ant-pagination-item-active {
+	background-color: #D32B82 !important;
+	border-color: transparent !important;
+	border-radius: 50% !important;
+	-webkit-border-radius: 50% !important;
+	-moz-border-radius: 50% !important;
+	-ms-border-radius: 50% !important;
+	-o-border-radius: 50% !important;
 }
