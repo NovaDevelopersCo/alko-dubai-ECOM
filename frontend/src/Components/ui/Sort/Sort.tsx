@@ -9,21 +9,23 @@ const Sort = () => {
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
     let flag = false
-
-    window.addEventListener('resize', function resizeHandler() {
-        if (window.innerWidth < 1024 && !flag && width) {
-            if (isBurgerOpen) {
-                setIsBurgerOpen(false)
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', function resizeHandler() {
+            if (window.innerWidth < 1024 && !flag && width) {
+                if (isBurgerOpen) {
+                    setIsBurgerOpen(false)
+                }
+                setWidth(false)
+                setVisibleCatalog(false)
+                flag = true
+            } else if (window.innerWidth >= 1024 && flag && width) {
+                setWidth(true)
+                setVisibleCatalog(true)
+                flag = false
             }
-            setWidth(false)
-            setVisibleCatalog(false)
-            flag = true
-        } else if (window.innerWidth >= 1024 && flag && width) {
-            setWidth(true)
-            setVisibleCatalog(true)
-            flag = false
-        }
-    })
+        })
+    }
+
     useEffect(() => {
         if (window.innerWidth < 1024) {
             setWidth(false)
@@ -47,7 +49,7 @@ const Sort = () => {
                 ])}
             />
             <Container>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center px-5 xl:px-0">
                     <pre
                         className={clsx([
                             visibleCatalog
