@@ -6,7 +6,7 @@ import { FiPhoneCall } from 'react-icons/fi'
 import { Modal } from '../Modal/Modal'
 
 const ContactBtn: FC<{ additionalStyles?: string | string[] }> = ({
-  additionalStyles,
+  additionalStyles, // eslint-disable-line no-unused-vars
 }) => {
   const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)

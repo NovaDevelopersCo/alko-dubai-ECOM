@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter, Montserrat, Literata as LiterataFont } from 'next/font/google'
+import {Montserrat, Literata as LiterataFont } from 'next/font/google'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import clsx from 'clsx'
 
-const inter = Inter({subsets: ['latin']})
+//const inter = Inter({subsets: ['latin']})
 
 import StoreProvider from './StoreProvider'
 
