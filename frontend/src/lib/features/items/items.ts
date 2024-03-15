@@ -102,5 +102,5 @@ export const selectItems = createSelector(
 export const { hasError, startLoading, finishLoading, fetchItemSuccess } =
   itemsSlice.actions
 
-export const selectItem = (state: RootState) => state.items
+export const selectItem = (state: RootState) => state.items.item
 export default itemsSlice.reducer
