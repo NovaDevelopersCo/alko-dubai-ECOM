@@ -1,6 +1,5 @@
 import Container from '@/Components/ui/Container/Container'
 import Image from 'next/image'
-import Wine from '@/assets/wine.png'
 
 const CompanyPage = () => {
   return (
@@ -36,7 +35,7 @@ const CompanyPage = () => {
           </p>
         </div>
         <div className="hidden md:flex">
-          <Image src={Wine} alt="wine" />
+          <Image src='/wine.png' alt="wine" />
         </div>
       </div>
     </Container>

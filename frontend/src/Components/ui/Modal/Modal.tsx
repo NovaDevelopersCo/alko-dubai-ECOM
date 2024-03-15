@@ -1,3 +1,4 @@
+
 import { useRef, useState, useEffect } from 'react'
 import Triangle from '@/assets/triangle.svg'
 import Image from 'next/image'

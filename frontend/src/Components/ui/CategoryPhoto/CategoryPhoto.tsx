@@ -8,10 +8,11 @@ import Link from 'next/link'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { RootState } from '@/lib/store'
+import Image from 'next/image'
 
 type PropType = {
-    slides: number[]
-    options?: EmblaOptionsType
+  slides: number[]
+  options?: EmblaOptionsType
 }
 
 const CategoryPhoto: React.FC<PropType> = (props) => {
@@ -28,9 +29,10 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
 
     const categoriesArray = Array.from(categories) as { title: string, image: string }[]
 
-    useEffect(() => {
-        dispatch(fetchCategories())
-    }, [dispatch])
+
+  useEffect(() => {
+    dispatch(fetchCategories())
+  }, [dispatch])
 
     return (
         <section className="embla max-w-70rem mx-auto">
@@ -75,6 +77,16 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                         </div>
                     )}
                 </div>
+              </Link>
+            ))
+          ) : (
+            <div className="flex justify-between w-full">
+              {Array.from({ length: 6 }, (_, index) => (
+                <div key={index} className="flex flex-col">
+                  <Skeleton width={150} height={150} className="rounded my-3" />
+                  <Skeleton width={150} height={30} className="rounded my-3" />
+                </div>
+              ))}
             </div>
         </section>
     )

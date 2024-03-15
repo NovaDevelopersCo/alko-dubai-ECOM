@@ -3,8 +3,8 @@ import React, { useEffect, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { fetchItems, selectItems } from '@/lib/features/items/items'
 import { InputFetch } from '@/type/interface'
-import Link from 'next/link'
 
+import Link from 'next/link'
 // Компонент Item
 export function Item({ disabled: disabled }: { disabled: boolean }) {
     const dispatch = useAppDispatch()

@@ -2,6 +2,7 @@ import { FaTelegram } from 'react-icons/fa'
 import Container from '@/Components/ui/Container/Container'
 import { GoogleMap } from '@/Components/ui/Map/GoogleMap'
 import { ContactItem } from '@/Components/ui/ContactItem/ContactItem'
+import Image from 'next/image'
 
 const ContactPage = () => {
   return (
@@ -28,10 +29,10 @@ const ContactPage = () => {
                 <span>
                   <a href="#" className="flex gap-[6px] items-center">
                     <FaTelegram className="w-[42px] h-[42px] text-[#3F9FD9]" />
-                    <img
+                    <Image
                       className="w-[50px] h-[50px]"
                       src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                      alt={'Whatsapp'}
+                      alt='Whatsapp'
                     />
                   </a>
                 </span>

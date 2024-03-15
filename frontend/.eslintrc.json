@@ -1,18 +1,9 @@
 {
-	// parse TypeScript files
-	// https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser
-	"parser": "@typescript-eslint/parser",
-	// configure eslint using options described at
-	// https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
-	"plugins": ["@typescript-eslint"],
-	"extends": [
-	  "eslint:recommended",
-	  "plugin:@typescript-eslint/eslint-recommended",
-	  "plugin:@typescript-eslint/recommended",
-	  "plugin:prettier/recommended",
-	  "prettier/@typescript-eslint"
-	],
-	"rules": {
-	  "no-var": "error"
-	}
-  }
+    "extends": ["next/core-web-vitals", "prettier"],
+    "rules": {
+        "import/no-default-export": "off",
+        "no-console": "warn",
+        "no-unused-vars": "error",
+        "import/no-unresolved": "error"
+    }
+}
