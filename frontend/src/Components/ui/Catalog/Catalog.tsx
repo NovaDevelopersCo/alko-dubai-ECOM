@@ -1,6 +1,6 @@
 'use client'
 import React, { useContext, useEffect } from 'react'
-import { Slider, Switch } from 'antd'
+import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
 import { fetchCategories } from '@/lib/features/categories/categories'
@@ -10,7 +10,7 @@ import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 
 export default function Catalog() {
-    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext) // eslint-disable-line no-unused-vars
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,

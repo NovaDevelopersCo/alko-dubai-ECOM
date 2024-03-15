@@ -5,11 +5,12 @@ import { fetchItems, selectItems } from '@/lib/features/items/items'
 import { InputFetch } from '@/type/interface'
 
 import Link from 'next/link'
-// Компонент Item
-export function Item({ disabled: disabled }: { disabled: boolean }) {
+import Image from 'next/image'
+// Компонент Item 
+export function Item({ disabled: disabled }: { disabled: boolean }) { // eslint-disable-line no-unused-vars 
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
-    const pages = useAppSelector(selectItems).totalPages
+    const pages = useAppSelector(selectItems).totalPages // eslint-disable-line no-unused-vars 
     const inputFetch: InputFetch = useMemo(
         () => ({
             price: 'asc',
@@ -36,10 +37,11 @@ export function Item({ disabled: disabled }: { disabled: boolean }) {
                         <article>
                             <figure>
                                 {product.image && (
-                                    <img
+                                    <Image
                                         src={product.image}
                                         alt="png"
                                         className="w-full h-auto rounded-md"
+                                        layout="responsive"
                                     />
                                 )}
                             </figure>

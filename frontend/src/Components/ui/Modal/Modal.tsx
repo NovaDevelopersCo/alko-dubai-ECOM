@@ -1,6 +1,4 @@
-
 import { useRef, useState, useEffect } from 'react'
-import Triangle from '@/assets/triangle.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaTelegram, FaWhatsapp } from 'react-icons/fa'
@@ -10,7 +8,7 @@ export const Modal = ({
     setActive,
 }: {
     active: boolean
-    setActive: (a: boolean) => void
+    setActive: (a: boolean) => void // eslint-disable-line no-unused-vars
 }) => {
     const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -48,7 +46,7 @@ export const Modal = ({
                         <Image
                             width={10.5}
                             height={12.5}
-                            src={Triangle}
+                            src="triangle.svg"
                             alt="triangle"
                             className="absolute right-[20px] -top-[9px]"
                         />
