@@ -75,7 +75,7 @@ export default function PaymentForm() {
                     </div>
                     <hr className="border-[#D32B82]" />
                     <hr className="border-[#D32B82] border-b border-dashed mt-10" />
-                    <div className="flex justify-between mt-3">
+                    <div className="flex justify-between my-3">
                         <p className="text-xl font-bold">Итого: </p>
                         <p className="text-lg font-semibold text-[#D32B82]">
                             650AED
@@ -83,7 +83,6 @@ export default function PaymentForm() {
                     </div>
                     <Form.Item
                         name="payment"
-                        label="Способ оплаты"
                         rules={[
                             {
                                 required: true,
@@ -104,7 +103,7 @@ export default function PaymentForm() {
                         htmlType="submit"
                         className="flex justify-center mx-5"
                     >
-                        Submit
+                        ПОДТВЕРДИТЬ ЗАКАЗ
                     </Button>
                 </div>
             </div>
