@@ -16,7 +16,7 @@ export default function PaymentForm() {
                         style={{ width: 300 }}
                         rules={[{ required: true }]}
                     >
-                        <Input />
+                        <Input placeholder="Игорь" />
                     </Form.Item>
                     <Form.Item
                         name={'email'}
@@ -30,7 +30,7 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <Input />
+                        <Input placeholder="example@gmail.com" />
                     </Form.Item>
                     <Form.Item
                         name="phone"
@@ -43,7 +43,10 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <Input style={{ width: '100%' }} />
+                        <Input
+                            style={{ width: '100%' }}
+                            placeholder="+79565518496"
+                        />
                     </Form.Item>
                     <Form.Item
                         name="adress"
@@ -56,14 +59,14 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <Input />
+                        <Input placeholder="Улица, дом, квартира" />
                     </Form.Item>
                     <Form.Item
                         name={'details'}
                         label="Примечания к заказу"
                         style={{ width: 450 }}
                     >
-                        <Input.TextArea />
+                        <Input.TextArea placeholder="Примечания к заказу" />
                     </Form.Item>
                 </div>
                 <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-evenly px-5 py-5 mb-8 rounded-lg">
