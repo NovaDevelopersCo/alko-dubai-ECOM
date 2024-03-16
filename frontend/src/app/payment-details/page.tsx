@@ -6,7 +6,8 @@ import React from 'react'
 export default function page() {
     return (
         <Container>
-            <div className="flex w-screen justify-center">
+            <div className="flex justify-between">
+                <p>Детали оплаты</p>
                 <PaymentForm />
             </div>
         </Container>

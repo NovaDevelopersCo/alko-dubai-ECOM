@@ -17,12 +17,12 @@ export default function PaymentForm() {
                 {...layout}
                 name="order"
                 onFinish={onFinish}
-                style={{ maxWidth: 1280, marginTop: 100 }}
+                style={{ width: 1280, marginTop: 100 }}
             >
                 <Form.Item
                     name={'name'}
                     label="Имя"
-                    style={{ maxWidth: 300 }}
+                    style={{ width: 300 }}
                     rules={[{ required: true }]}
                 >
                     <Input />
@@ -30,7 +30,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name={'email'}
                     label="Почта"
-                    style={{ maxWidth: 300 }}
+                    style={{ width: 300 }}
                     rules={[
                         {
                             type: 'email',
@@ -44,7 +44,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name="phone"
                     label="Телефон"
-                    style={{ maxWidth: 300 }}
+                    style={{ width: 300 }}
                     rules={[
                         {
                             required: true,
@@ -57,7 +57,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name="adress"
                     label="Адрес"
-                    style={{ maxWidth: 650 }}
+                    style={{ width: 650 }}
                     rules={[
                         {
                             required: true,
@@ -79,7 +79,7 @@ export default function PaymentForm() {
                 >
                     <Select
                         placeholder="Выберите способ оплаты"
-                        style={{ maxWidth: 300 }}
+                        style={{ width: 300 }}
                     >
                         <Option value="Cash">Наличными курьеру</Option>
                         <Option value="Card">Картой курьеру</Option>
@@ -88,7 +88,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name={'details'}
                     label="Примечания к заказу"
-                    style={{ maxWidth: 650 }}
+                    style={{ width: 650 }}
                 >
                     <Input.TextArea />
                 </Form.Item>
