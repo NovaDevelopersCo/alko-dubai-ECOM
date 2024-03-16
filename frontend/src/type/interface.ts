@@ -73,4 +73,5 @@ export interface InputFetch {
   news: boolean
   max_price: number
   min_price: number
+  currentPage: number
 }

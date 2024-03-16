@@ -38,10 +38,11 @@ export const fetchItems = createAsyncThunk(
   async (
     inputFetch: InputFetch = {
       price: 'asc',
-      popularity: true,
-      news: true,
+      popularity: false,
+      news: false,
       max_price: 12000,
       min_price: 0,
+      currentPage: 0,
     },
   ) => {
     try {
