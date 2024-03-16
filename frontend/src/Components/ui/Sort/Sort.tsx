@@ -79,9 +79,6 @@ const Sort = () => {
                         className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
                     >
                         <Select.Option value="asc" className="rounded">
-                            Исходная сортировка
-                        </Select.Option>
-                        <Select.Option value="asc" className="rounded">
                             Цене (возрастание)
                         </Select.Option>
                         <Select.Option value="desc" className="rounded">
