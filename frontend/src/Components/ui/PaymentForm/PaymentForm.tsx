@@ -44,7 +44,13 @@ export default function PaymentForm() {
                 <Form.Item
                     name={'email'}
                     label="Почта"
-                    rules={[{ type: 'email', required: true }]}
+                    rules={[
+                        {
+                            type: 'email',
+                            required: true,
+                            message: 'Пожалуйста, введите вашу почту!',
+                        },
+                    ]}
                 >
                     <Input />
                 </Form.Item>
@@ -61,10 +67,25 @@ export default function PaymentForm() {
                     <Input style={{ width: '100%' }} />
                 </Form.Item>
                 <Form.Item
+                    name="adress"
+                    label="Адрес"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Пожалуйста, введите ваш адрес!',
+                        },
+                    ]}
+                >
+                    <Input style={{ width: '100%' }} />
+                </Form.Item>
+                <Form.Item
                     name="payment"
                     label="Способ оплаты"
                     rules={[
-                        { required: true, message: 'Пожалуйста, выберите способ оплаты!' },
+                        {
+                            required: true,
+                            message: 'Пожалуйста, выберите способ оплаты!',
+                        },
                     ]}
                 >
                     <Select placeholder="Выберите способ оплаты">
