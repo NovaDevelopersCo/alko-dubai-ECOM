@@ -9,19 +9,6 @@ export default function PaymentForm() {
         wrapperCol: { span: 16 },
     }
 
-    /* eslint-disable no-template-curly-in-string */
-    const validateMessages = {
-        required: '${label} is required!',
-        types: {
-            email: '${label} is not a valid email!',
-            number: '${label} is not a valid number!',
-        },
-        number: {
-            range: '${label} must be between ${min} and ${max}',
-        },
-    }
-    /* eslint-enable no-template-curly-in-string */
-
     const onFinish = (values: any) => {
         console.log(values)
     }
@@ -32,11 +19,11 @@ export default function PaymentForm() {
                 name="order"
                 onFinish={onFinish}
                 style={{ maxWidth: 1280, marginTop: 100 }}
-                validateMessages={validateMessages}
             >
                 <Form.Item
                     name={'name'}
                     label="Имя"
+                    style={{ maxWidth: 300 }}
                     rules={[{ required: true }]}
                 >
                     <Input />
@@ -44,6 +31,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name={'email'}
                     label="Почта"
+                    style={{ maxWidth: 300 }}
                     rules={[
                         {
                             type: 'email',
@@ -57,6 +45,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name="phone"
                     label="Телефон"
+                    style={{ maxWidth: 300 }}
                     rules={[
                         {
                             required: true,
@@ -69,6 +58,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name="adress"
                     label="Адрес"
+                    style={{ maxWidth: 650 }}
                     rules={[
                         {
                             required: true,
@@ -88,12 +78,19 @@ export default function PaymentForm() {
                         },
                     ]}
                 >
-                    <Select placeholder="Выберите способ оплаты">
+                    <Select
+                        placeholder="Выберите способ оплаты"
+                        style={{ maxWidth: 300 }}
+                    >
                         <Option value="Cash">Наличными курьеру</Option>
                         <Option value="Card">Картой курьеру</Option>
                     </Select>
                 </Form.Item>
-                <Form.Item name={'details'} label="Примечания к заказу">
+                <Form.Item
+                    name={'details'}
+                    label="Примечания к заказу"
+                    style={{ maxWidth: 650 }}
+                >
                     <Input.TextArea />
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
