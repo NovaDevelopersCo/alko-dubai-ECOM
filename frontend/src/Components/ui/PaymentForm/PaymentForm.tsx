@@ -46,7 +46,7 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <PhoneInput country={'ru'} />
+                        <PhoneInput country={'ru'} placeholder="9565814629" />
                     </Form.Item>
                     <Form.Item
                         name="adress"

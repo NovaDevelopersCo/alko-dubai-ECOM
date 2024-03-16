@@ -108,7 +108,8 @@ select:focus-visible {
 .react-tel-input .flag-dropdown {
 	border-color: #d32b82 !important;
 }
-.react-tel-input .flag-dropdown{
+
+.react-tel-input .flag-dropdown {
 	background-color: #fff !important;
 }
 
@@ -125,4 +126,13 @@ select:focus-visible {
 
 :where(.css-dev-only-do-not-override-1uweeqc).ant-select .ant-select-arrow {
 	color: #D32B82 !important;
+}
+
+.react-tel-input .country-list{
+	border: 1px solid #d32b82 !important;
+	border-radius: 5px !important;
+	-webkit-border-radius: 5px !important;
+	-moz-border-radius: 5px !important;
+	-ms-border-radius: 5px !important;
+	-o-border-radius: 5px !important;
 }
