@@ -13,7 +13,6 @@ export default function PaymentForm() {
         console.log(values)
     }
     return (
-        <div>
             <Form
                 {...layout}
                 name="order"
@@ -66,7 +65,7 @@ export default function PaymentForm() {
                         },
                     ]}
                 >
-                    <Input style={{ width: '100%' }} />
+                    <Input/>
                 </Form.Item>
                 <Form.Item
                     name="payment"
@@ -99,6 +98,5 @@ export default function PaymentForm() {
                     </Button>
                 </Form.Item>
             </Form>
-        </div>
     )
 }

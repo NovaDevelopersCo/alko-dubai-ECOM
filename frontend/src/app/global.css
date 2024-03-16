@@ -90,3 +90,10 @@ select:focus-visible {
 	-ms-border-radius: 50% !important;
 	-o-border-radius: 50% !important;
 }
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-row {
+	display: block !important;
+}
+:where(.css-dev-only-do-not-override-1uweeqc).ant-form-item .ant-form-item-label {
+	text-align: start !important;
+}
