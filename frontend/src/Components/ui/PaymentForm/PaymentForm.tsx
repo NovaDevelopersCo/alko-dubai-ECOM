@@ -9,8 +9,8 @@ export default function PaymentForm() {
     }
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
-            <div className="flex flex-col justify-between lg:flex-row">
-                <div>
+            <div className="flex flex-col lg:flex-row">
+                <div className='w-full'>
                     <Form.Item
                         name={'name'}
                         label="Имя"
