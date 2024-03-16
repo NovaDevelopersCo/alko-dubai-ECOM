@@ -61,7 +61,7 @@ export default function PaymentForm() {
                     <Input style={{ width: '100%' }} />
                 </Form.Item>
                 <Form.Item
-                    name="Payment method"
+                    name="payment"
                     label="Способ оплаты"
                     rules={[
                         { required: true, message: 'Пожалуйста, выберите способ оплаты!' },
