@@ -11,7 +11,7 @@ export default function PaymentForm() {
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
             <div className="flex flex-col lg:flex-row">
-                <div className="w-full flex flex-col items-center lg:items-start">
+                <div className="w-full flex flex-col items-center lg:items-start max-w-full">
                     <p className="text-3xl">Детали оплаты</p>
                     <Form.Item
                         name={'name'}
@@ -46,14 +46,12 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <PhoneInput
-                            country={'ru'}
-                        />
+                        <PhoneInput country={'ru'} />
                     </Form.Item>
                     <Form.Item
                         name="adress"
                         label="Адрес"
-                        style={{ width: 450 }}
+                        className="w-full sm:w-[450px]"
                         rules={[
                             {
                                 required: true,
@@ -66,11 +64,11 @@ export default function PaymentForm() {
                     <Form.Item
                         name={'details'}
                         label="Примечания к заказу"
-                        style={{ width: 450 }}
+                        className="w-full sm:w-[450px]"
                     >
                         <Input.TextArea placeholder="Примечания к заказу" />
                     </Form.Item>
-                    <p className="text-xs text-[#878787] max-w-md mb-5">
+                    <p className="text-xs text-[#878787] w-full sm:w-[450px] mb-5">
                         Ваши личные данные будут использоваться для обработки
                         ваших заказов , упрощения вашей работы с сайтом и для
                         других целей, описанных в нашей{' '}
@@ -79,7 +77,7 @@ export default function PaymentForm() {
                         </span>
                     </p>
                 </div>
-                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-start px-5 py-5 mb-8 rounded-lg">
+                <div className="w-full sm:w-[450px] bg-[#F3F3F2] flex flex-col justify-start px-5 py-5 mb-8 rounded-lg">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
                     <div className="flex justify-between mt-6 font-bold">
                         <p className="text-base">товар</p>
