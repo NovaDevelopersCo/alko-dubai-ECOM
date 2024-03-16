@@ -9,7 +9,7 @@ export default function PaymentForm() {
     }
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col justify-between lg:flex-row">
                 <div>
                     <Form.Item
                         name={'name'}
@@ -101,7 +101,7 @@ export default function PaymentForm() {
                     <Button
                         type="primary"
                         htmlType="submit"
-                        className="flex justify-center mx-5"
+                        className="flex justify-center my-5"
                     >
                         ПОДТВЕРДИТЬ ЗАКАЗ
                     </Button>
