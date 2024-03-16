@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
+import { Select } from 'antd'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -73,28 +74,26 @@ const Sort = () => {
                             </span>
                         </p>
                     </pre>
-                    <p className="text-md text-center w-max sm:text-right pr-2.5 rounded">
-                        <select
-                            name="sort-by"
-                            className="rounded cursor-pointer before:bg-[#D32B82]"
-                        >
-                            <option value="asc" className="rounded">
-                                Исходная сортировка
-                            </option>
-                            <option value="asc" className="rounded">
-                                Цене (возрастание)
-                            </option>
-                            <option value="desc" className="rounded">
-                                Цене (убывание)
-                            </option>
-                            <option value="news" className="rounded">
-                                Новизне
-                            </option>
-                            <option value="popularity" className="rounded">
-                                Популярности
-                            </option>
-                        </select>
-                    </p>
+                    <Select
+                        placeholder="Исходная сортировка"
+                        className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
+                    >
+                        <Select.Option value="asc" className="rounded">
+                            Исходная сортировка
+                        </Select.Option>
+                        <Select.Option value="asc" className="rounded">
+                            Цене (возрастание)
+                        </Select.Option>
+                        <Select.Option value="desc" className="rounded">
+                            Цене (убывание)
+                        </Select.Option>
+                        <Select.Option value="news" className="rounded">
+                            Новизне
+                        </Select.Option>
+                        <Select.Option value="popularity" className="rounded">
+                            Популярности
+                        </Select.Option>
+                    </Select>
                 </div>
             </Container>
             <hr className="border-[#D32B82]" />
