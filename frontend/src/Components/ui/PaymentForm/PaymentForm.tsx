@@ -1,6 +1,8 @@
 'use client'
 import { Button, Form, Input, InputNumber, Select } from 'antd'
 import React from 'react'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 export default function PaymentForm() {
     const onFinish = (values: any) => {
@@ -44,9 +46,8 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <Input
-                            style={{ width: '100%' }}
-                            placeholder="+79565518496"
+                        <PhoneInput
+                            country={'us'}
                         />
                     </Form.Item>
                     <Form.Item
@@ -78,7 +79,7 @@ export default function PaymentForm() {
                         </span>
                     </p>
                 </div>
-                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-between px-5 py-5 mb-8 rounded-lg">
+                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-start px-5 py-5 mb-8 rounded-lg">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
                     <div className="flex justify-between mt-6 font-bold">
                         <p className="text-base">товар</p>
