@@ -66,7 +66,7 @@ export default function Catalog() {
                         {categoriesArray.length > 0 ? (
                             categoriesArray.map((category, id) => (
                                 <Link
-                                    href={`/catalog/${category.title}`}
+                                    href={`/store/catalog/${category.title}`}
                                     className="flex justify-between w-60"
                                     key={id}
                                 >
