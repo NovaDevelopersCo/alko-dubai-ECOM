@@ -66,7 +66,7 @@ export class ItemsService {
 
     if (popularity) {
       items.sort(function (a, b) {
-        return b.updatedAt - a.updatedAt;
+        return b.viewsCount - a.viewsCount;
       });
     }
 
