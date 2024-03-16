@@ -1,6 +1,5 @@
 'use client'
 import { Button, Form, Input, InputNumber, Select } from 'antd'
-import { Option } from 'antd/es/mentions'
 import React from 'react'
 
 export default function PaymentForm() {
@@ -10,7 +9,7 @@ export default function PaymentForm() {
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
             <div className="flex flex-col lg:flex-row">
-                <div className="w-full">
+                <div className="w-full flex flex-col items-center lg:items-start">
                     <Form.Item
                         name={'name'}
                         label="Имя"
