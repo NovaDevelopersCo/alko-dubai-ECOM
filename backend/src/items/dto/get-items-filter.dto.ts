@@ -45,4 +45,11 @@ export class GetItemsFilterDto {
     required: false,
   })
   readonly limit: number;
+
+  @ApiProperty({
+    example: 'Виски',
+    description: 'Получить все товары с категорией',
+    required: false,
+  })
+  readonly category: string;
 }
