@@ -1,4 +1,4 @@
-import React from 'react'
+"use client"
 import MainPageSort from '../MainPageSort/MainPageSort'
 import { Item } from '@/Components/entity/item'
 import React, { useEffect, useMemo } from 'react'
@@ -47,12 +47,11 @@ function StartStore() {
     useEffect(() => {
         dispatch(fetchItems(inputFetch))
     }, [dispatch, inputFetch])
-
-
+    const products = items.map((obj:any) => <Item key={obj.id} disabled={true} {...obj}></Item>);
     return (
         <div>
             <MainPageSort/>
-            <Item key disabled={false} />
+            <div>{products}</div>
         </div>
     )
 }
