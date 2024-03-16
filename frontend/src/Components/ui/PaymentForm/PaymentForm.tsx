@@ -29,9 +29,9 @@ export default function PaymentForm() {
         <div>
             <Form
                 {...layout}
-                name="nest-messages"
+                name="order"
                 onFinish={onFinish}
-                style={{ maxWidth: 600 }}
+                style={{ maxWidth: 1280, marginTop: 100 }}
                 validateMessages={validateMessages}
             >
                 <Form.Item
