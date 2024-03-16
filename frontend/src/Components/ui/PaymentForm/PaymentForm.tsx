@@ -68,6 +68,12 @@ export default function PaymentForm() {
                     >
                         <Input.TextArea placeholder="Примечания к заказу" />
                     </Form.Item>
+                    <p className="text-xs text-[#878787] max-w-md mb-5">
+                        Ваши личные данные будут использоваться для обработки
+                        ваших заказов , упрощения вашей работы с сайтом и для
+                        других целей, описанных в нашей{' '}
+                        <span className="text-black">политике конфиденциальности</span>
+                    </p>
                 </div>
                 <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-evenly px-5 py-5 mb-8 rounded-lg">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
