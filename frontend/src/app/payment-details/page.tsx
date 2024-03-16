@@ -7,8 +7,7 @@ export default function page() {
     return (
         <Container>
             <div className="flex justify-center lg:justify-between">
-                <div className='w-full flex flex-col items-center'>
-                    <p className="text-3xl mt-5">Детали оплаты</p>
+                <div className='w-full flex flex-col items-center mt-5'>
                     <PaymentForm />
                 </div>
             </div>

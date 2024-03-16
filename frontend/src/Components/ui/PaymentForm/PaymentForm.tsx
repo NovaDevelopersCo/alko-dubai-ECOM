@@ -10,6 +10,7 @@ export default function PaymentForm() {
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
             <div className="flex flex-col lg:flex-row">
                 <div className="w-full flex flex-col items-center lg:items-start">
+                    <p className="text-3xl">Детали оплаты</p>
                     <Form.Item
                         name={'name'}
                         label="Имя"
@@ -72,10 +73,12 @@ export default function PaymentForm() {
                         Ваши личные данные будут использоваться для обработки
                         ваших заказов , упрощения вашей работы с сайтом и для
                         других целей, описанных в нашей{' '}
-                        <span className="text-black">политике конфиденциальности</span>
+                        <span className="text-black">
+                            политике конфиденциальности
+                        </span>
                     </p>
                 </div>
-                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-evenly px-5 py-5 mb-8 rounded-lg">
+                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-between px-5 py-5 mb-8 rounded-lg">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
                     <div className="flex justify-between mt-6 font-bold">
                         <p className="text-base">товар</p>
