@@ -10,7 +10,7 @@ export default function PaymentForm() {
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
             <div className="flex flex-col lg:flex-row">
-                <div className='w-full'>
+                <div className="w-full">
                     <Form.Item
                         name={'name'}
                         label="Имя"
@@ -94,8 +94,12 @@ export default function PaymentForm() {
                             placeholder="Выберите способ оплаты"
                             style={{ width: 300 }}
                         >
-                            <Option value="Cash">Наличными курьеру</Option>
-                            <Option value="Card">Картой курьеру</Option>
+                            <Select.Option value="Cash">
+                                Наличными курьеру
+                            </Select.Option>
+                            <Select.Option value="Card">
+                                Картой курьеру
+                            </Select.Option>
                         </Select>
                     </Form.Item>
                     <Button
