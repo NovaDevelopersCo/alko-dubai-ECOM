@@ -11,6 +11,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 export default function Catalog() {
+    // eslint-disable-next-line no-unused-vars
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
