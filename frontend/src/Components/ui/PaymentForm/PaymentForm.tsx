@@ -67,7 +67,7 @@ export default function PaymentForm() {
                         <Input.TextArea />
                     </Form.Item>
                 </div>
-                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-evenly px-5 mb-8">
+                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-evenly px-5 py-5 mb-8 rounded-lg">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
                     <div className="flex justify-between mt-6 font-bold">
                         <p className="text-base">товар</p>
@@ -105,7 +105,7 @@ export default function PaymentForm() {
                     <Button
                         type="primary"
                         htmlType="submit"
-                        className="flex justify-center my-5"
+                        className="flex justify-center mt-5"
                     >
                         ПОДТВЕРДИТЬ ЗАКАЗ
                     </Button>
