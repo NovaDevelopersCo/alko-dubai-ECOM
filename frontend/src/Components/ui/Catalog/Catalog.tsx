@@ -1,6 +1,6 @@
 'use client'
 import React, { useContext, useEffect } from 'react'
-import { Slider, Switch } from 'antd'
+import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
 import { fetchCategories } from '@/lib/features/categories/categories'
@@ -8,6 +8,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -64,7 +65,8 @@ export default function Catalog() {
                     <div className="flex flex-col gap-3 mt-5">
                         {categoriesArray.length > 0 ? (
                             categoriesArray.map((category, id) => (
-                                <div
+                                <Link
+                                    href={`/catalog/${category.title}`}
                                     className="flex justify-between w-60"
                                     key={id}
                                 >
@@ -72,7 +74,7 @@ export default function Catalog() {
                                     <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
                                         <p>{category.items}</p>
                                     </div>
-                                </div>
+                                </Link>
                             ))
                         ) : (
                             <div className="flex justify-between flex-col w-full">
