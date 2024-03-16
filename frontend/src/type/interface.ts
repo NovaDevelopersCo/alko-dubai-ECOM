@@ -74,4 +74,5 @@ export interface InputFetch {
   max_price: number
   min_price: number
   currentPage: number
+  limit: number
 }

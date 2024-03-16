@@ -28,9 +28,8 @@ function MainPageSort() {
   const [selectedItem, setSelectedItem] = useState(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event:any) => {
       if (sortRef.current && !sortRef.current.contains(event.target)) {
-        setIsVisible(false);
       }
     };
   
@@ -41,7 +40,7 @@ function MainPageSort() {
     };
   }, []);
 
-  const onClickListItem = (item) => {
+  const onClickListItem = (item:any) => {
     dispatch(setPopularity(item));
     setSelectedItem(item);
   };
