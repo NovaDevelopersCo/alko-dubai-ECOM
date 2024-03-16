@@ -15,7 +15,7 @@ export default function Home() {
                 <CategoryPhoto slides={SLIDES} />
                 <div className="md:mx-16">
                     <MainPageSort />
-                    <Item disabled={false} />
+                    <Item disabled={true} />
                 </div>
             </Container>
             <OurBenefits />
