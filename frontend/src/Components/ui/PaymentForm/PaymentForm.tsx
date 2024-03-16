@@ -60,6 +60,28 @@ export default function PaymentForm() {
                         <Input />
                     </Form.Item>
                     <Form.Item
+                        name={'details'}
+                        label="Примечания к заказу"
+                        style={{ width: 450 }}
+                    >
+                        <Input.TextArea />
+                    </Form.Item>
+                </div>
+                <div className="w-[460px] bg-[#F3F3F2] flex flex-col px-5">
+                    <p className="text-2xl text-center font-bold">Ваш заказ</p>
+                    <div className="flex justify-between mt-6 font-bold">
+                        <p className="text-base">товар</p>
+                        <p className="text-base">подытог</p>
+                    </div>
+                    <hr className="border-[#D32B82]" />
+                    <hr className="border-[#D32B82] border-b border-dashed mt-10" />
+                    <div className="flex justify-between mt-3">
+                        <p className="text-xl font-bold">Итого: </p>
+                        <p className="text-lg font-semibold text-[#D32B82]">
+                            650AED
+                        </p>
+                    </div>
+                    <Form.Item
                         name="payment"
                         label="Способ оплаты"
                         rules={[
@@ -77,22 +99,6 @@ export default function PaymentForm() {
                             <Option value="Card">Картой курьеру</Option>
                         </Select>
                     </Form.Item>
-                    <Form.Item
-                        name={'details'}
-                        label="Примечания к заказу"
-                        style={{ width: 450 }}
-                    >
-                        <Input.TextArea />
-                    </Form.Item>
-                </div>
-                <div className="w-[460px] bg-[#F3F3F2] flex flex-col">
-                    <p className='text-2xl text-center font-bold'>Ваш заказ</p>
-                    <div className='flex justify-between mt-6 mx-5 font-bold'>
-                        <p>товар</p>
-                        <p>подытог</p>
-                    </div>
-                    <hr className="border-[#D32B82] mx-5" />
-                    <hr className="border-[#D32B82] mx-5 border-b border-dashed mt-10" />
                     <Button
                         type="primary"
                         htmlType="submit"
