@@ -4,21 +4,18 @@ import { Option } from 'antd/es/mentions'
 import React from 'react'
 
 export default function PaymentForm() {
-    const layout = {
-        labelCol: { span: 8 },
-        wrapperCol: { span: 16 },
-    }
 
     const onFinish = (values: any) => {
         console.log(values)
     }
     return (
-            <Form
-                {...layout}
-                name="order"
-                onFinish={onFinish}
-                style={{ width: 1280, marginTop: 50 }}
-            >
+        <Form
+            name="order"
+            onFinish={onFinish}
+            style={{ marginTop: 50 }}
+        >
+            <div className='flex'>
+                <div>
                 <Form.Item
                     name={'name'}
                     label="Имя"
@@ -57,7 +54,7 @@ export default function PaymentForm() {
                 <Form.Item
                     name="adress"
                     label="Адрес"
-                    style={{ width: 650 }}
+                    style={{ width: 450 }}
                     rules={[
                         {
                             required: true,
@@ -65,7 +62,7 @@ export default function PaymentForm() {
                         },
                     ]}
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
                 <Form.Item
                     name="payment"
@@ -88,15 +85,20 @@ export default function PaymentForm() {
                 <Form.Item
                     name={'details'}
                     label="Примечания к заказу"
-                    style={{ width: 650 }}
+                    style={{ width: 450 }}
                 >
                     <Input.TextArea />
                 </Form.Item>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit" className='w-full'>
-                        Submit
-                    </Button>
-                </Form.Item>
-            </Form>
+                </div>
+                <div className='w-full'>
+                    AAAAAAAAAAAA
+                </div>
+            </div>
+            <Form.Item className="w-full flex justify-center">
+                <Button type="primary" htmlType="submit">
+                    Submit
+                </Button>
+            </Form.Item>
+        </Form>
     )
 }
