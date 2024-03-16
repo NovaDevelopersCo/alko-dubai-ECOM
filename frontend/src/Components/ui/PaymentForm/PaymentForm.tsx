@@ -9,7 +9,7 @@ export default function PaymentForm() {
     }
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
-            <div className="flex">
+            <div className="flex flex-col lg:flex-row">
                 <div>
                     <Form.Item
                         name={'name'}
@@ -67,7 +67,7 @@ export default function PaymentForm() {
                         <Input.TextArea />
                     </Form.Item>
                 </div>
-                <div className="w-[460px] bg-[#F3F3F2] flex flex-col px-5">
+                <div className="w-[460px] bg-[#F3F3F2] flex flex-col justify-evenly px-5 mb-8">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
                     <div className="flex justify-between mt-6 font-bold">
                         <p className="text-base">товар</p>

@@ -94,6 +94,12 @@ select:focus-visible {
 :where(.css-dev-only-do-not-override-1uweeqc).ant-row {
 	display: block !important;
 }
+
 :where(.css-dev-only-do-not-override-1uweeqc).ant-form-item .ant-form-item-label {
 	text-align: start !important;
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector,
+:where(.css-dev-only-do-not-override-1uweeqc).ant-input-outlined:hover {
+	border-color: #d32b82 !important;
 }
