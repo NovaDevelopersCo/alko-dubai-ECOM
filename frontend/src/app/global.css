@@ -102,11 +102,17 @@ select:focus-visible {
 :where(.css-dev-only-do-not-override-1uweeqc).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector,
 :where(.css-dev-only-do-not-override-1uweeqc).ant-input-outlined:focus,
 :where(.css-dev-only-do-not-override-1uweeqc).ant-input-outlined:focus-within,
-:where(.css-dev-only-do-not-override-1uweeqc).ant-input-outlined:hover {
+:where(.css-dev-only-do-not-override-1uweeqc).ant-input-outlined:hover,
+:where(.css-dev-only-do-not-override-1uweeqc).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector,
+:where(.css-dev-only-do-not-override-1uweeqc).ant-input-outlined {
 	border-color: #d32b82 !important;
 }
 
 :where(.css-dev-only-do-not-override-1uweeqc).ant-btn-primary {
 	background-color: #d32b82 !important;
 	border-color: #d32b82 !important;
+}
+
+:where(.css-dev-only-do-not-override-1uweeqc).ant-select .ant-select-arrow {
+	color: #D32B82 !important;
 }
