@@ -92,8 +92,8 @@ export default function PaymentForm() {
                 >
                     <Input.TextArea />
                 </Form.Item>
-                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                    <Button type="primary" htmlType="submit">
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" className='w-full'>
                         Submit
                     </Button>
                 </Form.Item>
