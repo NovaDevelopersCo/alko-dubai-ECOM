@@ -1,5 +1,6 @@
 'use client'
-import { Button, Form, Input, InputNumber } from 'antd'
+import { Button, Form, Input, InputNumber, Select } from 'antd'
+import { Option } from 'antd/es/mentions'
 import React from 'react'
 
 export default function PaymentForm() {
@@ -34,30 +35,44 @@ export default function PaymentForm() {
                 validateMessages={validateMessages}
             >
                 <Form.Item
-                    name={['user', 'name']}
-                    label="Name"
+                    name={'name'}
+                    label="Имя"
                     rules={[{ required: true }]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    name={['user', 'email']}
-                    label="Email"
-                    rules={[{ type: 'email' }]}
+                    name={'email'}
+                    label="Почта"
+                    rules={[{ type: 'email', required: true }]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    name={['user', 'age']}
-                    label="Age"
-                    rules={[{ type: 'number', min: 0, max: 99 }]}
+                    name="phone"
+                    label="Телефон"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Пожалуйста, введите ваш телефон!',
+                        },
+                    ]}
                 >
-                    <InputNumber />
+                    <Input style={{ width: '100%' }} />
                 </Form.Item>
-                <Form.Item name={['user', 'website']} label="Website">
-                    <Input />
+                <Form.Item
+                    name="Payment method"
+                    label="Способ оплаты"
+                    rules={[
+                        { required: true, message: 'Пожалуйста, выберите способ оплаты!' },
+                    ]}
+                >
+                    <Select placeholder="Выберите способ оплаты">
+                        <Option value="Cash">Наличными курьеру</Option>
+                        <Option value="Card">Картой курьеру</Option>
+                    </Select>
                 </Form.Item>
-                <Form.Item name={['user', 'introduction']} label="Introduction">
+                <Form.Item name={'details'} label="Примечания к заказу">
                     <Input.TextArea />
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
