@@ -17,7 +17,7 @@ export default function PaymentForm() {
                 {...layout}
                 name="order"
                 onFinish={onFinish}
-                style={{ width: 1280, marginTop: 100 }}
+                style={{ width: 1280, marginTop: 50 }}
             >
                 <Form.Item
                     name={'name'}

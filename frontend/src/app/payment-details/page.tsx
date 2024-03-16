@@ -7,8 +7,10 @@ export default function page() {
     return (
         <Container>
             <div className="flex justify-between">
-                <p>Детали оплаты</p>
-                <PaymentForm />
+                <div>
+                    <p className="text-3xl mt-5">Детали оплаты</p>
+                    <PaymentForm />
+                </div>
             </div>
         </Container>
     )
