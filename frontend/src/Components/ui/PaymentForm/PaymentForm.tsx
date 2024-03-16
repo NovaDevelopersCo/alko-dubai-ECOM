@@ -47,7 +47,7 @@ export default function PaymentForm() {
                         ]}
                     >
                         <PhoneInput
-                            country={'us'}
+                            country={'ru'}
                         />
                     </Form.Item>
                     <Form.Item
