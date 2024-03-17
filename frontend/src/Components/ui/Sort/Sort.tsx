@@ -3,8 +3,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
+import Image from "next/image";
 
-const Sort = () => {
+const Sort = ({setLayoutCount}:{setLayoutCount:(c:number)=>void}) => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
@@ -49,7 +50,7 @@ const Sort = () => {
                 ])}
             />
             <Container>
-                <div className="flex justify-between items-center px-5 xl:px-0">
+                <div className="flex justify-between items-center px-5 xl:px-0 py-2">
                     <pre
                         className={clsx([
                             visibleCatalog
@@ -68,7 +69,8 @@ const Sort = () => {
                                 {!visibleCatalog ? (
                                     '>'
                                 ) : (
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nGNgGAWDElzWbs68oFcvRqx6kFqQHiINb8y6rN30/7J202ViLIEY3nQZoqcxi6AF5wxaRS9rNV4Ca9Bqun5No0WSWLVXtOoliPIFMZacI9dwYiw5R6nh+Cw5Ry3DsVlySbv51hWtxmtUMxzZkkswg8EWNd2mmuG4LMCXukgC55DDHC2IKLYEW4SSkk9INpwBhxzJlhCTFM+Rawkp6fwcOZbQvLCjeXE9CugOALT+EUkssP+7AAAAAElFTkSuQmCC"></img>
+                                    <img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nGNgGAWDElzWbs68oFcvRqx6kFqQHiINb8y6rN30/7J202ViLIEY3nQZoqcxi6AF5wxaRS9rNV4Ca9Bqun5No0WSWLVXtOoliPIFMZacI9dwYiw5R6nh+Cw5Ry3DsVlySbv51hWtxmtUMxzZkkswg8EWNd2mmuG4LMCXukgC55DDHC2IKLYEW4SSkk9INpwBhxzJlhCTFM+Rawkp6fwcOZbQvLCjeXE9CugOALT+EUkssP+7AAAAAElFTkSuQmCC"></img>
                                 )}
                             </span>
                         </p>
@@ -95,6 +97,12 @@ const Sort = () => {
                             </option>
                         </select>
                     </p>
+                    <div className="md:flex gap-x-4 hidden">
+                        <Image className="cursor-pointer" onClick={()=>setLayoutCount(2)} width={34} height={34} alt="group" src="Group 2.svg"></Image>
+                        <Image className="cursor-pointer" onClick={()=>setLayoutCount(3)} width={34} height={34} alt="group" src="Group 3.svg"></Image>
+                        <Image className="cursor-pointer" onClick={()=>setLayoutCount(4)} width={34} height={34} alt="group" src="Group 4.svg"></Image>
+                    </div>
+
                 </div>
             </Container>
             <hr className="border-[#D32B82]" />

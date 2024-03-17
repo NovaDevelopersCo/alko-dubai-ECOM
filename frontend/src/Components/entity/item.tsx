@@ -8,7 +8,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { Pagination } from 'antd'
 // Компонент Item
-export function Item({ disabled: disabled }: { disabled: boolean }) {
+export function Item({disabled,layoutCount}: { disabled: boolean, layoutCount:number }) {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
@@ -22,12 +22,21 @@ export function Item({ disabled: disabled }: { disabled: boolean }) {
         }),
         [],
     )
+    const gridRowStyle =()=>{
+        switch (layoutCount){
+            case 2:return 'lg:grid-cols-2 md:grid-cols-2'
+            case 3: return 'lg:grid-cols-3 md:lg:grid-cols-3'
+            case 4:return 'lg:grid-cols-4 md:lg:grid-cols-4'
+            default: return 'lg:grid-cols-4 md:lg:grid-cols-4'
+        }
+
+    }
     useEffect(() => {
         dispatch(fetchItems(inputFetch))
     }, [dispatch, inputFetch])
     return (
         <div>
-            <ul className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <ul className={`grid grid-cols-2 gap-4 ${gridRowStyle()}`}>
                 {items &&
                     Array.isArray(items) &&
                     items.map((product) => (
