@@ -12,8 +12,8 @@ export default function Home() {
             <Container>
                 <Swaiper />
                 <CategoryPhoto slides={SLIDES} />
-                <div className="md:mx-16">
-                    <StartStore></StartStore>
+                <div>
+                    <StartStore ></StartStore>
                 </div>
             </Container>
             <OurBenefits />
