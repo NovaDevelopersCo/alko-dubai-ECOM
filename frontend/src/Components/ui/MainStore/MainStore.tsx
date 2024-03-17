@@ -23,7 +23,7 @@ function MainStore() {
         const inputFetch: InputFetch = {
             ...(filter.popularity ? { popularity: true } : {}), // Добавляем свойство popularity только если оно true
             ...(filter.news ? { news: true } : {}),
-            ...(filter.sale ? { sale: true } : {}),
+            ...(filter.price ? { price: 'asc' } : {}),
             limit: limit,
             // Добавляем свойство news только если оно true
         }
