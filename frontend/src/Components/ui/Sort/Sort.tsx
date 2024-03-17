@@ -47,23 +47,23 @@ const Sort = () => {
     }, [])
 
     const dispatch = useAppDispatch()
-    const { popularity, news, price } = useAppSelector(selectFilter)
-    console.log(popularity, news, price)
 
-    const handlePopularityChange = () => {
-        dispatch(setPopularity(!popularity))
-    }
-
-    const handleNewsChange = () => {
-        dispatch(setNews(!news))
-    }
-
-    const handlePriceDesc = () => {
-        dispatch(setPrice('desc'))
-    }
-
-    const handlePriceAsc = () => {
-        dispatch(setPrice('asc'))
+    const onChange = (value: string) => {
+        if (value === 'asc' || value === 'desc') {
+            dispatch(setPrice(value))
+            dispatch(setPopularity(false))
+            dispatch(setNews(false))
+        }
+        if (value === 'popularity') {
+            dispatch(setPrice('asc'))
+            dispatch(setPopularity(true))
+            dispatch(setNews(false))
+        }
+        if (value === 'news') {
+            dispatch(setPrice('asc'))
+            dispatch(setPopularity(false))
+            dispatch(setNews(true))
+        }
     }
 
     return (
@@ -102,35 +102,20 @@ const Sort = () => {
                         </p>
                     </pre>
                     <Select
+                        onChange={(value, option) => onChange(value)}
                         placeholder="Исходная сортировка"
                         className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
                     >
-                        <Select.Option
-                            value="asc"
-                            className="rounded"
-                            onClick={handlePriceAsc}
-                        >
+                        <Select.Option value="asc" className="rounded">
                             Цене (возрастание)
                         </Select.Option>
-                        <Select.Option
-                            value="desc"
-                            className="rounded"
-                            onClick={handlePriceDesc}
-                        >
+                        <Select.Option value="desc" className="rounded">
                             Цене (убывание)
                         </Select.Option>
-                        <Select.Option
-                            value="news"
-                            className="rounded"
-                            onClick={handleNewsChange}
-                        >
+                        <Select.Option value="news" className="rounded">
                             Новизне
                         </Select.Option>
-                        <Select.Option
-                            value="popularity"
-                            className="rounded"
-                            onClick={handlePopularityChange}
-                        >
+                        <Select.Option value="popularity" className="rounded">
                             Популярности
                         </Select.Option>
                     </Select>
