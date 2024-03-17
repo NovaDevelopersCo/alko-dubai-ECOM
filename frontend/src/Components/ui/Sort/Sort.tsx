@@ -5,12 +5,11 @@ import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import { Select } from 'antd'
 import {
-    selectFilter,
     setPopularity,
     setNews,
     setPrice,
 } from '@/lib/features/filter/filter'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
+import { useAppDispatch } from '@/lib/hooks'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
