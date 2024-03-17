@@ -27,65 +27,80 @@ export class ItemsService {
 
   async getItemsWithFilters(filterDto: GetItemsFilterDto) {
     const {
-      search,
-      price,
-      popularity = false,
-      news = false,
-      max_price,
-      min_price = 0,
-      limit = 100,
+        search,
+        price,
+        popularity = false,
+        news = false,
+        max_price,
+        sale = false,
+        min_price = 0,
+        limit = 100,
+        category,
+
     } = filterDto;
 
     let items = await this.itemsRepository.findAll({
-      include: { all: true },
+        include: { all: true },
     });
 
+    // Применяем сортировку по цене, популярности и новизне
     if (price) {
-      if (price == 'asc') {
-        items.sort(function (a, b) {
-          return a.price - b.price;
-        });
-      }
-      if (price == 'desc') {
-        items.sort(function (a, b) {
-          return b.price - a.price;
-        });
-      }
+        if (price == 'asc') {
+            items.sort((a, b) => a.price - b.price);
+        }
+        if (price == 'desc') {
+            items.sort((a, b) => b.price - a.price);
+        }
     }
 
     if (news) {
-      items.sort(function (a, b) {
-        return b.updatedAt - a.updatedAt;
-      });
+        items.sort((a, b) => b.updatedAt - a.updatedAt);
+    }
+
+    if (category) {
+      items = await items.filter((item) => item.category.includes(category));
     }
 
     if (popularity) {
-      items.sort(function (a, b) {
-        return b.updatedAt - a.updatedAt;
-      });
+        items.sort((a, b) => b.viewsCount - a.viewsCount);
     }
 
+    // Применяем специальную сортировку по свойству sale
+    if (sale) {items.sort((a, b) => {
+        if (a.sale && !b.sale) {
+            return -1; // Если у a.sale=true, а у b.sale=false, то a должен быть перед b
+        } else if (!a.sale && b.sale) {
+            return 1; // Если у a.sale=false, а у b.sale=true, то b должен быть перед a
+        } else {
+            return 0; // В противном случае сохраняется порядок
+        }
+    })};
+
+    // Применяем фильтрацию по остальным параметрам
     if (search) {
-      items = await items.filter(
-        (item) =>
-          item.title.toLowerCase().includes(search.toLowerCase()) ||
-          item.description.toLowerCase().includes(search.toLowerCase()),
-      );
+        items = items.filter(item =>
+            item.title.toLowerCase().includes(search.toLowerCase()) ||
+            item.description.toLowerCase().includes(search.toLowerCase())
+        );
     }
+
     if (min_price) {
-      items = await items.filter((item) => item.price >= min_price);
+        items = items.filter(item => item.price >= min_price);
     }
 
     if (max_price) {
-      items = await items.filter((item) => item.price <= max_price);
+        items = items.filter(item => item.price <= max_price);
     }
+
+    // Рассчитываем общее количество страниц и возвращаем результат
     const totalPages = Math.ceil(items.length / limit);
     const response = {
-      totalPages: totalPages,
-      items: items,
+        totalPages: totalPages,
+        items: items,
     };
     return response;
-  }
+}
+
 
   async create(dto: CreateItemDto, image: any) {
     if (image !== undefined) {

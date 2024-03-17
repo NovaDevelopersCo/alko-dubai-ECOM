@@ -1,12 +1,10 @@
 import { Item } from '@/Components/entity/item'
-import { CartMenu } from '@/Components/ui/CartMenu/CartMenu'
 import Catalog from '@/Components/ui/Catalog/Catalog'
 import Container from '@/Components/ui/Container/Container'
-import MainStore from '@/Components/ui/MainStore/MainStore'
 import Sort from '@/Components/ui/Sort/Sort'
 import React from 'react'
 
-const store = () => {
+export default function page() {
     return (
         <>
             <Sort />
@@ -14,13 +12,10 @@ const store = () => {
                 <div className="flex w-full h-full">
                     <Catalog />
                     <div className="w-full h-full my-6">
-                        <MainStore></MainStore>
+                        <Item disabled={false} />
                     </div>
                 </div>
-                <CartMenu />
             </Container>
         </>
     )
 }
-
-export default store
