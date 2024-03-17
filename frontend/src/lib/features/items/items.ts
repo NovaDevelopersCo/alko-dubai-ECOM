@@ -4,10 +4,12 @@ import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import axiosServices from '@/utils/axios'
 
 // types
-import { DefaultRootStateProps, InputFetch } from '@/type/interface'
-import { AppDispatch, RootState } from '@/lib/store'
 
-const initialState: DefaultRootStateProps['items'] = {
+import { AppDispatch, RootState } from '@/lib/store'
+import { itemsStateProps } from '@/type/interfaceItems'
+import { InputFetch } from '@/type/interfaceFilter'
+
+const initialState: itemsStateProps = {
     error: null,
     success: null,
     posts: {
