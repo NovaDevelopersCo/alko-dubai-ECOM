@@ -3,7 +3,7 @@ import Container from '../Container/Container'
 export const Text = () => {
     return (
         <Container>
-            <p className="font-montserrat text-[#878787] text-[14px] lg:text-[16px] md:text-[15px] sm:text-[14px] leading-[19.5px] my-[90px]">
+            <p className="font-montserrat text-[#878787] text-[14px] lg:text-[16px] md:text-[15px] sm:text-[14px] leading-[19.5px] my-[40px] lg:my-[90px] md:my-[70px] sm:my-[50px]">
                 Вы можете в нашем интернет магазине купить , заказать , у нас
                 алкоголь в Дубае с доставкой по Дубаю работаем круглосуточно,
                 помогаем туристам 24/7 . Мы доставим в любую точку Дубая! водка
