@@ -101,7 +101,7 @@ const Sort = () => {
                         </p>
                     </pre>
                     <Select
-                        onChange={(value, option) => onChange(value)}
+                        onChange={(value) => onChange(value)}
                         placeholder="Исходная сортировка"
                         className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
                     >
