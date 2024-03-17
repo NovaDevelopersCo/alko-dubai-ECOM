@@ -15,14 +15,13 @@ export default function Home() {
                 <Swaiper />
                 <CategoryPhoto slides={SLIDES} />
                 <div>
-                    <StartStore ></StartStore>
+                    <StartStore></StartStore>
                 </div>
             </Container>
             <OurBenefits />
-            <Text />
-            {/*<Container>*/}
-            {/*      */}
-            {/*  </Container>*/}
+            <Container>
+                <Text />
+            </Container>
         </>
     )
 }

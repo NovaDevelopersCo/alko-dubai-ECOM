@@ -1,8 +1,6 @@
-import Container from '../Container/Container'
 
 export const Text = () => {
     return (
-        <Container>
             <p className="font-montserrat text-[#878787] text-[14px] lg:text-[16px] md:text-[15px] sm:text-[14px] leading-[19.5px] my-[40px] lg:my-[90px] md:my-[70px] sm:my-[50px]">
                 Вы можете в нашем интернет магазине купить , заказать , у нас
                 алкоголь в Дубае с доставкой по Дубаю работаем круглосуточно,
@@ -42,6 +40,5 @@ export const Text = () => {
                 в дубай,дубай где купить,дубай где,где купить алкоголь,где
                 алкоголь
             </p>
-        </Container>
     )
 }
