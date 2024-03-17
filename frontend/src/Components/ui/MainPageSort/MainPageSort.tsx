@@ -36,6 +36,7 @@ function MainPageSort() {
         }
     }
 
+
     const handleSaleChange = () => {
         if (!sale) {
             dispatch(setSale(!sale))
