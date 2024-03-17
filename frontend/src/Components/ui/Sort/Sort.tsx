@@ -112,10 +112,10 @@ const Sort = () => {
                         placeholder="Исходная сортировка"
                         className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
                     >
-                        <Select.Option value="asc" className="rounded">
+                        <Select.Option value="asc" className="rounded" onClick={handlePriceAsc}>
                             Цене (возрастание)
                         </Select.Option>
-                        <Select.Option value="desc" className="rounded">
+                        <Select.Option value="desc" className="rounded" onClick={handlePriceDesc}>
                             Цене (убывание)
                         </Select.Option>
                         <Select.Option value="news" className="rounded" onClick={handleNewsChange}>
