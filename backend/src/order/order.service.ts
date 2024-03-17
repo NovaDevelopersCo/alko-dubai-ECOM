@@ -61,7 +61,10 @@ export class OrderService {
   }
 
   async create(dto: CreateOrderDto) {
-    const order = await this.ordersRepository.create({ ...dto });
+    const order = await this.ordersRepository.create({
+      ...dto,
+      phone: '+' + dto.phone,
+    });
     this.sendMail(dto);
     return order;
   }
