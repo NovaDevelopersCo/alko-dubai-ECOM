@@ -4,6 +4,13 @@ import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import { Select } from 'antd'
+import {
+    selectFilter,
+    setPopularity,
+    setNews,
+    setPrice,
+} from '@/lib/features/filter/filter'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -38,6 +45,33 @@ const Sort = () => {
             flag = false
         }
     }, [])
+
+    const dispatch = useAppDispatch()
+    const { popularity, news, price } = useAppSelector(selectFilter)
+
+    const handlePopularityChange = () => {
+        if (!popularity) {
+            dispatch(setPopularity(!popularity))
+        }
+    }
+
+    const handleNewsChange = () => {
+        if (!news) {
+            dispatch(setNews(!news))
+        }
+    }
+
+    const handlePriceDesc = () => {
+        if (!price) {
+            dispatch(setPrice('desc'))
+        }
+    }
+
+    const handlePriceAsc = () => {
+        if (!price) {
+            dispatch(setPrice('asc'))
+        }
+    }
 
     return (
         <div>
@@ -84,10 +118,10 @@ const Sort = () => {
                         <Select.Option value="desc" className="rounded">
                             Цене (убывание)
                         </Select.Option>
-                        <Select.Option value="news" className="rounded">
+                        <Select.Option value="news" className="rounded" onClick={handleNewsChange}>
                             Новизне
                         </Select.Option>
-                        <Select.Option value="popularity" className="rounded">
+                        <Select.Option value="popularity" className="rounded" onClick={handlePopularityChange}>
                             Популярности
                         </Select.Option>
                     </Select>
