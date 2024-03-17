@@ -48,29 +48,22 @@ const Sort = () => {
 
     const dispatch = useAppDispatch()
     const { popularity, news, price } = useAppSelector(selectFilter)
+    console.log(popularity, news, price)
 
     const handlePopularityChange = () => {
-        if (!popularity) {
-            dispatch(setPopularity(!popularity))
-        }
+        dispatch(setPopularity(!popularity))
     }
 
     const handleNewsChange = () => {
-        if (!news) {
-            dispatch(setNews(!news))
-        }
+        dispatch(setNews(!news))
     }
 
     const handlePriceDesc = () => {
-        if (!price) {
-            dispatch(setPrice('desc'))
-        }
+        dispatch(setPrice('desc'))
     }
 
     const handlePriceAsc = () => {
-        if (!price) {
-            dispatch(setPrice('asc'))
-        }
+        dispatch(setPrice('asc'))
     }
 
     return (
@@ -112,16 +105,32 @@ const Sort = () => {
                         placeholder="Исходная сортировка"
                         className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
                     >
-                        <Select.Option value="asc" className="rounded" onClick={handlePriceAsc}>
+                        <Select.Option
+                            value="asc"
+                            className="rounded"
+                            onClick={handlePriceAsc}
+                        >
                             Цене (возрастание)
                         </Select.Option>
-                        <Select.Option value="desc" className="rounded" onClick={handlePriceDesc}>
+                        <Select.Option
+                            value="desc"
+                            className="rounded"
+                            onClick={handlePriceDesc}
+                        >
                             Цене (убывание)
                         </Select.Option>
-                        <Select.Option value="news" className="rounded" onClick={handleNewsChange}>
+                        <Select.Option
+                            value="news"
+                            className="rounded"
+                            onClick={handleNewsChange}
+                        >
                             Новизне
                         </Select.Option>
-                        <Select.Option value="popularity" className="rounded" onClick={handlePopularityChange}>
+                        <Select.Option
+                            value="popularity"
+                            className="rounded"
+                            onClick={handlePopularityChange}
+                        >
                             Популярности
                         </Select.Option>
                     </Select>

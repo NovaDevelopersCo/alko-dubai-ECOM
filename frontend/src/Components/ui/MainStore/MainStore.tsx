@@ -44,7 +44,6 @@ function MainStore() {
     }, [filter, dispatch, limit])
 
     let products = null // По умолчанию нет товаров
-    console.log(items)
     if (items) {
         // Ограничиваем количество элементов до limit с помощью slice
         const limitedItems = items.slice(0, limit)
