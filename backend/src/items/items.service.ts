@@ -34,7 +34,9 @@ export class ItemsService {
         max_price,
         sale = false,
         min_price = 0,
-        limit = 100
+        limit = 100,
+        category,
+
     } = filterDto;
 
     let items = await this.itemsRepository.findAll({
@@ -53,6 +55,10 @@ export class ItemsService {
 
     if (news) {
         items.sort((a, b) => b.updatedAt - a.updatedAt);
+    }
+
+    if (category) {
+      items = await items.filter((item) => item.category.includes(category));
     }
 
     if (popularity) {
