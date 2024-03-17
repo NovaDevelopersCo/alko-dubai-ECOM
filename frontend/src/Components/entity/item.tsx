@@ -1,12 +1,8 @@
 'use client'
-import React, { useEffect, useMemo } from 'react'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import { fetchItems, selectItems } from '@/lib/features/items/items'
-import { InputFetch, item } from '@/type/interface'
+import React from 'react'
+import { item } from '@/type/interface'
 
 import Link from 'next/link'
-import clsx from 'clsx'
-import { Pagination } from 'antd'
 // Компонент Item
 
 export function Item({

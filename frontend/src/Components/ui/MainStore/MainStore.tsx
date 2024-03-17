@@ -43,7 +43,7 @@ function MainStore() {
 
     if (items) {
         products = items.map((obj: any) => (
-            <Item key={obj.id} disabled={true} {...obj}></Item>
+            <Item key={obj.id} {...obj}></Item>
         ))
     }
 

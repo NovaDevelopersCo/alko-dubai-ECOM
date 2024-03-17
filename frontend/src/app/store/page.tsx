@@ -1,4 +1,3 @@
-import { Item } from '@/Components/entity/item'
 import Catalog from '@/Components/ui/Catalog/Catalog'
 import Container from '@/Components/ui/Container/Container'
 import MainStore from '@/Components/ui/MainStore/MainStore'
