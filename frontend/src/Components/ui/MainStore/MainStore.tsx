@@ -24,6 +24,8 @@ function MainStore() {
             ...(filter.popularity ? { popularity: true } : {}), // Добавляем свойство popularity только если оно true
             ...(filter.news ? { news: true } : {}),
             ...(filter.price ? { price: 'asc' } : {}),
+            ...(filter.max_price ? { max_price: 12000 } : {}),
+            ...(filter.min_price ? { min_price: 0 } : {}),
             limit: limit,
             // Добавляем свойство news только если оно true
         }
@@ -42,6 +44,8 @@ function MainStore() {
             isInitialMount.current = false
         }
     }, [filter, dispatch, limit])
+    
+
 
     let products = null // По умолчанию нет товаров
     if (items) {
