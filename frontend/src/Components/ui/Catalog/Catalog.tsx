@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { selectFilter, setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
+import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
 
 export default function Catalog() {
     // eslint-disable-next-line no-unused-vars
@@ -28,10 +28,8 @@ export default function Catalog() {
     useEffect(() => {
         dispatch(fetchCategories())
     }, [dispatch])
-    const { max_price, min_price } = useAppSelector(selectFilter)
 
     const setValues = () => {
-        console.log(max_price, min_price)
         setMaxPrice(maxValue)
         setMinPrice(minValue)
     }
