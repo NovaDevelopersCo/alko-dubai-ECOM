@@ -9,12 +9,15 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
+import {
+    setMaxPrice,
+    setMinPrice,
+} from '@/lib/features/filter/filter'
 
 export default function Catalog() {
     // eslint-disable-next-line no-unused-vars
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
-    const [maxValue, setMaxValue] = useState(0)
+    const [maxValue, setMaxValue] = useState(12000)
     const [minValue, setMinValue] = useState(0)
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
