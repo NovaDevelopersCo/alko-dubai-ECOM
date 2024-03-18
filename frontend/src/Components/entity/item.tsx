@@ -14,7 +14,6 @@ export function Item({
     oldPrice,
     sale,
 }: item) {
-    console.log(title)
     return (
         <div className="col-span-1 p-4 rounded-md hover:shadow-md">
             <Link href={`/store/${id}`} key={id}>
