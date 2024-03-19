@@ -79,7 +79,7 @@ export default function Catalog() {
                             max={1000}
                         />
                     </div>
-                    <button onClick={handleFilterButtonClick}>Фильтр</button>
+                    <button className='border p-1 border-customPink rounded-3xl w-20 text-customPink text-sm font-medium' onClick={handleFilterButtonClick}>ФИЛЬТР</button>
                     <h1 className="text-3xl mt-5">Каталог</h1>
                     <div className="flex flex-col gap-3 mt-5">
                         {categoriesArray.length > 0 ? (
