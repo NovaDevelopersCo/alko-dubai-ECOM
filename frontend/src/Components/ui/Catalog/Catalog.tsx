@@ -12,7 +12,7 @@ import Link from 'next/link'
 import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
 
 export default function Catalog() {
-    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+    const [visibleCatalog] = useContext(CatalogContext)
     const [sliderValues, setSliderValues] = useState<number[]>([
         1, 1000,
     ])
