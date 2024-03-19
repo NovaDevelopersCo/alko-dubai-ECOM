@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useContext, useEffect, useState } from 'react'
 import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
@@ -9,17 +9,13 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import Link from 'next/link'
-import {
-    selectFilter,
-    setMaxPrice,
-    setMinPrice,
-} from '@/lib/features/filter/filter'
+import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
 
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
-    const [sliderValues, setSliderValues] = useState<[number, number]>([1, 1000])
-
-    const { max_price, min_price } = useAppSelector(selectFilter)
+    const [sliderValues, setSliderValues] = useState<number[]>([
+        1, 1000,
+    ])
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
@@ -33,7 +29,7 @@ export default function Catalog() {
         dispatch(fetchCategories())
     }, [dispatch])
 
-    const handleSliderChange = (values: [number, number]) => {
+    const handleSliderChange = (values: number[]) => {
         setSliderValues(values)
     }
 
@@ -70,12 +66,14 @@ export default function Catalog() {
                         visibleCatalog ? 'mt-20' : '',
                     ])}
                 >
-                    <p className="text-base">Цена</p>
+                    <p className="text-base">��ена</p>
                     <div className="w-52">
                         <Slider
                             range
                             value={sliderValues}
-                            onChange={handleSliderChange}
+                            onChange={(value) =>
+                                handleSliderChange(value)
+                            }
                             step={5}
                             defaultValue={[0, 1000]}
                             max={1000}
