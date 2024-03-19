@@ -16,9 +16,9 @@ export const Product = () => {
     }
 
     return (
-        <div className="flex items-center border-b-[1px] border-customPink">
+        <div className="flex items-center border-b-[1px] border-customPink border-none lg:border-solid md:border-solid sm:border-none">
             <Image
-                className="cursor-pointer"
+                className="cursor-pointer hidden lg:block md:block sm:hidden"
                 src={'/close.svg'}
                 alt={'delete'}
                 width={15}
@@ -30,23 +30,38 @@ export const Product = () => {
                 width={105}
                 height={122}
             />
-            <div className="flex justify-between w-[100%]">
-                <div className="flex items-center">
-                    <span>это супер классное виски</span>
-                    <span>(24 шт)</span>
+            <div className="grid lg:flex md:flex sm:grid grid-cols-1 justify-between w-[100%] flex-wrap">
+                <div className="flex items-top justify-between py-[7px]">
+                    <span className="text-[14px] lg:text-[16px] md:text-[15px] sm:text-[14px] font-semibold max-w-[185px] lg:max-w-[100%] md:max-w-[100%] sm:max-w-[185px]">
+                        это супер классное виски (24 шт)
+                    </span>
+                    <span className="text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] inline lg:hidden md:hidden sm:inline justify-between font-semibold cursor-pointer">
+                        <img src="/close.svg" alt="close" />
+                    </span>
                 </div>
-                <div className="flex items-center">
-                    <span className="font-semibold text-[#878787]">
+                <div className="flex items-center justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[2px]">
+                    <span className="text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] inline lg:hidden md:hidden sm:inline font-semibold">
+                        цена
+                    </span>
+                    <span className="font-medium lg:font-semibold md:font-semibold sm:font-medium  text-[#878787] text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px]">
                         250 AED
                     </span>
                 </div>
-                <Counter
-                    value={count}
-                    increment={increment}
-                    decrement={decrement}
-                />
-                <div className="flex items-center">
-                    <span className="font-semibold text-customPink">
+                <div className="flex items-center justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[2px]">
+                    <span className="text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] inline lg:hidden md:hidden sm:inline justify-between font-semibold">
+                        количество
+                    </span>
+                    <Counter
+                        value={count}
+                        increment={increment}
+                        decrement={decrement}
+                    />
+                </div>
+                <div className="flex items-center justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[7px]">
+                    <span className="text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] inline lg:hidden md:hidden sm:inline font-semibold">
+                        подытог
+                    </span>
+                    <span className="font-semibold text-customPink text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px]">
                         {count * 250} AED
                     </span>
                 </div>

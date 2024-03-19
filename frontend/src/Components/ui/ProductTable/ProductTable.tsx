@@ -3,21 +3,21 @@ import { Product } from '../Product/Product'
 export const ProductTable = () => {
     return (
         <div className="max-w-[858px]">
-            <div className="grid grid-cols-[4fr_1fr_1.5fr_1fr] border-b-[1px] border-customPink">
-                <span className="text-center text-[22px] font-semibold pb-[5px]">
+            <div className="hidden lg:grid md:grid sm:hidden grid-cols-[4fr_1fr_1.5fr_1fr] lg:grid-cols-[4fr_1fr_1.5fr_1fr] md:grid-cols-[5fr_1fr_1.5fr_1fr] sm:grid-cols-[4fr_1fr_1.5fr_1fr] border-b-[1px] border-customPink">
+                <span className="text-center text-[18px] lg:text-[22px] md:text-[20px] sm:text-[18px] font-semibold pb-[5px]">
                     товар
                 </span>
-                <span className="pl-[10px] text-[22px] font-semibold">
+                <span className="pl-[0] lg:pl-[30px] md:pl-[5px] sm:pl-[0] text-[18px] lg:text-[22px] md:text-[20px] sm:text-[18px] font-semibold">
                     цена
                 </span>
-                <span className="text-center text-[22px] font-semibold">
+                <span className="text-center text-[18px] lg:text-[22px] md:text-[20px] sm:text-[18px] font-semibold pl-[0] lg:pl-[10px] md:pl-[0px] sm:pl-[0]">
                     количество
                 </span>
-                <span className="text-end text-[22px] font-semibold">
+                <span className="text-end text-[18px] lg:text-[22px] md:text-[20px] sm:text-[18px] font-semibold">
                     подытог
                 </span>
             </div>
-            <div>
+            <div className="flex flex-col gap-[50px] lg:gap-[0px] md:gap-[0px] sm:gap-[50px]">
                 <Product />
                 <Product />
                 <Product />
