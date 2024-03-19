@@ -22,7 +22,7 @@ function Search() {
         />
         <button
           type="submit"
-          className="text-white absolute end-0 bottom-0 border-2 border-customPink rounded-tl rounded-bl font-medium rounded-2xl text-sm px-3 py-1.5"
+          className="text-white absolute end-0 bottom-0 border-l-0 border-2 border-customPink rounded-tr-0 rounded-br-0 rounded-tl rounded-bl font-medium rounded-2xl text-sm px-3 py-1.5"
         >
           <svg
             className="w-4 h-4 text-customPink"
