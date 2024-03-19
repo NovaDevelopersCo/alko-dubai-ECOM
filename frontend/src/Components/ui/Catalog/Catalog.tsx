@@ -66,7 +66,7 @@ export default function Catalog() {
                         visibleCatalog ? 'mt-20' : '',
                     ])}
                 >
-                    <p className="text-base">��ена</p>
+                    <p className="text-base">Цена</p>
                     <div className="w-52">
                         <Slider
                             range
