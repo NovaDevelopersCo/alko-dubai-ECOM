@@ -6,26 +6,33 @@ import { Item } from '@/Components/entity/item'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Grid from '../GridContainer/Grid'
 import { Pagination } from 'antd'
+import { selectFilter } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
+
 
 function MainStore() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
+    const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
+    const limit = 8 // Устанавливаем лимит
+    const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
 
-    const isInitialMount = useRef(true)
-
-    const fetchItemsInput: InputFetch = {
-        price: 'asc',
-        popularity: true,
-        news: true,
-        max_price: 12000,
-        min_price: 0,
-        limit: 100,
-    }
-
+    // Функция для обновления элементов
     const updateItems = () => {
-        dispatch(fetchItems(fetchItemsInput))
+        // Формируем объект inputFetch, учитывая выбор пользователя
+        const inputFetch: InputFetch = {
+            ...(filter.popularity ? { popularity: true } : {}), // Добавляем свойство popularity только если оно true
+            ...(filter.news ? { news: true } : {}),
+            ...(filter.price ? { price: filter.price } : {}),
+            ...(filter.max_price ? { max_price: filter.max_price } : {}),
+            ...(filter.min_price ? { min_price: filter.min_price } : {}),
+            limit: limit,
+            // Добавляем свойство news только если оно true
+        }
+
+        // Вызываем асинхронный экшен для получения элементов
+        dispatch(fetchItems(inputFetch))
     }
 
     // Вызываем функцию updateItems только при изменении параметров фильтрации
@@ -37,12 +44,13 @@ function MainStore() {
             // Если это первый раз, устанавливаем флаг в false
             isInitialMount.current = false
         }
-    }, [dispatch])
+    }, [filter, dispatch, limit])
 
-    let products = null
-
+    let products = null // По умолчанию нет товаров
     if (items) {
-        products = items.map((obj: any) => (
+        // Ограничиваем количество элементов до limit с помощью slice
+        const limitedItems = items.slice(0, limit)
+        products = limitedItems.map((obj: any) => (
             <Item key={obj.id} disabled={true} {...obj}></Item>
         ))
     }

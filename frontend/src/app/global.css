@@ -137,3 +137,7 @@ select:focus-visible {
 	-ms-border-radius: 5px !important;
 	-o-border-radius: 5px !important;
 }
+
+.ant-select-selection-placeholder {
+	color: #000 !important
+}

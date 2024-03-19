@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
@@ -9,10 +9,11 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
 
 export default function Catalog() {
-    // eslint-disable-next-line no-unused-vars
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+    const [sliderValues, setSliderValues] = useState<number[]>([1, 1000])
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
@@ -25,6 +26,17 @@ export default function Catalog() {
     useEffect(() => {
         dispatch(fetchCategories())
     }, [dispatch])
+
+    const handleSliderChange = (values: number[]) => {
+        setSliderValues(values)
+    }
+
+    const handleFilterButtonClick = () => {
+        dispatch(setMinPrice(sliderValues[0]))
+        dispatch(setMaxPrice(sliderValues[1]))
+        setVisibleCatalog(false)
+    }
+
     return (
         <div
             className={clsx([
@@ -57,11 +69,24 @@ export default function Catalog() {
                     <div className="w-52">
                         <Slider
                             range
-                            defaultValue={[1000, 10000]}
-                            step={100}
-                            max={12000}
+                            value={sliderValues}
+                            onChange={(value) => handleSliderChange(value)}
+                            step={5}
+                            defaultValue={[0, 1000]}
+                            max={1000}
                         />
                     </div>
+                    <div className='pb-2'>
+                        <p className='text-customPink'>
+                            {sliderValues[0]} AED - {sliderValues[1]} AED
+                        </p>
+                    </div>
+                    <button
+                        className="border p-1 border-customPink rounded-3xl w-20 text-customPink text-sm font-medium"
+                        onClick={handleFilterButtonClick}
+                    >
+                        ФИЛЬТР
+                    </button>
                     <h1 className="text-3xl mt-5">Каталог</h1>
                     <div className="flex flex-col gap-3 mt-5">
                         {categoriesArray.length > 0 ? (

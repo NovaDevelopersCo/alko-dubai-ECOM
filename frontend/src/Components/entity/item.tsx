@@ -1,12 +1,8 @@
 'use client'
-import React, { useEffect, useMemo } from 'react'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import { fetchItems, selectItems } from '@/lib/features/items/items'
-import { InputFetch, item } from '@/type/interface'
+import React from 'react'
+import { item } from '@/type/interface'
 
 import Link from 'next/link'
-import clsx from 'clsx'
-import { Pagination } from 'antd'
 // Компонент Item
 
 export function Item({
@@ -18,7 +14,6 @@ export function Item({
     oldPrice,
     sale,
 }: item) {
-    console.log(title)
     return (
         <div className="col-span-1 p-4 rounded-md hover:shadow-md">
             <Link href={`/store/${id}`} key={id}>

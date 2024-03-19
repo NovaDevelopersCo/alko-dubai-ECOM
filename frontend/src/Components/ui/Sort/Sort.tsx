@@ -4,6 +4,12 @@ import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import { Select } from 'antd'
+import {
+    setPopularity,
+    setNews,
+    setPrice,
+} from '@/lib/features/filter/filter'
+import { useAppDispatch } from '@/lib/hooks'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -38,6 +44,26 @@ const Sort = () => {
             flag = false
         }
     }, [])
+
+    const dispatch = useAppDispatch()
+
+    const onChange = (value: string) => {
+        if (value === 'asc' || value === 'desc') {
+            dispatch(setPrice(value))
+            dispatch(setPopularity(false))
+            dispatch(setNews(false))
+        }
+        if (value === 'popularity') {
+            dispatch(setPrice('asc'))
+            dispatch(setPopularity(true))
+            dispatch(setNews(false))
+        }
+        if (value === 'news') {
+            dispatch(setPrice('asc'))
+            dispatch(setPopularity(false))
+            dispatch(setNews(true))
+        }
+    }
 
     return (
         <div>
@@ -75,6 +101,7 @@ const Sort = () => {
                         </p>
                     </pre>
                     <Select
+                        onChange={(value) => onChange(value)}
                         placeholder="Исходная сортировка"
                         className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
                     >
