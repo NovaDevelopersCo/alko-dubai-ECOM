@@ -5,8 +5,8 @@ import { selectItems } from '@/lib/features/items/items'
 import { Item } from '@/Components/entity/item'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Grid from '../GridContainer/Grid'
-import { InputFetch } from '@/type/interface'
 import { Pagination } from 'antd'
+import { InputFetch } from '@/type/interfaceFilter'
 
 function MainStore() {
     const dispatch = useAppDispatch()

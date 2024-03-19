@@ -16,7 +16,7 @@ export const Product = () => {
     }
 
     return (
-        <div className="flex items-center border-b-[1px] border-customPink border-none lg:border-solid md:border-solid sm:border-none">
+        <div className="flex items-center border-b-[1px] pr-6 border-customPink border-none lg:border-solid md:border-solid sm:border-none">
             <Image
                 className="cursor-pointer hidden lg:block md:block sm:hidden"
                 src={'/close.svg'}
