@@ -17,7 +17,6 @@ export class ItemsService {
       include: { all: true },
     });
     const totalPages = Math.ceil(items.length / 100);
-    console.log(items.length);
     const response = {
       totalPages: totalPages,
       items: items,

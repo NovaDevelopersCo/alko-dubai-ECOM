@@ -4,12 +4,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import itemsReducer from './features/items/items'
 import categories from './features/categories/categories'
 import filterReducer from "./features/filter/filter"
-
+import cart from './features/cart/cart'
 export const makeStore = () => {
   return configureStore({
     reducer: {
       items:itemsReducer,
       filters:filterReducer,
+      cart:cart,
       categories
     },
   })

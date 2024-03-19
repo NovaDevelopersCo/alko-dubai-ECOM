@@ -1,5 +1,5 @@
 import { RootState } from '@/lib/store'
-import { InputFetch } from '@/type/interface'
+import { InputFetch } from '@/type/interfaceFilter'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: InputFetch = {

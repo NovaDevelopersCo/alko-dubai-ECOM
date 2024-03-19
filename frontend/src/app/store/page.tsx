@@ -1,3 +1,4 @@
+import { CartMenu } from '@/Components/ui/CartMenu/CartMenu'
 import Catalog from '@/Components/ui/Catalog/Catalog'
 import Container from '@/Components/ui/Container/Container'
 import MainStore from '@/Components/ui/MainStore/MainStore'
@@ -15,6 +16,7 @@ const store = () => {
                         <MainStore></MainStore>
                     </div>
                 </div>
+                <CartMenu />
             </Container>
         </>
     )
