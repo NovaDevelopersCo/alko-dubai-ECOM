@@ -14,18 +14,10 @@ import {
     setMinPrice,
     setCategory,
 } from '@/lib/features/filter/filter'
-import { useParams } from 'next/navigation'
-import { redirect } from 'next/navigation'
 
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const [sliderValues, setSliderValues] = useState<number[]>([1, 1000])
-    const params = useParams<{ title: string }>()
-    useEffect(() => {
-        if (params.title !== '') {
-            redirect('/store')
-        }
-    }, [])
     const [width, setWidth] = useState(true)
     let flag = false
     const dispatch = useAppDispatch()
