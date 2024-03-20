@@ -36,6 +36,7 @@ export class ItemsService {
       limit = 100,
       category,
     } = filterDto;
+    console.log(filterDto);
 
     let items = await this.itemsRepository.findAll({
       include: { all: true },

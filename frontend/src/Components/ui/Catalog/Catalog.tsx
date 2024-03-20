@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { MouseEvent, useContext, useEffect, useState } from 'react'
 import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
@@ -9,11 +9,24 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
+import {
+    setMaxPrice,
+    setMinPrice,
+    setCategory,
+} from '@/lib/features/filter/filter'
+import { useParams } from 'next/navigation'
 
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const [sliderValues, setSliderValues] = useState<number[]>([1, 1000])
+    const params = useParams<{ title: string }>()
+    useEffect(() => {
+        if (params.title) {
+            dispatch(setCategory(decodeURI(params.title)))
+        }
+    }, [])
+    const [width, setWidth] = useState(true)
+    let flag = false
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
@@ -22,6 +35,17 @@ export default function Catalog() {
         title: string
         items: number
     }[]
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', function resizeHandler() {
+            if (window.innerWidth < 1024 && !flag && width) {
+                setWidth(false)
+                flag = true
+            } else if (window.innerWidth >= 1024 && flag && width) {
+                setWidth(true)
+                flag = false
+            }
+        })
+    }
 
     useEffect(() => {
         dispatch(fetchCategories())
@@ -34,7 +58,9 @@ export default function Catalog() {
     const handleFilterButtonClick = () => {
         dispatch(setMinPrice(sliderValues[0]))
         dispatch(setMaxPrice(sliderValues[1]))
-        setVisibleCatalog(false)
+        if (!width) {
+            setVisibleCatalog(false)
+        }
     }
 
     return (
@@ -76,8 +102,8 @@ export default function Catalog() {
                             max={1000}
                         />
                     </div>
-                    <div className='pb-2'>
-                        <p className='text-customPink'>
+                    <div className="pb-2">
+                        <p className="text-customPink">
                             {sliderValues[0]} AED - {sliderValues[1]} AED
                         </p>
                     </div>
@@ -95,6 +121,12 @@ export default function Catalog() {
                                     href={`/store/catalog/${category.title}`}
                                     className="flex justify-between w-60"
                                     key={id}
+                                    onClick={(
+                                        event: MouseEvent<HTMLAnchorElement>,
+                                    ) => {
+                                        dispatch(setCategory(category.title))
+                                        event as unknown as MouseEvent<HTMLAnchorElement>
+                                    }}
                                 >
                                     <div>{category.title}</div>
                                     <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">

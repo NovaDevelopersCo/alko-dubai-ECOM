@@ -9,7 +9,6 @@ import { Pagination } from 'antd'
 import { selectFilter } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
-
 function MainStore() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
@@ -27,6 +26,7 @@ function MainStore() {
             ...(filter.price ? { price: filter.price } : {}),
             ...(filter.max_price ? { max_price: filter.max_price } : {}),
             ...(filter.min_price ? { min_price: filter.min_price } : {}),
+            ...(filter.category ? { category: filter.category } : {}),
             limit: limit,
             // Добавляем свойство news только если оно true
         }

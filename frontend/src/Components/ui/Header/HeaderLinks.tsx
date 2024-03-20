@@ -14,7 +14,7 @@ const Links: NavLink[] = [
   },
   {
     name: 'Магазин',
-    href: 'store',
+    href: '/store',
   },
   {
     name: 'Доставка и оплата',

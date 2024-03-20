@@ -9,4 +9,5 @@ export interface InputFetch {
   min_price?: number
   currentPage?: number
   limit?: number
+  category?: string
 }
