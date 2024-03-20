@@ -21,7 +21,7 @@ export default function Catalog() {
     const [sliderValues, setSliderValues] = useState<number[]>([1, 1000])
     const params = useParams<{ title: string }>()
     useEffect(() => {
-        if (params.title !== '') {
+        if (params.title) {
             dispatch(setCategory(decodeURI(params.title)))
         }
     }, [])
