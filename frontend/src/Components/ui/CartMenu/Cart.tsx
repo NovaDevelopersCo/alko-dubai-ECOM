@@ -10,7 +10,7 @@ const Cart: FC = () => {
 
     const cartClasses = clsx(
         'ease-in-out duration-300 ml-6',
-        'bg-[#fff] fixed top-0 right-0 h-screen w-[45%] flex',
+        'bg-[#fff] fixed top-0 right-0 h-screen w-[100%] flex',
         'w-auto lg:order-2 lg:max-w-auto z-30 p-[30px_25px] shadow-2xl',
         isCartMenuOpen ? 'translate-x-0 ' : 'translate-x-full',
     )
@@ -56,7 +56,6 @@ const Cart: FC = () => {
                         <div className="border border-customPink w-[100%]" />
                     </div>
                 </div>
-                {/* <br /> */}
                 <div>
                     <div className="block mt-[9px] -ml-[25px] -mr-[25px] sm:-ml-[25px] sm:-mr-[25px] md:-ml-[0] md:-mr-[0] md:-lg-[0] md:-lg-[0] mb-[17px]">
                         <div className="border border-customPink w-[100%]" />
@@ -72,7 +71,7 @@ const Cart: FC = () => {
                     <div className="flex flex-col gap-[6px]">
                         <Link
                             className="p-[13px_46px] rounded-[15px] text-montserrat text-[#878787] bg-[#fff] border border-customPink flex justify-center transition-all hover:scale-105"
-                            href="#"
+                            href="/cart"
                         >
                             ПРОСМОТР КОРЗИНЫ
                         </Link>
