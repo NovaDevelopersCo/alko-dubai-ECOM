@@ -47,7 +47,7 @@ export const fetchItems = createAsyncThunk(
             min_price: 0,
             currentPage: 0,
             limit: 100,
-            category: ''
+            category: '',
         },
     ) => {
         try {
