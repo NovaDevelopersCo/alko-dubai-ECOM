@@ -14,6 +14,8 @@ import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const [sliderValues, setSliderValues] = useState<number[]>([1, 1000])
+    const [width, setWidth] = useState(true)
+    let flag = false
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
@@ -22,6 +24,17 @@ export default function Catalog() {
         title: string
         items: number
     }[]
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', function resizeHandler() {
+            if (window.innerWidth < 1024 && !flag && width) {
+                setWidth(false)
+                flag = true
+            } else if (window.innerWidth >= 1024 && flag && width) {
+                setWidth(true)
+                flag = false
+            }
+        })
+    }
 
     useEffect(() => {
         dispatch(fetchCategories())
@@ -34,7 +47,9 @@ export default function Catalog() {
     const handleFilterButtonClick = () => {
         dispatch(setMinPrice(sliderValues[0]))
         dispatch(setMaxPrice(sliderValues[1]))
-        setVisibleCatalog(false)
+        if (!width) {
+            setVisibleCatalog(false)
+        }
     }
 
     return (
@@ -76,8 +91,8 @@ export default function Catalog() {
                             max={1000}
                         />
                     </div>
-                    <div className='pb-2'>
-                        <p className='text-customPink'>
+                    <div className="pb-2">
+                        <p className="text-customPink">
                             {sliderValues[0]} AED - {sliderValues[1]} AED
                         </p>
                     </div>
