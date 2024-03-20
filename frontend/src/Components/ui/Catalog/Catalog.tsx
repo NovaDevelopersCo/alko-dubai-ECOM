@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { MouseEvent, useContext, useEffect, useState } from 'react'
 import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
@@ -114,9 +114,12 @@ export default function Catalog() {
                                     href={`/store/catalog/${category.title}`}
                                     className="flex justify-between w-60"
                                     key={id}
-                                    onClick={(category: string) =>
-                                        dispatch(setCategory(category))
-                                    }
+                                    onClick={(
+                                        event: MouseEvent<HTMLAnchorElement>,
+                                    ) => {
+                                        dispatch(setCategory(category.title))
+                                        event as unknown as MouseEvent<HTMLAnchorElement>
+                                    }}
                                 >
                                     <div>{category.title}</div>
                                     <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
