@@ -8,8 +8,6 @@ import Grid from '../GridContainer/Grid'
 import { Pagination } from 'antd'
 import { selectFilter } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
-import { usePathname } from 'next/navigation'
-import { redirect } from 'next/navigation'
 
 function MainStore() {
     const dispatch = useAppDispatch()
@@ -18,7 +16,6 @@ function MainStore() {
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
     const limit = 8 // Устанавливаем лимит
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
-    const pathname = usePathname()
 
     // Функция для обновления элементов
     const updateItems = () => {
@@ -40,9 +37,6 @@ function MainStore() {
 
     // Вызываем функцию updateItems только при изменении параметров фильтрации
     useEffect(() => {
-        if (pathname.includes('/store/catalog/')) {
-            redirect('/store')
-        }
         // Проверяем, первый ли раз вызывается компонент
         if (!isInitialMount.current) {
             updateItems()
