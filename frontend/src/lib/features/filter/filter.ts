@@ -69,6 +69,7 @@ export const {
     setMaxPrice,
     setMinPrice,
     setSale,
+    setCategory,
 } = filterSlice.actions
 
 export default filterSlice.reducer

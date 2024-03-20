@@ -9,7 +9,11 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { setMaxPrice, setMinPrice } from '@/lib/features/filter/filter'
+import {
+    setMaxPrice,
+    setMinPrice,
+    setCategory,
+} from '@/lib/features/filter/filter'
 
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -110,6 +114,9 @@ export default function Catalog() {
                                     href={`/store/catalog/${category.title}`}
                                     className="flex justify-between w-60"
                                     key={id}
+                                    onClick={(category: string) =>
+                                        dispatch(setCategory(category))
+                                    }
                                 >
                                     <div>{category.title}</div>
                                     <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
