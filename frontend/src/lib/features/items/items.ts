@@ -48,6 +48,7 @@ export const fetchItems = createAsyncThunk(
             currentPage: 0,
             limit: 100,
             category: '',
+            search: '',
         },
     ) => {
         try {

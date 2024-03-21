@@ -11,7 +11,8 @@ const initialState: InputFetch = {
     min_price: 0,
     currentPage: 0,
     limit: 100,
-    category: ''
+    category: '',
+    search: ''
 }
 
 const filterSlice = createSlice({
@@ -56,6 +57,12 @@ const filterSlice = createSlice({
             action: PayloadAction<InputFetch['category']>,
         ) {
             state.category = action.payload
+        },
+        setSearch(
+            state,
+            action: PayloadAction<InputFetch['category']>,
+        ) {
+            state.search = action.payload
         }
     },
 })
@@ -70,6 +77,7 @@ export const {
     setMinPrice,
     setSale,
     setCategory,
+    setSearch,
 } = filterSlice.actions
 
 export default filterSlice.reducer

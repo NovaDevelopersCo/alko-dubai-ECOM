@@ -13,6 +13,7 @@ import {
     setMaxPrice,
     setMinPrice,
     setCategory,
+    setSearch,
 } from '@/lib/features/filter/filter'
 import { useParams } from 'next/navigation'
 
@@ -125,6 +126,7 @@ export default function Catalog() {
                                         event: MouseEvent<HTMLAnchorElement>,
                                     ) => {
                                         dispatch(setCategory(category.title))
+                                        dispatch(setSearch(''))
                                         event as unknown as MouseEvent<HTMLAnchorElement>
                                     }}
                                 >
