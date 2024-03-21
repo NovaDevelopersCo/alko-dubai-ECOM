@@ -62,8 +62,8 @@ function MainStore() {
             <Pagination
                 className="text-center"
                 showSizeChanger={false}
-                pageSize={items ? Object.keys(items).length / pages : 2}
-                total={items ? Object.keys(items).length : 2}
+                pageSize={items ? Object.keys(items).length / pages : 1}
+                total={items ? Object.keys(items).length : 1}
             />
         </div>
     )
