@@ -1,4 +1,4 @@
-import { setSearch } from '@/lib/features/filter/filter'
+import { setCategory, setSearch } from '@/lib/features/filter/filter'
 import { useAppDispatch } from '@/lib/hooks'
 import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
@@ -12,6 +12,7 @@ function Search() {
         const searchInput = document.getElementById(
             'default-search',
         ) as HTMLInputElement
+        dispatch(setCategory(''))
         dispatch(setSearch(searchInput.value))
         if (pathname !== '/store') {
             router.push('/store')
