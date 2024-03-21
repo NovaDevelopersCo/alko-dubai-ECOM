@@ -3,11 +3,11 @@ export type CartItem = {
     title: string
     price: number
     category: string
-    oldPrice: number
+    oldPrice?: number
     image: string
     count: number
-    sale: boolean
-    soldOut: boolean
+    sale?: boolean
+    soldOut?: boolean
 }
 
 export interface CartSliceStateProps {

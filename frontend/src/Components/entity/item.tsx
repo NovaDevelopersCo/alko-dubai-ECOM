@@ -1,8 +1,9 @@
 'use client'
 import React from 'react'
-import { item } from '@/type/interface'
+
 
 import Link from 'next/link'
+import { item } from '@/type/interfaceItems'
 // Компонент Item
 
 export function Item({

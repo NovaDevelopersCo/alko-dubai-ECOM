@@ -1,3 +1,5 @@
+import React from 'react'
+
 export const Counter = ({
     value,
     increment,
@@ -7,10 +9,13 @@ export const Counter = ({
     increment: () => void
     decrement: () => void
 }) => {
+    const maxItems = 20 // Максимальное количество товаров
+    const isMaxReached = value >= maxItems // Проверка на достижение максимального количества
+
     return (
         <div className="flex items-center select-none">
             <span
-                className="border border-customPink w-[20px] lg:w-[24px] md:w-[22px] sm:w-[20] h-[32px] lg:h-[36px] md:h-[34px] sm:h-[32px] rounded-l-[12px] lg:rounded-l-[15px] md:rounded-l-[15px] sm:rounded-l-[12px] hover:bg-customPink transition-all duration-100 font-extralight font-montserrat flex justify-center items-center text-[14px] lg:text-[20px] md:text-[16px] sm:text-[14px]"
+                className={`border border-customPink w-[20px] lg:w-[24px] md:w-[22px] sm:w-[20] h-[32px] lg:h-[36px] md:h-[34px] sm:h-[32px] rounded-l-[12px] lg:rounded-l-[15px] md:rounded-l-[15px] sm:rounded-l-[12px] hover:bg-customPink transition-all duration-100 font-extralight font-montserrat flex justify-center items-center text-[14px] lg:text-[20px] md:text-[16px] sm:text-[14px] `} // Дизейблим кнопку, если достигнуто максимальное количество товаров
                 onClick={decrement}
             >
                 -
@@ -19,8 +24,11 @@ export const Counter = ({
                 {value}
             </span>
             <span
-                className="border border-customPink w-[20px] lg:w-[24px] md:w-[22px] sm:w-[20] h-[32px] lg:h-[36px] md:h-[34px] sm:h-[32px] rounded-r-[12px] lg:rounded-r-[15px] md:rounded-r-[15px] sm:rounded-r-[12px] hover:bg-customPink transition-all duration-100 text-center font-extralight font-montserrat flex items-center justify-center text-[14px] lg:text-[20px] md:text-[16px] sm:text-[14px]"
-                onClick={increment}
+                className={`border border-customPink w-[20px] lg:w-[24px] md:w-[22px] sm:w-[20] h-[32px] lg:h-[36px] md:h-[34px] sm:h-[32px] rounded-r-[12px] lg:rounded-r-[15px] md:rounded-r-[15px] sm:rounded-r-[12px] hover:bg-customPink transition-all duration-100 text-center font-extralight font-montserrat flex items-center justify-center text-[14px] lg:text-[20px] md:text-[16px] sm:text-[14px] ${
+                    isMaxReached &&
+                    'cursor-not-allowed bg-gray-200 text-gray-400'
+                }`}
+                onClick={!isMaxReached ? increment : undefined}
             >
                 +
             </span>
