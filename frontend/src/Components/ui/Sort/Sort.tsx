@@ -10,8 +10,9 @@ import {
     setPrice,
 } from '@/lib/features/filter/filter'
 import { useAppDispatch } from '@/lib/hooks'
+import GridButton from "@/Components/ui/gridButton/GridButton";
 
-const Sort = () => {
+const Sort = ({gridCount, setGridCount}:{gridCount:number, setGridCount:(count:number)=>void}) => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
@@ -76,7 +77,11 @@ const Sort = () => {
                 ])}
             />
             <Container>
-                <div className="flex justify-between items-center px-5 xl:px-0">
+
+                <div className="flex justify-between items-center px-5 xl:px-0 py-2.5">
+               <ul className="max-w-[50px] flex gap-x-4">
+                   {[2,3,4].map(i=><li key={i} className=" cursor-pointer"><GridButton onclick={()=>setGridCount(i)} gridCount={gridCount} index={i}/></li>)}
+               </ul>
                     <pre
                         className={clsx([
                             visibleCatalog

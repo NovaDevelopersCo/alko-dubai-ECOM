@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { fetchItems } from '@/lib/features/items/items'
 import { selectItems } from '@/lib/features/items/items'
 import { Item } from '@/Components/entity/item'
@@ -9,7 +9,7 @@ import { Pagination } from 'antd'
 import { selectFilter } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
-function MainStore() {
+function MainStore({gridCount}:{gridCount:number}) {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
@@ -59,7 +59,7 @@ function MainStore() {
     return (
         <div>
             {products && products.length > 0 ? (
-                <Grid>{products}</Grid>
+                <Grid gridCount={gridCount}>{products}</Grid>
             ) : (
                 <div className="w-full h-96 flex justify-center items-center">
                     Ничего не найдено😢
