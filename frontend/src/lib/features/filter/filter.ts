@@ -8,7 +8,7 @@ const initialState: InputFetch = {
     news: false,
     sale: false,
     max_price: 12000,
-    min_price: 500,
+    min_price: 0,
     currentPage: 0,
     limit: 100,
     category: '',
