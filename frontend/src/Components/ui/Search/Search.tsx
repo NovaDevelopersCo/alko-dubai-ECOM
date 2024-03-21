@@ -1,18 +1,20 @@
-import { usePathname } from 'next/navigation'
+import { setSearch } from '@/lib/features/filter/filter'
+import { useAppDispatch } from '@/lib/hooks'
+import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
-import { redirect } from 'next/navigation'
 
 function Search() {
     const pathname = usePathname()
+    const dispatch = useAppDispatch()
+    const router = useRouter()
     const onSubmit = (e: any) => {
         e.preventDefault()
         const searchInput = document.getElementById(
             'default-search',
         ) as HTMLInputElement
-        console.log(searchInput.value)
+        dispatch(setSearch(searchInput.value))
         if (pathname !== '/store') {
-            console.log('AAAAAAA')
-            redirect('/store')
+            router.push('/store')
         }
     }
     return (

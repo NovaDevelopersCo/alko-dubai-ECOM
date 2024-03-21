@@ -62,7 +62,7 @@ const filterSlice = createSlice({
             state,
             action: PayloadAction<InputFetch['category']>,
         ) {
-            state.category = action.payload
+            state.search = action.payload
         }
     },
 })

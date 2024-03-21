@@ -27,6 +27,7 @@ function MainStore() {
             ...(filter.max_price ? { max_price: filter.max_price } : {}),
             ...(filter.min_price ? { min_price: filter.min_price } : {}),
             ...(filter.category ? { category: filter.category } : {}),
+            ...(filter.search ? { search: filter.search } : {}),
             limit: limit,
             // Добавляем свойство news только если оно true
         }
