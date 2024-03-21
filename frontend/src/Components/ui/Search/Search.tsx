@@ -1,11 +1,16 @@
-import { setCategory, setSearch } from '@/lib/features/filter/filter'
-import { useAppDispatch } from '@/lib/hooks'
+import {
+    selectFilter,
+    setCategory,
+    setSearch,
+} from '@/lib/features/filter/filter'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { usePathname, useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Search() {
     const pathname = usePathname()
     const dispatch = useAppDispatch()
+    const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
     const router = useRouter()
     const onSubmit = (e: any) => {
         e.preventDefault()
@@ -18,6 +23,14 @@ function Search() {
             router.push('/store')
         }
     }
+    useEffect(() => {
+        if (filter.search === '') {
+            const searchInput = document.getElementById(
+                'default-search',
+            ) as HTMLInputElement
+            searchInput.value = ''
+        }
+    })
     return (
         <form
             className="max-w-md mx-auto hidden justify-between items-center w-full sm:flex sm:w-auto"
