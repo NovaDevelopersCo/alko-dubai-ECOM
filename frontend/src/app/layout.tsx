@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import {Montserrat, Literata as LiterataFont } from 'next/font/google'
+import { Montserrat, Literata as LiterataFont } from 'next/font/google'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import clsx from 'clsx'
 
@@ -21,7 +21,6 @@ const montserrat = Montserrat({
     display: 'swap',
     variable: '--font-montserrat',
 })
-
 
 const literata = LiterataFont({
     style: ['normal'],
@@ -65,8 +64,8 @@ export const metadata: Metadata = {
         'delivery',
     ],
     authors: [
-        {name: 'Nova Developers', url: 'https://github.com/NovaDevelopersCo'},
-        {name: 'Igor Zimin', url: 'https://github.com/merdernoty'},
+        { name: 'Nova Developers', url: 'https://github.com/NovaDevelopersCo' },
+        { name: 'Igor Zimin', url: 'https://github.com/merdernoty' },
     ],
     creator: 'https://github.com/merdernoty',
     publisher: 'https://github.com/merdernoty',
@@ -78,32 +77,32 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
+    children,
+}: Readonly<{
     children: React.ReactNode
 }>) {
     return (
         <html lang="en">
-        <body
-            className={clsx(
-                montserrat.variable,
-                literata.variable,
-                'relative block z-0',
-            )}
-        >
-        <StoreProvider>
-          <AntdRegistry>
-            <AppProvider>
-              <div className={clsx('flex flex-col min-h-screen')}>
-                <Header />
-                <main className="flex-grow">{children}</main>
-                <Footer />
-                <Modal/>
-              </div>
-            </AppProvider>
-          </AntdRegistry>
-        </StoreProvider>
-        </body>
+            <body
+                className={clsx(
+                    montserrat.variable,
+                    literata.variable,
+                    'relative block z-0',
+                )}
+            >
+                <StoreProvider>
+                    <AntdRegistry>
+                        <AppProvider>
+                            <div className={clsx('flex flex-col min-h-screen')}>
+                                <Header />
+                                <main className="flex-grow">{children}</main>
+                                <Footer />
+                                <Modal />
+                            </div>
+                        </AppProvider>
+                    </AntdRegistry>
+                </StoreProvider>
+            </body>
         </html>
     )
 }
