@@ -1,6 +1,6 @@
 'use client'
 import { Counter } from '@/Components/ui/Counter/Counter'
-import React, { useState } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import { CartItem } from '@/type/interfaceCart'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
@@ -21,19 +21,8 @@ export const Product = ({
     oldPrice,
 }: CartItem) => {
     const dispatch = useAppDispatch()
-    const { items, totalPrice } = useAppSelector(selectCart)
-    const isMounted = React.useRef(false)
-
-        
-    React.useEffect(() => {
-        if (isMounted.current) {
-            const json = JSON.stringify(items)
-            localStorage.setItem('cart', json)
-        }
-        isMounted.current = true
-    }, [items])
-
-    const onClickPlus = () => {
+    const { totalPrice } = useAppSelector(selectCart)
+    const onClickPlus = useCallback(() => {
         dispatch(
             addItem({
                 id,
@@ -43,19 +32,17 @@ export const Product = ({
                 oldPrice,
             }),
         )
-    }
+    }, [dispatch, id, price, count, sale, oldPrice])
 
-    const onClickMinus = () => {
+    const onClickMinus = useCallback(() => {
         dispatch(minusItem(id))
-    }
-    const onClickRemove = () => {
+    }, [dispatch, id])
+
+    const onClickRemove = useCallback(() => {
         if (window.confirm('Удалить это?')) {
-            const updatedItems = items.filter((item: any) => item.id !== id)
-            const json = JSON.stringify(updatedItems)
-            localStorage.setItem('cart', json)
             dispatch(removeItem(id))
         }
-    }
+    }, [dispatch, id])
 
     return (
         <div className="flex items-center border-b-[1px] pr-6 border-customPink border-none lg:border-solid md:border-solid sm:border-none">
@@ -85,6 +72,13 @@ export const Product = ({
                         цена
                     </span>
                     <span className="font-medium lg:font-semibold md:font-semibold sm:font-medium  text-[#878787] text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px]">
+                        {oldPrice && oldPrice > price ? (
+                            <span className="font-medium line-through pr-1 lg:font-semibold md:font-semibold sm:font-medium  text-[#878787] text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] ">
+                                {oldPrice} AED
+                            </span>
+                        ) : (
+                            ''
+                        )}
                         {price} AED
                     </span>
                 </div>
@@ -103,7 +97,7 @@ export const Product = ({
                         подытог
                     </span>
                     <span className="font-semibold text-customPink text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px]">
-                        {count * price} AED
+                        {totalPrice} AED
                     </span>
                 </div>
             </div>

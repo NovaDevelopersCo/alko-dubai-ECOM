@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { useParams } from 'next/navigation'
@@ -10,7 +10,7 @@ import {
 import Container from '@/Components/ui/Container/Container'
 import Link from 'next/link'
 import { Counter } from '../ui/Counter/Counter'
-import { addItem, selectCart } from '@/lib/features/cart/cart'
+import { addItems } from '@/lib/features/cart/cart'
 import { CartItem } from '@/type/interfaceCart'
 
 const ItemPage = () => {
@@ -42,20 +42,45 @@ const ItemPage = () => {
         }
     }
 
+    React.useEffect(() => {
+        if (cartItem) {
+            setCount(cartItem.count) // Устанавливаем значение счетчика равным количеству товара в корзине, если он есть
+        } else {
+            setCount(1) // Если товара нет в корзине, сбрасываем счетчик в 1
+        }
+    }, [cartItem])
+    
+    React.useEffect(() => {
+        // Сбрасываем значение счетчика на 1 после успешного добавления товара в корзину
+        if (cartItem && cartItem.count !== count) {
+            setCount(1);
+        }
+    }, [cartItem]);
+
     const onClickAdd = () => {
         if (item && item.image) {
-            const fetch: CartItem = {
-                id: item.id,
-                category: item.category,
-                title: item.title,
-                price: item.price,
-                image: item.image,
-                sale: item.sale,
-                oldPrice: item.oldPrice,
-                count: count, // Используем текущее значение счетчика
+            // Проверяем, не превышает ли текущее количество товаров в корзине с учетом добавляемого товара максимальное значение (20)
+            const totalItemCount = cartItem ? cartItem.count + count : count
+            if (totalItemCount <= 20) {
+                const fetch: CartItem = {
+                    id: item.id,
+                    category: item.category,
+                    title: item.title,
+                    price: item.price,
+                    image: item.image,
+                    sale: item.sale,
+                    oldPrice: item.oldPrice,
+                    count: count, // Используем текущее значение счетчика
+                }
+                dispatch(addItems(fetch))
+                console.log('Товар добавлен', count, item)
+                // Сбрасываем значение счетчика на 1
+                setCount(1)
+            } else {
+                alert(
+                    'Превышен лимит корзины на один товар, закажи что-то еще ;)',
+                )
             }
-            dispatch(addItem(fetch))
-            console.log('Товар добавлен', count)
         }
     }
     return (
