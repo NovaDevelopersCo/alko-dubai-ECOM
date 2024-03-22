@@ -11,7 +11,7 @@ const ItemPage = () => {
     const item = useAppSelector(selectItem)
 
     useEffect(() => {
-        dispatch(fetchItemById(id)) // Convert id to number using Number function
+        dispatch(fetchItemById(id))
     }, [])
     return (
         <Container>

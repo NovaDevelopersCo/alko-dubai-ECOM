@@ -9,12 +9,11 @@ import { Pagination } from 'antd'
 import { selectFilter } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
-function MainStore({gridCount}:{gridCount:number}) {
+function MainStore({gridCount,limit}:{gridCount:number, limit:number}) {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
-    const limit = 8 // Устанавливаем лимит
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
 
     // Функция для обновления элементов
@@ -35,22 +34,35 @@ function MainStore({gridCount}:{gridCount:number}) {
         // Вызываем асинхронный экшен для получения элементов
         dispatch(fetchItems(inputFetch))
     }
-
+    const limitCount = () => {
+        switch (limit) {
+            case 9:
+                return 9;
+            case 24:
+                return 24;
+            case 36:
+                return 36;
+            default:
+                return 9;
+        }
+    }
     // Вызываем функцию updateItems только при изменении параметров фильтрации
     useEffect(() => {
-        // Проверяем, первый ли раз вызывается компонент
         if (!isInitialMount.current) {
-            updateItems()
+            updateItems();
         } else {
-            // Если это первый раз, устанавливаем флаг в false
-            isInitialMount.current = false
+            isInitialMount.current = false;
         }
-    }, [filter, dispatch, limit])
+    }, [filter, dispatch, limit]);
+
+    useEffect(() => {
+        updateItems();
+    }, [limit]);
 
     let products = null // По умолчанию нет товаров
     if (items) {
         // Ограничиваем количество элементов до limit с помощью slice
-        const limitedItems = items.slice(0, limit)
+        const limitedItems = items.slice(0, limitCount())
         products = limitedItems.map((obj: any) => (
             <Item key={obj.id} disabled={true} {...obj}></Item>
         ))
@@ -68,14 +80,8 @@ function MainStore({gridCount}:{gridCount:number}) {
             <Pagination
                 className="text-center"
                 showSizeChanger={false}
-                pageSize={
-                    items && items.lenght > 0
-                        ? Object.keys(items).length / pages
-                        : 1
-                }
-                total={
-                    items && items.lenght > 0 ? Object.keys(items).length : 1
-                }
+                pageSize={items && items.length > 0 ? items.length / pages : 1}
+                total={items && items.length > 0 ? items.length : 1}
             />
         </div>
     )

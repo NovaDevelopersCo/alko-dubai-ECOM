@@ -12,7 +12,7 @@ import {
 import { useAppDispatch } from '@/lib/hooks'
 import GridButton from "@/Components/ui/gridButton/GridButton";
 
-const Sort = ({gridCount, setGridCount}:{gridCount:number, setGridCount:(count:number)=>void}) => {
+const Sort = ({gridCount, setGridCount, limit, setLimit}:{gridCount:number, setGridCount:(count:number)=>void, limit:number, setLimit:(lim:number)=>void}) => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
@@ -80,9 +80,31 @@ const Sort = ({gridCount, setGridCount}:{gridCount:number, setGridCount:(count:n
 
                 <div className="flex justify-between items-center px-5 xl:px-0 py-2.5">
                     <ul className="max-w-[50px] flex gap-x-4 hidden md:flex">
+                        Показать:
+                        <li
+                            className={`cursor-pointer ${limit === 9 ? 'text-black' : 'text-gray-500'}`}
+                            onClick={() => setLimit(9)}
+                        >
+                            9/
+                        </li>
+                        <li
+                            className={`cursor-pointer ${limit === 24 ? 'text-black' : 'text-gray-500'}`}
+                            onClick={() => setLimit(24)}
+                        >
+                            24/
+                        </li>
+                        <li
+                            className={`cursor-pointer ${limit === 36 ? 'text-black' : 'text-gray-500'}`}
+                            onClick={() => setLimit(36)}
+                        >
+                            36
+                        </li>
+                    </ul>
+                    <ul className="max-w-[50px] flex gap-x-4 hidden md:flex">
                         {[2, 3, 4].map(i => <li key={i} className="cursor-pointer "><GridButton
                             onclick={() => setGridCount(i)} gridCount={gridCount} index={i}/></li>)}
                     </ul>
+
 
                     <pre
                         className={clsx([

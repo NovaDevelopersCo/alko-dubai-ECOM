@@ -8,14 +8,15 @@ import React, {useState} from 'react'
 
 const store = () => {
     const [gridCount, setGridCount]=useState(4)
+    const [limit, seLimit]=useState(9)
     return (
         <>
-            <Sort gridCount={gridCount} setGridCount={setGridCount}/>
+            <Sort limit={limit} setLimit={seLimit} gridCount={gridCount} setGridCount={setGridCount}/>
             <Container>
                 <div className="flex w-full h-full">
                     <Catalog />
                     <div className="w-full h-full my-6">
-                        <MainStore gridCount={gridCount}></MainStore>
+                        <MainStore limit={limit} gridCount={gridCount}></MainStore>
                     </div>
                 </div>
                 <CartMenu />
