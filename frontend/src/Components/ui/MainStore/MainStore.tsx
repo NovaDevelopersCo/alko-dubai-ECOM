@@ -9,7 +9,6 @@ import { Pagination } from 'antd'
 import { selectFilter } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
-
 function MainStore() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
@@ -27,6 +26,8 @@ function MainStore() {
             ...(filter.price ? { price: filter.price } : {}),
             ...(filter.max_price ? { max_price: filter.max_price } : {}),
             ...(filter.min_price ? { min_price: filter.min_price } : {}),
+            ...(filter.category ? { category: filter.category } : {}),
+            ...(filter.search ? { search: filter.search } : {}),
             limit: limit,
             // Добавляем свойство news только если оно true
         }
@@ -57,12 +58,24 @@ function MainStore() {
 
     return (
         <div>
-            <Grid>{products}</Grid>
+            {products && products.length > 0 ? (
+                <Grid>{products}</Grid>
+            ) : (
+                <div className="w-full h-96 flex justify-center items-center">
+                    Ничего не найдено😢
+                </div>
+            )}
             <Pagination
                 className="text-center"
                 showSizeChanger={false}
-                pageSize={items ? Object.keys(items).length / pages : 2}
-                total={items ? Object.keys(items).length : 2}
+                pageSize={
+                    items && items.lenght > 0
+                        ? Object.keys(items).length / pages
+                        : 1
+                }
+                total={
+                    items && items.lenght > 0 ? Object.keys(items).length : 1
+                }
             />
         </div>
     )
