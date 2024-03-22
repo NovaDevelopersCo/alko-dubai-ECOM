@@ -11,8 +11,8 @@ const Cart: FC = () => {
     const cartClasses = clsx(
         'ease-in-out duration-300 ml-6',
         'bg-[#fff] fixed top-0 right-0 h-screen w-[100%] flex',
-        'w-auto lg:order-2 lg:max-w-auto z-30 p-[30px_25px] shadow-2xl',
-        isCartMenuOpen ? 'translate-x-0 ' : 'translate-x-full',
+        'w-auto lg:order-2 lg:max-w-auto z-30 p-[30px_25px]',
+        isCartMenuOpen ? 'translate-x-0 customShadow' : 'translate-x-full',
     )
 
     useEffect(() => {

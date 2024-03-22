@@ -67,7 +67,7 @@ export default function Catalog() {
     return (
         <div
             className={clsx([
-                'w-80',
+                'w-80 lg:static fixed',
                 visibleCatalog
                     ? 'fixed top-0 left-0 z-[100] lg:static w-screen h-screen lg:w-auto lg:h-auto'
                     : '',
