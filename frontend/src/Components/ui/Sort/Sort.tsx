@@ -79,9 +79,11 @@ const Sort = ({gridCount, setGridCount}:{gridCount:number, setGridCount:(count:n
             <Container>
 
                 <div className="flex justify-between items-center px-5 xl:px-0 py-2.5">
-               <ul className="max-w-[50px] flex gap-x-4">
-                   {[2,3,4].map(i=><li key={i} className=" cursor-pointer"><GridButton onclick={()=>setGridCount(i)} gridCount={gridCount} index={i}/></li>)}
-               </ul>
+                    <ul className="max-w-[50px] flex gap-x-4 hidden md:flex">
+                        {[2, 3, 4].map(i => <li key={i} className="cursor-pointer "><GridButton
+                            onclick={() => setGridCount(i)} gridCount={gridCount} index={i}/></li>)}
+                    </ul>
+
                     <pre
                         className={clsx([
                             visibleCatalog
@@ -100,7 +102,8 @@ const Sort = ({gridCount, setGridCount}:{gridCount:number, setGridCount:(count:n
                                 {!visibleCatalog ? (
                                     '>'
                                 ) : (
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nGNgGAWDElzWbs68oFcvRqx6kFqQHiINb8y6rN30/7J202ViLIEY3nQZoqcxi6AF5wxaRS9rNV4Ca9Bqun5No0WSWLVXtOoliPIFMZacI9dwYiw5R6nh+Cw5Ry3DsVlySbv51hWtxmtUMxzZkkswg8EWNd2mmuG4LMCXukgC55DDHC2IKLYEW4SSkk9INpwBhxzJlhCTFM+Rawkp6fwcOZbQvLCjeXE9CugOALT+EUkssP+7AAAAAElFTkSuQmCC"></img>
+                                    <img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nGNgGAWDElzWbs68oFcvRqx6kFqQHiINb8y6rN30/7J202ViLIEY3nQZoqcxi6AF5wxaRS9rNV4Ca9Bqun5No0WSWLVXtOoliPIFMZacI9dwYiw5R6nh+Cw5Ry3DsVlySbv51hWtxmtUMxzZkkswg8EWNd2mmuG4LMCXukgC55DDHC2IKLYEW4SSkk9INpwBhxzJlhCTFM+Rawkp6fwcOZbQvLCjeXE9CugOALT+EUkssP+7AAAAAElFTkSuQmCC"></img>
                                 )}
                             </span>
                         </p>
@@ -125,7 +128,7 @@ const Sort = ({gridCount, setGridCount}:{gridCount:number, setGridCount:(count:n
                     </Select>
                 </div>
             </Container>
-            <hr className="border-[#D32B82]" />
+            <hr className="border-[#D32B82]"/>
         </div>
     )
 }
