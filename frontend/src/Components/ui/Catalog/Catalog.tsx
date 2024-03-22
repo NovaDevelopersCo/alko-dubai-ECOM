@@ -69,7 +69,7 @@ export default function Catalog() {
             className={clsx([
                 'w-80 lg:static fixed',
                 visibleCatalog
-                    ? 'fixed top-0 left-0 z-[100] lg:static w-screen h-screen lg:w-auto lg:h-auto'
+                    ? 'fixed top-0 left-0 z-[30] lg:static w-screen h-screen lg:w-auto lg:h-auto'
                     : '',
                 visibleCatalog ? 'bg-[#2b2a2c49] lg:bg-transparent' : '',
             ])}
