@@ -6,7 +6,7 @@ import { Item } from '@/Components/entity/item'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Grid from '../GridContainer/Grid'
 import { Pagination } from 'antd'
-import { selectFilter } from '@/lib/features/filter/filter'
+import { selectFilter, setLimit } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
 function MainStore() {
@@ -15,9 +15,9 @@ function MainStore() {
     const pages = useAppSelector(selectItems).totalPages
     const [currentPage, setCurrentPage] = useState<number>(0)
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
-    const limit = 8 // Устанавливаем лимит
+    const limit = filter.limit
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
-
+    dispatch(setLimit(8))
     // Функция для обновления элементов
     const updateItems = () => {
         // Формируем объект inputFetch, учитывая выбор пользователя
@@ -29,7 +29,7 @@ function MainStore() {
             ...(filter.min_price ? { min_price: filter.min_price } : {}),
             ...(filter.category ? { category: filter.category } : {}),
             ...(filter.search ? { search: filter.search } : {}),
-            limit: limit,
+            ...(filter.limit ? { limit: filter.limit } : {}),
             // Добавляем свойство news только если оно true
         }
 
@@ -49,7 +49,7 @@ function MainStore() {
     }, [filter, dispatch, limit])
 
     let products = null // По умолчанию нет товаров
-    if (items) {
+    if (items && limit !== undefined) {
         // Ограничиваем количество элементов до limit с помощью slice
         const limitedItems = items.slice(
             currentPage * limit,
