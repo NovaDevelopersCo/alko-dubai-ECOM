@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { fetchItems } from '@/lib/features/items/items'
 import { selectItems } from '@/lib/features/items/items'
 import { Item } from '@/Components/entity/item'
@@ -13,6 +13,7 @@ function MainStore() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
+    const [currentPage, setCurrentPage] = useState<number>(0)
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
     const limit = 8 // Устанавливаем лимит
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
@@ -50,7 +51,10 @@ function MainStore() {
     let products = null // По умолчанию нет товаров
     if (items) {
         // Ограничиваем количество элементов до limit с помощью slice
-        const limitedItems = items.slice(0, limit)
+        const limitedItems = items.slice(
+            currentPage * limit,
+            currentPage * limit + limit,
+        )
         products = limitedItems.map((obj: any) => (
             <Item key={obj.id} disabled={true} {...obj}></Item>
         ))
@@ -68,13 +72,18 @@ function MainStore() {
             <Pagination
                 className="text-center"
                 showSizeChanger={false}
+                onChange={(page) => {
+                    setCurrentPage(page - 1)
+                }}
                 pageSize={
-                    items && items.lenght > 0
+                    items && Object.keys(items).length > 0
                         ? Object.keys(items).length / pages
                         : 1
                 }
                 total={
-                    items && items.lenght > 0 ? Object.keys(items).length : 1
+                    items && Object.keys(items).length > 0
+                        ? Object.keys(items).length
+                        : 1
                 }
             />
         </div>
