@@ -174,6 +174,11 @@ const ItemPage = () => {
             </article>
             {result.length > 0 && (
                 <>
+                    <div className="border-b-[1px] border-customPink max-w-64 mt-20">
+                        <p className="mb-4 font-medium text-3xl">
+                            Похожие товары
+                        </p>
+                    </div>
                     <section className="embla max-w-70rem mx-auto my-8">
                         <div
                             className="embla__viewport overflow-hidden w-full h-auto"
