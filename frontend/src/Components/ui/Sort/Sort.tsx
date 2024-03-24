@@ -78,20 +78,20 @@ const Sort = ({gridCount, setGridCount, limit, setLimit}:{gridCount:number, setG
             />
             <Container>
 
-                <div className="flex  items-center px-5 xl:px-0 py-2.5">
-                    <ul className=" gap-x-4 hidden lg:flex" >
-                        Показать&nbsp;:
+                <div className="flex items-center xl:px-0 py-2.5">
+                    <ul className=" hidden lg:flex" >
+                        Показать :&nbsp;
                         <li
                             className={`cursor-pointer ${limit === 9 ? 'text-black' : 'text-gray-500'}`}
                             onClick={() => setLimit(9)}
                         >
-                            9 &nbsp;/
+                            &nbsp;9&nbsp;/&nbsp;
                         </li>
                         <li
                             className={`cursor-pointer ${limit === 24 ? 'text-black' : 'text-gray-500'}`}
                             onClick={() => setLimit(24)}
                         >
-                           24 &nbsp;/
+                            24&nbsp;/
                         </li>
                         <li
                             className={`cursor-pointer ${limit === 36 ? 'text-black' : 'text-gray-500'}`}
