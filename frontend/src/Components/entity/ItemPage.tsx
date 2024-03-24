@@ -186,7 +186,7 @@ const ItemPage = () => {
                                         key={item?.id}
                                         className=" p-4 rounded-md hover:shadow-md"
                                     >
-                                        <article className='w-44'>
+                                        <article className="w-44">
                                             <figure>
                                                 <img
                                                     src={item?.image}
