@@ -15,8 +15,6 @@ import { Counter } from '../ui/Counter/Counter'
 import { addItems } from '@/lib/features/cart/cart'
 import { CartItem } from '@/type/interfaceCart'
 import { InputFetch } from '@/type/interfaceFilter'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import useEmblaCarousel from 'embla-carousel-react'
 
 const ItemPage = () => {
