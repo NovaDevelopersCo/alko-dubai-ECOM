@@ -67,23 +67,21 @@ export default function Catalog() {
     return (
         <div
             className={clsx([
-                'w-80',
+                'w-80 lg:static fixed',
                 visibleCatalog
-                    ? 'fixed top-0 left-0 z-[100] lg:static w-screen h-screen lg:w-auto lg:h-auto'
+                    ? 'fixed top-0 left-0 z-[30] lg:static w-screen h-screen lg:w-auto lg:h-auto'
                     : '',
                 visibleCatalog ? 'bg-[#2b2a2c49] lg:bg-transparent' : '',
-                visibleCatalog ? 'lg:flex' : 'hidden',
             ])}
         >
             <div
                 className={clsx([
-                    'w-80 bg-white transition ease-in-out duration-1000',
+                    'w-80 bg-white transition-all ease-out duration-300',
                     'flex justify-center',
                     visibleCatalog
                         ? 'absolute h-screen lg:h-auto z-20 lg:static'
                         : '',
                     !visibleCatalog ? '-translate-x-80 ' : 'translate-x-0 ',
-                    visibleCatalog ? 'lg:flex' : 'hidden',
                 ])}
             >
                 <div
