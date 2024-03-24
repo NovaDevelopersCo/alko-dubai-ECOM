@@ -184,7 +184,7 @@ const ItemPage = () => {
                                     <img
                                         src={item?.image}
                                         alt="png"
-                                        className="w-full h-auto rounded-md"
+                                        className="w-full h-auto rounded-md max-h-44 object-contain"
                                     />
                                 </figure>
                                 <div className="mt-4 text-center">
