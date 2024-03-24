@@ -45,7 +45,6 @@ export const fetchItems = createAsyncThunk(
             sale: false,
             max_price: 12000,
             min_price: 0,
-            currentPage: 0,
             limit: 100,
             category: '',
             search: '',
