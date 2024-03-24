@@ -17,6 +17,7 @@ import { CartItem } from '@/type/interfaceCart'
 import { InputFetch } from '@/type/interfaceFilter'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import useEmblaCarousel from 'embla-carousel-react'
 
 const ItemPage = () => {
     const dispatch = useAppDispatch()
@@ -25,6 +26,11 @@ const ItemPage = () => {
     const cartItem = useAppSelector(selectCartItemById(Number(id)))
     const [count, setCount] = React.useState(1)
     const [result, setResult] = React.useState([])
+    const [emblaRef] = useEmblaCarousel({
+        loop: true,
+        dragFree: true,
+    })
+
     const items = useAppSelector(selectItems).items
     React.useEffect(() => {
         if (item !== null) {
@@ -168,78 +174,70 @@ const ItemPage = () => {
                     </div>
                 </figure>
             </article>
-            <div className="border-b-[1px] border-customPink max-w-64 mt-28">
-                <p className="mb-4 font-medium text-3xl">Похожие товары</p>
-            </div>
-            {result ? (
-                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-24 mt-10">
-                    {result.map((item: any) => (
-                        <Link
-                            href={`/store/${item?.id}`}
-                            key={item?.id}
-                            className=" p-4 rounded-md hover:shadow-md"
+            {result.length > 0 && (
+                <>
+                    <section className="embla max-w-70rem mx-auto my-8">
+                        <div
+                            className="embla__viewport overflow-hidden w-full h-auto"
+                            ref={emblaRef}
                         >
-                            <article>
-                                <figure>
-                                    <img
-                                        src={item?.image}
-                                        alt="png"
-                                        className="w-full h-auto rounded-md max-h-44 object-contain"
-                                    />
-                                </figure>
-                                <div className="mt-4 text-center">
-                                    <span className="text-sm mb-2">
-                                        {item?.category}{' '}
-                                    </span>
-                                    <span className="opacity-70 text-sm">
-                                        {item?.title}
-                                    </span>
-                                    <p className=" font-bold text-customPink ">
-                                        {item?.oldPrice !== 0 ? (
-                                            <div>
-                                                <span className="text-sm font-bold line-through text-customGray ">
-                                                    <span>
-                                                        {item?.oldPrice}AED{' '}
-                                                    </span>
+                            <div className="embla__container flex touch-action: pan-y gap-4">
+                                {result.map((item: any) => (
+                                    <Link
+                                        href={`/store/${item?.id}`}
+                                        key={item?.id}
+                                        className=" p-4 rounded-md hover:shadow-md"
+                                    >
+                                        <article className='w-44'>
+                                            <figure>
+                                                <img
+                                                    src={item?.image}
+                                                    alt="png"
+                                                    className="w-full rounded-md h-44 object-contain"
+                                                />
+                                            </figure>
+                                            <div className="mt-4 text-center">
+                                                <span className="text-sm mb-2">
+                                                    {item?.category}{' '}
                                                 </span>
-                                                {item?.price}
-                                                <span className="text-sm">
-                                                    {' '}
-                                                    AED
+                                                <span className="opacity-70 text-sm">
+                                                    {item?.title}
                                                 </span>
+                                                <p className=" font-bold text-customPink ">
+                                                    {item?.oldPrice !== 0 ? (
+                                                        <div>
+                                                            <span className="text-sm font-bold line-through text-customGray ">
+                                                                <span>
+                                                                    {
+                                                                        item?.oldPrice
+                                                                    }
+                                                                    AED{' '}
+                                                                </span>
+                                                            </span>
+                                                            {item?.price}
+                                                            <span className="text-sm">
+                                                                {' '}
+                                                                AED
+                                                            </span>
+                                                        </div>
+                                                    ) : (
+                                                        <div>
+                                                            {item?.price}
+                                                            <span className="text-sm">
+                                                                {' '}
+                                                                AED
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                </p>
                                             </div>
-                                        ) : (
-                                            <div>
-                                                {item?.price}
-                                                <span className="text-sm">
-                                                    {' '}
-                                                    AED
-                                                </span>
-                                            </div>
-                                        )}
-                                    </p>
-                                </div>
-                            </article>
-                        </Link>
-                    ))}
-                </ul>
-            ) : (
-                <div className="flex justify-evenly w-full mb-7  flex-wrap overflow-clip gap-2">
-                    {Array.from({ length: 4 }, (_, index) => (
-                        <div className="flex flex-col" key={index}>
-                            <Skeleton
-                                width={150}
-                                height={150}
-                                className="rounded my-3 block"
-                            />
-                            <Skeleton
-                                width={150}
-                                height={30}
-                                className="rounded my-3 block"
-                            />
+                                        </article>
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
-                    ))}
-                </div>
+                    </section>
+                </>
             )}
         </Container>
     )
