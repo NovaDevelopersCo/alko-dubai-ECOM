@@ -1,6 +1,7 @@
 import Container from '@/Components/ui/Container/Container'
 import { ProductTable } from '@/Components/ui/ProductTable/ProductTable'
 import { Total } from '@/Components/ui/Total/Total'
+import React from 'react';
 
 const CartPage = () => {
     return (

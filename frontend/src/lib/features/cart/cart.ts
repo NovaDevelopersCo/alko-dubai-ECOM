@@ -44,7 +44,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            saveCartToLocalStorage(state.items)
+            // saveCartToLocalStorage(state.items)
         },
 
         addItems(state, action) {
@@ -82,7 +82,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            saveCartToLocalStorage(state.items)
+            // saveCartToLocalStorage(state.items)
         },
 
         minusItem(state, action) {
@@ -108,7 +108,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            saveCartToLocalStorage(state.items)
+            // saveCartToLocalStorage(state.items)
         },
         removeItem(state, action) {
             const itemIdToRemove = action.payload
@@ -119,7 +119,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            saveCartToLocalStorage(state.items)
+            // saveCartToLocalStorage(state.items)
         },
         clearItems(state) {
             state.items = []
