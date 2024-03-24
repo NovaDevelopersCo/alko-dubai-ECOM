@@ -24,6 +24,7 @@ const ItemPage = () => {
     const item = useAppSelector(selectItem)
     const cartItem = useAppSelector(selectCartItemById(Number(id)))
     const [count, setCount] = React.useState(1)
+    const [result, setResult] = React.useState([])
     const items = useAppSelector(selectItems).items
     React.useEffect(() => {
         if (item !== null) {
@@ -77,6 +78,12 @@ const ItemPage = () => {
             setCount(1)
         }
     }, [cartItem])
+
+    React.useEffect(() => {
+        if (items) {
+            setResult(items.filter((item: any) => item.id !== Number(id)))
+        }
+    }, [items, id])
 
     const onClickAdd = () => {
         if (item && item.image) {
@@ -164,9 +171,9 @@ const ItemPage = () => {
             <div className="border-b-[1px] border-customPink max-w-64 mt-28">
                 <p className="mb-4 font-medium text-3xl">Похожие товары</p>
             </div>
-            {items ? (
+            {result ? (
                 <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-24 mt-10">
-                    {items.map((item: any) => (
+                    {result.map((item: any) => (
                         <Link
                             href={`/store/${item?.id}`}
                             key={item?.id}
