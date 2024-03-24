@@ -8,6 +8,7 @@ import axiosServices from '@/utils/axios'
 import { AppDispatch, RootState } from '@/lib/store'
 import { itemsStateProps } from '@/type/interfaceItems'
 import { InputFetch } from '@/type/interfaceFilter'
+import { CartItem } from '@/type/interfaceCart'
 
 const initialState: itemsStateProps = {
     error: null,
@@ -107,6 +108,7 @@ export const selectItems = createSelector(
 )
 export const { hasError, startLoading, finishLoading, fetchItemSuccess } =
     itemsSlice.actions
-
+export const selectCartItemById = (id: number) => (state: RootState) =>
+    state.cart.items.find((obj: CartItem) => obj.id === id)
 export const selectItem = (state: RootState) => state.items.item
 export default itemsSlice.reducer

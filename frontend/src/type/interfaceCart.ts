@@ -1,13 +1,21 @@
 export type CartItem = {
-    id: number;
+    id: number
     title: string
     price: number
     category: string
-    oldPrice: number
+    oldPrice?: number
     image: string
     count: number
-    sale: boolean
-    soldOut: boolean
+    sale?: boolean
+    soldOut?: boolean}
+
+export type SCartItem = {
+    id: number
+    price: number
+    count: number
+    sale?: boolean
+    oldPrice?: number
+    totalPrice?: number
 }
 
 export interface CartSliceStateProps {
