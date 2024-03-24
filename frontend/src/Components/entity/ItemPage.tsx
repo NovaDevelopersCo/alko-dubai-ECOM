@@ -15,6 +15,8 @@ import { Counter } from '../ui/Counter/Counter'
 import { addItems } from '@/lib/features/cart/cart'
 import { CartItem } from '@/type/interfaceCart'
 import { InputFetch } from '@/type/interfaceFilter'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const ItemPage = () => {
     const dispatch = useAppDispatch()
@@ -162,40 +164,59 @@ const ItemPage = () => {
             <div className="border-b-[1px] border-customPink max-w-64 mt-28">
                 <p className="mb-4 font-medium text-3xl">Похожие товары</p>
             </div>
-            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-24 mt-10">
-                {items && items.map((item: any) => (
-                    <Link
-                        href={`/store/${item?.id}`}
-                        key={item?.id}
-                        className=" p-4 rounded-md hover:shadow-md"
-                    >
-                        <article>
-                            <figure>
-                                <img
-                                    src={item?.image}
-                                    alt="png"
-                                    className="w-full h-auto rounded-md"
-                                />
-                            </figure>
-                            <div className="mt-4 text-center">
-                                <span className="text-sm mb-2">
-                                    {item?.category}{' '}
-                                </span>
-                                <span className="opacity-70 text-sm">
-                                    {item?.title}
-                                </span>
-                                <p className=" font-bold text-customPink ">
-                                    <span className="text-sm font-bold line-through text-customGray ">
-                                        <span>{item?.oldPrice}AED </span>
+            {items ? (
+                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-24 mt-10">
+                    {items.map((item: any) => (
+                        <Link
+                            href={`/store/${item?.id}`}
+                            key={item?.id}
+                            className=" p-4 rounded-md hover:shadow-md"
+                        >
+                            <article>
+                                <figure>
+                                    <img
+                                        src={item?.image}
+                                        alt="png"
+                                        className="w-full h-auto rounded-md"
+                                    />
+                                </figure>
+                                <div className="mt-4 text-center">
+                                    <span className="text-sm mb-2">
+                                        {item?.category}{' '}
                                     </span>
-                                    {item?.price}
-                                    <span className="text-sm"> AED</span>
-                                </p>
-                            </div>
-                        </article>
-                    </Link>
-                ))}
-            </ul>
+                                    <span className="opacity-70 text-sm">
+                                        {item?.title}
+                                    </span>
+                                    <p className=" font-bold text-customPink ">
+                                        <span className="text-sm font-bold line-through text-customGray ">
+                                            <span>{item?.oldPrice}AED </span>
+                                        </span>
+                                        {item?.price}
+                                        <span className="text-sm"> AED</span>
+                                    </p>
+                                </div>
+                            </article>
+                        </Link>
+                    ))}
+                </ul>
+            ) : (
+                <div className="flex justify-between w-full mb-7">
+                    {Array.from({ length: 4 }, (_, index) => (
+                        <div className="flex flex-col" key={index}>
+                            <Skeleton
+                                width={150}
+                                height={150}
+                                className="rounded my-3 block"
+                            />
+                            <Skeleton
+                                width={150}
+                                height={30}
+                                className="rounded my-3 block"
+                            />
+                        </div>
+                    ))}
+                </div>
+            )}
         </Container>
     )
 }
