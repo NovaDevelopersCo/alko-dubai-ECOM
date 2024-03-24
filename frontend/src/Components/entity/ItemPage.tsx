@@ -4,14 +4,17 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { useParams } from 'next/navigation'
 import {
     fetchItemById,
+    fetchItems,
     selectCartItemById,
     selectItem,
+    selectItems,
 } from '@/lib/features/items/items'
 import Container from '@/Components/ui/Container/Container'
 import Link from 'next/link'
 import { Counter } from '../ui/Counter/Counter'
 import { addItems } from '@/lib/features/cart/cart'
 import { CartItem } from '@/type/interfaceCart'
+import { InputFetch } from '@/type/interfaceFilter'
 
 const ItemPage = () => {
     const dispatch = useAppDispatch()
@@ -19,7 +22,23 @@ const ItemPage = () => {
     const item = useAppSelector(selectItem)
     const cartItem = useAppSelector(selectCartItemById(Number(id)))
     const [count, setCount] = React.useState(1)
-
+    const items = useAppSelector(selectItems).items
+    React.useEffect(() => {
+        if (item !== null) {
+            const inputFetch: InputFetch = {
+                price: 'asc',
+                popularity: false,
+                news: false,
+                sale: false,
+                max_price: 12000,
+                min_price: 0,
+                limit: 100,
+                category: item.category,
+                search: '',
+            }
+            dispatch(fetchItems(inputFetch))
+        }
+    }, [dispatch, item])
     React.useEffect(() => {
         dispatch(fetchItemById(id))
     }, [dispatch, id])
@@ -49,13 +68,13 @@ const ItemPage = () => {
             setCount(1) // Если товара нет в корзине, сбрасываем счетчик в 1
         }
     }, [cartItem])
-    
+
     React.useEffect(() => {
         // Сбрасываем значение счетчика на 1 после успешного добавления товара в корзину
         if (cartItem && cartItem.count !== count) {
-            setCount(1);
+            setCount(1)
         }
-    }, [cartItem]);
+    }, [cartItem])
 
     const onClickAdd = () => {
         if (item && item.image) {
@@ -144,36 +163,38 @@ const ItemPage = () => {
                 <p className="mb-4 font-medium text-3xl">Похожие товары</p>
             </div>
             <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-24 mt-10">
-                <Link
-                    href={`/store/${item?.id}`}
-                    key={item?.id}
-                    className=" p-4 rounded-md hover:shadow-md"
-                >
-                    <article>
-                        <figure>
-                            <img
-                                src={item?.image}
-                                alt="png"
-                                className="w-full h-auto rounded-md"
-                            />
-                        </figure>
-                        <div className="mt-4 text-center">
-                            <span className="text-sm mb-2">
-                                {item?.category}{' '}
-                            </span>
-                            <span className="opacity-70 text-sm">
-                                {item?.title}
-                            </span>
-                            <p className=" font-bold text-customPink ">
-                                <span className="text-sm font-bold line-through text-customGray ">
-                                    <span>{item?.oldPrice}AED </span>
+                {items && items.map((item: any) => (
+                    <Link
+                        href={`/store/${item?.id}`}
+                        key={item?.id}
+                        className=" p-4 rounded-md hover:shadow-md"
+                    >
+                        <article>
+                            <figure>
+                                <img
+                                    src={item?.image}
+                                    alt="png"
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </figure>
+                            <div className="mt-4 text-center">
+                                <span className="text-sm mb-2">
+                                    {item?.category}{' '}
                                 </span>
-                                {item?.price}
-                                <span className="text-sm"> AED</span>
-                            </p>
-                        </div>
-                    </article>
-                </Link>
+                                <span className="opacity-70 text-sm">
+                                    {item?.title}
+                                </span>
+                                <p className=" font-bold text-customPink ">
+                                    <span className="text-sm font-bold line-through text-customGray ">
+                                        <span>{item?.oldPrice}AED </span>
+                                    </span>
+                                    {item?.price}
+                                    <span className="text-sm"> AED</span>
+                                </p>
+                            </div>
+                        </article>
+                    </Link>
+                ))}
             </ul>
         </Container>
     )
