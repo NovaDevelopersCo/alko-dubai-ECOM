@@ -5,7 +5,8 @@ import { CartItem } from '@/type/interfaceCart'
 import { RootState } from '@/lib/store'
 
 const { items, totalPrice, totalSale } = getCartFromLS()
-const initialState = {
+
+export const initialState = {
     totalPrice,
     items,
     totalSale,
@@ -13,6 +14,13 @@ const initialState = {
 
 const saveCartToLocalStorage = (items: CartItem[]): void => {
     localStorage.setItem('cart', JSON.stringify(items))
+}
+
+export const setInitialCartItems = (items: CartItem[]) => {
+    return {
+        ...initialState,
+        items: items,
+    }
 }
 
 const CartSlice = createSlice({
@@ -44,7 +52,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            // saveCartToLocalStorage(state.items)
+            saveCartToLocalStorage(state.items)
         },
 
         addItems(state, action) {
@@ -82,7 +90,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            // saveCartToLocalStorage(state.items)
+            saveCartToLocalStorage(state.items)
         },
 
         minusItem(state, action) {
@@ -108,7 +116,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            // saveCartToLocalStorage(state.items)
+            saveCartToLocalStorage(state.items)
         },
         removeItem(state, action) {
             const itemIdToRemove = action.payload
@@ -119,7 +127,7 @@ const CartSlice = createSlice({
             state.totalSale = calcTotalSale(state.items)
 
             // Вызываем функцию сохранения корзины в localStorage
-            // saveCartToLocalStorage(state.items)
+            saveCartToLocalStorage(state.items)
         },
         clearItems(state) {
             state.items = []
