@@ -71,7 +71,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                             </Link>
                         ))
                     ) : (
-                        <div className="flex justify-between w-full">
+                        <div className="flex justify-between w-full flex-wrap overflow-clip">
                             {Array.from({ length: 6 }, (_, index) => (
                                 <div className="flex flex-col" key={index}>
                                     <Skeleton

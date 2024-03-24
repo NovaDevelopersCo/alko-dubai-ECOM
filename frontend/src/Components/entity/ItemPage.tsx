@@ -200,7 +200,7 @@ const ItemPage = () => {
                     ))}
                 </ul>
             ) : (
-                <div className="flex justify-between w-full mb-7">
+                <div className="flex justify-evenly w-full mb-7  flex-wrap overflow-clip gap-2">
                     {Array.from({ length: 4 }, (_, index) => (
                         <div className="flex flex-col" key={index}>
                             <Skeleton
