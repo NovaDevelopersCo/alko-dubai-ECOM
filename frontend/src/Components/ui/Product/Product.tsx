@@ -97,7 +97,7 @@ export const Product = ({
                         подытог
                     </span>
                     <span className="font-semibold text-customPink text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px]">
-                        {totalPrice} AED
+                        {price * count} AED
                     </span>
                 </div>
             </div>
