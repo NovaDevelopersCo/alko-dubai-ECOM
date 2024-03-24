@@ -45,7 +45,7 @@ const GridButton4 = ({active, onclick}:{active:number,onclick:()=>void}) => {
 
 };
 const GridButton = ({gridCount, index, onclick}:{gridCount:number, index:number, onclick:()=>void}) => {
-    console.log(gridCount)
+
     switch (index)
     {
         case 2:return <GridButton2 active={gridCount} onclick={onclick}/>

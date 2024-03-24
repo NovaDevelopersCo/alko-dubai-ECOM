@@ -78,29 +78,29 @@ const Sort = ({gridCount, setGridCount, limit, setLimit}:{gridCount:number, setG
             />
             <Container>
 
-                <div className="flex justify-between items-center px-5 xl:px-0 py-2.5">
-                    <ul className="max-w-[50px] flex gap-x-4 hidden md:flex">
-                        Показать:
+                <div className="flex  items-center px-5 xl:px-0 py-2.5">
+                    <ul className=" gap-x-4 hidden lg:flex" >
+                        Показать&nbsp;:
                         <li
                             className={`cursor-pointer ${limit === 9 ? 'text-black' : 'text-gray-500'}`}
                             onClick={() => setLimit(9)}
                         >
-                            9/
+                            9 &nbsp;/
                         </li>
                         <li
                             className={`cursor-pointer ${limit === 24 ? 'text-black' : 'text-gray-500'}`}
                             onClick={() => setLimit(24)}
                         >
-                            24/
+                           24 &nbsp;/
                         </li>
                         <li
                             className={`cursor-pointer ${limit === 36 ? 'text-black' : 'text-gray-500'}`}
                             onClick={() => setLimit(36)}
                         >
-                            36
+                            &nbsp;36
                         </li>
                     </ul>
-                    <ul className="max-w-[50px] flex gap-x-4 hidden md:flex">
+                    <ul className="max-w-[50px]  gap-x-4 hidden lg:flex ml-11">
                         {[2, 3, 4].map(i => <li key={i} className="cursor-pointer "><GridButton
                             onclick={() => setGridCount(i)} gridCount={gridCount} index={i}/></li>)}
                     </ul>
@@ -133,7 +133,7 @@ const Sort = ({gridCount, setGridCount, limit, setLimit}:{gridCount:number, setG
                     <Select
                         onChange={(value) => onChange(value)}
                         placeholder="Исходная сортировка"
-                        className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
+                        className="rounded cursor-pointer before:bg-[#D32B82] min-w-max ml-auto"
                     >
                         <Select.Option value="asc" className="rounded">
                             Цене (возрастание)
