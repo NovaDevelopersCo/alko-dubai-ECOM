@@ -195,11 +195,28 @@ const ItemPage = () => {
                                         {item?.title}
                                     </span>
                                     <p className=" font-bold text-customPink ">
-                                        <span className="text-sm font-bold line-through text-customGray ">
-                                            <span>{item?.oldPrice}AED </span>
-                                        </span>
-                                        {item?.price}
-                                        <span className="text-sm"> AED</span>
+                                        {item?.oldPrice !== 0 ? (
+                                            <div>
+                                                <span className="text-sm font-bold line-through text-customGray ">
+                                                    <span>
+                                                        {item?.oldPrice}AED{' '}
+                                                    </span>
+                                                </span>
+                                                {item?.price}
+                                                <span className="text-sm">
+                                                    {' '}
+                                                    AED
+                                                </span>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                {item?.price}
+                                                <span className="text-sm">
+                                                    {' '}
+                                                    AED
+                                                </span>
+                                            </div>
+                                        )}
                                     </p>
                                 </div>
                             </article>
