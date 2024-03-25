@@ -64,7 +64,7 @@ const Sort = () => {
 
     return (
         <div>
-            <hr className="border-[#D32B82]" />
+            <hr className="border-[#D32B82]"/>
             <hr
                 className={clsx([
                     visibleCatalog

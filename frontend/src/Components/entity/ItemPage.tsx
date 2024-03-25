@@ -16,6 +16,8 @@ import { addItems } from '@/lib/features/cart/cart'
 import { CartItem } from '@/type/interfaceCart'
 import { InputFetch } from '@/type/interfaceFilter'
 import useEmblaCarousel from 'embla-carousel-react'
+import Cart from "@/Components/ui/CartMenu/Cart";
+import {CartMenuBtn} from "@/Components/ui/CartMenu/CartMenuBtn";
 
 const ItemPage = () => {
     const dispatch = useAppDispatch()
@@ -157,7 +159,7 @@ const ItemPage = () => {
                                     onClick={onClickAdd}
                                     className="text-base font-semibold bg-customPink text-white py-3 px-14 rounded-3xl"
                                 >
-                                    В корзину
+                                 <CartMenuBtn text1='В корзину' text2='В корзину'/>
                                 </button>
                             </div>
                             <div className="border-t-[1px] border-customPink md:min-w-20 flex">
@@ -242,6 +244,8 @@ const ItemPage = () => {
                     </section>
                 </>
             )}
+            <Cart />
+
         </Container>
     )
 }
