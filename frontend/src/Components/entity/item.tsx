@@ -24,7 +24,7 @@ export function Item({
                             <img
                                 src={image}
                                 alt="png"
-                                className="w-full h-auto rounded-md"
+                                className="w-full h-auto rounded-md w-80 h-80"
                             />
                         )}
                     </figure>
