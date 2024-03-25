@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useEffect, useRef } from 'react'
 import { fetchItems } from '@/lib/features/items/items'
 import { selectItems } from '@/lib/features/items/items'
@@ -7,13 +7,15 @@ import MainPageSort from '../MainPageSort/MainPageSort'
 import { selectFilter } from '@/lib/features/filter/filter'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Grid from '../GridContainer/Grid'
-import { InputFetch } from '@/type/interface'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { InputFetch } from '@/type/interfaceFilter'
 
 function StartStore() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
-    const limit = 8; // Устанавливаем лимит
+    const limit = 8 // Устанавливаем лимит
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
 
     // Функция для обновления элементов
@@ -49,6 +51,13 @@ function StartStore() {
         const limitedItems = items.slice(0, limit)
         products = limitedItems.map((obj: any) => (
             <Item key={obj.id} disabled={true} {...obj}></Item>
+        ))
+    } else {
+        products = Array.from({ length: 6 }, (_, index) => (
+            <div className="flex flex-col justify-center items-center" key={index}>
+                <Skeleton width={150} height={150} className="rounded my-3" />
+                <Skeleton width={150} height={30} className="rounded my-3" />
+            </div>
         ))
     }
 
