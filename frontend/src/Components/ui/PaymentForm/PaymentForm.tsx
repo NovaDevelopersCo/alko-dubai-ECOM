@@ -1,10 +1,15 @@
 'use client'
+import { selectCart } from '@/lib/features/cart/cart'
+import { useAppSelector } from '@/lib/hooks'
 import { Button, Form, Input, Select } from 'antd'
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 export default function PaymentForm() {
+    const { totalPrice, totalSale, items } = useAppSelector(selectCart)
+    console.log(items)
+
     const onFinish = (values: any) => {
         console.log(values)
     }
@@ -84,11 +89,24 @@ export default function PaymentForm() {
                         <p className="text-base">подытог</p>
                     </div>
                     <hr className="border-[#D32B82]" />
+                    <div className="flex flex-col mt-4">
+                        {items.map((item: any, index: number) => (
+                            <div
+                                key={index}
+                                className="flex justify-between mb-3"
+                            >
+                                <p className="text-sm text-[#D32B82]">
+                                    {item.title}({item.count})
+                                </p>
+                                <p className="text-sm text-[#878787]">{item.price * item.count}</p>
+                            </div>
+                        ))}
+                    </div>
                     <hr className="border-[#D32B82] border-b border-dashed mt-10" />
                     <div className="flex justify-between my-3">
                         <p className="text-xl font-bold">Итого: </p>
                         <p className="text-lg font-semibold text-[#D32B82]">
-                            650AED
+                            {totalPrice}AED
                         </p>
                     </div>
                     <Form.Item
