@@ -5,6 +5,7 @@ import { useAppDispatch } from '@/lib/hooks'
 import { setSearch } from '@/lib/features/filter/filter'
 import { Switch } from '../Switch/Switch'
 import { CatalogLinks } from '../Catalog/CatalogLinks'
+import Image from 'next/image'
 
 interface NavLink {
     name: string
@@ -88,14 +89,28 @@ const HeaderLinks: FC = () => {
     }, [menuRef, setIsBurgerOpen])
     return (
         <div className={navClasses} id="mobile-menu-2" ref={menuRef}>
-            <span className="flex lg:hidden -ml-[40px] -mt-[20px] -mr-[40px]">
-                <Switch
-                    openMenu={menu}
-                    handleMenu={handleMenu}
-                    openCatalog={catalog}
-                    handleCatalog={handleCatalog}
-                />
-            </span>
+            <div className="flex flex-col gap-[30px]">
+                <div
+                    onClick={() => setIsBurgerOpen(false)}
+                    className="flex lg:hidden -ml-[40px] -mt-[20px] -mr-[40px] items-center cursor-pointer gap-[3px] justify-end pt-[13px] pr-[18px]"
+                >
+                    <span>Закрыть</span>
+                    <Image
+                        src="/close.svg"
+                        alt="close"
+                        width={12}
+                        height={12}
+                    />
+                </div>
+                <span className="flex lg:hidden -ml-[40px] -mt-[20px] -mr-[40px]">
+                    <Switch
+                        openMenu={menu}
+                        handleMenu={handleMenu}
+                        openCatalog={catalog}
+                        handleCatalog={handleCatalog}
+                    />
+                </span>
+            </div>
             {menu && (
                 <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 lg:gap-[0px] gap-[13px]">
                     {Links.map((link, index) => (
