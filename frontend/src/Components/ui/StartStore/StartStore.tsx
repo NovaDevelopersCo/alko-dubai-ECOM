@@ -7,7 +7,7 @@ import MainPageSort from '../MainPageSort/MainPageSort'
 import { selectFilter } from '@/lib/features/filter/filter'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Grid from '../GridContainer/Grid'
-import { InputFetch } from '@/type/interface'
+import { InputFetch } from '@/type/interfaceFilter'
 
 function StartStore() {
     const dispatch = useAppDispatch()
