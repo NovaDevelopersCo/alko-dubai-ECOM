@@ -55,8 +55,8 @@ function StartStore() {
     } else {
         products = Array.from({ length: 6 }, (_, index) => (
             <div className="flex flex-col justify-center items-center" key={index}>
-                <Skeleton width={150} height={150} className="rounded my-3" />
-                <Skeleton width={150} height={30} className="rounded my-3" />
+                <Skeleton width={213} height={240} className="rounded my-3" />
+                <Skeleton width={213} height={48} className="rounded my-3" />
             </div>
         ))
     }
