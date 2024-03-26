@@ -1,16 +1,19 @@
-'use client'
 import { selectCart } from '@/lib/features/cart/cart'
 import { useAppSelector } from '@/lib/hooks'
 import { Button, Form, Input, Select } from 'antd'
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+import { redirect } from 'next/navigation'
 
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
 
     const onFinish = (values: any) => {
         console.log(values)
+    }
+    if (items.length === 0) {
+        redirect('/cart')
     }
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
