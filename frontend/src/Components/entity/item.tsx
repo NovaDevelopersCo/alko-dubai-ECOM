@@ -18,13 +18,13 @@ export function Item({
     return (
         <div className="col-span-1 p-4 rounded-md hover:shadow-md">
             <Link href={`/store/${id}`} key={id}>
-                <article>
-                    <figure className="flex justify-center">
+                <article className="flex flex-col items-center">
+                    <figure className="w-32 h-60 flex items-center">
                         {image && (
                             <img
                                 src={image}
                                 alt="png"
-                                className="rounded-md w-32 min-w-32 h-60"
+                                className="rounded-md min-h-44"
                             />
                         )}
                     </figure>
