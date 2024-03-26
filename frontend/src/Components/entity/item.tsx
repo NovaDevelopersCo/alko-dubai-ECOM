@@ -19,12 +19,12 @@ export function Item({
         <div className="col-span-1 p-4 rounded-md hover:shadow-md">
             <Link href={`/store/${id}`} key={id}>
                 <article>
-                    <figure>
+                    <figure className="flex justify-center">
                         {image && (
                             <img
                                 src={image}
                                 alt="png"
-                                className="w-full h-auto rounded-md w-80 h-80"
+                                className="rounded-md w-32 min-w-32 h-60"
                             />
                         )}
                     </figure>
