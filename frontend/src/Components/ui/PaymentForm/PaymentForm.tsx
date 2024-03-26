@@ -8,7 +8,6 @@ import 'react-phone-input-2/lib/style.css'
 
 export default function PaymentForm() {
     const { totalPrice, totalSale, items } = useAppSelector(selectCart)
-    console.log(items)
 
     const onFinish = (values: any) => {
         console.log(values)
