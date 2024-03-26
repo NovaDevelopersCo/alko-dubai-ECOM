@@ -21,7 +21,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name={'name'}
                         label="Имя"
-                        style={{ width: 300 }}
+                        className='w-full lg:w-[300px]'
                         rules={[{ required: true }]}
                     >
                         <Input placeholder="Игорь" />
@@ -29,7 +29,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name={'email'}
                         label="Почта"
-                        style={{ width: 300 }}
+                        className='w-full lg:w-[300px]'
                         rules={[
                             {
                                 type: 'email',
@@ -43,7 +43,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name="phone"
                         label="Телефон"
-                        style={{ width: 300 }}
+                        className='w-full lg:w-[300px]'
                         rules={[
                             {
                                 required: true,
@@ -98,7 +98,7 @@ export default function PaymentForm() {
                                 <p className="text-sm text-[#D32B82]">
                                     {item.title}({item.count})
                                 </p>
-                                <p className="text-sm text-[#878787]">{item.price * item.count}</p>
+                                <p className="text-sm text-[#878787]">{item.price * item.count}AED</p>
                             </div>
                         ))}
                     </div>
