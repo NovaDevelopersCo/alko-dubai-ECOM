@@ -97,7 +97,7 @@ export default function PaymentForm() {
                                 <p className="text-sm text-[#D32B82]">
                                     {item.title}({item.count})
                                 </p>
-                                <p className="text-sm text-[#878787]">{item.price * item.count}AED</p>
+                                <p className="text-sm text-[#878787]">{item.price * item.count} AED</p>
                             </div>
                         ))}
                     </div>
@@ -105,7 +105,7 @@ export default function PaymentForm() {
                     <div className="flex justify-between my-3">
                         <p className="text-xl font-bold">Итого: </p>
                         <p className="text-lg font-semibold text-[#D32B82]">
-                            {totalPrice}AED
+                            {totalPrice} AED
                         </p>
                     </div>
                     <Form.Item
