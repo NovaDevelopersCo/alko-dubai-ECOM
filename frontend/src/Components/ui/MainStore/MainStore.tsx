@@ -17,7 +17,6 @@ function MainStore({gridCount,limit}:{gridCount:number, limit:number}) {
     const [currentPage, setCurrentPage] = useState<number>(0)
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
 
-    const limit = filter.limit
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
     dispatch(setLimit(8))
     // Функция для обновления элементов
