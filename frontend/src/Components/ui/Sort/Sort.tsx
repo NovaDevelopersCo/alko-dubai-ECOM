@@ -4,13 +4,11 @@ import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
 import { Select } from 'antd'
-import {
-    setPopularity,
-    setNews,
-    setPrice,
-} from '@/lib/features/filter/filter'
+import { setPopularity, setNews, setPrice } from '@/lib/features/filter/filter'
 import { useAppDispatch } from '@/lib/hooks'
 import GridButton from "@/Components/ui/gridButton/GridButton";
+import Image from 'next/image'
+
 
 const Sort = ({gridCount, setGridCount, limit, setLimit}:{gridCount:number, setGridCount:(count:number)=>void, limit:number, setLimit:(lim:number)=>void}) => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -114,7 +112,7 @@ const Sort = ({gridCount, setGridCount, limit, setLimit}:{gridCount:number, setG
                         ])}
                     >
                         <p
-                            className="lg:hidden flex w-max cursor-pointer whitespace-nowrap"
+                            className="lg:hidden flex w-max cursor-pointer whitespace-nowrap items-center gap-1"
                             onClick={() => {
                                 setVisibleCatalog((state) => !state)
                             }}
@@ -124,8 +122,13 @@ const Sort = ({gridCount, setGridCount, limit, setLimit}:{gridCount:number, setG
                                 {!visibleCatalog ? (
                                     '>'
                                 ) : (
-                                    <img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nGNgGAWDElzWbs68oFcvRqx6kFqQHiINb8y6rN30/7J202ViLIEY3nQZoqcxi6AF5wxaRS9rNV4Ca9Bqun5No0WSWLVXtOoliPIFMZacI9dwYiw5R6nh+Cw5Ry3DsVlySbv51hWtxmtUMxzZkkswg8EWNd2mmuG4LMCXukgC55DDHC2IKLYEW4SSkk9INpwBhxzJlhCTFM+Rawkp6fwcOZbQvLCjeXE9CugOALT+EUkssP+7AAAAAElFTkSuQmCC"></img>
+
+                                    <Image
+                                        src="/close.svg"
+                                        alt="close"
+                                        width={12}
+                                        height={12}
+                                    />
                                 )}
                             </span>
                         </p>
