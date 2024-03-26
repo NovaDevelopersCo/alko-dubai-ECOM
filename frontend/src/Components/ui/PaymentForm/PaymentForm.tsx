@@ -7,7 +7,7 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 export default function PaymentForm() {
-    const { totalPrice, totalSale, items } = useAppSelector(selectCart)
+    const { totalPrice, items } = useAppSelector(selectCart)
 
     const onFinish = (values: any) => {
         console.log(values)
@@ -20,7 +20,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name={'name'}
                         label="Имя"
-                        className='w-full lg:w-[300px]'
+                        className="w-full lg:w-[300px]"
                         rules={[{ required: true }]}
                     >
                         <Input placeholder="Игорь" />
@@ -28,7 +28,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name={'email'}
                         label="Почта"
-                        className='w-full lg:w-[300px]'
+                        className="w-full lg:w-[300px]"
                         rules={[
                             {
                                 type: 'email',
@@ -42,7 +42,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name="phone"
                         label="Телефон"
-                        className='w-full lg:w-[300px]'
+                        className="w-full lg:w-[300px]"
                         rules={[
                             {
                                 required: true,
@@ -97,7 +97,9 @@ export default function PaymentForm() {
                                 <p className="text-sm text-[#D32B82]">
                                     {item.title}({item.count})
                                 </p>
-                                <p className="text-sm text-[#878787]">{item.price * item.count} AED</p>
+                                <p className="text-sm text-[#878787]">
+                                    {item.price * item.count} AED
+                                </p>
                             </div>
                         ))}
                     </div>
