@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import axiosServices from '@/utils/axios'
-import { InputFetch } from '@/type/interfaceFilter'
-import { RootState } from '@/lib/store'
+import { AppDispatch, RootState } from '@/lib/store'
 import { orderStateProps } from '@/type/interfaceOrder'
 
 const initialState: orderStateProps = {
@@ -20,34 +19,20 @@ const initialState: orderStateProps = {
     isLoading: false,
 }
 
-export const fetchOrder = createAsyncThunk(
-    'order/fetchOrder',
-    async (
-        inputFetch: InputFetch = {
-            price: 'asc',
-            popularity: false,
-            news: false,
-            sale: false,
-            max_price: 12000,
-            min_price: 0,
-            limit: 100,
-            category: '',
-            search: '',
-        },
-    ) => {
-        try {
-            // Ваш код для запроса данных, используя inputFetch
-            const response = await axiosServices.get('api/items', {
-                params: inputFetch,
-            })
+export const fetchOrder = createAsyncThunk('order/fetchOrder', async () => {
+    return async (dispatch: AppDispatch) => {
+        dispatch(OrderSlice.actions.startLoading())
 
-            // Возвращаем данные
-            return response.data
+        try {
+            const response = await axiosServices.get('api/catalog')
+            dispatch(OrderSlice.actions.fetchOrderSuccess(response.data))
         } catch (error) {
-            return error || 'Ошибка получения товаров'
+            dispatch(OrderSlice.actions.hasError(error))
+        } finally {
+            dispatch(OrderSlice.actions.finishLoading())
         }
-    },
-)
+    }
+})
 
 const OrderSlice = createSlice({
     name: 'order',
@@ -64,7 +49,7 @@ const OrderSlice = createSlice({
         finishLoading(state) {
             state.isLoading = false
         },
-        fetchItemSuccess(state, action) {
+        fetchOrderSuccess(state, action) {
             state.order = action.payload
             state.success = null
         },
@@ -90,7 +75,7 @@ export const selectItems = createSelector(
     (state) => state,
     (order) => order,
 )
-export const { hasError, startLoading, finishLoading, fetchItemSuccess } =
+export const { hasError, startLoading, finishLoading, fetchOrderSuccess } =
     OrderSlice.actions
-export const selectItem = (state: RootState) => state.items.item
+export const selectItem = (state: RootState) => state.order
 export default OrderSlice.reducer
