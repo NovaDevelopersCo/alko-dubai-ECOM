@@ -46,7 +46,17 @@ export const ProductMini = ({
 
     return (
         <div className="flex items-center pr-6 my-5">
-            <img src={image} alt={title} width={75} height={90} />
+            <div className="mx-2">
+                <Image
+                    className="cursor-pointer hidden lg:block md:block sm:hidden"
+                    src={'/close.svg'}
+                    alt={'delete'}
+                    width={15}
+                    height={15}
+                    onClick={onClickRemove}
+                />
+            </div>
+            <img src={image} alt={title} width={75} height={90}/>
             <div className="grid  lg:flex md:flex sm:grid grid-cols-1 justify-between w-[100%] flex-wrap">
                 <div className="flex items-top justify-between py-[7px]">
                     <span
