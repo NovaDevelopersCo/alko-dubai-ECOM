@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axiosServices from '@/utils/axios'
 import { AppDispatch, RootState } from '@/lib/store'
-import { orderStateProps } from '@/type/interfaceOrder'
+import { order, orderStateProps } from '@/type/interfaceOrder'
 
 const initialState: orderStateProps = {
     error: null,
@@ -19,20 +19,23 @@ const initialState: orderStateProps = {
     isLoading: false,
 }
 
-export const fetchOrder = createAsyncThunk('order/fetchOrder', async () => {
-    return async (dispatch: AppDispatch) => {
+export const fetchOrder = createAsyncThunk(
+    'order/fetchOrder',
+    async (dispatch: AppDispatch) => {
         dispatch(OrderSlice.actions.startLoading())
 
         try {
-            const response = await axiosServices.get('api/catalog')
-            dispatch(OrderSlice.actions.fetchOrderSuccess(response.data))
+            const response = await axiosServices.get('api/order')
+            dispatch(
+                OrderSlice.actions.fetchOrderSuccess(response.data as order),
+            )
         } catch (error) {
             dispatch(OrderSlice.actions.hasError(error))
         } finally {
             dispatch(OrderSlice.actions.finishLoading())
         }
-    }
-})
+    },
+)
 
 const OrderSlice = createSlice({
     name: 'order',
@@ -50,7 +53,7 @@ const OrderSlice = createSlice({
             state.isLoading = false
         },
         fetchOrderSuccess(state, action) {
-            state.order = action.payload
+            state.order = action.payload as order
             state.success = null
         },
     },
@@ -61,7 +64,7 @@ const OrderSlice = createSlice({
             })
             .addCase(fetchOrder.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.order = action.payload
+                state.order = action.payload as unknown as order
                 state.error = null
             })
             .addCase(fetchOrder.rejected, (state) => {
@@ -71,11 +74,6 @@ const OrderSlice = createSlice({
     },
 })
 
-export const selectItems = createSelector(
-    (state) => state,
-    (order) => order,
-)
-export const { hasError, startLoading, finishLoading, fetchOrderSuccess } =
-    OrderSlice.actions
-export const selectItem = (state: RootState) => state.order
+export const selectItem = (state: RootState) => state.order as orderStateProps
+
 export default OrderSlice.reducer
