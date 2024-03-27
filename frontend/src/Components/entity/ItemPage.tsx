@@ -79,6 +79,7 @@ const ItemPage = () => {
         }
     }, [cartItem])
 
+
     React.useEffect(() => {
         // Сбрасываем значение счетчика на 1 после успешного добавления товара в корзину
         if (cartItem && cartItem.count !== count) {

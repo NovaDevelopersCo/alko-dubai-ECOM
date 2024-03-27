@@ -16,6 +16,7 @@ import {
     setSearch,
 } from '@/lib/features/filter/filter'
 import { useParams } from 'next/navigation'
+import Image from 'next/image'
 
 export default function Catalog() {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
@@ -66,15 +67,17 @@ export default function Catalog() {
 
     return (
         <div
+            onClick={() => setVisibleCatalog(false)}
             className={clsx([
                 'w-80 lg:static fixed',
                 visibleCatalog
-                    ? 'fixed top-0 left-0 z-[30] lg:static w-screen h-screen lg:w-auto lg:h-auto'
+                    ? 'fixed top-0 left-0 z-[30] lg:static w-screen h-screen lg:w-auto lg:h-auto transition-colors duration-400'
                     : '',
-                visibleCatalog ? 'bg-[#2b2a2c49] lg:bg-transparent' : '',
+                visibleCatalog ? 'bg-[#000000b3] lg:bg-transparent' : '',
             ])}
         >
             <div
+                onClick={(e) => e.stopPropagation()}
                 className={clsx([
                     'w-80 bg-white transition-all ease-out duration-300',
                     'flex justify-center',
@@ -85,12 +88,24 @@ export default function Catalog() {
                 ])}
             >
                 <div
-                    className={clsx([
-                        'flex justify-start flex-col lg:mt-14 mb-8 mr-10',
-                        visibleCatalog ? 'mt-20' : '',
-                    ])}
+                    className={clsx(['flex justify-start flex-col mb-8 mr-10'])}
                 >
-                    <p className="text-base">Цена</p>
+                    <div
+                        onClick={() => setVisibleCatalog(false)}
+                        className="flex lg:hidden items-center cursor-pointer gap-[3px] justify-end pt-[13px] pb-[13px] -mr-[35px]"
+                    >
+                        <span>Закрыть</span>
+                        <Image
+                            src="/close.svg"
+                            alt="close"
+                            width={12}
+                            height={12}
+                        />
+                    </div>
+                    {visibleCatalog && (
+                        <hr className="border-customPink -mr-[60px] -ml-[19px] mb-[10px] lg:hidden" />
+                    )}
+                    <p className="text-base mt-[10px]">Цена</p>
                     <div className="w-52">
                         <Slider
                             range
