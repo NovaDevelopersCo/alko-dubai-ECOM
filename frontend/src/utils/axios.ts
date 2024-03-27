@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const axiosServices = axios.create({ baseURL: 'http://localhost:5000/' /*"https://alcoholdubai/api/"*/ });
+const axiosServices = axios.create({ baseURL: 'http://188.225.34.136' /*"https://alcoholdubai/api/"*/ });
 
 
 
