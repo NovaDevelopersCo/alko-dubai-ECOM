@@ -3,7 +3,7 @@
 import { useContext } from 'react'
 import { CartContext } from '@/Components/context/AppContext'
 
-export const CartMenuBtn = () => {
+export const CartMenuBtn = ({text1, text2}:{text1:string, text2:string}) => {
     const [isCartOpen, setIsCartOpen] = useContext(CartContext)
 
     return (
@@ -13,8 +13,8 @@ export const CartMenuBtn = () => {
                 setIsCartOpen((state) => !state)
             }}
         >
-            {isCartOpen ? <></> : <span>Open Cart</span>}
-            {!isCartOpen ? <></> : <span>Close Cart</span>}
+            {isCartOpen ? <></> : <span>{text1}</span>}
+            {!isCartOpen ? <></> : <span>{text2}</span>}
         </button>
     )
 }
