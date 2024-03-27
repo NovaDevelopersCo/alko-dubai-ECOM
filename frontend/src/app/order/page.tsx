@@ -1,6 +1,16 @@
+'use client'
 import Container from '@/Components/ui/Container/Container'
+import { selectCart } from '@/lib/features/cart/cart'
+import { useAppSelector } from '@/lib/hooks'
+import { redirect } from 'next/navigation'
+
 
 const order = () => {
+    const { items } = useAppSelector(selectCart)
+    if (!items.length) {
+        redirect('/cart')
+    }
+
     return (
         <Container>
             <div className="my-[20px] flex flex-col gap-[40px]">
