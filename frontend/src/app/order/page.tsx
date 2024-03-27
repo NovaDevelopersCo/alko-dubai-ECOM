@@ -4,9 +4,8 @@ import { selectCart } from '@/lib/features/cart/cart'
 import { useAppSelector } from '@/lib/hooks'
 import { redirect } from 'next/navigation'
 
-
 const order = () => {
-    const { items } = useAppSelector(selectCart)
+    const { totalPrice, items } = useAppSelector(selectCart)
     if (!items.length) {
         redirect('/cart')
     }

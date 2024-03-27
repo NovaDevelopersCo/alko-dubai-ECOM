@@ -10,7 +10,7 @@ export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
 
     const onFinish = (values: any) => {
-        console.log(values)
+        console.log(values, items)
     }
     if (items.length === 0) {
         redirect('/cart')
@@ -56,7 +56,7 @@ export default function PaymentForm() {
                         <PhoneInput country={'ru'} placeholder="9565814629" />
                     </Form.Item>
                     <Form.Item
-                        name="adress"
+                        name="address"
                         label="Адрес"
                         className="w-full sm:w-[450px]"
                         rules={[
