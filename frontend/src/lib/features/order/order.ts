@@ -74,6 +74,6 @@ const OrderSlice = createSlice({
     },
 })
 
-export const selectItem = (state: RootState) => state.order as orderStateProps
+export const selectOrder = (state: RootState) => state.order as orderStateProps
 
 export default OrderSlice.reducer

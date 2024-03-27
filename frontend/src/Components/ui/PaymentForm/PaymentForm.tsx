@@ -5,9 +5,12 @@ import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { redirect } from 'next/navigation'
+import { selectOrder } from '@/lib/features/order/order'
 
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
+    const { order } = useAppSelector(selectOrder)
+    console.log(order)
 
     const onFinish = (values: any) => {
         console.log(values, items)
