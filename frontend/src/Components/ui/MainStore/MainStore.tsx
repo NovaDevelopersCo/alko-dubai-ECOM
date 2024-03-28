@@ -1,5 +1,6 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+
+import React, {useEffect, useRef, useState} from 'react'
 import { fetchItems } from '@/lib/features/items/items'
 import { selectItems } from '@/lib/features/items/items'
 import { Item } from '@/Components/entity/item'
@@ -9,13 +10,13 @@ import { Pagination } from 'antd'
 import { selectFilter, setLimit } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
-function MainStore() {
+function MainStore({gridCount,limit}:{gridCount:number, limit:number}) {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
     const [currentPage, setCurrentPage] = useState<number>(0)
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
-    const limit = filter.limit
+
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
     dispatch(setLimit(8))
     // Функция для обновления элементов
@@ -36,17 +37,30 @@ function MainStore() {
         // Вызываем асинхронный экшен для получения элементов
         dispatch(fetchItems(inputFetch))
     }
-
+    const limitCount = () => {
+        switch (limit) {
+            case 9:
+                return 9;
+            case 24:
+                return 24;
+            case 36:
+                return 36;
+            default:
+                return 9;
+        }
+    }
     // Вызываем функцию updateItems только при изменении параметров фильтрации
     useEffect(() => {
-        // Проверяем, первый ли раз вызывается компонент
         if (!isInitialMount.current) {
-            updateItems()
+            updateItems();
         } else {
-            // Если это первый раз, устанавливаем флаг в false
-            isInitialMount.current = false
+            isInitialMount.current = false;
         }
-    }, [filter, dispatch, limit])
+    }, [filter, dispatch, limit]);
+
+    useEffect(() => {
+        updateItems();
+    }, [limit]);
 
     let products = null // По умолчанию нет товаров
     if (items && limit !== undefined) {
@@ -63,7 +77,7 @@ function MainStore() {
     return (
         <div>
             {products && products.length > 0 ? (
-                <Grid>{products}</Grid>
+                <Grid gridCount={gridCount}>{products}</Grid>
             ) : (
                 <div className="w-full h-96 flex justify-center items-center">
                     Ничего не найдено😢

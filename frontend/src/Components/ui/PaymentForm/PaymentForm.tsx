@@ -3,11 +3,18 @@ import { Button, Form, Input, InputNumber, Select } from 'antd'
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+import {useAppSelector} from "@/lib/hooks";
+import {selectCart} from "@/lib/features/cart/cart";
+import {CartItem} from "@/type/interfaceCart";
+import {ProductMini} from "@/Components/ui/ProductMini/ProductMini";
+import {CheckProduct} from "@/Components/ui/CheckProduct/CheckProduct";
 
 export default function PaymentForm() {
     const onFinish = (values: any) => {
         console.log(values)
     }
+    const { totalPrice, totalSale, items } = useAppSelector(selectCart)
+
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
             <div className="flex flex-col lg:flex-row">
@@ -80,15 +87,22 @@ export default function PaymentForm() {
                 <div className="w-full sm:w-[450px] bg-[#F3F3F2] flex flex-col justify-start px-5 py-5 mb-8 rounded-lg">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
                     <div className="flex justify-between mt-6 font-bold">
-                        <p className="text-base">товар</p>
+                        <p className="text-base">товар
+                        </p>
                         <p className="text-base">подытог</p>
                     </div>
-                    <hr className="border-[#D32B82]" />
-                    <hr className="border-[#D32B82] border-b border-dashed mt-10" />
+                    <hr className="border-[#D32B82]"/>
+                    <div className="overflow-auto max-h-[calc(100vh - 250px)]">
+                        {items.map((obj: CartItem) => (
+                            <CheckProduct key={obj.id} {...obj} />
+                        ))}
+                    </div>
+                    <hr className="border-[#D32B82] border-b border-dashed mt-10"/>
+
                     <div className="flex justify-between my-3">
                         <p className="text-xl font-bold">Итого: </p>
                         <p className="text-lg font-semibold text-[#D32B82]">
-                            650AED
+                            {totalPrice}AED
                         </p>
                     </div>
                     <Form.Item
@@ -102,7 +116,7 @@ export default function PaymentForm() {
                     >
                         <Select
                             placeholder="Выберите способ оплаты"
-                            style={{ width: 300 }}
+                            style={{width: 300}}
                         >
                             <Select.Option value="Cash">
                                 Наличными курьеру

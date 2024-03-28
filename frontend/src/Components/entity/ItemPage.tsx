@@ -18,9 +18,12 @@ import { InputFetch } from '@/type/interfaceFilter'
 import useEmblaCarousel from 'embla-carousel-react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Cart from "@/Components/ui/CartMenu/Cart";
+import { CartContext } from '../context/AppContext'
 
 const ItemPage = () => {
     const dispatch = useAppDispatch()
+    const [isCartOpen, setIsCartOpen] = React.useContext(CartContext)
     const { id } = useParams<{ id: string }>()
     const item = useAppSelector(selectItem)
     const cartItem = useAppSelector(selectCartItemById(Number(id)))
@@ -78,6 +81,7 @@ const ItemPage = () => {
         }
     }, [cartItem])
 
+
     React.useEffect(() => {
         // Сбрасываем значение счетчика на 1 после успешного добавления товара в корзину
         if (cartItem && cartItem.count !== count) {
@@ -110,6 +114,7 @@ const ItemPage = () => {
                 console.log('Товар добавлен', count, item)
                 // Сбрасываем значение счетчика на 1
                 setCount(1)
+                setIsCartOpen((state) => !state)
             } else {
                 alert(
                     'Превышен лимит корзины на один товар, закажи что-то еще ;)',
@@ -164,11 +169,11 @@ const ItemPage = () => {
                                     ></Counter>
                                 </div>
                                 <button
-                                    onClick={onClickAdd}
-                                    className="text-base font-semibold bg-customPink text-white py-3 px-14 rounded-3xl"
-                                >
-                                    В корзину
-                                </button>
+                                        className="text-base font-semibold bg-customPink text-white py-3 px-14 rounded-3xl"
+                                        onClick={onClickAdd}
+                                    >
+                                        <span>В корзину</span>
+                                    </button>
                             </div>
                             <div className="border-t-[1px] border-customPink md:min-w-20 flex">
                                 <p className="mt-4 mr-2 text-lg font-medium">
@@ -252,6 +257,8 @@ const ItemPage = () => {
                     </section>
                 </>
             )}
+            <Cart />
+
         </Container>
     )
 }

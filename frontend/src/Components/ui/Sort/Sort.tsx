@@ -6,9 +6,20 @@ import clsx from 'clsx'
 import { Select } from 'antd'
 import { setPopularity, setNews, setPrice } from '@/lib/features/filter/filter'
 import { useAppDispatch } from '@/lib/hooks'
+import GridButton from '@/Components/ui/gridButton/GridButton'
 import Image from 'next/image'
 
-const Sort = () => {
+const Sort = ({
+    gridCount,
+    setGridCount,
+    limit,
+    setLimit,
+}: {
+    gridCount: number
+    setGridCount: (count: number) => void
+    limit: number
+    setLimit: (lim: number) => void
+}) => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
@@ -65,16 +76,63 @@ const Sort = () => {
     return (
         <div>
             <hr className="border-[#D32B82]" />
-            <hr
+            {/* <hr
+
                 className={clsx([
                     visibleCatalog
                         ? 'absolute top-0 left-0 z-[101] lg:hidden w-80 border-[#D32B82]'
                         : '',
                 ])}
-            />
+            /> */}
             <Container>
-                <div className="flex justify-between items-center px-5 xl:px-0">
-                    <pre
+                <div className="flex items-center xl:px-0 py-2.5">
+                    <ul className=" hidden lg:flex">
+                        Показать :&nbsp;
+                        <li
+                            className={`cursor-pointer ${
+                                limit === 9 ? 'text-black' : 'text-gray-500'
+                            }`}
+                            onClick={() => setLimit(9)}
+                        >
+                            &nbsp;9&nbsp;/&nbsp;
+                        </li>
+                        <li
+                            className={`cursor-pointer ${
+                                limit === 24 ? 'text-black' : 'text-gray-500'
+                            }`}
+                            onClick={() => setLimit(24)}
+                        >
+                            24&nbsp;/
+                        </li>
+                        <li
+                            className={`cursor-pointer ${
+                                limit === 36 ? 'text-black' : 'text-gray-500'
+                            }`}
+                            onClick={() => setLimit(36)}
+                        >
+                            &nbsp;36
+                        </li>
+                    </ul>
+                    <ul className="max-w-[50px]  gap-x-4 hidden lg:flex ml-11">
+                        {[2, 3, 4].map((i) => (
+                            <li key={i} className="cursor-pointer ">
+                                <GridButton
+                                    onclick={() => setGridCount(i)}
+                                    gridCount={gridCount}
+                                    index={i}
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                    <p
+                        className="lg:hidden cursor-pointer"
+                        onClick={() => {
+                            setVisibleCatalog((state) => !state)
+                        }}
+                    >
+                        Фильтр <span className="text-customPink">{'>'}</span>
+                    </p>
+                    {/* <pre
                         className={clsx([
                             visibleCatalog
                                 ? 'fixed top-7 left-56 z-[101] lg:static'
@@ -92,6 +150,7 @@ const Sort = () => {
                                 {!visibleCatalog ? (
                                     '>'
                                 ) : (
+
                                     <Image
                                         src="/close.svg"
                                         alt="close"
@@ -101,11 +160,11 @@ const Sort = () => {
                                 )}
                             </span>
                         </p>
-                    </pre>
+                    </pre> */}
                     <Select
                         onChange={(value) => onChange(value)}
                         placeholder="Исходная сортировка"
-                        className="rounded cursor-pointer before:bg-[#D32B82] min-w-max"
+                        className="rounded cursor-pointer before:bg-[#D32B82] min-w-max ml-auto"
                     >
                         <Select.Option value="asc" className="rounded">
                             Цене (возрастание)
