@@ -122,7 +122,7 @@ const ItemPage = () => {
             <article>
                 <figure>
                     <div className="flex flex-wrap justify-center">
-                        <div className="w-1/3 min-w-[206px] min-h-[250px] mt-10 lg:mb-10 md:mr-auto ">
+                        <div className="w-1/3 min-w-[206px] min-h-[250px] mt-10 lg:mb-10 md:mr-auto flex justify-center items-center">
                             {item?.image ? (
                                 <img
                                     src={item?.image}
@@ -131,8 +131,8 @@ const ItemPage = () => {
                                 />
                             ) : (
                                 <Skeleton
-                                    width={300}
-                                    height={300}
+                                    width={250}
+                                    height={250}
                                     className="rounded my-3 ml-10"
                                 />
                             )}
