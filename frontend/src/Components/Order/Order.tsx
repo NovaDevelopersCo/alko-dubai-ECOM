@@ -12,7 +12,6 @@ const Order = () => {
     const { loading } = useAppSelector((state) => ({
         loading: state.order.isLoading,
     }))
-    console.log(!loading)
 
     if (!items.length || (!loading && order.items.length === 0)) {
         redirect('/cart')
