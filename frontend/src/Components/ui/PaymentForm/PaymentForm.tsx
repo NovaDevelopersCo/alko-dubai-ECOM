@@ -5,20 +5,21 @@ import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { redirect } from 'next/navigation'
-import { fetchOrder, selectOrder } from '@/lib/features/order/order'
+import { fetchOrder } from '@/lib/features/order/order'
 
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
-    const { order } = useAppSelector(selectOrder)
     const dispatch = useAppDispatch()
-    console.log(order)
 
     const onFinish = (values: any) => {
-        dispatch(fetchOrder({
-            ...values,
-            items
-        }))
-        console.log(values, items)
+        dispatch(
+            fetchOrder({
+                ...values,
+                items,
+                price: totalPrice,
+            }),
+        )
+        redirect('/order')
     }
     if (items.length === 0) {
         redirect('/cart')
@@ -134,10 +135,10 @@ export default function PaymentForm() {
                             placeholder="Выберите способ оплаты"
                             style={{ width: 300 }}
                         >
-                            <Select.Option value="Cash">
+                            <Select.Option value="наличными">
                                 Наличными курьеру
                             </Select.Option>
-                            <Select.Option value="Card">
+                            <Select.Option value="картой">
                                 Картой курьеру
                             </Select.Option>
                         </Select>

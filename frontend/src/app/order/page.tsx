@@ -1,11 +1,18 @@
 'use client'
 import Container from '@/Components/ui/Container/Container'
 import { selectCart } from '@/lib/features/cart/cart'
+import { selectOrder } from '@/lib/features/order/order'
 import { useAppSelector } from '@/lib/hooks'
 import { redirect } from 'next/navigation'
+import React from 'react'
 
 const order = () => {
     const { totalPrice, items } = useAppSelector(selectCart)
+    const { order } = useAppSelector(selectOrder)
+    React.useEffect(() => {
+        console.log(order)
+    }, [order])
+
     if (!items.length) {
         redirect('/cart')
     }
