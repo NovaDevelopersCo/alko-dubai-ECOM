@@ -5,6 +5,25 @@ import OurBenefits from '@/Components/ui/ourBenefits/OurBenefits'
 import { Text } from '@/Components/ui/Text/Text'
 import StartStore from '@/Components/ui/StartStore/StartStore'
 
+import type { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: 'Главная - Магазин АлкоДубай ',
+        description:
+            'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',
+        openGraph: {
+            images: [
+                'https://i.pinimg.com/564x/a9/88/ef/a988ef63cfc68a7577da9e5cb469a768.jpg',
+            ],
+            siteName: 'АлкоДубай',
+            title: 'Главная - АлкоДубай',
+            description:
+                'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',
+        },
+    }
+}
+
 export default function Home() {
     const SLIDE_COUNT = 12
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
