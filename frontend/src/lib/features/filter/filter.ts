@@ -10,6 +10,7 @@ const initialState: InputFetch = {
     max_price: 12000,
     min_price: 0,
     limit: 100,
+    gridCount: 4,
     category: '',
     search: ''
 }
@@ -62,7 +63,11 @@ const filterSlice = createSlice({
             action: PayloadAction<InputFetch['category']>,
         ) {
             state.search = action.payload
-        }
+        },
+        setGridCount: (state, action: PayloadAction<number>) => {
+            state.gridCount = action.payload;
+        },
+
     },
 })
 
@@ -75,6 +80,7 @@ export const {
     setMaxPrice,
     setMinPrice,
     setLimit,
+    setGridCount,
     setSale,
     setCategory,
     setSearch,
