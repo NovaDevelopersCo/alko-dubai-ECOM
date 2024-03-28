@@ -57,6 +57,24 @@ export class OrderService {
       <td><strong>Детали заказа:</strong></td>
       <td>${dto.details ? dto.details : 'Нет деталей'}</td>
     </tr>
+    <tr>
+      <td><strong>Время заказа:</strong></td>
+      <td>${
+        dto.updatedAt
+          ? dto.updatedAt
+              .toString()
+              .replace('T', '')
+              .replaceAll('-', '.')
+              .slice(0, 10) +
+            ' ' +
+            dto.updatedAt
+              .toString()
+              .replace('T', '')
+              .replaceAll('-', '.')
+              .slice(10, 15)
+          : ''
+      }</td>
+    </tr>
   </table>
 `;
     this.mailerService
