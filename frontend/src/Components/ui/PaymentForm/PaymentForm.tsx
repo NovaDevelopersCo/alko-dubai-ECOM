@@ -10,19 +10,19 @@ import { fetchOrder, selectOrder } from '@/lib/features/order/order'
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
     const { order } = useAppSelector(selectOrder)
-    const id = 1
     const dispatch = useAppDispatch()
     console.log(order)
 
     const onFinish = (values: any) => {
+        dispatch(fetchOrder({
+            ...values,
+            items
+        }))
         console.log(values, items)
     }
     if (items.length === 0) {
         redirect('/cart')
     }
-    React.useEffect(() => {
-        dispatch(fetchOrder(id))
-    }, [dispatch, id])
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
             <div className="flex flex-col lg:flex-row">

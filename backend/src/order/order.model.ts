@@ -10,6 +10,7 @@ interface OrdersCreationAttrs {
   details: string;
   price: number;
   address: string;
+  payment: string;
   status: string;
 }
 
@@ -80,6 +81,13 @@ export class Order extends Model<OrdersCreationAttrs> {
   })
   @Column({ type: DataType.STRING(2024), allowNull: false })
   address: string;
+
+  @ApiProperty({
+    example: 'Улица пушкина дом колотушкина',
+    description: 'Адрес',
+  })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
+  payment: string;
 
   @ApiProperty({
     example: 'В обарботке',

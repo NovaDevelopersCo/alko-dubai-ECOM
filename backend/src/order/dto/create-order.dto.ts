@@ -65,6 +65,14 @@ export class CreateOrderDto {
   })
   readonly address: string;
 
+  @IsNotEmpty()
+  @ApiProperty({
+    example: 'Наличными',
+    description: 'Способ оплаты',
+    required: true,
+  })
+  readonly payment: string;
+
   @ApiProperty({
     example: 'В обарботке',
     description: 'Статус заказа',

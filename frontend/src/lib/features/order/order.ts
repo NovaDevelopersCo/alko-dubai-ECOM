@@ -18,12 +18,16 @@ const initialState: orderStateProps = {
     isLoading: false,
 }
 
-export const fetchOrder = (id: number) => {
+export const fetchOrder = (order: order) => {
+    console.log(order)
+
     return async (dispatch: AppDispatch) => {
         dispatch(OrderSlice.actions.startLoading())
 
         try {
-            const response = await axiosServices.get(`api/order/${id}`)
+            const response = await axiosServices.post(`api/order`, {
+                ...order,
+            })
             dispatch(
                 OrderSlice.actions.fetchOrderSuccess(response.data as order),
             )
