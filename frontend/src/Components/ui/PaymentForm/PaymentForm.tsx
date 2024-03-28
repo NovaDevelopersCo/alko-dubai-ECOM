@@ -126,25 +126,7 @@ export default function PaymentForm() {
                         ))}
                     </div>
                     <hr className="border-[#D32B82] border-b border-dashed mt-10" />
-                    <div className="flex justify-between my-3">
-                        <p className="text-xl font-bold">Итого: </p>
-                        <p className="text-lg font-semibold text-[#D32B82]">
-                            {totalPrice} AED
-                        </p>
-                        <hr className="border-[#D32B82]" />
-                        <div className="overflow-auto max-h-[calc(100vh - 250px)]">
-                            {items.map((obj: CartItem) => (
-                                <CheckProduct key={obj.id} {...obj} />
-                            ))}
-                        </div>
-                        <hr className="border-[#D32B82] border-b border-dashed mt-10" />
-
-                        <div className="flex justify-between my-3">
-                            <p className="text-xl font-bold">Итого: </p>
-                            <p className="text-lg font-semibold text-[#D32B82]">
-                                {totalPrice}AED
-                            </p>
-                        </div>
+                    <div className="flex justify-between my-3 flex-col">
                         <Form.Item
                             name="payment"
                             rules={[

@@ -10,7 +10,7 @@ const Order = () => {
     const { items } = useAppSelector(selectCart)
     const { order } = useAppSelector(selectOrder)
 
-    if (!items.length || order.items.length === 0) {
+    if (!items.length) {
         redirect('/cart')
     }
 
