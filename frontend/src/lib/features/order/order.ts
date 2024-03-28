@@ -7,11 +7,13 @@ const initialState: orderStateProps = {
     error: null,
     success: null,
     order: {
+        id: 0,
         items: [],
         name: '',
         email: '',
         phone: '',
         details: '',
+        payment: '',
         price: 0,
         address: '',
     },

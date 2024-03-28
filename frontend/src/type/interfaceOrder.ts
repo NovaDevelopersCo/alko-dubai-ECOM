@@ -14,6 +14,7 @@ export type items = {
 }
 
 export type order = {
+    id?: number
     items: items[]
     name: string
     email: string
@@ -21,6 +22,7 @@ export type order = {
     details: string
     price: number
     address: string
+    payment: string
     createdAt?: Date
     updatedAt?: Date
 }
