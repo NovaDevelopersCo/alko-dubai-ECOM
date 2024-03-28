@@ -16,6 +16,7 @@ const Order = () => {
     if (!items.length || (!loading && order.items.length === 0)) {
         redirect('/cart')
     }
+    console.log(order.updatedAt)
 
     return (
         <Container>
@@ -35,7 +36,19 @@ const Order = () => {
                             Дата:
                         </p>
                         <p className="text-[15px] font-semibold">
-                            {Date.parse(order?.updatedAt as unknown as string)}
+                            {order.updatedAt
+                                ? order.updatedAt
+                                      .toString()
+                                      .replace('T', '')
+                                      .replaceAll('-', '.')
+                                      .slice(0, 10) +
+                                  ' ' +
+                                  order.updatedAt
+                                      .toString()
+                                      .replace('T', '')
+                                      .replaceAll('-', '.')
+                                      .slice(10, 15)
+                                : ''}
                         </p>
                     </div>
                     <div className="text-center">
