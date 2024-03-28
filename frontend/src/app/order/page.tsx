@@ -1,4 +1,3 @@
-'use client'
 import Order from '@/Components/Order/Order'
 import React from 'react'
 
