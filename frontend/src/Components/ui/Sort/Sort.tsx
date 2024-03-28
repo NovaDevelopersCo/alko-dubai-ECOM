@@ -77,6 +77,7 @@ const Sort = ({
         <div>
             <hr className="border-[#D32B82]" />
             {/* <hr
+
                 className={clsx([
                     visibleCatalog
                         ? 'absolute top-0 left-0 z-[101] lg:hidden w-80 border-[#D32B82]'

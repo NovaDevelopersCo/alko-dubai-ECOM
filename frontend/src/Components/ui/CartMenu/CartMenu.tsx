@@ -22,7 +22,7 @@ export const CartMenu = () => {
     return (
         <div>
             <Cart />
-            <CartMenuBtn />
+            <CartMenuBtn text1='Open Cart' text2="Close cart" />
         </div>
     )
 }

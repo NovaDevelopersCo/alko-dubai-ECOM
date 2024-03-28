@@ -6,6 +6,8 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { redirect } from 'next/navigation'
 import { fetchOrder } from '@/lib/features/order/order'
+import { CartItem } from '@/type/interfaceCart'
+import { CheckProduct } from '@/Components/ui/CheckProduct/CheckProduct'
 
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
@@ -31,6 +33,7 @@ export default function PaymentForm() {
     if (items.length === 0) {
         redirect('/cart')
     }
+
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
             <div className="flex flex-col lg:flex-row">
@@ -128,35 +131,50 @@ export default function PaymentForm() {
                         <p className="text-lg font-semibold text-[#D32B82]">
                             {totalPrice} AED
                         </p>
-                    </div>
-                    <Form.Item
-                        name="payment"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Пожалуйста, выберите способ оплаты!',
-                            },
-                        ]}
-                    >
-                        <Select
-                            placeholder="Выберите способ оплаты"
-                            style={{ width: 300 }}
+                        <hr className="border-[#D32B82]" />
+                        <div className="overflow-auto max-h-[calc(100vh - 250px)]">
+                            {items.map((obj: CartItem) => (
+                                <CheckProduct key={obj.id} {...obj} />
+                            ))}
+                        </div>
+                        <hr className="border-[#D32B82] border-b border-dashed mt-10" />
+
+                        <div className="flex justify-between my-3">
+                            <p className="text-xl font-bold">Итого: </p>
+                            <p className="text-lg font-semibold text-[#D32B82]">
+                                {totalPrice}AED
+                            </p>
+                        </div>
+                        <Form.Item
+                            name="payment"
+                            rules={[
+                                {
+                                    required: true,
+                                    message:
+                                        'Пожалуйста, выберите способ оплаты!',
+                                },
+                            ]}
                         >
-                            <Select.Option value="наличными">
-                                Наличными курьеру
-                            </Select.Option>
-                            <Select.Option value="картой">
-                                Картой курьеру
-                            </Select.Option>
-                        </Select>
-                    </Form.Item>
-                    <Button
-                        type="primary"
-                        htmlType="submit"
-                        className="flex justify-center mt-5"
-                    >
-                        ПОДТВЕРДИТЬ ЗАКАЗ
-                    </Button>
+                            <Select
+                                placeholder="Выберите способ оплаты"
+                                style={{ width: 300 }}
+                            >
+                                <Select.Option value="наличными">
+                                    Наличными курьеру
+                                </Select.Option>
+                                <Select.Option value="картой">
+                                    Картой курьеру
+                                </Select.Option>
+                            </Select>
+                        </Form.Item>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            className="flex justify-center mt-5"
+                        >
+                            ПОДТВЕРДИТЬ ЗАКАЗ
+                        </Button>
+                    </div>
                 </div>
             </div>
         </Form>

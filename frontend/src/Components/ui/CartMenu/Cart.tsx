@@ -3,11 +3,15 @@ import React, { FC, useContext, useEffect, useRef } from 'react'
 import { CartContext } from '@/Components/context/AppContext'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAppSelector } from '@/lib/hooks'
+import { selectCart } from '@/lib/features/cart/cart'
+import { CartItem } from '@/type/interfaceCart'
+import { ProductMini } from '@/Components/ui/ProductMini/ProductMini'
 
 const Cart: FC = () => {
     const [isCartMenuOpen, setIsCartMenuOpen] = useContext(CartContext)
     const menuRef = useRef<HTMLDivElement | null>(null)
-
+    const { totalPrice, totalSale, items } = useAppSelector(selectCart)
     const cartClasses = clsx(
         'ease-in-out duration-300 ml-6',
         'bg-[#fff] fixed top-0 right-0 h-screen w-[100%] flex',
@@ -29,9 +33,10 @@ const Cart: FC = () => {
             document.removeEventListener('mousedown', handleClickOutside)
         }
     }, [menuRef, setIsCartMenuOpen])
+
     return (
         <div className={cartClasses} id="mobile-menu-2" ref={menuRef}>
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col">
                 <div>
                     <div className="flex items-center w-[auto] justify-between gap-[36px]">
                         <h3 className="font-montserrat text-[20px] font-medium">
@@ -56,7 +61,12 @@ const Cart: FC = () => {
                         <div className="border border-customPink w-[100%]" />
                     </div>
                 </div>
-                <div>
+                <div className="overflow-auto max-h-[calc(100vh - 250px)]">
+                    {items.map((obj: CartItem) => (
+                        <ProductMini key={obj.id} {...obj} />
+                    ))}
+                </div>
+                <div className="mt-auto">
                     <div className="block mt-[9px] -ml-[25px] -mr-[25px] sm:-ml-[25px] sm:-mr-[25px] md:-ml-[0] md:-mr-[0] md:-lg-[0] md:-lg-[0] mb-[17px]">
                         <div className="border border-customPink w-[100%]" />
                     </div>
@@ -65,7 +75,7 @@ const Cart: FC = () => {
                             ПОДЫТОГ
                         </span>
                         <span className="text-customPink font-montserrat font-semibold">
-                            250 AED
+                            {totalPrice} AED
                         </span>
                     </div>
                     <div className="flex flex-col gap-[6px]">
@@ -77,7 +87,7 @@ const Cart: FC = () => {
                         </Link>
                         <Link
                             className="p-[13px_46px] rounded-[15px] text-montserrat text-[#fff] border border-customPink bg-customPink flex justify-center transition-all hover:scale-105"
-                            href="#"
+                            href="/payment-details"
                         >
                             ОФОРМИТЬ ЗАКАЗ
                         </Link>
