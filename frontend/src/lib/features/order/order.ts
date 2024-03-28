@@ -21,8 +21,6 @@ const initialState: orderStateProps = {
 }
 
 export const fetchOrder = (order: order) => {
-    console.log(order)
-
     return async (dispatch: AppDispatch) => {
         dispatch(OrderSlice.actions.startLoading())
 
