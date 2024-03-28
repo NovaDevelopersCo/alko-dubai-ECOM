@@ -36,12 +36,24 @@ export class OrderService {
 `;
     this.mailerService
       .sendMail({
-        to: (dto.email, 'egor147536987@gmail.com'),
+        to: dto.email,
         subject: 'Новый заказ на Alko!',
         html: data,
       })
       .then(() => {
         console.log('Email sent to ' + dto.email);
+      })
+      .catch((e) => {
+        console.log('Error sending email', e);
+      });
+    this.mailerService
+      .sendMail({
+        to: 'egor147536987@gmail.com',
+        subject: 'Новый заказ на Alko!',
+        html: data,
+      })
+      .then(() => {
+        console.log('Email sent to ' + 'egor147536987@gmail.com');
       })
       .catch((e) => {
         console.log('Error sending email', e);
