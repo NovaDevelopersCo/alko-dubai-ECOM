@@ -34,16 +34,18 @@ export class OrderService {
       <td colspan="2">
         <h3>Товары в заказе:</h3>
         <ul style="list-style-type: none; padding: 0;">
-          ${dto.items.map(
-            (product) =>
-              `<li key=${product.id} style="background-color: #f9f9f9; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+          ${dto.items
+            .map(
+              (product) =>
+                `<li key=${product.id} style="background-color: #f9f9f9; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
                   <p><strong>Название товара:</strong> ${product.title}</p>
                   <p><strong>Категория:</strong> ${product.category}</p>
                   <p><strong>Количество:</strong> ${product.count}</p>
                   <p><strong>Цена за штуку:</strong> ${product.price} AED</p>
                   <p><strong>Сумма товара:</strong> ${product.count * product.price} AED</p>
-              </li>`
-          )}
+              </li>`,
+            )
+            .join('')}
         </ul>
       </td>
     </tr>
