@@ -1,19 +1,36 @@
-'use client'
-import { Button, Form, Input, InputNumber, Select } from 'antd'
-import React from 'react'
+import { selectCart } from '@/lib/features/cart/cart'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
+import { Button, Form, Input, Select } from 'antd'
+import React, { useEffect } from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import {useAppSelector} from "@/lib/hooks";
-import {selectCart} from "@/lib/features/cart/cart";
-import {CartItem} from "@/type/interfaceCart";
-import {ProductMini} from "@/Components/ui/ProductMini/ProductMini";
-import {CheckProduct} from "@/Components/ui/CheckProduct/CheckProduct";
+import { redirect } from 'next/navigation'
+import { fetchOrder } from '@/lib/features/order/order'
 
 export default function PaymentForm() {
+    const { totalPrice, items } = useAppSelector(selectCart)
+    const [redirected, setRedirected] = React.useState(false)
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        if (redirected) {
+            redirect('/order')
+        }
+    }, [redirected])
+
     const onFinish = (values: any) => {
-        console.log(values)
+        dispatch(
+            fetchOrder({
+                ...values,
+                items,
+                price: totalPrice,
+            }),
+        )
+        setRedirected(true)
     }
-    const { totalPrice, totalSale, items } = useAppSelector(selectCart)
+    if (items.length === 0) {
+        redirect('/cart')
+    }
 
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
@@ -23,7 +40,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name={'name'}
                         label="Имя"
-                        style={{ width: 300 }}
+                        className="w-full lg:w-[300px]"
                         rules={[{ required: true }]}
                     >
                         <Input placeholder="Игорь" />
@@ -31,7 +48,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name={'email'}
                         label="Почта"
-                        style={{ width: 300 }}
+                        className="w-full lg:w-[300px]"
                         rules={[
                             {
                                 type: 'email',
@@ -45,7 +62,7 @@ export default function PaymentForm() {
                     <Form.Item
                         name="phone"
                         label="Телефон"
-                        style={{ width: 300 }}
+                        className="w-full lg:w-[300px]"
                         rules={[
                             {
                                 required: true,
@@ -56,7 +73,7 @@ export default function PaymentForm() {
                         <PhoneInput country={'ru'} placeholder="9565814629" />
                     </Form.Item>
                     <Form.Item
-                        name="adress"
+                        name="address"
                         label="Адрес"
                         className="w-full sm:w-[450px]"
                         rules={[
@@ -87,52 +104,57 @@ export default function PaymentForm() {
                 <div className="w-full sm:w-[450px] bg-[#F3F3F2] flex flex-col justify-start px-5 py-5 mb-8 rounded-lg">
                     <p className="text-2xl text-center font-bold">Ваш заказ</p>
                     <div className="flex justify-between mt-6 font-bold">
-                        <p className="text-base">товар
-                        </p>
+                        <p className="text-base">товар</p>
                         <p className="text-base">подытог</p>
                     </div>
-                    <hr className="border-[#D32B82]"/>
-                    <div className="overflow-auto max-h-[calc(100vh - 250px)]">
-                        {items.map((obj: CartItem) => (
-                            <CheckProduct key={obj.id} {...obj} />
+                    <hr className="border-[#D32B82]" />
+                    <div className="flex flex-col mt-4">
+                        {items.map((item: any, index: number) => (
+                            <div
+                                key={index}
+                                className="flex justify-between mb-3"
+                            >
+                                <p className="text-sm text-[#D32B82]">
+                                    {item.title}({item.count})
+                                </p>
+                                <p className="text-sm text-[#878787]">
+                                    {item.price * item.count} AED
+                                </p>
+                            </div>
                         ))}
                     </div>
-                    <hr className="border-[#D32B82] border-b border-dashed mt-10"/>
-
-                    <div className="flex justify-between my-3">
-                        <p className="text-xl font-bold">Итого: </p>
-                        <p className="text-lg font-semibold text-[#D32B82]">
-                            {totalPrice}AED
-                        </p>
-                    </div>
-                    <Form.Item
-                        name="payment"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Пожалуйста, выберите способ оплаты!',
-                            },
-                        ]}
-                    >
-                        <Select
-                            placeholder="Выберите способ оплаты"
-                            style={{width: 300}}
+                    <hr className="border-[#D32B82] border-b border-dashed mt-10" />
+                    <div className="flex justify-between my-3 flex-col">
+                        <Form.Item
+                            name="payment"
+                            rules={[
+                                {
+                                    required: true,
+                                    message:
+                                        'Пожалуйста, выберите способ оплаты!',
+                                },
+                            ]}
                         >
-                            <Select.Option value="Cash">
-                                Наличными курьеру
-                            </Select.Option>
-                            <Select.Option value="Card">
-                                Картой курьеру
-                            </Select.Option>
-                        </Select>
-                    </Form.Item>
-                    <Button
-                        type="primary"
-                        htmlType="submit"
-                        className="flex justify-center mt-5"
-                    >
-                        ПОДТВЕРДИТЬ ЗАКАЗ
-                    </Button>
+                            <Select
+                                placeholder="Выберите способ оплаты"
+                                style={{ width: 300 }}
+                            >
+                                <Select.Option value="наличными">
+                                    Наличными курьеру
+                                </Select.Option>
+                                <Select.Option value="картой">
+                                    Картой курьеру
+                                </Select.Option>
+                            </Select>
+                        </Form.Item>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            className="flex justify-center mt-5"
+                        >
+                            ПОДТВЕРДИТЬ ЗАКАЗ
+                        </Button>
+                    </div>
                 </div>
             </div>
         </Form>

@@ -157,6 +157,9 @@ select:focus-visible {
     -ms-border-radius: 5px !important;
     -o-border-radius: 5px !important;
 }
+.react-tel-input .form-control {
+    width: 100% !important;
+}
 
 .ant-select-selection-placeholder {
     color: #000 !important;

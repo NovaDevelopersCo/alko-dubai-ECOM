@@ -2,13 +2,10 @@
 
 import { selectCart } from '@/lib/features/cart/cart'
 import { useAppSelector } from '@/lib/hooks'
+import Link from 'next/link'
 
 export const Total = () => {
     const { totalPrice, totalSale, items } = useAppSelector(selectCart)
-    const totalCount = items.reduce(
-        (sum: number, item: any) => sum + item.count,
-        0,
-    )
 
     return (
         <div className="w-[329px] border border-customPink rounded-[15px] p-[25px] flex flex-col justify-center">
@@ -31,9 +28,9 @@ export const Total = () => {
                     {totalPrice} AED
                 </span>
             </div>
-            <button className="p-[12px_68px] transition-all duration-200 bg-customPink hover:bg-opacity-90 active:bg-opacity-100 text-[#fff] rounded-[15px] block lg:hidden md:hidden sm:block">
+            <Link href="/payment-details" className="p-[12px_68px] transition-all duration-200 bg-customPink hover:bg-opacity-90 active:bg-opacity-100 text-[#fff] rounded-[15px] block ">
                 Оформить заказ
-            </button>
+            </Link>
         </div>
     )
 }
