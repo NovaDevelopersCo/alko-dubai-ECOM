@@ -6,8 +6,6 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { redirect } from 'next/navigation'
 import { fetchOrder } from '@/lib/features/order/order'
-import { CartItem } from '@/type/interfaceCart'
-import { CheckProduct } from '@/Components/ui/CheckProduct/CheckProduct'
 
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)

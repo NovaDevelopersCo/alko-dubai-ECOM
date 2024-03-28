@@ -28,8 +28,10 @@ export const fetchOrder = (order: order) => {
             const response = await axiosServices.post(`api/order`, {
                 ...order,
             })
-            const items: any = response.data.items.map((item: any) => JSON.parse(item));
-            response.data.items = items;
+            const items: any = response.data.items.map((item: any) =>
+                JSON.parse(item),
+            )
+            response.data.items = items
             dispatch(
                 OrderSlice.actions.fetchOrderSuccess(response.data as order),
             )
@@ -51,17 +53,17 @@ const OrderSlice = createSlice({
         startLoading(state) {
             state.isLoading = true
         },
-
         finishLoading(state) {
             state.isLoading = false
         },
         fetchOrderSuccess(state, action) {
             state.order = action.payload as order
-            state.success = null
+            state.error = null
         },
     },
 })
 
 export const selectOrder = (state: RootState) => state.order as orderStateProps
+export const { finishLoading } = OrderSlice.actions
 
 export default OrderSlice.reducer

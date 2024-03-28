@@ -9,8 +9,12 @@ import React from 'react'
 const Order = () => {
     const { items } = useAppSelector(selectCart)
     const { order } = useAppSelector(selectOrder)
+    const { loading } = useAppSelector((state) => ({
+        loading: state.order.isLoading,
+    }))
+    console.log(!loading)
 
-    if (!items.length) {
+    if (!items.length || (!loading && order.items.length === 0)) {
         redirect('/cart')
     }
 
@@ -64,7 +68,10 @@ const Order = () => {
                         <span className="font-bold">ИТОГО</span>
                     </div>
                     {order.items.map((item: any, index: number) => (
-                        <div className="flex justify-between border-b-[1px] border-customGray p-[10px]" key={index}>
+                        <div
+                            className="flex justify-between border-b-[1px] border-customGray p-[10px]"
+                            key={index}
+                        >
                             <span className="font-bold">{item.title}</span>
                             <span className="text-customGray font-semibold">
                                 {item.price} AED
