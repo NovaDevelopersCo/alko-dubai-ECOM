@@ -15,7 +15,6 @@ const store = () => {
                         <MainStore ></MainStore>
                     </div>
                 </div>
-                <CartMenu />
             </Container>
         </>
     )

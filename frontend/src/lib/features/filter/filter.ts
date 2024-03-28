@@ -9,7 +9,7 @@ const initialState: InputFetch = {
     sale: false,
     max_price: 12000,
     min_price: 0,
-    limit: 100,
+    limit: 9,
     gridCount: 4,
     category: '',
     search: ''

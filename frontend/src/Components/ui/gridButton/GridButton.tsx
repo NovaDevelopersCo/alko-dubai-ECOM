@@ -1,5 +1,12 @@
 import React from 'react';
-import './gridBut.css'
+import './gridBut.css';
+
+interface GridButtonProps {
+    gridCount?: number; // Сделаем gridCount необязательным
+    index: number;
+    onclick: () => void;
+}
+
 const GridButton2 =({active, onclick}:{active:number,onclick:()=>void})=> {
     return <svg className={active===2? 'grid-active':''} onClick={onclick} width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0.5" y="0.5" width="14" height="14" stroke="#878787"/>
@@ -44,7 +51,8 @@ const GridButton4 = ({active, onclick}:{active:number,onclick:()=>void}) => {
     </svg>
 
 };
-const GridButton = ({gridCount, index, onclick}:{gridCount:number, index:number, onclick:()=>void}) => {
+
+const GridButton = ({gridCount = 4, index, onclick}:GridButtonProps) => { // Добавлено значение по умолчанию
 
     switch (index)
     {
