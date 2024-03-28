@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import axiosServices from '@/utils/axios'
 import { AppDispatch, RootState } from '@/lib/store'
 import { order, orderStateProps } from '@/type/interfaceOrder'
@@ -7,7 +7,6 @@ const initialState: orderStateProps = {
     error: null,
     success: null,
     order: {
-        id: 0,
         items: [],
         name: '',
         email: '',
@@ -19,13 +18,12 @@ const initialState: orderStateProps = {
     isLoading: false,
 }
 
-export const fetchOrder = createAsyncThunk(
-    'order/fetchOrder',
-    async (dispatch: AppDispatch) => {
+export const fetchOrder = (id: number) => {
+    return async (dispatch: AppDispatch) => {
         dispatch(OrderSlice.actions.startLoading())
 
         try {
-            const response = await axiosServices.get('api/order')
+            const response = await axiosServices.get(`api/order/${id}`)
             dispatch(
                 OrderSlice.actions.fetchOrderSuccess(response.data as order),
             )
@@ -34,9 +32,8 @@ export const fetchOrder = createAsyncThunk(
         } finally {
             dispatch(OrderSlice.actions.finishLoading())
         }
-    },
-)
-
+    }
+}
 const OrderSlice = createSlice({
     name: 'order',
     initialState,
@@ -56,21 +53,6 @@ const OrderSlice = createSlice({
             state.order = action.payload as order
             state.success = null
         },
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchOrder.pending, (state) => {
-                state.isLoading = true
-            })
-            .addCase(fetchOrder.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.order = action.payload as unknown as order
-                state.error = null
-            })
-            .addCase(fetchOrder.rejected, (state) => {
-                state.isLoading = false
-                state.error = 'Failed to fetch order'
-            })
     },
 })
 

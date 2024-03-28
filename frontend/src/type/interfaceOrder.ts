@@ -14,7 +14,6 @@ export type items = {
 }
 
 export type order = {
-    id: number
     items: items[]
     name: string
     email: string
