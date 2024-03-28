@@ -16,6 +16,8 @@ import { addItems } from '@/lib/features/cart/cart'
 import { CartItem } from '@/type/interfaceCart'
 import { InputFetch } from '@/type/interfaceFilter'
 import useEmblaCarousel from 'embla-carousel-react'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const ItemPage = () => {
     const dispatch = useAppDispatch()
@@ -121,11 +123,19 @@ const ItemPage = () => {
                 <figure>
                     <div className="flex flex-wrap justify-center">
                         <div className="w-1/3 min-w-[206px] min-h-[250px] mt-10 lg:mb-10 md:mr-auto ">
-                            <img
-                                src={item?.image}
-                                alt="png"
-                                className="w-full ml-0"
-                            />
+                            {item?.image ? (
+                                <img
+                                    src={item?.image}
+                                    alt="png"
+                                    className="w-full ml-0"
+                                />
+                            ) : (
+                                <Skeleton
+                                    width={300}
+                                    height={300}
+                                    className="rounded my-3 ml-10"
+                                />
+                            )}
                         </div>
                         <div className="md:mt-28">
                             <span className="opacity-70 text-3xl ">
