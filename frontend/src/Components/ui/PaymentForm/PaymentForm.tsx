@@ -1,7 +1,7 @@
 import { selectCart } from '@/lib/features/cart/cart'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { Button, Form, Input, Select } from 'antd'
-import React from 'react'
+import React, { useEffect } from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { redirect } from 'next/navigation'
@@ -9,7 +9,14 @@ import { fetchOrder } from '@/lib/features/order/order'
 
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
+    const [redirected, setRedirected] = React.useState(false)
     const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        if (redirected) {
+            redirect('/order')
+        }
+    }, [redirected])
 
     const onFinish = (values: any) => {
         dispatch(
@@ -19,7 +26,7 @@ export default function PaymentForm() {
                 price: totalPrice,
             }),
         )
-        redirect('/order')
+        setRedirected(true)
     }
     if (items.length === 0) {
         redirect('/cart')
