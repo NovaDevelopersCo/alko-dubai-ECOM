@@ -12,27 +12,50 @@ export class OrderService {
   ) {}
 
   async sendMail(dto) {
-    const data = `<div>
-    <h2 style="background-color: lime; text-align: center;">Уведомление о новом заказе!</h2>
-    <p><strong>Имя:</strong> ${dto.name}</p>
-    <p><strong>Телефон:</strong> ${dto.phone}</p>
-    <p><strong>Адрес:</strong> ${dto.address}</p>
-    <h3>Товары в заказе:</h3>
-    <ul>
-        ${dto.items.map(
-          (product) =>
-            `<li key=${product.id}>
-                <p><strong>Название товара:</strong> ${product.title}</p>
-                <p><strong>Категория:</strong> ${product.category}</p>
-                <p><strong>Количество:</strong> ${product.quantity}</p>
-                <p><strong>Цена за штуку:</strong> ${product.price}</p>
-                <p><strong>Сумма товара:</strong> ${product.quantity * product.price}</p>
-            </li>`,
-        )}
-    </ul>
-    <p><strong>Общая сумма заказа:</strong> ${dto.price}</p>
-    <p><strong>Детали заказа:</strong> ${dto.details}</p>
-</div>
+    const data = `<table style="max-width: 700px; margin: 20px auto; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px;">
+    <tr>
+      <td colspan="2" style="background-color: lime; text-align: center; padding: 10px; border-radius: 5px;">
+        <h2>Уведомление о новом заказе!</h2>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Имя:</strong></td>
+      <td>${dto.name}</td>
+    </tr>
+    <tr>
+      <td><strong>Телефон:</strong></td>
+      <td>${dto.phone}</td>
+    </tr>
+    <tr>
+      <td><strong>Адрес:</strong></td>
+      <td>${dto.address}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Товары в заказе:</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          ${dto.items.map(
+            (product) =>
+              `<li key=${product.id} style="background-color: #f9f9f9; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+                  <p><strong>Название товара:</strong> ${product.title}</p>
+                  <p><strong>Категория:</strong> ${product.category}</p>
+                  <p><strong>Количество:</strong> ${product.count}</p>
+                  <p><strong>Цена за штуку:</strong> ${product.price} AED</p>
+                  <p><strong>Сумма товара:</strong> ${product.count * product.price} AED</p>
+              </li>`
+          )}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Общая сумма заказа:</strong></td>
+      <td>${dto.price} AED</td>
+    </tr>
+    <tr>
+      <td><strong>Детали заказа:</strong></td>
+      <td>${dto.details ? dto.details : 'Нет деталей'}</td>
+    </tr>
+  </table>
 `;
     this.mailerService
       .sendMail({
