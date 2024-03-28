@@ -30,6 +30,8 @@ export const fetchOrder = (order: order) => {
             const response = await axiosServices.post(`api/order`, {
                 ...order,
             })
+            const items: any = response.data.items.map((item: any) => JSON.parse(item));
+            response.data.items = items;
             dispatch(
                 OrderSlice.actions.fetchOrderSuccess(response.data as order),
             )
