@@ -118,36 +118,56 @@ const Order = () => {
                         <span className="font-bold">ТОВАР</span>
                         <span className="font-bold">ИТОГО</span>
                     </div>
-                    {order.items.map((item: any, index: number) => (
-                        <div
-                            className="flex justify-between border-b-[1px] border-customGray p-[10px]"
-                            key={index}
-                        >
+                    {order.items.length !== 0 ? (
+                        order.items.map((item: any, index: number) => (
+                            <div
+                                className="flex justify-between border-b-[1px] border-customGray p-[10px]"
+                                key={index}
+                            >
+                                <span className="font-bold">
+                                    {item.title !== '' ? (
+                                        item.title
+                                    ) : (
+                                        <Skeleton
+                                            width={60}
+                                            height={15}
+                                            className="rounded my-3"
+                                        />
+                                    )}
+                                </span>
+                                <span className="text-customGray font-semibold">
+                                    {item.price !== 0 ? (
+                                        item.price * item.count
+                                    ) : (
+                                        <Skeleton
+                                            width={40}
+                                            height={15}
+                                            className="rounded my-3"
+                                        />
+                                    )}{' '}
+                                    AED
+                                </span>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="flex justify-between border-b-[1px] border-customGray p-[10px]">
                             <span className="font-bold">
-                                {item.title !== '' ? (
-                                    item.title
-                                ) : (
-                                    <Skeleton
-                                        width={60}
-                                        height={15}
-                                        className="rounded my-3"
-                                    />
-                                )}
+                                <Skeleton
+                                    width={150}
+                                    height={15}
+                                    className="rounded my-3"
+                                />
                             </span>
-                            <span className="text-customGray font-semibold">
-                                {item.price !== 0 ? (
-                                    item.price * item.count
-                                ) : (
-                                    <Skeleton
-                                        width={40}
-                                        height={15}
-                                        className="rounded my-3"
-                                    />
-                                )}{' '}
+                            <span className="text-customGray font-semibold flex items-center">
+                                <Skeleton
+                                    width={60}
+                                    height={15}
+                                    className="rounded my-3"
+                                />{'  '}
                                 AED
                             </span>
                         </div>
-                    ))}
+                    )}
                     <div className="flex justify-between border-b-[1px] border-customGray p-[10px]">
                         <span className="font-bold">ПРИМЕЧАНИЕ:</span>
                         <span className="text-customGray">
