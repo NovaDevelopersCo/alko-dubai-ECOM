@@ -133,6 +133,7 @@ const CartSlice = createSlice({
             state.items = []
             state.totalPrice = 0
             state.totalSale = 0
+            saveCartToLocalStorage(state.items)
         },
     },
 })
