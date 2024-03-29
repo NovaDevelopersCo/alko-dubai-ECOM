@@ -1,22 +1,24 @@
 'use client'
 import Container from '@/Components/ui/Container/Container'
-import { selectCart } from '@/lib/features/cart/cart'
+import { clearItems } from '@/lib/features/cart/cart'
 import { selectOrder } from '@/lib/features/order/order'
-import { useAppSelector } from '@/lib/hooks'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
 const Order = () => {
-    const { items } = useAppSelector(selectCart)
     const { order } = useAppSelector(selectOrder)
+    const dispatch = useAppDispatch()
     const { loading } = useAppSelector((state) => ({
         loading: state.order.isLoading,
     }))
-
-    if (!items.length || (!loading && order.items.length === 0)) {
-        redirect('/cart')
-    }
-    console.log(order.updatedAt)
+    React.useEffect(() => {
+        if (!loading && order.items.length === 0) {
+            redirect('/cart')
+        } else if (!loading && order.items.length !== 0) {
+            dispatch(clearItems())
+        }
+    }, [order, dispatch, loading])
 
     return (
         <Container>
@@ -86,7 +88,7 @@ const Order = () => {
                         >
                             <span className="font-bold">{item.title}</span>
                             <span className="text-customGray font-semibold">
-                                {item.price} AED
+                                {item.price * item.count} AED
                             </span>
                         </div>
                     ))}
