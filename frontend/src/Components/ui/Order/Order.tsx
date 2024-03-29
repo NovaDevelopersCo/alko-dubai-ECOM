@@ -154,7 +154,7 @@ const Order = () => {
                             <span className="font-bold">
                                 <Skeleton
                                     width={150}
-                                    height={15}
+                                    height={20}
                                     className="rounded my-3"
                                 />
                             </span>
