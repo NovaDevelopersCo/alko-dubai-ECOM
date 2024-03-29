@@ -34,7 +34,7 @@ const Order = () => {
                             Номер заказа:
                         </p>
                         <p className="text-[15px] font-semibold">
-                            {order.id ? (
+                            {order.id !== 0 ? (
                                 order.id
                             ) : (
                                 <Skeleton
@@ -76,7 +76,7 @@ const Order = () => {
                             Итого:
                         </p>
                         <p className="text-[15px] font-semibold">
-                            {order.price ? (
+                            {order.price !== 0 ? (
                                 order.price
                             ) : (
                                 <Skeleton
@@ -99,7 +99,7 @@ const Order = () => {
                 </div>
                 <div className="text-center text-customGray font-semibold">
                     Оплата{' '}
-                    {order.payment ? (
+                    {order.payment !== '' ? (
                         order.payment
                     ) : (
                         <Skeleton
@@ -124,7 +124,7 @@ const Order = () => {
                             key={index}
                         >
                             <span className="font-bold">
-                                {item.title ? (
+                                {item.title !== '' ? (
                                     item.title
                                 ) : (
                                     <Skeleton
@@ -135,7 +135,7 @@ const Order = () => {
                                 )}
                             </span>
                             <span className="text-customGray font-semibold">
-                                {item.price ? (
+                                {item.price !== 0 ? (
                                     item.price * item.count
                                 ) : (
                                     <Skeleton
