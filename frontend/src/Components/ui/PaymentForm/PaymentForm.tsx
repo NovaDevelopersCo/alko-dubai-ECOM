@@ -34,7 +34,7 @@ export default function PaymentForm() {
 
     return (
         <Form name="order" onFinish={onFinish} style={{ marginTop: 50 }}>
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col lg:flex-row items-center">
                 <div className="w-full flex flex-col items-center lg:items-start max-w-full">
                     <p className="text-3xl">Детали оплаты</p>
                     <Form.Item
