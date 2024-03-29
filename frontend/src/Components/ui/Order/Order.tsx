@@ -64,7 +64,7 @@ const Order = () => {
                                     .slice(10, 15)
                             ) : (
                                 <Skeleton
-                                    width={70}
+                                    width={120}
                                     height={15}
                                     className="rounded my-3"
                                 />
@@ -75,12 +75,12 @@ const Order = () => {
                         <p className="text-[16px] text-customGray font-semibold">
                             Итого:
                         </p>
-                        <p className="text-[15px] font-semibold">
+                        <p className="text-[15px] font-semibold flex justify-center items-center">
                             {order.price !== 0 ? (
                                 order.price
                             ) : (
                                 <Skeleton
-                                    width={40}
+                                    width={60}
                                     height={15}
                                     className="rounded my-3"
                                 />
@@ -97,13 +97,13 @@ const Order = () => {
                         </p>
                     </div>
                 </div>
-                <div className="text-center text-customGray font-semibold">
+                <div className="text-center text-customGray font-semibold flex justify-center items-center">
                     Оплата{' '}
                     {order.payment !== '' ? (
                         order.payment
                     ) : (
                         <Skeleton
-                            width={30}
+                            width={60}
                             height={15}
                             className="rounded my-3"
                         />
