@@ -54,7 +54,7 @@ export const Product = ({
                 height={15}
                 onClick={onClickRemove}
             />
-            <img src={image} alt={title} width={105} height={122} />
+            <img src={image} alt={title} width={85} height={102} />
             <div className="grid lg:flex md:flex sm:grid grid-cols-1 justify-between w-[100%] flex-wrap">
                 <div className="flex items-top justify-between py-[7px]">
                     <span className="text-[14px] lg:text-[16px] md:text-[15px] sm:text-[14px] font-semibold max-w-[185px] lg:max-w-[100%] md:max-w-[100%] sm:max-w-[185px]">
