@@ -101,59 +101,71 @@ export default function PaymentForm() {
                         </span>
                     </p>
                 </div>
-                <div className="w-full sm:w-[450px] bg-[#F3F3F2] flex flex-col justify-start px-5 py-5 mb-8 rounded-lg">
-                    <p className="text-2xl text-center font-bold">Ваш заказ</p>
-                    <div className="flex justify-between mt-6 font-bold">
-                        <p className="text-base">товар</p>
-                        <p className="text-base">подытог</p>
+                <div className="w-full sm:w-[450px] bg-[#F3F3F2] flex flex-col justify-between px-5 py-5 mb-8 rounded-lg">
+                    <div className="flex flex-col">
+                        <p className="text-2xl text-center font-bold">
+                            Ваш заказ
+                        </p>
+                        <div className="flex justify-between mt-6 font-bold">
+                            <p className="text-base">товар</p>
+                            <p className="text-base">подытог</p>
+                        </div>
+                        <hr className="border-[#D32B82]" />
+                        <div className="flex flex-col mt-4">
+                            {items.map((item: any, index: number) => (
+                                <div
+                                    key={index}
+                                    className="flex justify-between mb-3"
+                                >
+                                    <p className="text-sm text-[#D32B82]">
+                                        {item.title}({item.count})
+                                    </p>
+                                    <p className="text-sm text-[#878787]">
+                                        {item.price * item.count} AED
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                    <hr className="border-[#D32B82]" />
-                    <div className="flex flex-col mt-4">
-                        {items.map((item: any, index: number) => (
-                            <div
-                                key={index}
-                                className="flex justify-between mb-3"
+                    <div className="flex flex-col justify-evenly">
+                        <hr className="border-[#D32B82] border-b border-dashed mt-10" />
+                        <div className="flex justify-between mt-5 font-bold">
+                            <p className="text-lg">Итого</p>
+                            <p className="text-base text-[#D32B82]">
+                                {totalPrice} AED
+                            </p>
+                        </div>
+                        <div className="flex justify-between my-3 flex-col">
+                            <Form.Item
+                                name="payment"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message:
+                                            'Пожалуйста, выберите способ оплаты!',
+                                    },
+                                ]}
                             >
-                                <p className="text-sm text-[#D32B82]">
-                                    {item.title}({item.count})
-                                </p>
-                                <p className="text-sm text-[#878787]">
-                                    {item.price * item.count} AED
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                    <hr className="border-[#D32B82] border-b border-dashed mt-10" />
-                    <div className="flex justify-between my-3 flex-col">
-                        <Form.Item
-                            name="payment"
-                            rules={[
-                                {
-                                    required: true,
-                                    message:
-                                        'Пожалуйста, выберите способ оплаты!',
-                                },
-                            ]}
-                        >
-                            <Select
-                                placeholder="Выберите способ оплаты"
-                                style={{ width: 300 }}
+                                <Select
+                                    placeholder="Выберите способ оплаты"
+                                    style={{ width: 300 }}
+                                >
+                                    <Select.Option value="наличными">
+                                        Наличными курьеру
+                                    </Select.Option>
+                                    <Select.Option value="картой">
+                                        Картой курьеру
+                                    </Select.Option>
+                                </Select>
+                            </Form.Item>
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                                className="flex justify-center mt-5"
                             >
-                                <Select.Option value="наличными">
-                                    Наличными курьеру
-                                </Select.Option>
-                                <Select.Option value="картой">
-                                    Картой курьеру
-                                </Select.Option>
-                            </Select>
-                        </Form.Item>
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            className="flex justify-center mt-5"
-                        >
-                            ПОДТВЕРДИТЬ ЗАКАЗ
-                        </Button>
+                                ПОДТВЕРДИТЬ ЗАКАЗ
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
