@@ -2,21 +2,23 @@
 import Container from '@/Components/ui/Container/Container'
 import { clearItems } from '@/lib/features/cart/cart'
 import { selectOrder } from '@/lib/features/order/order'
-import { useAppSelector } from '@/lib/hooks'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
 const Order = () => {
     const { order } = useAppSelector(selectOrder)
+    const dispatch = useAppDispatch()
     const { loading } = useAppSelector((state) => ({
         loading: state.order.isLoading,
     }))
-
-    if (!loading && order.items.length === 0) {
-        redirect('/cart')
-    } else if (!loading && order.items.length !== 0) {
-        clearItems()
-    }
+    React.useEffect(() => {
+        if (!loading && order.items.length === 0) {
+            redirect('/cart')
+        } else if (!loading && order.items.length !== 0) {
+            dispatch(clearItems())
+        }
+    }, [order, dispatch, loading])
 
     return (
         <Container>
