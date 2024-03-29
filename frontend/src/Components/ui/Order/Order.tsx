@@ -1,22 +1,22 @@
 'use client'
 import Container from '@/Components/ui/Container/Container'
-import { selectCart } from '@/lib/features/cart/cart'
+import { clearItems } from '@/lib/features/cart/cart'
 import { selectOrder } from '@/lib/features/order/order'
 import { useAppSelector } from '@/lib/hooks'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
 const Order = () => {
-    const { items } = useAppSelector(selectCart)
     const { order } = useAppSelector(selectOrder)
     const { loading } = useAppSelector((state) => ({
         loading: state.order.isLoading,
     }))
 
-    if (!items.length || (!loading && order.items.length === 0)) {
+    if (!loading && order.items.length === 0) {
         redirect('/cart')
+    } else if (!loading && order.items.length !== 0) {
+        clearItems()
     }
-    console.log(order.updatedAt)
 
     return (
         <Container>
