@@ -88,7 +88,7 @@ const Order = () => {
                         >
                             <span className="font-bold">{item.title}</span>
                             <span className="text-customGray font-semibold">
-                                {item.price} AED
+                                {item.price * item.count} AED
                             </span>
                         </div>
                     ))}
