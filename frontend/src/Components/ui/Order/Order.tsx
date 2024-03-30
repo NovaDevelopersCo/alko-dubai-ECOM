@@ -163,7 +163,8 @@ const Order = () => {
                                     width={60}
                                     height={15}
                                     className="rounded my-3"
-                                />{'  '}
+                                />
+                                {'  '}
                                 AED
                             </span>
                         </div>

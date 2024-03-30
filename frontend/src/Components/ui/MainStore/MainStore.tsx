@@ -40,18 +40,6 @@ function MainStore({ gridCount, limit }: { gridCount: number; limit: number }) {
         // Вызываем асинхронный экшен для получения элементов
         dispatch(fetchItems(inputFetch))
     }
-    const limitCount = () => {
-        switch (limit) {
-            case 9:
-                return 9
-            case 24:
-                return 24
-            case 36:
-                return 36
-            default:
-                return 9
-        }
-    }
     // Вызываем функцию updateItems только при изменении параметров фильтрации
     useEffect(() => {
         if (!isInitialMount.current) {

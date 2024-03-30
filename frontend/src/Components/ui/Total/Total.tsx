@@ -5,7 +5,7 @@ import { useAppSelector } from '@/lib/hooks'
 import Link from 'next/link'
 
 export const Total = () => {
-    const { totalPrice, totalSale, items } = useAppSelector(selectCart)
+    const { totalPrice } = useAppSelector(selectCart)
 
     return (
         <div className="w-[329px] border border-customPink rounded-[15px] p-[25px] flex flex-col justify-center">
@@ -28,7 +28,10 @@ export const Total = () => {
                     {totalPrice} AED
                 </span>
             </div>
-            <Link href="/payment-details" className="p-[12px_68px] transition-all duration-200 bg-customPink hover:bg-opacity-90 active:bg-opacity-100 text-[#fff] rounded-[15px] block ">
+            <Link
+                href="/payment-details"
+                className="p-[12px_68px] transition-all duration-200 bg-customPink hover:bg-opacity-90 active:bg-opacity-100 text-[#fff] rounded-[15px] block "
+            >
                 Оформить заказ
             </Link>
         </div>

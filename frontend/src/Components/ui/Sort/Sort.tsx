@@ -2,12 +2,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
-import clsx from 'clsx'
 import { Select } from 'antd'
 import { setPopularity, setNews, setPrice } from '@/lib/features/filter/filter'
 import { useAppDispatch } from '@/lib/hooks'
 import GridButton from '@/Components/ui/gridButton/GridButton'
-import Image from 'next/image'
 
 const Sort = ({
     gridCount,
@@ -20,7 +18,7 @@ const Sort = ({
     limit: number
     setLimit: (lim: number) => void
 }) => {
-    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+    const [, setVisibleCatalog] = useContext(CatalogContext)
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
     let flag = false

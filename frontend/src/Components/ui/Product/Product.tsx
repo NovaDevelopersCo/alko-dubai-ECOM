@@ -1,15 +1,10 @@
 'use client'
 import { Counter } from '@/Components/ui/Counter/Counter'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import Image from 'next/image'
 import { CartItem } from '@/type/interfaceCart'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import {
-    addItem,
-    minusItem,
-    removeItem,
-    selectCart,
-} from '@/lib/features/cart/cart'
+import { useAppDispatch } from '@/lib/hooks'
+import { addItem, minusItem, removeItem } from '@/lib/features/cart/cart'
 
 export const Product = ({
     id,
@@ -21,7 +16,6 @@ export const Product = ({
     oldPrice,
 }: CartItem) => {
     const dispatch = useAppDispatch()
-    const { totalPrice } = useAppSelector(selectCart)
     const onClickPlus = useCallback(() => {
         dispatch(
             addItem({
