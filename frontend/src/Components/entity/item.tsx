@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 
-
 import Link from 'next/link'
 import { item } from '@/type/interfaceItems'
 // Компонент Item
@@ -13,7 +12,6 @@ export function Item({
     image,
     id,
     oldPrice,
-    sale,
 }: item) {
     return (
         <div className="col-span-1 p-4 rounded-md hover:shadow-md">

@@ -1,13 +1,11 @@
-import React from 'react';
-import ItemPage from "@/Components/entity/ItemPage";
-
+import React from 'react'
+import ItemPage from '@/Components/entity/ItemPage'
 
 const ItemDetail = () => {
-
     return (
         <div>
-            <ItemPage  />
+            <ItemPage />
         </div>
-    );
-};
-export default ItemDetail;
+    )
+}
+export default ItemDetail

@@ -1,7 +1,7 @@
 'use client'
 import { useRef } from 'react'
 import { Provider } from 'react-redux'
-import { initialState, setInitialCartItems } from '@/lib/features/cart/cart'
+import { setInitialCartItems } from '@/lib/features/cart/cart'
 // lib
 import { AppStore, makeStore } from '@/lib/store'
 

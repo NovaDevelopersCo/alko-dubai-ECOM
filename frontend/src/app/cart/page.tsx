@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import Container from '@/Components/ui/Container/Container'
 import EmptyCart from '@/Components/ui/ProductTable/EmptyCart'
 import { ProductTable } from '@/Components/ui/ProductTable/ProductTable'
