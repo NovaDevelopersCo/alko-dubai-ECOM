@@ -9,6 +9,7 @@ import GridButton from '@/Components/ui/gridButton/GridButton'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
     let flag = false

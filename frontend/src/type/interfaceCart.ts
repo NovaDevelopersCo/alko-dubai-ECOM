@@ -7,7 +7,8 @@ export type CartItem = {
     image: string
     count: number
     sale?: boolean
-    soldOut?: boolean}
+    soldOut?: boolean
+}
 
 export type SCartItem = {
     id: number

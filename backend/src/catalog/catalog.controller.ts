@@ -5,11 +5,13 @@ import {
   Param,
   Patch,
   UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import { CatalogService } from './catalog.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Catalog } from './catalog.model';
 import { UpdateCatalogDto } from './dto/UpdateCatalogDto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('Catalog')
 @Controller('api/catalog')
@@ -32,6 +34,7 @@ export class CatalogController {
 
   @Patch('/:id')
   @ApiResponse({ status: 200, type: Catalog })
+  @UseInterceptors(FileInterceptor('image'))
   updateCatalog(
     @Param('id') id: number,
     @Body() dto: UpdateCatalogDto,

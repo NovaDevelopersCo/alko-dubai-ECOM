@@ -14,13 +14,10 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({ children, gridCount }) => {
             case 3: return 'lg:grid-cols-3 md:grid-cols-3 grid-cols-2'
             case 4: return 'lg:grid-cols-4 md:grid-cols-4 grid-cols-2'
             default:return 'lg:grid-cols-4 md:grid-cols-4 grid-cols-2'
+
         }
     }
-    return (
-        <div className={`grid ${gridClass()} gap-4`}>
-            {children}
-        </div>
-    )
+    return <div className={`grid ${gridClass()} gap-4`}>{children}</div>
 }
 
 export default ProductsGrid

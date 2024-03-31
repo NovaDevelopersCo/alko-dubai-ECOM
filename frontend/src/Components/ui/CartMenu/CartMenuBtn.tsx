@@ -3,7 +3,13 @@
 import { useContext } from 'react'
 import { CartContext } from '@/Components/context/AppContext'
 
-export const CartMenuBtn = ({text1, text2}:{text1:string, text2:string}) => {
+export const CartMenuBtn = ({
+    text1,
+    text2,
+}: {
+    text1: string
+    text2: string
+}) => {
     const [isCartOpen, setIsCartOpen] = useContext(CartContext)
 
     return (

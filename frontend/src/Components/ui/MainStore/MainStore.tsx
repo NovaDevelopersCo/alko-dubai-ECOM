@@ -16,6 +16,10 @@ function MainStore() {
     const [currentPage, setCurrentPage] = useState<number>(0)
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
 
+    useEffect(() => {
+        dispatch(setLimit(8))
+    }, [dispatch])
+
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
     const gridCount = useAppSelector(state => state.filters.gridCount); // Получаем gridCount из Redux-стора
     const limit = useAppSelector(state => state.filters.limit); // Получаем limit из Redux-стора
@@ -38,19 +42,19 @@ function MainStore() {
         // Вызываем асинхронный экшен для получения элементов
         dispatch(fetchItems(inputFetch))
     }
-
     // Вызываем функцию updateItems только при изменении параметров фильтрации
     useEffect(() => {
         if (!isInitialMount.current) {
-            updateItems();
+            updateItems()
         } else {
-            isInitialMount.current = false;
+            isInitialMount.current = false
         }
-    }, [filter, dispatch, limit]);
+    }, [filter, dispatch, limit])
 
     useEffect(() => {
         updateItems();
     }, [limit, gridCount]);
+
 
     let products = null // По умолчанию нет товаров
     if (items && limit !== undefined) {
