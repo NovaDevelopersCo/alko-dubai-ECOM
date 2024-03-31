@@ -6,7 +6,7 @@ import { Item } from '@/Components/entity/item'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Grid from '../GridContainer/Grid'
 import { Pagination } from 'antd'
-import { selectFilter } from '@/lib/features/filter/filter'
+import { selectFilter, setLimit } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
 function MainStore() {
