@@ -63,6 +63,7 @@ export class CatalogService {
     const catalog = await this.catalogRepository.findOne({
       where: { id },
     });
+    console.log(image);
     if (image !== undefined) {
       const fileName = await this.fileService.createFile(image);
       catalog.title = dto.title ? dto.title : catalog.title;
