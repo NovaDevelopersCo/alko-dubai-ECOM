@@ -3,7 +3,7 @@ import { getCartFromLS } from '@/utils/getCartFromLS'
 import { calcTotalPrice, calcTotalSale } from '@/utils/calcTotalPrice'
 import { CartItem } from '@/type/interfaceCart'
 import { RootState } from '@/lib/store'
-
+import Cookies from 'js-cookie';
 const { items, totalPrice, totalSale } = getCartFromLS()
 
 export const initialState = {
@@ -12,9 +12,9 @@ export const initialState = {
     totalSale,
 }
 
-const saveCartToLocalStorage = (items: CartItem[]): void => {
-    localStorage.setItem('cart', JSON.stringify(items))
-}
+export const saveCartToLocalStorage = (items: CartItem[]): void => {
+    Cookies.set('cart', JSON.stringify(items), { expires: 7}); // Устанавливаем срок действия cookies на 1 год
+};
 
 export const setInitialCartItems = (items: CartItem[]) => {
     return {
