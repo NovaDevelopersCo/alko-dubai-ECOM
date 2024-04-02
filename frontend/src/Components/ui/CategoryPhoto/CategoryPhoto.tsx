@@ -10,6 +10,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { RootState } from '@/lib/store'
 import { setCategory } from '@/lib/features/filter/filter'
 
+
 type PropType = {
     slides: number[]
     options?: EmblaOptionsType
