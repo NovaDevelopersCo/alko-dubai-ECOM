@@ -8,7 +8,8 @@ import { Select } from 'antd'
 import GridButton from '@/Components/ui/gridButton/GridButton'
 
 const Sort = () => {
-    const [setVisibleCatalog] = useContext(CatalogContext)
+    const [isVisibleCatalog] = useContext(CatalogContext);
+const setVisibleCatalog: any = null;
 
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
