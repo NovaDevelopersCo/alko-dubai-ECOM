@@ -19,11 +19,11 @@ export class Catalog extends Model<CatalogCreationAttrs> {
   id: number;
 
   @ApiProperty({ example: 'testItem', description: 'Название товара' })
-  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  @Column({ type: DataType.STRING(2024), unique: true, allowNull: false })
   title: string;
 
   @ApiProperty({ example: 'Картинка', description: 'Захватывающая картинка' })
-  @Column({ type: DataType.STRING, allowNull: true, defaultValue: null })
+  @Column({ type: DataType.STRING(2024), allowNull: true, defaultValue: null })
   image: string;
 
   @ApiProperty({ example: 1202, description: 'Цена' })

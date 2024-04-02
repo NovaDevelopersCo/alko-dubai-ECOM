@@ -1,11 +1,15 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react'
+import { setPopularity, setNews, setPrice, setLimit, setGridCount } from '@/lib/features/filter/filter'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
-import clsx from 'clsx'
+import { Select } from 'antd'
+import GridButton from '@/Components/ui/gridButton/GridButton'
 
 const Sort = () => {
     const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
     let flag = false
@@ -38,63 +42,105 @@ const Sort = () => {
         }
     }, [])
 
+    const dispatch = useAppDispatch()
+    const limit = useAppSelector(state => state.filters.limit);
+    const gridCount = useAppSelector(state => state.filters.gridCount);
+
+    const onChange = (value: string) => {
+        if (value === 'asc' || value === 'desc') {
+            dispatch(setPrice(value))
+            dispatch(setPopularity(false))
+            dispatch(setNews(false))
+        }
+        if (value === 'popularity') {
+            dispatch(setPrice('asc'))
+            dispatch(setPopularity(true))
+            dispatch(setNews(false))
+        }
+        if (value === 'news') {
+            dispatch(setPrice('asc'))
+            dispatch(setPopularity(false))
+            dispatch(setNews(true))
+        }
+    }
+
+    const handleLimitChange = (newLimit: number) => {
+        dispatch(setLimit(newLimit));
+    };
+
+    const handleGridCountChange = (newGridCount: number) => {
+        dispatch(setGridCount(newGridCount));
+    };
+
     return (
         <div>
             <hr className="border-[#D32B82]" />
-            <hr
-                className={clsx([
-                    visibleCatalog
-                        ? 'absolute top-0 left-0 z-[101] lg:hidden w-80 border-[#D32B82]'
-                        : '',
-                ])}
-            />
             <Container>
-                <div className="flex justify-between items-center px-5 xl:px-0">
-                    <pre
-                        className={clsx([
-                            visibleCatalog
-                                ? 'fixed top-7 left-56 z-[101] lg:static'
-                                : '',
-                        ])}
+                <div className="flex items-center xl:px-0 py-2.5">
+                    <ul className=" hidden lg:flex">
+                        Показать :&nbsp;
+                        <li
+                            className={`cursor-pointer ${
+                                limit === 9 ? 'text-black' : 'text-gray-500'
+                            }`}
+                            onClick={() => handleLimitChange(9)}
+                        >
+                            &nbsp;9&nbsp;/&nbsp;
+                        </li>
+                        <li
+                            className={`cursor-pointer ${
+                                limit === 24 ? 'text-black' : 'text-gray-500'
+                            }`}
+                            onClick={() => handleLimitChange(24)}
+                        >
+                            24&nbsp;/
+                        </li>
+                        <li
+                            className={`cursor-pointer ${
+                                limit === 36 ? 'text-black' : 'text-gray-500'
+                            }`}
+                            onClick={() => handleLimitChange(36)}
+                        >
+                            &nbsp;36
+                        </li>
+                    </ul>
+                    <ul className="max-w-[50px]  gap-x-4 hidden lg:flex ml-11">
+                        {[2, 3, 4].map((i) => (
+                            <li key={i} className="cursor-pointer ">
+                                <GridButton
+                                    onclick={() => handleGridCountChange(i)}
+                                    gridCount={gridCount}
+                                    index={i}
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                    <p
+                        className="lg:hidden cursor-pointer"
+                        onClick={() => {
+                            setVisibleCatalog((state) => !state)
+                        }}
                     >
-                        <p
-                            className="lg:hidden flex w-max cursor-pointer whitespace-nowrap"
-                            onClick={() => {
-                                setVisibleCatalog((state) => !state)
-                            }}
-                        >
-                            {!visibleCatalog ? 'Фильтр ' : 'Закрыть '}
-                            <span className="font-bold text-[#D32B82]">
-                                {!visibleCatalog ? (
-                                    '>'
-                                ) : (
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nGNgGAWDElzWbs68oFcvRqx6kFqQHiINb8y6rN30/7J202ViLIEY3nQZoqcxi6AF5wxaRS9rNV4Ca9Bqun5No0WSWLVXtOoliPIFMZacI9dwYiw5R6nh+Cw5Ry3DsVlySbv51hWtxmtUMxzZkkswg8EWNd2mmuG4LMCXukgC55DDHC2IKLYEW4SSkk9INpwBhxzJlhCTFM+Rawkp6fwcOZbQvLCjeXE9CugOALT+EUkssP+7AAAAAElFTkSuQmCC"></img>
-                                )}
-                            </span>
-                        </p>
-                    </pre>
-                    <p className="text-md text-center w-max sm:text-right pr-2.5 rounded">
-                        <select
-                            name="sort-by"
-                            className="rounded cursor-pointer before:bg-[#D32B82]"
-                        >
-                            <option value="asc" className="rounded">
-                                Исходная сортировка
-                            </option>
-                            <option value="asc" className="rounded">
-                                Цене (возрастание)
-                            </option>
-                            <option value="desc" className="rounded">
-                                Цене (убывание)
-                            </option>
-                            <option value="news" className="rounded">
-                                Новизне
-                            </option>
-                            <option value="popularity" className="rounded">
-                                Популярности
-                            </option>
-                        </select>
+                        Фильтр <span className="text-customPink">{'>'}</span>
                     </p>
+                    <Select
+                        onChange={(value) => onChange(value)}
+                        placeholder="Исходная сортировка"
+                        className="rounded cursor-pointer before:bg-[#D32B82] min-w-max ml-auto"
+                    >
+                        <Select.Option value="asc" className="rounded">
+                            Цене (возрастание)
+                        </Select.Option>
+                        <Select.Option value="desc" className="rounded">
+                            Цене (убывание)
+                        </Select.Option>
+                        <Select.Option value="news" className="rounded">
+                            Новизне
+                        </Select.Option>
+                        <Select.Option value="popularity" className="rounded">
+                            Популярности
+                        </Select.Option>
+                    </Select>
                 </div>
             </Container>
             <hr className="border-[#D32B82]" />

@@ -3,16 +3,19 @@ import { configureStore } from '@reduxjs/toolkit'
 // project import
 import itemsReducer from './features/items/items'
 import categories from './features/categories/categories'
-import filterReducer from "./features/filter/filter"
-
+import filterReducer from './features/filter/filter'
+import cart from './features/cart/cart'
+import order from './features/order/order'
 export const makeStore = () => {
-  return configureStore({
-    reducer: {
-      items:itemsReducer,
-      filters:filterReducer,
-      categories
-    },
-  })
+    return configureStore({
+        reducer: {
+            items: itemsReducer,
+            filters: filterReducer,
+            cart: cart,
+            categories,
+            order: order,
+        },
+    })
 }
 
 // Infer the type of makeStore

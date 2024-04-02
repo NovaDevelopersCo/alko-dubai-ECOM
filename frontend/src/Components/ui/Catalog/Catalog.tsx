@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect } from 'react'
+import React, { MouseEvent, useContext, useEffect, useState } from 'react'
 import { Slider } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
@@ -8,9 +8,27 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { CatalogContext } from '@/Components/context/AppContext'
 import clsx from 'clsx'
+import Link from 'next/link'
+import {
+    setMaxPrice,
+    setMinPrice,
+    setCategory,
+    setSearch,
+} from '@/lib/features/filter/filter'
+import { useParams } from 'next/navigation'
+import Image from 'next/image'
 
 export default function Catalog() {
-    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext) // eslint-disable-line no-unused-vars
+    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext)
+    const [sliderValues, setSliderValues] = useState<number[]>([1, 1000])
+    const params = useParams<{ title: string }>()
+    useEffect(() => {
+        if (params.title) {
+            dispatch(setCategory(decodeURI(params.title)))
+        }
+    }, [])
+    const [width, setWidth] = useState(true)
+    let flag = false
     const dispatch = useAppDispatch()
     const categories = useAppSelector(
         (state: RootState) => state.categories.posts,
@@ -19,60 +37,117 @@ export default function Catalog() {
         title: string
         items: number
     }[]
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', function resizeHandler() {
+            if (window.innerWidth < 1024 && !flag && width) {
+                setWidth(false)
+                flag = true
+            } else if (window.innerWidth >= 1024 && flag && width) {
+                setWidth(true)
+                flag = false
+            }
+        })
+    }
 
     useEffect(() => {
         dispatch(fetchCategories())
     }, [dispatch])
+
+    const handleSliderChange = (values: number[]) => {
+        setSliderValues(values)
+    }
+
+    const handleFilterButtonClick = () => {
+        dispatch(setMinPrice(sliderValues[0]))
+        dispatch(setMaxPrice(sliderValues[1]))
+        if (!width) {
+            setVisibleCatalog(false)
+        }
+    }
+
     return (
         <div
+            onClick={() => setVisibleCatalog(false)}
             className={clsx([
-                'w-80',
+                'w-80 lg:static fixed',
                 visibleCatalog
-                    ? 'fixed top-0 left-0 z-[100] lg:static w-screen h-screen lg:w-auto lg:h-auto'
+                    ? 'fixed top-0 left-0 z-[30] lg:static w-screen h-screen lg:w-auto lg:h-auto transition-colors duration-400'
                     : '',
-                visibleCatalog ? 'bg-[#2b2a2c49] lg:bg-transparent' : '',
-                visibleCatalog ? 'lg:flex' : 'hidden',
+                visibleCatalog ? 'bg-[#000000b3] lg:bg-transparent' : '',
             ])}
         >
             <div
+                onClick={(e) => e.stopPropagation()}
                 className={clsx([
-                    'w-80 bg-white transition ease-in-out duration-1000',
+                    'w-80 bg-white transition-all ease-out duration-300',
                     'flex justify-center',
                     visibleCatalog
                         ? 'absolute h-screen lg:h-auto z-20 lg:static'
                         : '',
                     !visibleCatalog ? '-translate-x-80 ' : 'translate-x-0 ',
-                    visibleCatalog ? 'lg:flex' : 'hidden',
                 ])}
             >
                 <div
-                    className={clsx([
-                        'flex justify-start flex-col lg:mt-14 mb-8 mr-10',
-                        visibleCatalog ? 'mt-20' : '',
-                    ])}
+                    className={clsx(['flex justify-start flex-col mb-8 mr-10'])}
                 >
-                    <p className="text-base">Цена</p>
+                    <div
+                        onClick={() => setVisibleCatalog(false)}
+                        className="flex lg:hidden items-center cursor-pointer gap-[3px] justify-end pt-[13px] pb-[13px] -mr-[35px]"
+                    >
+                        <span>Закрыть</span>
+                        <Image
+                            src="/close.svg"
+                            alt="close"
+                            width={12}
+                            height={12}
+                        />
+                    </div>
+                    {visibleCatalog && (
+                        <hr className="border-customPink -mr-[60px] -ml-[19px] mb-[10px] lg:hidden" />
+                    )}
+                    <p className="text-base mt-[10px]">Цена</p>
                     <div className="w-52">
                         <Slider
                             range
-                            defaultValue={[1000, 10000]}
-                            step={100}
-                            max={12000}
+                            value={sliderValues}
+                            onChange={(value) => handleSliderChange(value)}
+                            step={5}
+                            defaultValue={[0, 1000]}
+                            max={1000}
                         />
                     </div>
+                    <div className="pb-2">
+                        <p className="text-customPink">
+                            {sliderValues[0]} AED - {sliderValues[1]} AED
+                        </p>
+                    </div>
+                    <button
+                        className="border p-1 border-customPink rounded-3xl w-20 text-customPink text-sm font-medium"
+                        onClick={handleFilterButtonClick}
+                    >
+                        ФИЛЬТР
+                    </button>
                     <h1 className="text-3xl mt-5">Каталог</h1>
                     <div className="flex flex-col gap-3 mt-5">
                         {categoriesArray.length > 0 ? (
                             categoriesArray.map((category, id) => (
-                                <div
+                                <Link
+                                    href={`/store/catalog/${category.title}`}
                                     className="flex justify-between w-60"
                                     key={id}
+                                    onClick={(
+                                        event: MouseEvent<HTMLAnchorElement>,
+                                    ) => {
+                                        dispatch(setCategory(category.title))
+                                        dispatch(setSearch(''))
+                                        event as unknown as MouseEvent<HTMLAnchorElement>
+                                    }}
                                 >
                                     <div>{category.title}</div>
                                     <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
                                         <p>{category.items}</p>
                                     </div>
-                                </div>
+                                </Link>
                             ))
                         ) : (
                             <div className="flex justify-between flex-col w-full">

@@ -25,25 +25,25 @@ export class Items extends Model<ItemsCreationAttrs> {
   id: number;
 
   @ApiProperty({ example: 'testItem', description: 'Название товара' })
-  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  @Column({ type: DataType.STRING(2024), unique: true, allowNull: false })
   title: string;
 
   @ApiProperty({
     example: 'Очень вкусный алкоголь',
     description: 'Описание товара',
   })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
   description: string;
 
   @ApiProperty({ example: 'Картинка', description: 'Захватывающая картинка' })
-  @Column({ type: DataType.STRING, allowNull: true, defaultValue: null })
+  @Column({ type: DataType.STRING(2024), allowNull: true, defaultValue: null })
   image: string;
 
   @ApiProperty({
     example: 'Очень вкусный алкоголь',
     description: 'Описание товара',
   })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
   category: string;
 
   @ApiProperty({ example: 1202, description: 'Цена' })

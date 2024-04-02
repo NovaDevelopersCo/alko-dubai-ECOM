@@ -46,14 +46,20 @@ export const Modal = ({
                         <Image
                             width={10.5}
                             height={12.5}
-                            src="triangle.svg"
+                            src="/triangle.svg"
                             alt="triangle"
                             className="absolute right-[20px] -top-[9px]"
                         />
-                        <Link href="#" onClick={() => setActive(false)}>
+                        <Link
+                            href="https://t.me/+79254692606"
+                            onClick={() => setActive(false)}
+                        >
                             <FaTelegram className="w-[32px] h-[32px] text-[#3F9FD9]" />
                         </Link>
-                        <Link href="#" onClick={() => setActive(false)}>
+                        <Link
+                            href="https://wa.me/qr/A4W3FM672FIRC1"
+                            onClick={() => setActive(false)}
+                        >
                             <FaWhatsapp className="w-[32px] h-[32px] text-[#49C252]" />
                         </Link>
                     </div>

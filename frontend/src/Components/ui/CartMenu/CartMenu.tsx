@@ -1,0 +1,28 @@
+'use client'
+
+import { useContext } from 'react'
+import { CartMenuBtn } from './CartMenuBtn'
+import { CartContext } from '@/Components/context/AppContext'
+import React from 'react'
+import Cart from './Cart'
+
+export const CartMenu = () => {
+    const [isCartOpen] = useContext(CartContext)
+    React.useEffect(() => {
+        if (isCartOpen) {
+            document.body.classList.add('fixed')
+        } else {
+            document.body.classList.remove('fixed')
+        }
+        return () => {
+            document.body.classList.remove('fixed')
+        }
+    }, [isCartOpen])
+
+    return (
+        <div>
+            <Cart />
+            <CartMenuBtn text1="Open Cart" text2="Close cart" />
+        </div>
+    )
+}

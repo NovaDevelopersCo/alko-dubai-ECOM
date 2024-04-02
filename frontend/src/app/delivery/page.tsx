@@ -1,14 +1,12 @@
-import React from 'react';
-import Delivery from "@/Components/ui/Delivery/Delivery";
+import React from 'react'
+import Delivery from '@/Components/ui/Delivery/Delivery'
 
 const delivery = () => {
-
     return (
         <div>
-            <Delivery/>
-
+            <Delivery />
         </div>
-    );
-};
+    )
+}
 
-export default delivery;
+export default delivery

@@ -10,6 +10,7 @@ interface OrdersCreationAttrs {
   details: string;
   price: number;
   address: string;
+  payment: string;
   status: string;
 }
 
@@ -42,32 +43,32 @@ export class Order extends Model<OrdersCreationAttrs> {
     ],
     description: 'Массив товаров в заказе',
   })
-  @Column(DataType.ARRAY(DataType.STRING))
+  @Column(DataType.ARRAY(DataType.STRING(2024)))
   items: string[];
 
   @ApiProperty({ example: 'Вася Пупкин', description: 'Имя заказчика' })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
   name: string;
 
   @ApiProperty({
     example: 'test@gmail.com',
     description: 'Почта пользователя',
   })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
   email: string;
 
   @ApiProperty({
     example: '+79094588426',
     description: 'Телефон заказчика',
   })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
   phone: string;
 
   @ApiProperty({
     example: 'хочу быстрее',
     description: 'Примечание к заказу',
   })
-  @Column({ type: DataType.STRING, allowNull: true })
+  @Column({ type: DataType.STRING(2024), allowNull: true })
   details: string;
 
   @ApiProperty({ example: 1202, description: 'Цена заказа' })
@@ -78,15 +79,22 @@ export class Order extends Model<OrdersCreationAttrs> {
     example: 'Улица пушкина дом колотушкина',
     description: 'Адрес',
   })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
   address: string;
+
+  @ApiProperty({
+    example: 'Улица пушкина дом колотушкина',
+    description: 'Адрес',
+  })
+  @Column({ type: DataType.STRING(2024), allowNull: false })
+  payment: string;
 
   @ApiProperty({
     example: 'В обарботке',
     description: 'Статус заказа',
   })
   @Column({
-    type: DataType.STRING,
+    type: DataType.STRING(2024),
     allowNull: false,
     defaultValue: 'В обработке',
   })

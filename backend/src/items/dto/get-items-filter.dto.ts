@@ -40,9 +40,23 @@ export class GetItemsFilterDto {
   readonly max_price: number;
 
   @ApiProperty({
+    example: false,
+    description: 'Скидака',
+    required: false,
+  })
+  readonly sale: string;
+
+  @ApiProperty({
     example: 1500,
     description: 'Огранчение',
     required: false,
   })
   readonly limit: number;
+
+  @ApiProperty({
+    example: 'Виски',
+    description: 'Получить все товары с категорией',
+    required: false,
+  })
+  readonly category: string;
 }

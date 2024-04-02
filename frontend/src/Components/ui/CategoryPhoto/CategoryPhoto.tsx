@@ -1,5 +1,5 @@
-"use client"
-import React, { useEffect } from 'react'
+'use client'
+import React, { MouseEvent, useEffect } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
@@ -8,6 +8,8 @@ import Link from 'next/link'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { RootState } from '@/lib/store'
+import { setCategory } from '@/lib/features/filter/filter'
+
 
 type PropType = {
     slides: number[]
@@ -46,7 +48,13 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                         categoriesArray.map((category, index) => (
                             <Link
                                 key={index}
-                                href={`/catalog/${category.title}`}
+                                href={`/store/catalog/${category.title}`}
+                                onClick={(
+                                    event: MouseEvent<HTMLAnchorElement>,
+                                ) => {
+                                    dispatch(setCategory(category.title))
+                                    event as unknown as MouseEvent<HTMLAnchorElement>
+                                }}
                             >
                                 <div
                                     className="embla__slide min-w-0 rounded-md shadow-inset-0.2rem flex-0 items-center justify-center rounded-1.8rem flex-shrink-0 w-32 lg:w-40 xl:w-44 max-w-48 my-3 "
@@ -64,7 +72,7 @@ const CategoryPhoto: React.FC<PropType> = (props) => {
                             </Link>
                         ))
                     ) : (
-                        <div className="flex justify-between w-full">
+                        <div className="flex justify-between w-full flex-wrap overflow-clip">
                             {Array.from({ length: 6 }, (_, index) => (
                                 <div className="flex flex-col" key={index}>
                                     <Skeleton
