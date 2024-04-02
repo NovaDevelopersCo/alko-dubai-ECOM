@@ -8,9 +8,7 @@ import { Select } from 'antd'
 import GridButton from '@/Components/ui/gridButton/GridButton'
 
 const Sort = () => {
-    const [isVisibleCatalog] = useContext(CatalogContext);
-const setVisibleCatalog: any = null;
-
+    const [visibleCatalog, setVisibleCatalog] = useContext(CatalogContext) //eslint-disable-line
     const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
     const [width, setWidth] = useState(true)
     let flag = false
