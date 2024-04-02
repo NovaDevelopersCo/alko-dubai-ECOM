@@ -1,6 +1,4 @@
 'use client'
-
-import { useState } from 'react'
 import clsx from 'clsx'
 
 export const Switch = ({
