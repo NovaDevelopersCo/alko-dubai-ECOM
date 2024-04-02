@@ -80,9 +80,6 @@ const CartSlice = createSlice({
                     }
                     state.items.push(newItem)
                 } else {
-                    console.log(
-                        'Превышено максимальное количество товаров в корзине (20)',
-                    )
                 }
             }
 
