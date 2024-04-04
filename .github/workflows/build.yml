@@ -12,7 +12,7 @@ jobs:
             run:
                 working-directory: frontend
         steps:
-            - uses: actions/checkout@Test
+            - uses: actions/checkout@master
             - name: login to docker
               run: |
                 docker login -u ${{secrets.DOCKER_LOGIN}} -p ${{secrets.DOCKER_PASSWORD}}
@@ -28,7 +28,7 @@ jobs:
             run:
                 working-directory: backend
         steps:
-            - uses: actions/checkout@Test
+            - uses: actions/checkout@master
             - name: login to docker
               run: | 
                 docker login -u ${{secrets.DOCKER_LOGIN}} -p ${{secrets.DOCKER_PASSWORD}}
