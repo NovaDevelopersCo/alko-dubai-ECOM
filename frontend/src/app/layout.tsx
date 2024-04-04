@@ -12,6 +12,7 @@ import Header from '@/Components/ui/Header/Header'
 import Footer from '@/Components/ui/Footer/Footer'
 import AppProvider from '@/Components/ui/AppProvider'
 import Modal from 'antd/es/modal/Modal'
+import { ConfigProvider } from 'antd'
 
 const montserrat = Montserrat({
     style: ['normal'],
@@ -92,16 +93,69 @@ export default function RootLayout({
                 )}
             >
                 <StoreProvider>
-                    <AntdRegistry>
-                        <AppProvider>
-                            <div className={clsx('flex flex-col min-h-screen')}>
-                                <Header />
-                                <main className="flex-grow">{children}</main>
-                                <Footer />
-                                <Modal />
-                            </div>
-                        </AppProvider>
-                    </AntdRegistry>
+                    <ConfigProvider
+                        theme={{
+                            components: {
+                                Pagination: {
+                                    borderRadius: 50,
+                                    colorBgContainer: '#D32B82',
+                                    colorBorder: 'white',
+                                    colorText: 'black', // Цвет текста для неактивных кнопок
+                                    colorBgTextActive: 'white', // Цвет текста для активных кнопок
+                                    colorPrimary: 'white',
+                                    colorPrimaryHover: 'white',
+                                },
+                                Select: {
+                                    colorBorder: 'white',
+                                    colorBgContainer: 'white',
+                                    colorBgTextActive: 'white',
+                                    colorPrimary: 'white',
+                                    colorPrimaryBorder: 'white',
+                                    colorPrimaryHover: 'white',
+                                },
+                                Slider: {
+                                    handleColor: '#D32B82',
+                                    handleActiveColor: '#D32B82',
+                                    colorBgContainer: '#D32B82',
+                                    dotActiveBorderColor: '#D32B82',
+                                    trackBg: '#D32B82',
+                                    trackHoverBg: '#D32B82',
+                                },
+                                Button: {
+                                    colorBgContainer: '#D32B82',
+                                    colorBorder: '#D32B82',
+                                    colorText: '#D32B82', // Цвет текста для неактивных кнопок
+                                    colorBgTextActive: '#D32B82', // Цвет текста для активных кнопок
+                                    colorPrimary: '#D32B82',
+                                    colorPrimaryHover: '#D32B82',  
+                                    colorPrimaryActive:'#D32B82',
+                                },
+                                Input: {
+                                    colorBorder: '#D32B82',
+                                    colorPrimary: '#D32B82',
+                                    colorPrimaryHover: '#D32B82',  
+                                    colorPrimaryActive:'#D32B82',
+                                }
+                            },
+                        }}
+                    >
+                        <AntdRegistry>
+                            <AppProvider>
+                                <div
+                                    className={clsx(
+                                        'flex flex-col min-h-screen',
+                                    )}
+                                >
+                                    <Header />
+                                    <main className="flex-grow">
+                                        {children}
+                                    </main>
+                                    <Footer />
+                                    <Modal />
+                                </div>
+                            </AppProvider>
+                        </AntdRegistry>
+                    </ConfigProvider>
                 </StoreProvider>
             </body>
         </html>

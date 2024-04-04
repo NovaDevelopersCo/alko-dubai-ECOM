@@ -89,12 +89,12 @@ export class OrderService {
       });
     this.mailerService
       .sendMail({
-        to: 'egor147536987@gmail.com',
+        to: process.env.EMAIL,
         subject: 'Новый заказ на Alko!',
         html: data,
       })
       .then(() => {
-        console.log('Email sent to ' + 'egor147536987@gmail.com');
+        console.log('Email sent to ' + process.env.EMAIL);
       })
       .catch((e) => {
         console.log('Error sending email', e);
