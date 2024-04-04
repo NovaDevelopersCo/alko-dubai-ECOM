@@ -1,4 +1,4 @@
-"use clinet"
+
 import React from 'react'
 import Delivery from '@/Components/ui/Delivery/Delivery'
 

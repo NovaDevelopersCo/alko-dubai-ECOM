@@ -108,7 +108,7 @@ export class ItemsService {
       const fileName = await this.fileService.createFile(image);
       const item = await this.itemsRepository.create({
         ...dto,
-        image: fileName,
+        image: process.env.DOMEN + fileName,
       });
       return item;
     }

@@ -6,7 +6,7 @@
 //     createdAt?: Date
 //     updatedAt?: Date
 //   };
-  
+
 //   export type Tutorials = {
 //     id: number
 //     title: string
@@ -21,8 +21,7 @@
 //     createdAt?: Date
 //     updatedAt?: Date
 //   };
-  
-  
+
 //   export interface TutorialStateProps {
 //     tutorials: Tutorials[];
 //     tutorial: Tutorial | null;
@@ -30,8 +29,7 @@
 //     success: object | string | null;
 //     isLoading: boolean
 //   }
-  
+
 //   export interface DefaultRootStateProps {
 //     tutorial: TutorialStateProps;
 //   }
-   

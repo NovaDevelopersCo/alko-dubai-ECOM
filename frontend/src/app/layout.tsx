@@ -66,6 +66,7 @@ export const metadata: Metadata = {
     authors: [
         { name: 'Nova Developers', url: 'https://github.com/NovaDevelopersCo' },
         { name: 'Igor Zimin', url: 'https://github.com/merdernoty' },
+        { name: 'Egor Rezvyi', url: 'https://github.com/Zoomish' },
     ],
     creator: 'https://github.com/merdernoty',
     publisher: 'https://github.com/merdernoty',

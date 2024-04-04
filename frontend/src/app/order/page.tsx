@@ -1,4 +1,4 @@
-import Order from '@/Components/Order/Order'
+import Order from '@/Components/ui/Order/Order'
 import React from 'react'
 
 const order = () => {

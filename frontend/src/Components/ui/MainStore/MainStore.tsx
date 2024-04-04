@@ -1,6 +1,5 @@
 'use client'
-
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { fetchItems } from '@/lib/features/items/items'
 import { selectItems } from '@/lib/features/items/items'
 import { Item } from '@/Components/entity/item'
@@ -10,15 +9,21 @@ import { Pagination } from 'antd'
 import { selectFilter, setLimit } from '@/lib/features/filter/filter'
 import { InputFetch } from '@/type/interfaceFilter'
 
-function MainStore({gridCount,limit}:{gridCount:number, limit:number}) {
+function MainStore() {
     const dispatch = useAppDispatch()
     const items = useAppSelector(selectItems).items
     const pages = useAppSelector(selectItems).totalPages
     const [currentPage, setCurrentPage] = useState<number>(0)
     const filter = useAppSelector(selectFilter) // Получаем параметры фильтрации из хранилища
 
+    useEffect(() => {
+        dispatch(setLimit(8))
+    }, [dispatch])
+
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
-    dispatch(setLimit(8))
+    const gridCount = useAppSelector((state) => state.filters.gridCount) // Получаем gridCount из Redux-стора
+    const limit = useAppSelector((state) => state.filters.limit) // Получаем limit из Redux-стора
+
     // Функция для обновления элементов
     const updateItems = () => {
         // Формируем объект inputFetch, учитывая выбор пользователя
@@ -37,30 +42,18 @@ function MainStore({gridCount,limit}:{gridCount:number, limit:number}) {
         // Вызываем асинхронный экшен для получения элементов
         dispatch(fetchItems(inputFetch))
     }
-    const limitCount = () => {
-        switch (limit) {
-            case 9:
-                return 9;
-            case 24:
-                return 24;
-            case 36:
-                return 36;
-            default:
-                return 9;
-        }
-    }
     // Вызываем функцию updateItems только при изменении параметров фильтрации
     useEffect(() => {
         if (!isInitialMount.current) {
-            updateItems();
+            updateItems()
         } else {
-            isInitialMount.current = false;
+            isInitialMount.current = false
         }
-    }, [filter, dispatch, limit]);
+    }, [filter, dispatch, limit])
 
     useEffect(() => {
-        updateItems();
-    }, [limit]);
+        updateItems()
+    }, [limit, gridCount])
 
     let products = null // По умолчанию нет товаров
     if (items && limit !== undefined) {

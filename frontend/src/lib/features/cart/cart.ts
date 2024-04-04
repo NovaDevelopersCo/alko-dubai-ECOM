@@ -3,6 +3,7 @@ import { getCartFromLS } from '@/utils/getCartFromLS'
 import { calcTotalPrice, calcTotalSale } from '@/utils/calcTotalPrice'
 import { CartItem } from '@/type/interfaceCart'
 import { RootState } from '@/lib/store'
+import Cookies from 'js-cookie';
 
 const { items, totalPrice, totalSale } = getCartFromLS()
 
@@ -12,9 +13,9 @@ export const initialState = {
     totalSale,
 }
 
-const saveCartToLocalStorage = (items: CartItem[]): void => {
-    localStorage.setItem('cart', JSON.stringify(items))
-}
+export const saveCartToLocalStorage = (items: CartItem[]): void => {
+    Cookies.set('cart', JSON.stringify(items), { expires: 7}); // Устанавливаем срок действия cookies на 1 год
+};
 
 export const setInitialCartItems = (items: CartItem[]) => {
     return {
@@ -80,9 +81,7 @@ const CartSlice = createSlice({
                     }
                     state.items.push(newItem)
                 } else {
-                    console.log(
-                        'Превышено максимальное количество товаров в корзине (20)',
-                    )
+
                 }
             }
 
@@ -133,6 +132,7 @@ const CartSlice = createSlice({
             state.items = []
             state.totalPrice = 0
             state.totalSale = 0
+            saveCartToLocalStorage(state.items)
         },
     },
 })

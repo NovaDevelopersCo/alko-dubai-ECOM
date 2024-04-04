@@ -18,12 +18,12 @@ import { InputFetch } from '@/type/interfaceFilter'
 import useEmblaCarousel from 'embla-carousel-react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Cart from "@/Components/ui/CartMenu/Cart";
+import Cart from '@/Components/ui/CartMenu/Cart'
 import { CartContext } from '../context/AppContext'
 
 const ItemPage = () => {
     const dispatch = useAppDispatch()
-    const [isCartOpen, setIsCartOpen] = React.useContext(CartContext)
+    const [, setIsCartOpen] = React.useContext(CartContext)
     const { id } = useParams<{ id: string }>()
     const item = useAppSelector(selectItem)
     const cartItem = useAppSelector(selectCartItemById(Number(id)))
@@ -51,39 +51,38 @@ const ItemPage = () => {
             dispatch(fetchItems(inputFetch))
         }
     }, [dispatch, item])
+
     React.useEffect(() => {
         dispatch(fetchItemById(id))
     }, [dispatch, id])
 
     React.useEffect(() => {
         if (cartItem) {
-            setCount(cartItem.count) // Устанавливаем значение счетчика равным количеству товара в корзине, если он есть
+            setCount(cartItem.count)
         } else {
-            setCount(1) // Если товара нет в корзине, сбрасываем счетчик в 1
+            setCount(1)
         }
     }, [cartItem])
 
     const increment = () => {
-        setCount((prevCount) => prevCount + 1) // Увеличиваем счетчик на 1
+        setCount((prevCount) => prevCount + 1)
     }
 
     const decrement = () => {
         if (count > 1) {
-            setCount((prevCount) => prevCount - 1) // Уменьшаем счетчик на 1, если он больше 1
+            setCount((prevCount) => prevCount - 1)
         }
     }
 
     React.useEffect(() => {
         if (cartItem) {
-            setCount(cartItem.count) // Устанавливаем значение счетчика равным количеству товара в корзине, если он есть
+            setCount(cartItem.count)
         } else {
-            setCount(1) // Если товара нет в корзине, сбрасываем счетчик в 1
+            setCount(1)
         }
     }, [cartItem])
 
-
     React.useEffect(() => {
-        // Сбрасываем значение счетчика на 1 после успешного добавления товара в корзину
         if (cartItem && cartItem.count !== count) {
             setCount(1)
         }
@@ -97,7 +96,6 @@ const ItemPage = () => {
 
     const onClickAdd = () => {
         if (item && item.image) {
-            // Проверяем, не превышает ли текущее количество товаров в корзине с учетом добавляемого товара максимальное значение (20)
             const totalItemCount = cartItem ? cartItem.count + count : count
             if (totalItemCount <= 20) {
                 const fetch: CartItem = {
@@ -108,11 +106,9 @@ const ItemPage = () => {
                     image: item.image,
                     sale: item.sale,
                     oldPrice: item.oldPrice,
-                    count: count, // Используем текущее значение счетчика
+                    count: count,
                 }
                 dispatch(addItems(fetch))
-                console.log('Товар добавлен', count, item)
-                // Сбрасываем значение счетчика на 1
                 setCount(1)
                 setIsCartOpen((state) => !state)
             } else {
@@ -122,6 +118,7 @@ const ItemPage = () => {
             }
         }
     }
+
     return (
         <Container>
             <article>
@@ -169,16 +166,16 @@ const ItemPage = () => {
                                     ></Counter>
                                 </div>
                                 <button
-                                        className="text-base font-semibold bg-customPink text-white py-3 px-14 rounded-3xl"
-                                        onClick={onClickAdd}
-                                    >
-                                        <span>В корзину</span>
-                                    </button>
+                                    className="text-base font-semibold bg-customPink text-white py-3 px-14 rounded-3xl"
+                                    onClick={onClickAdd}
+                                >
+                                    <span>В корзину</span>
+                                </button>
                             </div>
                             <div className="border-t-[1px] border-customPink md:min-w-20 flex">
                                 <p className="mt-4 mr-2 text-lg font-medium">
                                     КАТЕГОРИЯ :
-                                </p>{' '}
+                                </p>
                                 <p className="font-medium text-xl text-customGray mt-4">
                                     {item?.category}
                                 </p>
@@ -204,52 +201,55 @@ const ItemPage = () => {
                                     <Link
                                         href={`/store/${item?.id}`}
                                         key={item?.id}
-                                        className=" p-4 rounded-md hover:shadow-md"
+                                        passHref
                                     >
-                                        <article className="w-44">
-                                            <figure>
-                                                <img
-                                                    src={item?.image}
-                                                    alt="png"
-                                                    className="w-full rounded-md h-44 object-contain"
-                                                />
-                                            </figure>
-                                            <div className="mt-4 text-center">
-                                                <span className="text-sm mb-2">
-                                                    {item?.category}{' '}
-                                                </span>
-                                                <span className="opacity-70 text-sm">
-                                                    {item?.title}
-                                                </span>
-                                                <p className=" font-bold text-customPink ">
-                                                    {item?.oldPrice !== 0 ? (
-                                                        <div>
-                                                            <span className="text-sm font-bold line-through text-customGray ">
-                                                                <span>
-                                                                    {
-                                                                        item?.oldPrice
-                                                                    }
-                                                                    AED{' '}
+                                        <div className="p-4 rounded-md hover:shadow-md">
+                                            <article className="w-44">
+                                                <figure>
+                                                    <img
+                                                        src={item?.image}
+                                                        alt="png"
+                                                        className="w-full rounded-md h-44 object-contain"
+                                                    />
+                                                </figure>
+                                                <div className="mt-4 text-center">
+                                                    <span className="text-sm mb-2">
+                                                        {item?.category}
+                                                    </span>
+                                                    <span className="opacity-70 text-sm">
+                                                        {item?.title}
+                                                    </span>
+                                                    <p className="font-bold text-customPink ">
+                                                        {item?.oldPrice !==
+                                                        0 ? (
+                                                            <>
+                                                                <span className="text-sm font-bold line-through text-customGray ">
+                                                                    <span>
+                                                                        {
+                                                                            item?.oldPrice
+                                                                        }{' '}
+                                                                        AED{' '}
+                                                                    </span>
                                                                 </span>
-                                                            </span>
-                                                            {item?.price}
-                                                            <span className="text-sm">
-                                                                {' '}
-                                                                AED
-                                                            </span>
-                                                        </div>
-                                                    ) : (
-                                                        <div>
-                                                            {item?.price}
-                                                            <span className="text-sm">
-                                                                {' '}
-                                                                AED
-                                                            </span>
-                                                        </div>
-                                                    )}
-                                                </p>
-                                            </div>
-                                        </article>
+                                                                {item?.price}
+                                                                <span className="text-sm">
+                                                                    {' '}
+                                                                    AED
+                                                                </span>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                {item?.price}
+                                                                <span className="text-sm">
+                                                                    {' '}
+                                                                    AED
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </p>
+                                                </div>
+                                            </article>
+                                        </div>
                                     </Link>
                                 ))}
                             </div>
@@ -258,7 +258,6 @@ const ItemPage = () => {
                 </>
             )}
             <Cart />
-
         </Container>
     )
 }

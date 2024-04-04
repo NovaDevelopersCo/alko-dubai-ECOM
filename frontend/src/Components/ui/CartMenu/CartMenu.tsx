@@ -7,7 +7,7 @@ import React from 'react'
 import Cart from './Cart'
 
 export const CartMenu = () => {
-    const [isCartOpen, setIsCartOpen] = useContext(CartContext)
+    const [isCartOpen] = useContext(CartContext)
     React.useEffect(() => {
         if (isCartOpen) {
             document.body.classList.add('fixed')
@@ -22,7 +22,7 @@ export const CartMenu = () => {
     return (
         <div>
             <Cart />
-            <CartMenuBtn text1='Open Cart' text2="Close cart" />
+            <CartMenuBtn text1="Open Cart" text2="Close cart" />
         </div>
     )
 }

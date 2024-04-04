@@ -1,15 +1,10 @@
 'use client'
 import { Counter } from '@/Components/ui/Counter/Counter'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import Image from 'next/image'
 import { CartItem } from '@/type/interfaceCart'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import {
-    addItem,
-    minusItem,
-    removeItem,
-    selectCart,
-} from '@/lib/features/cart/cart'
+import { useAppDispatch } from '@/lib/hooks'
+import { addItem, minusItem, removeItem } from '@/lib/features/cart/cart'
 
 export const Product = ({
     id,
@@ -21,7 +16,6 @@ export const Product = ({
     oldPrice,
 }: CartItem) => {
     const dispatch = useAppDispatch()
-    const { totalPrice } = useAppSelector(selectCart)
     const onClickPlus = useCallback(() => {
         dispatch(
             addItem({
@@ -54,7 +48,7 @@ export const Product = ({
                 height={15}
                 onClick={onClickRemove}
             />
-            <img src={image} alt={title} width={105} height={122} />
+            <img src={image} alt={title} width={85} height={102} />
             <div className="grid lg:flex md:flex sm:grid grid-cols-1 justify-between w-[100%] flex-wrap">
                 <div className="flex items-top justify-between py-[7px]">
                     <span className="text-[14px] lg:text-[16px] md:text-[15px] sm:text-[14px] font-semibold max-w-[185px] lg:max-w-[100%] md:max-w-[100%] sm:max-w-[185px]">

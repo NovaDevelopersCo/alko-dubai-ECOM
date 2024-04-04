@@ -1,4 +1,3 @@
-'use client'
 import Catalog from '@/Components/ui/Catalog/Catalog'
 import Container from '@/Components/ui/Container/Container'
 import MainStore from '@/Components/ui/MainStore/MainStore'
@@ -29,21 +28,14 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default function page() {
-    const [gridCount, setGridCount] = React.useState(4)
-    const [limit, seLimit] = React.useState(9)
     return (
         <>
-            <Sort
-                limit={limit}
-                setLimit={seLimit}
-                gridCount={gridCount}
-                setGridCount={setGridCount}
-            />
+            <Sort />
             <Container>
                 <div className="flex w-full h-full">
                     <Catalog />
                     <div className="w-full h-full my-6">
-                        <MainStore limit={limit} gridCount={gridCount} />
+                        <MainStore />
                     </div>
                 </div>
             </Container>

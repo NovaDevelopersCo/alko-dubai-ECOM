@@ -1,12 +1,12 @@
 // // third-party
 // import { createSlice } from '@reduxjs/toolkit';
 
-// // lib 
+// // lib
 
 // // utils
 // import axiosServices from '@/utils/axios';
 
-// // types 
+// // types
 // import { AppDispatch } from '@/lib/store';
 // import { DefaultRootStateProps, Tutorial } from '@/type/tutorial';
 
@@ -87,21 +87,21 @@
 
 // /**
 //  * TO INITIAL STATE
-//  * @returns 
+//  * @returns
 //  */
 // export function toInitialState() {
-//     return async (dispatch: AppDispatch) => { 
+//     return async (dispatch: AppDispatch) => {
 //         dispatch(slice.actions.hasInitialState())
 //     }
 // }
 
 // /**
 //  * POST TUTORIAL
-//  * @param newTutorial 
-//  * @returns 
+//  * @param newTutorial
+//  * @returns
 //  */
 // export function addTutorial(newTutorial: Tutorial) {
-//     return async (dispatch: AppDispatch) => { 
+//     return async (dispatch: AppDispatch) => {
 
 //         dispatch(slice.actions.startLoading());
 
@@ -118,11 +118,11 @@
 
 // /**
 //  * GET TUTORIAL
-//  * @param id 
-//  * @returns 
+//  * @param id
+//  * @returns
 //  */
 // export function fetchTutorial(id: string) {
-//     return async (dispatch: AppDispatch) => { 
+//     return async (dispatch: AppDispatch) => {
 
 //         dispatch(slice.actions.startLoading());
 
@@ -138,11 +138,11 @@
 // }
 
 // /**
-//  * GET ALL TUTORIALS 
-//  * @returns 
+//  * GET ALL TUTORIALS
+//  * @returns
 //  */
 // export function fetchTutorials() {
-//     return async (dispatch: AppDispatch) => { 
+//     return async (dispatch: AppDispatch) => {
 
 //         dispatch(slice.actions.startLoading());
 
@@ -159,11 +159,11 @@
 
 // /**
 //  * UPDATE TUTORIAL
-//  * @param updatedTutorial 
-//  * @returns 
+//  * @param updatedTutorial
+//  * @returns
 //  */
 // export function updateTutorial(updatedTutorial: Tutorial) {
-//     return async (dispatch: AppDispatch) => { 
+//     return async (dispatch: AppDispatch) => {
 
 //         dispatch(slice.actions.startLoading());
 
@@ -180,11 +180,11 @@
 
 // /**
 //  * DELETE TUTORIAL
-//  * @param tutorialId 
-//  * @returns 
+//  * @param tutorialId
+//  * @returns
 //  */
 // export function deleteTutorial(tutorialId: string) {
-//     return async (dispatch: AppDispatch) => { 
+//     return async (dispatch: AppDispatch) => {
 
 //         dispatch(slice.actions.startLoading());
 

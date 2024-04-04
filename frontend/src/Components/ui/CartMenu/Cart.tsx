@@ -11,7 +11,7 @@ import { ProductMini } from '@/Components/ui/ProductMini/ProductMini'
 const Cart: FC = () => {
     const [isCartMenuOpen, setIsCartMenuOpen] = useContext(CartContext)
     const menuRef = useRef<HTMLDivElement | null>(null)
-    const { totalPrice, totalSale, items } = useAppSelector(selectCart)
+    const { totalPrice, items } = useAppSelector(selectCart)
     const cartClasses = clsx(
         'ease-in-out duration-300 ml-6',
         'bg-[#fff] fixed top-0 right-0 h-screen w-[100%] flex',

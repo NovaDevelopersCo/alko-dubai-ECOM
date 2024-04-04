@@ -1,20 +1,11 @@
 'use client'
 import React from 'react'
 
-
 import Link from 'next/link'
 import { item } from '@/type/interfaceItems'
 // Компонент Item
 
-export function Item({
-    title,
-    category,
-    price,
-    image,
-    id,
-    oldPrice,
-    sale,
-}: item) {
+export function Item({ title, category, price, image, id, oldPrice }: item) {
     return (
         <div className="col-span-1 p-4 rounded-md hover:shadow-md">
             <Link href={`/store/${id}`} key={id}>

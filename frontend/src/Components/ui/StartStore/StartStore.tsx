@@ -45,7 +45,6 @@ function StartStore() {
     }, [filter, dispatch, limit])
 
     let products = null // По умолчанию нет товаров
-    console.log(items)
     if (items) {
         // Ограничиваем количество элементов до limit с помощью slice
         const limitedItems = items.slice(0, limit)
@@ -54,7 +53,10 @@ function StartStore() {
         ))
     } else {
         products = Array.from({ length: 6 }, (_, index) => (
-            <div className="flex flex-col justify-center items-center" key={index}>
+            <div
+                className="flex flex-col justify-center items-center"
+                key={index}
+            >
                 <Skeleton width={213} height={240} className="rounded my-3" />
                 <Skeleton width={213} height={48} className="rounded my-3" />
             </div>

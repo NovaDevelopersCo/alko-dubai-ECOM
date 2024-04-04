@@ -1,6 +1,5 @@
 import React from 'react'
 import ItemPage from '@/Components/entity/ItemPage'
-
 import type { Metadata, ResolvingMetadata } from 'next'
 
 type Props = {
@@ -30,6 +29,7 @@ export async function generateMetadata(
         },
     }
 }
+
 
 const ItemDetail = () => {
     return (
