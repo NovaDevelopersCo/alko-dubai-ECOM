@@ -8,7 +8,13 @@ async function start() {
   const PORT = Number(process.env.PORT) || 5000;
 
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: 'https://alkodostavka-dubai.ru',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+  
+  app.enableCors({
+    origin: 'http://alkodostavka-dubai.ru',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });

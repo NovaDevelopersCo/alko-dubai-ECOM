@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosServices = axios.create({
-    baseURL: 'http://localhost:5000' /*"https://alcoholdubai/api/"*/,
+    baseURL: 'http://alkodostavka-dubai.ru' /*"https://alcoholdubai/api/"*/,
 })
 
 export { axiosServices }
