@@ -12,7 +12,7 @@ const initialState: InputFetch = {
     limit: 9,
     gridCount: 4,
     category: '',
-    search: ''
+    search: '',
 }
 
 const filterSlice = createSlice({
@@ -46,28 +46,18 @@ const filterSlice = createSlice({
         ) => {
             state.min_price = action.payload
         },
-        setLimit(
-            state,
-            action: PayloadAction<InputFetch['limit']>,
-        ) {
+        setLimit(state, action: PayloadAction<InputFetch['limit']>) {
             state.limit = action.payload
         },
-        setCategory(
-            state,
-            action: PayloadAction<InputFetch['category']>,
-        ) {
+        setCategory(state, action: PayloadAction<InputFetch['category']>) {
             state.category = action.payload
         },
-        setSearch(
-            state,
-            action: PayloadAction<InputFetch['category']>,
-        ) {
+        setSearch(state, action: PayloadAction<InputFetch['category']>) {
             state.search = action.payload
         },
         setGridCount: (state, action: PayloadAction<number>) => {
-            state.gridCount = action.payload;
+            state.gridCount = action.payload
         },
-
     },
 })
 

@@ -1,6 +1,12 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react'
-import { setPopularity, setNews, setPrice, setLimit, setGridCount } from '@/lib/features/filter/filter'
+import {
+    setPopularity,
+    setNews,
+    setPrice,
+    setLimit,
+    setGridCount,
+} from '@/lib/features/filter/filter'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
@@ -43,8 +49,8 @@ const Sort = () => {
     }, [])
 
     const dispatch = useAppDispatch()
-    const limit = useAppSelector(state => state.filters.limit);
-    const gridCount = useAppSelector(state => state.filters.gridCount);
+    const limit = useAppSelector((state) => state.filters.limit)
+    const gridCount = useAppSelector((state) => state.filters.gridCount)
 
     const onChange = (value: string) => {
         if (value === 'asc' || value === 'desc') {
@@ -65,12 +71,12 @@ const Sort = () => {
     }
 
     const handleLimitChange = (newLimit: number) => {
-        dispatch(setLimit(newLimit));
-    };
+        dispatch(setLimit(newLimit))
+    }
 
     const handleGridCountChange = (newGridCount: number) => {
-        dispatch(setGridCount(newGridCount));
-    };
+        dispatch(setGridCount(newGridCount))
+    }
 
     return (
         <div>

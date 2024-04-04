@@ -7,9 +7,7 @@ import React from 'react'
 export default function page() {
     return (
         <>
-            <Sort
-
-            />
+            <Sort />
             <Container>
                 <div className="flex w-full h-full">
                     <Catalog />

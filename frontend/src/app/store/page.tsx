@@ -7,12 +7,12 @@ import Sort from '@/Components/ui/Sort/Sort'
 const store = () => {
     return (
         <>
-            <Sort/>
+            <Sort />
             <Container>
                 <div className="flex w-full h-full">
                     <Catalog />
                     <div className="w-full h-full my-6">
-                        <MainStore ></MainStore>
+                        <MainStore></MainStore>
                     </div>
                 </div>
             </Container>
