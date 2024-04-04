@@ -46,9 +46,13 @@ export default function Catalog() {
                 setWidth(true)
                 flag = false
             }
+
+            // Добавляем условие для проверки ширины окна
+            if (window.innerWidth >= 1024) {
+                setVisibleCatalog(true) // Если ширина окна больше или равна 1024px, отображаем каталог
+            }
         })
     }
-
     useEffect(() => {
         dispatch(fetchCategories())
     }, [dispatch])
@@ -67,7 +71,6 @@ export default function Catalog() {
 
     return (
         <div
-            onClick={() => setVisibleCatalog(false)}
             className={clsx([
                 'w-80 lg:static fixed',
                 visibleCatalog
