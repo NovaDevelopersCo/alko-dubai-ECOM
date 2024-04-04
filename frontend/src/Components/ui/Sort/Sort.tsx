@@ -1,6 +1,12 @@
-'use client'
+"use client"
 import React, { useContext, useEffect, useState } from 'react'
-import { setPopularity, setNews, setPrice, setLimit, setGridCount } from '@/lib/features/filter/filter'
+import {
+    setPopularity,
+    setNews,
+    setPrice,
+    setLimit,
+    setGridCount,
+} from '@/lib/features/filter/filter'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Container from '../Container/Container'
 import { BurgerContext, CatalogContext } from '@/Components/context/AppContext'
@@ -42,8 +48,8 @@ const Sort = () => {
     }, [])
 
     const dispatch = useAppDispatch()
-    const limit = useAppSelector(state => state.filters.limit);
-    const gridCount = useAppSelector(state => state.filters.gridCount);
+    const limit = useAppSelector((state) => state.filters.limit)
+    const gridCount = useAppSelector((state) => state.filters.gridCount)
 
     const onChange = (value: string) => {
         if (value === 'asc' || value === 'desc') {
@@ -64,19 +70,19 @@ const Sort = () => {
     }
 
     const handleLimitChange = (newLimit: number) => {
-        dispatch(setLimit(newLimit));
-    };
+        dispatch(setLimit(newLimit))
+    }
 
     const handleGridCountChange = (newGridCount: number) => {
-        dispatch(setGridCount(newGridCount));
-    };
+        dispatch(setGridCount(newGridCount))
+    }
 
     return (
         <div>
             <hr className="border-[#D32B82]" />
             <Container>
-                <div className="flex items-center xl:px-0 py-2.5">
-                    <ul className=" hidden lg:flex">
+                <div className="flex items-end xl:px-0 py-2.5 justify-between">
+                    <ul className="hidden mr-10 lg:flex">
                         Показать :&nbsp;
                         <li
                             className={`cursor-pointer ${
@@ -103,7 +109,7 @@ const Sort = () => {
                             &nbsp;36
                         </li>
                     </ul>
-                    <ul className="max-w-[50px]  gap-x-4 hidden lg:flex ml-11">
+                    <ul className="max-w-[50px] gap-x-4 hidden lg:flex mr-auto">
                         {[2, 3, 4].map((i) => (
                             <li key={i} className="cursor-pointer ">
                                 <GridButton

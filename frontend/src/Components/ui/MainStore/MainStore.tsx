@@ -21,8 +21,8 @@ function MainStore() {
     }, [dispatch])
 
     const isInitialMount = useRef(true) // Ссылка, позволяющая определить, первый ли раз вызывается компонент
-    const gridCount = useAppSelector(state => state.filters.gridCount); // Получаем gridCount из Redux-стора
-    const limit = useAppSelector(state => state.filters.limit); // Получаем limit из Redux-стора
+    const gridCount = useAppSelector((state) => state.filters.gridCount) // Получаем gridCount из Redux-стора
+    const limit = useAppSelector((state) => state.filters.limit) // Получаем limit из Redux-стора
 
     // Функция для обновления элементов
     const updateItems = () => {
@@ -52,9 +52,8 @@ function MainStore() {
     }, [filter, dispatch, limit])
 
     useEffect(() => {
-        updateItems();
-    }, [limit, gridCount]);
-
+        updateItems()
+    }, [limit, gridCount])
 
     let products = null // По умолчанию нет товаров
     if (items && limit !== undefined) {
