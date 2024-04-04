@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import React, { useContext, useEffect, useState } from 'react'
 import {
     setPopularity,
@@ -82,8 +82,8 @@ const Sort = () => {
         <div>
             <hr className="border-[#D32B82]" />
             <Container>
-                <div className="flex items-center xl:px-0 py-2.5">
-                    <ul className=" hidden lg:flex">
+                <div className="flex items-end xl:px-0 py-2.5 justify-between">
+                    <ul className="hidden mr-10 lg:flex">
                         Показать :&nbsp;
                         <li
                             className={`cursor-pointer ${
@@ -110,7 +110,7 @@ const Sort = () => {
                             &nbsp;36
                         </li>
                     </ul>
-                    <ul className="max-w-[50px]  gap-x-4 hidden lg:flex ml-11">
+                    <ul className="max-w-[50px] gap-x-4 hidden lg:flex mr-auto">
                         {[2, 3, 4].map((i) => (
                             <li key={i} className="cursor-pointer ">
                                 <GridButton
