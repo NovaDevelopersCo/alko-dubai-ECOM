@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Montserrat, Literata as LiterataFont } from 'next/font/google'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
+import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 import clsx from 'clsx'
 
 //const inter = Inter({subsets: ['latin']})
@@ -127,15 +129,15 @@ export default function RootLayout({
                                     colorText: '#D32B82', // Цвет текста для неактивных кнопок
                                     colorBgTextActive: '#D32B82', // Цвет текста для активных кнопок
                                     colorPrimary: '#D32B82',
-                                    colorPrimaryHover: '#D32B82',  
-                                    colorPrimaryActive:'#D32B82',
+                                    colorPrimaryHover: '#D32B82',
+                                    colorPrimaryActive: '#D32B82',
                                 },
                                 Input: {
                                     colorBorder: '#D32B82',
                                     colorPrimary: '#D32B82',
-                                    colorPrimaryHover: '#D32B82',  
-                                    colorPrimaryActive:'#D32B82',
-                                }
+                                    colorPrimaryHover: '#D32B82',
+                                    colorPrimaryActive: '#D32B82',
+                                },
                             },
                         }}
                     >
@@ -152,6 +154,7 @@ export default function RootLayout({
                                     </main>
                                     <Footer />
                                     <Modal />
+                                    <ToastContainer autoClose={2000} />
                                 </div>
                             </AppProvider>
                         </AntdRegistry>
