@@ -169,7 +169,7 @@ const Order = () => {
                             </span>
                         </div>
                     )}
-                    <div className="flex justify-between border-b-[1px] border-customGray p-[10px]">
+                    <div className="flex justify-between flex-wrap border-b-[1px] border-customGray p-[10px]">
                         <span className="font-bold">ПРИМЕЧАНИЕ:</span>
                         <span className="text-customGray">
                             {order?.details ? order.details : 'Нет'}

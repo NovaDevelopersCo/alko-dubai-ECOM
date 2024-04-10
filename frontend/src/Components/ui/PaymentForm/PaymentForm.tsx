@@ -46,6 +46,14 @@ export default function PaymentForm() {
                                 required: true,
                                 message: 'Пожалуйста, введите ваше имя!',
                             },
+                            {
+                                validator: (_, value) =>
+                                    !value.includes(' ')
+                                        ? Promise.resolve()
+                                        : Promise.reject(
+                                              new Error('Пробелы недопустимы'),
+                                          ),
+                            },
                         ]}
                     >
                         <Input placeholder="Игорь" showCount maxLength={150} />
@@ -59,6 +67,14 @@ export default function PaymentForm() {
                                 type: 'email',
                                 required: true,
                                 message: 'Пожалуйста, введите вашу почту!',
+                            },
+                            {
+                                validator: (_, value) =>
+                                    !value.includes(' ')
+                                        ? Promise.resolve()
+                                        : Promise.reject(
+                                              new Error('Пробелы недопустимы'),
+                                          ),
                             },
                         ]}
                     >
@@ -92,14 +108,22 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <Input placeholder="Улица, дом, квартира" showCount maxLength={300}/>
+                        <Input
+                            placeholder="Улица, дом, квартира"
+                            showCount
+                            maxLength={300}
+                        />
                     </Form.Item>
                     <Form.Item
                         name={'details'}
                         label="Примечания к заказу"
                         className="w-full sm:w-[450px]"
                     >
-                        <Input.TextArea placeholder="Примечания к заказу"showCount maxLength={300} />
+                        <Input.TextArea
+                            placeholder="Примечания к заказу"
+                            showCount
+                            maxLength={300}
+                        />
                     </Form.Item>
                     <p className="text-xs text-[#878787] w-full sm:w-[450px] mb-5">
                         Ваши личные данные будут использоваться для обработки
