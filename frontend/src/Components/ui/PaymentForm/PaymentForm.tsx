@@ -41,9 +41,14 @@ export default function PaymentForm() {
                         name={'name'}
                         label="Имя"
                         className="w-full lg:w-[300px]"
-                        rules={[{ required: true }]}
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Пожалуйста, введите ваше имя!',
+                            },
+                        ]}
                     >
-                        <Input placeholder="Игорь" />
+                        <Input placeholder="Игорь" showCount maxLength={150} />
                     </Form.Item>
                     <Form.Item
                         name={'email'}
@@ -57,7 +62,11 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <Input placeholder="example@gmail.com" />
+                        <Input
+                            placeholder="example@gmail.com"
+                            showCount
+                            maxLength={150}
+                        />
                     </Form.Item>
                     <Form.Item
                         name="phone"
@@ -83,14 +92,14 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <Input placeholder="Улица, дом, квартира" />
+                        <Input placeholder="Улица, дом, квартира" showCount maxLength={300}/>
                     </Form.Item>
                     <Form.Item
                         name={'details'}
                         label="Примечания к заказу"
                         className="w-full sm:w-[450px]"
                     >
-                        <Input.TextArea placeholder="Примечания к заказу" />
+                        <Input.TextArea placeholder="Примечания к заказу"showCount maxLength={300} />
                     </Form.Item>
                     <p className="text-xs text-[#878787] w-full sm:w-[450px] mb-5">
                         Ваши личные данные будут использоваться для обработки
