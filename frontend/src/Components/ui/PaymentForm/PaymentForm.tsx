@@ -6,6 +6,7 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { redirect } from 'next/navigation'
 import { fetchOrder } from '@/lib/features/order/order'
+import startsWith from 'lodash.startswith'
 
 export default function PaymentForm() {
     const { totalPrice, items } = useAppSelector(selectCart)
@@ -95,7 +96,24 @@ export default function PaymentForm() {
                             },
                         ]}
                     >
-                        <PhoneInput country={'ru'} placeholder="9565814629" />
+                        <PhoneInput
+                            country={'ru'}
+                            placeholder="9565814629"
+                            isValid={(inputNumber, country, countries) => {
+                                return countries.some((country: any) => {
+                                    return (
+                                        startsWith(
+                                            inputNumber,
+                                            country.dialCode,
+                                        ) ||
+                                        startsWith(
+                                            country.dialCode,
+                                            inputNumber,
+                                        )
+                                    )
+                                })
+                            }}
+                        />
                     </Form.Item>
                     <Form.Item
                         name="address"
