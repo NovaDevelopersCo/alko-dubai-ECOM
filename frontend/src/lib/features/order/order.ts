@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import axiosServices from '@/utils/axios'
 import { AppDispatch, RootState } from '@/lib/store'
 import { order, orderStateProps } from '@/type/interfaceOrder'
+import { toast } from 'react-toastify'
 
 const initialState: orderStateProps = {
     error: null,
@@ -34,9 +35,11 @@ export const fetchOrder = (order: order) => {
             response.data.items = items
             dispatch(
                 OrderSlice.actions.fetchOrderSuccess(response.data as order),
+                toast.success('Заказ успешно создан'),
             )
-        } catch (error) {
+        } catch (error: any) {
             dispatch(OrderSlice.actions.hasError(error))
+            toast.error('Возникла ошибка при создании заказа')
         } finally {
             dispatch(OrderSlice.actions.finishLoading())
         }

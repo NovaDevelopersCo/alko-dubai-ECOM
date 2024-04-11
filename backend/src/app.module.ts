@@ -13,8 +13,8 @@ import { CatalogModule } from './catalog/catalog.module';
 import { Catalog } from './catalog/catalog.model';
 
 const DEFAULT_ADMIN = {
-  email: 'admin@example.com',
-  password: 'password',
+  email: 'admindxb@emal.com',
+  password: 'G8$r#Z2!fPq@',
 };
 
 const authenticate = async (email: string, password: string) => {

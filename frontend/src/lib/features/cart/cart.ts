@@ -4,7 +4,6 @@ import { calcTotalPrice, calcTotalSale } from '@/utils/calcTotalPrice'
 import { CartItem } from '@/type/interfaceCart'
 import { RootState } from '@/lib/store'
 import Cookies from 'js-cookie';
-
 const { items, totalPrice, totalSale } = getCartFromLS()
 
 export const initialState = {
@@ -81,7 +80,6 @@ const CartSlice = createSlice({
                     }
                     state.items.push(newItem)
                 } else {
-
                 }
             }
 

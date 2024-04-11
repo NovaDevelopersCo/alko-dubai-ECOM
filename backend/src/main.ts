@@ -12,12 +12,7 @@ async function start() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
-  
-  app.enableCors({
-    origin: 'http://alkodostavka-dubai.ru',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-  });
+
 
   const config = new DocumentBuilder()
     .setTitle('alko-dubai-ECOM')
