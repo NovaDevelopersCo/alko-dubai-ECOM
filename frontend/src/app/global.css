@@ -172,3 +172,54 @@ select:focus-visible {
     box-shadow: 10px 10px 0px 10000px rgba(0, 0, 0, 0.7);
     @apply lg:shadow-none;
 }
+
+@media (max-width: 1238px) {
+    .productTable-item-response {
+        @apply pl-[145px];
+    }
+}
+@media (max-width: 1200px) {
+    .productTable-item-response {
+        @apply pl-[140px];
+    }
+}
+@media (max-width: 1140px) {
+    .productTable-item-response {
+        @apply pl-[135px];
+    }
+}
+@media (max-width: 1116px) {
+    .productTable-item-response {
+        @apply pl-[130px];
+    }
+}
+@media (max-width: 1060px) {
+    .productTable-item-response {
+        @apply pl-[125px];
+    }
+}
+@media (max-width: 1052px) {
+    .productTable-item-response {
+        @apply pl-[120px];
+    }
+}
+@media (max-width: 1040px) {
+    .productTable-item-response {
+        @apply pl-[115px];
+    }
+}
+@media (max-width: 1023px) {
+    .productTable-item-response {
+        @apply pl-[145px];
+    }
+}
+@media (max-width: 845px) {
+    .productTable-item-response {
+        @apply pl-[135px];
+    }
+}
+@media (max-width: 780px) {
+    .productTable-item-response {
+        @apply pl-[130px];
+    }
+}
