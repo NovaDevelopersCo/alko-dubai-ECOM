@@ -12,8 +12,6 @@ async function start() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
-
-
   const config = new DocumentBuilder()
     .setTitle('alko-dubai-ECOM')
     .setVersion('1.1.6')

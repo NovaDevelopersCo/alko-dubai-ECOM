@@ -12,7 +12,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const id = params.id
 
-    const product = await fetch(`http://188.225.34.136/api/items/${id}`).then(
+    const product = await fetch(`https://alkodostavka-dubai.ru/api/items/${id}`).then(
         (res) => res.json(),
     )
 

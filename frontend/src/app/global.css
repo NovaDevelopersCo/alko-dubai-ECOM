@@ -142,6 +142,16 @@ select:focus-visible {
     border-color: #d32b82 !important;
 }
 
+:where(.css-dev-only-do-not-override-z54too).ant-row  {
+    display: block !important;
+}
+
+:where(.css-dev-only-do-not-override-z54too).ant-form-item .ant-form-item-label {
+    text-align: start !important;
+}
+
+:where(.css-dev-only-do-not-override-z54too).ant-form-item .ant-form-item-labe
+
 :where(.css-dev-only-do-not-override-1uweeqc).ant-select .ant-select-arrow {
     color: #d32b82 !important;
 }
