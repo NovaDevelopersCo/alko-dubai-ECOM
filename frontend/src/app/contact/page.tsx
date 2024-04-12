@@ -1,9 +1,16 @@
+"use clinet"
 import { FaTelegram, FaWhatsapp } from 'react-icons/fa'
 import Container from '@/Components/ui/Container/Container'
 import { GoogleMap } from '@/Components/ui/Map/GoogleMap'
 import { ContactItem } from '@/Components/ui/ContactItem/ContactItem'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+    title: 'Контакты - Алкоголь в Дубай',
+    description:
+        'Контакты Алкоголь в Дубае, лучший магазин алкогольной продукции в дубае c, быстрой доставкой',
+}
 const ContactPage = () => {
     return (
         <div className="mt-[70px]">
