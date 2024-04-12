@@ -48,8 +48,14 @@ export const Product = ({
                 height={15}
                 onClick={onClickRemove}
             />
-            <img src={image} alt={title} width={85} height={102} />
-            <div className="grid lg:flex md:flex sm:grid grid-cols-1 justify-between w-[100%] flex-wrap">
+            <img
+                src={image}
+                className=" max-h-[150px] min-h-[150px]"
+                alt={title}
+                width={95}
+                height={152}
+            />
+            <div className="grid lg:grid lg:grid-cols-4 md:grid md:grid-cols-4 sm:grid sm:grid-cols-1 grid-cols-1 justify-between w-[100%] flex-wrap">
                 <div className="flex items-top justify-between py-[7px]">
                     <span className="text-[14px] lg:text-[16px] md:text-[15px] sm:text-[14px] font-semibold max-w-[185px] lg:max-w-[100%] md:max-w-[100%] sm:max-w-[185px]">
                         {title}
@@ -61,7 +67,7 @@ export const Product = ({
                         <img src="/close.svg" alt="close" />
                     </span>
                 </div>
-                <div className="flex items-center justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[2px]">
+                <div className="flex items-center lg:justify-center md:justify-center sm:justify-between justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[2px]">
                     <span className="text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] inline lg:hidden md:hidden sm:inline font-semibold">
                         цена
                     </span>
@@ -76,7 +82,7 @@ export const Product = ({
                         {price} AED
                     </span>
                 </div>
-                <div className="flex items-center justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[2px]">
+                <div className="flex items-center lg:justify-end md:justify-end sm:justify-between justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[2px]">
                     <span className="text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] inline lg:hidden md:hidden sm:inline justify-between font-semibold">
                         количество
                     </span>
@@ -86,7 +92,7 @@ export const Product = ({
                         decrement={count > 1 ? onClickMinus : onClickRemove}
                     />
                 </div>
-                <div className="flex items-center justify-between border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[7px]">
+                <div className="flex lg:justify-end md:justify-end sm:justify-between justify-between items-center border-b-[1px] border-customPink border-dashed lg:border-none md:border-none sm:border-dashed py-[7px]">
                     <span className="text-[12px] lg:text-[14px] md:text-[13px] sm:text-[12px] inline lg:hidden md:hidden sm:inline font-semibold">
                         подытог
                     </span>

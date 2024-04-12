@@ -182,3 +182,70 @@ select:focus-visible {
     box-shadow: 10px 10px 0px 10000px rgba(0, 0, 0, 0.7);
     @apply lg:shadow-none;
 }
+
+/* БРЭКПОИНТЫ КАТЕГОРИИ ИЗ ТАБЛИЦЫ ТОВАРОВ - КОЛИЧЕСТВО */
+@media (max-width: 1238px) {
+    .productTable-quantity-response {
+        @apply pl-[145px];
+    }
+}
+@media (max-width: 1222px) {
+    .productTable-quantity-response {
+        @apply pl-[140px];
+    }
+}
+@media (max-width: 1191px) {
+    .productTable-quantity-response {
+        @apply pl-[135px];
+    }
+}
+@media (max-width: 1159px) {
+    .productTable-quantity-response {
+        @apply pl-[125px];
+    }
+}
+@media (max-width: 1125px) {
+    .productTable-quantity-response {
+        @apply pl-[120px];
+    }
+}
+@media (max-width: 1096px) {
+    .productTable-quantity-response {
+        @apply pl-[110px];
+    }
+}
+@media (max-width: 1056px) {
+    .productTable-quantity-response {
+        @apply pl-[100px];
+    }
+}
+@media (max-width: 1023px) {
+    .productTable-quantity-response {
+        @apply pl-[155px];
+    }
+}
+@media (max-width: 895px) {
+    .productTable-quantity-response {
+        @apply pl-[148px];
+    }
+}
+@media (max-width: 860px) {
+    .productTable-quantity-response {
+        @apply pl-[139px];
+    }
+}
+@media (max-width: 825px) {
+    .productTable-quantity-response {
+        @apply pl-[135px];
+    }
+}
+@media (max-width: 813px) {
+    .productTable-quantity-response {
+        @apply pl-[130px];
+    }
+}
+@media (max-width: 788px) {
+    .productTable-quantity-response {
+        @apply pl-[123px];
+    }
+}
