@@ -3,7 +3,7 @@ import Container from '@/Components/ui/Container/Container'
 import MainStore from '@/Components/ui/MainStore/MainStore'
 import Sort from '@/Components/ui/Sort/Sort'
 import React from 'react'
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata} from 'next'
 
 type Props = {
     params: { id: string }
