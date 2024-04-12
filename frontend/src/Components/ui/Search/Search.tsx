@@ -18,7 +18,7 @@ function Search() {
             'default-search',
         ) as HTMLInputElement
         dispatch(setCategory(''))
-        dispatch(setSearch(searchInput.value))
+        dispatch(setSearch(searchInput.value.trim()))
         if (pathname !== '/store') {
             router.push('/store')
         }
