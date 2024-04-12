@@ -51,7 +51,7 @@ const Delivery: React.FC = () => {
 
                 <div className="text-center flex border border-rose-300 p-8 items-center rounded-br-lg rounded-bl-lg md:rounded-bl-[0] ">
                     <div className="font-medium text-2xl   text-black text-left ">
-                        Оплата заказа при <br /> получении наличными
+                        Оплата заказа при <br /> получении, наличными
                         <br /> или переводом на карту РФ
                     </div>
                     <div className="text-4xl text-black flex ml-auto">
