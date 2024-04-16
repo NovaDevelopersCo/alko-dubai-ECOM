@@ -12,6 +12,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { CatalogModule } from './catalog/catalog.module';
 import { Catalog } from './catalog/catalog.model';
 import { CacheModule } from '@nestjs/cache-manager';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 const DEFAULT_ADMIN = {
   email: 'admindxb@emal.com',
@@ -51,6 +52,12 @@ const authenticate = async (email: string, password: string) => {
       autoLoadModels: true,
       synchronize: true,
     }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 1000,
+        limit: 10,
+      },
+    ]),
     CacheModule.register({
       isGlobal: true,
       ttl: 1000 * 60 * 60,
