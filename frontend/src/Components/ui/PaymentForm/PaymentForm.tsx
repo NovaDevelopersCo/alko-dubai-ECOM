@@ -48,12 +48,14 @@ export default function PaymentForm() {
                                 message: 'Пожалуйста, введите ваше имя!',
                             },
                             {
-                                validator: (_, value) =>
-                                    !value.includes(' ')
+                                validator: (_, value) => {
+                                    if (!value) return Promise.resolve() // Если поле пустое, не генерируем ошибку
+                                    return !value.includes(' ')
                                         ? Promise.resolve()
                                         : Promise.reject(
-                                              new Error('Пробелы недопустимы'),
-                                          ),
+                                              new Error('Пробелы не допустимы'),
+                                          )
+                                },
                             },
                         ]}
                     >
@@ -65,17 +67,18 @@ export default function PaymentForm() {
                         className="w-full lg:w-[300px]"
                         rules={[
                             {
-                                type: 'email',
                                 required: true,
-                                message: 'Пожалуйста, введите вашу почту!',
+                                message: 'Пожалуйста, введите вашу почту!',
                             },
                             {
-                                validator: (_, value) =>
-                                    !value.includes(' ')
+                                validator: (_, value) => {
+                                    if (!value) return Promise.resolve() // Если поле пустое, не генерируем ошибку
+                                    return !value.includes(' ')
                                         ? Promise.resolve()
                                         : Promise.reject(
-                                              new Error('Пробелы недопустимы'),
-                                          ),
+                                              new Error('Пробелы не допустимы'),
+                                          )
+                                },
                             },
                         ]}
                     >
@@ -85,6 +88,7 @@ export default function PaymentForm() {
                             maxLength={150}
                         />
                     </Form.Item>
+
                     <Form.Item
                         name="phone"
                         label="Телефон"
@@ -216,7 +220,10 @@ export default function PaymentForm() {
                             >
                                 ПОДТВЕРДИТЬ ЗАКАЗ
                             </Button>
-                            <span className='text-xs p-3'>Мы оставляет за собой право отказать вам в своих услугах, если Вам не исполнилось 21 год!</span>
+                            <span className="text-xs p-3">
+                                Мы оставляет за собой право отказать вам в своих
+                                услугах, если Вам не исполнилось 21 год!
+                            </span>
                         </div>
                     </div>
                 </div>
