@@ -11,6 +11,7 @@ import { Order } from './order/order.model';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { CatalogModule } from './catalog/catalog.module';
 import { Catalog } from './catalog/catalog.model';
+import { CacheModule } from '@nestjs/cache-manager';
 
 const DEFAULT_ADMIN = {
   email: 'admindxb@emal.com',
@@ -49,6 +50,10 @@ const authenticate = async (email: string, password: string) => {
       models: [Items, Order],
       autoLoadModels: true,
       synchronize: true,
+    }),
+    CacheModule.register({
+      isGlobal: true,
+      ttl: 1000 * 60 * 60,
     }),
     MailerModule.forRoot({
       transport: {
