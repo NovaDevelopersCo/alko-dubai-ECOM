@@ -126,7 +126,7 @@ const Order = () => {
                             >
                                 <span className="font-bold">
                                     {item.title !== '' ? (
-                                        item.title
+                                    item.title + ` (${item.count})`
                                     ) : (
                                         <Skeleton
                                             width={60}

@@ -216,6 +216,7 @@ export default function PaymentForm() {
                             >
                                 ПОДТВЕРДИТЬ ЗАКАЗ
                             </Button>
+                            <span className='text-xs p-3'>Мы оставляет за собой право отказать вам в своих услугах, если Вам не исполнилось 21 год!</span>
                         </div>
                     </div>
                 </div>
