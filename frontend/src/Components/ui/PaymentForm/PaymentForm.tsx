@@ -62,34 +62,6 @@ export default function PaymentForm() {
                         <Input placeholder="Игорь" showCount maxLength={150} />
                     </Form.Item>
                     <Form.Item
-                        name={'email'}
-                        label="Почта"
-                        className="w-full lg:w-[300px]"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Пожалуйста, введите вашу почту!',
-                            },
-                            {
-                                validator: (_, value) => {
-                                    if (!value) return Promise.resolve() // Если поле пустое, не генерируем ошибку
-                                    return !value.includes(' ')
-                                        ? Promise.resolve()
-                                        : Promise.reject(
-                                              new Error('Пробелы не допустимы'),
-                                          )
-                                },
-                            },
-                        ]}
-                    >
-                        <Input
-                            placeholder="example@gmail.com"
-                            showCount
-                            maxLength={150}
-                        />
-                    </Form.Item>
-
-                    <Form.Item
                         name="phone"
                         label="Телефон"
                         className="w-full lg:w-[300px]"
@@ -101,7 +73,8 @@ export default function PaymentForm() {
                         ]}
                     >
                         <PhoneInput
-                            country={'ru'}
+                            inputProps={{ disableSearchIcon: true }}
+                            value=""
                             placeholder="9565814629"
                             isValid={(inputNumber, country, countries) => {
                                 return countries.some((country: any) => {
