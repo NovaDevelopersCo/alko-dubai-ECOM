@@ -12,7 +12,9 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Catalog } from './catalog.model';
 import { UpdateCatalogDto } from './dto/UpdateCatalogDto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
+@UseInterceptors(CacheInterceptor)
 @ApiTags('Catalog')
 @Controller('api/catalog')
 export class CatalogController {

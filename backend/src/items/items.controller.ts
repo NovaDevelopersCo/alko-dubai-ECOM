@@ -14,7 +14,9 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateItemDto } from './dto/create-item.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { GetItemsFilterDto } from './dto/get-items-filter.dto';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
+@UseInterceptors(CacheInterceptor)
 @ApiTags('Items')
 @Controller('api/items')
 export class ItemsController {
