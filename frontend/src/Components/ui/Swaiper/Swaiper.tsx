@@ -38,20 +38,27 @@ function Swaiper() {
     return (
         <div className="bg-black rounded-xl flex items-center">
             <div className="flex-1">
-                <div className="flex justify-center items-center h-full">
-                    <h1 className="uppercase text-white text-center text-xs md:w-[130px] lg:w-[500px] md:text-md lg:text-4xl">
-                        Доставка алкогольных напитков в Дубае
-                        <br />
-                        <Dropdown menu={{ items }} trigger={['click', 'hover']}>
-                            <a
-                                onClick={(e) => e.preventDefault()}
-                                className="cursor-pointer normal-case bg-white font-montserrat mt-3 text-sm md:text-lg p-3 px-4 rounded-md text-black"
+                <div className="flex justify-evenly items-center h-full">
+                    <div className="uppercase text-white text-center text-xs md:w-[330px] lg:w-[500px] md:text-xl lg:text-4xl mx-2">
+                        <h1>
+                            Доставка алкогольных напитков в Дубае
+                            <br />
+                        </h1>
+                        <div className='mt-3'>
+                            <Dropdown
+                                menu={{ items }}
+                                trigger={['click', 'hover']}
                             >
-                                Выбрать напиток&nbsp;
-                                <DownOutlined />
-                            </a>
-                        </Dropdown>
-                    </h1>
+                                <a
+                                    onClick={(e) => e.preventDefault()}
+                                    className="cursor-pointer normal-case bg-white font-montserrat text-sm md:text-lg p-3 px-4 rounded-md text-black"
+                                >
+                                    Выбрать напиток&nbsp;
+                                    <DownOutlined />
+                                </a>
+                            </Dropdown>
+                        </div>
+                    </div>
                     <span className="text-white text-2xl md:m-3 lg:m-6">
                         <svg
                             width="2"
@@ -69,7 +76,7 @@ function Swaiper() {
                             />
                         </svg>
                     </span>
-                    <span className="text-white md:text-md lg:text-7xl w-14 md:w-auto">
+                    <span className="text-white md:text-md lg:text-7xl w-14 md:w-auto text-center">
                         24/7
                     </span>
                 </div>
