@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/store'
 import { category } from '@/type/interfaceCategory'
 import { DownOutlined } from '@ant-design/icons'
-import { Dropdown, MenuProps, Space } from 'antd'
+import { Dropdown, MenuProps } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { MouseEvent } from 'react'
@@ -22,7 +22,7 @@ function Swaiper() {
             label: (
                 <Link
                     href={`/store/catalog/${categoriesArray[i].title}`}
-                    className="flex justify-between w-60"
+                    className="flex justify-between w-48"
                     key={categoriesArray[i].id}
                     onClick={(event: MouseEvent<HTMLAnchorElement>) => {
                         dispatch(setCategory(categoriesArray[i].title))
@@ -30,15 +30,11 @@ function Swaiper() {
                         event as unknown as MouseEvent<HTMLAnchorElement>
                     }}
                 >
-                    <div>{categoriesArray[i].title}</div>
-                    <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
-                        <p>{categoriesArray[i].items}</p>
-                    </div>
+                    <div className="text-base">{categoriesArray[i].title}</div>
                 </Link>
             ),
         })
     }
-    console.log(item)
 
     const items: MenuProps['items'] = item
     return (
@@ -48,17 +44,13 @@ function Swaiper() {
                     <h1 className="uppercase text-white text-center text-xs md:w-[130px] lg:w-[500px] md:text-md lg:text-4xl">
                         Доставка алкогольных напитков в Дубае
                         <br />
-                        <Link href="/store">
-                            <button className="bg-white font-montserrat mt-3 text-sm md:text-lg p-1.5 px-4 rounded-md text-black">
-                                Выбрать напиток
-                            </button>
-                        </Link>
                         <Dropdown menu={{ items }} trigger={['click', 'hover']}>
-                            <a onClick={(e) => e.preventDefault()}>
-                                <Space>
-                                    Hover me
-                                    <DownOutlined />
-                                </Space>
+                            <a
+                                onClick={(e) => e.preventDefault()}
+                                className="normal-case bg-white font-montserrat mt-3 text-sm md:text-lg p-3 px-4 rounded-md text-black"
+                            >
+                                Выбрать напиток&nbsp;
+                                <DownOutlined />
                             </a>
                         </Dropdown>
                     </h1>
