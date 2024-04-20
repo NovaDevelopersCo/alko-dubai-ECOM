@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+// import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 
 async function start() {
@@ -12,13 +12,13 @@ async function start() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
-  const config = new DocumentBuilder()
-    .setTitle('alko-dubai-ECOM')
-    .setVersion('1.1.6')
-    .build();
+  // const config = new DocumentBuilder()
+  //   .setTitle('alko-dubai-ECOM')
+  //   .setVersion('1.1.6')
+  //   .build();
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/api/docs', app, document);
+  // const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup('/api/docs', app, document);
 
   app.useGlobalPipes(new ValidationPipe());
 
