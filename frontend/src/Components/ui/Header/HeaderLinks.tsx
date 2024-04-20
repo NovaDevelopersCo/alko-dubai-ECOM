@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { useMediaQuery } from '@react-hook/media-query'
 import React, { FC, useContext, useEffect, useRef, useState } from 'react'
 import { BurgerContext } from '@/Components/context/AppContext'
 import { useAppDispatch } from '@/lib/hooks'
@@ -40,13 +41,27 @@ const HeaderLinks: FC = () => {
     const dispatch = useAppDispatch()
     const menuRef = useRef<HTMLDivElement | null>(null)
 
-    const [catalog, setCatalog] = useState(false)
-    const [menu, setMenu] = useState(true)
+    const [catalog, setCatalog] = useState(true)
+    const [menu, setMenu] = useState(false)
 
+    const isSmallScreen = useMediaQuery('(max-width: 1024px)')
+
+    useEffect(() => {
+        if (isSmallScreen) {
+            setMenu(false)
+            setCatalog(true)
+        } else {
+            setMenu(true)
+            setCatalog(false)
+        }
+    }, [isSmallScreen])
+
+    
     const handleCatalog = () => {
         setMenu(false)
         setCatalog(true)
     }
+
     const handleMenu = () => {
         setCatalog(false)
         setMenu(true)
@@ -68,9 +83,7 @@ const HeaderLinks: FC = () => {
         'ease-in-out duration-300',
         'bg-[#fff] fixed top-0 left-0 h-screen lg:w-[auto] md:w-[40%] sm:w-[50%] w-[65%] flex p-[20px_40px]',
         'lg:bg-transparent lg:relative lg:h-auto lg:w-auto lg:order-2 lg:max-w-auto lg:block lg:translate-x-0 z-[35] flex-col',
-        isBurgerOpen
-            ? 'translate-x-0 customMenuShadow'
-            : '-translate-x-[130%] ',
+        isBurgerOpen ? 'translate-x-0 customMenuShadow' : '-translate-x-[130%]',
     )
 
     useEffect(() => {
@@ -87,6 +100,7 @@ const HeaderLinks: FC = () => {
             document.removeEventListener('mousedown', handleClickOutside)
         }
     }, [menuRef, setIsBurgerOpen])
+
     return (
         <div className={navClasses} id="mobile-menu-2" ref={menuRef}>
             <div className="flex flex-col gap-[30px]">
