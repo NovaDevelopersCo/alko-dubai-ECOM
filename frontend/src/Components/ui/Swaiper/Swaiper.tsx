@@ -15,14 +15,14 @@ function Swaiper() {
         (state: RootState) => state.categories.posts,
     ) as any
     const categoriesArray = Array.from(categories) as category[]
-    const item = []
+    const items: MenuProps['items'] = []
     for (let i = 0; i < categoriesArray.length; i++) {
-        item.push({
+        items.push({
             key: i,
             label: (
                 <Link
                     href={`/store/catalog/${categoriesArray[i].title}`}
-                    className="flex justify-between w-48"
+                    className="flex justify-between w-40"
                     key={categoriesArray[i].id}
                     onClick={(event: MouseEvent<HTMLAnchorElement>) => {
                         dispatch(setCategory(categoriesArray[i].title))
@@ -35,8 +35,6 @@ function Swaiper() {
             ),
         })
     }
-
-    const items: MenuProps['items'] = item
     return (
         <div className="bg-black rounded-xl flex items-center">
             <div className="flex-1">
@@ -47,7 +45,7 @@ function Swaiper() {
                         <Dropdown menu={{ items }} trigger={['click', 'hover']}>
                             <a
                                 onClick={(e) => e.preventDefault()}
-                                className="normal-case bg-white font-montserrat mt-3 text-sm md:text-lg p-3 px-4 rounded-md text-black"
+                                className="cursor-pointer normal-case bg-white font-montserrat mt-3 text-sm md:text-lg p-3 px-4 rounded-md text-black"
                             >
                                 Выбрать напиток&nbsp;
                                 <DownOutlined />
