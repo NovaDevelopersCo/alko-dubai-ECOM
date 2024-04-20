@@ -44,14 +44,14 @@ function Swaiper() {
                             Доставка алкогольных напитков в Дубае
                             <br />
                         </h1>
-                        <div className='mt-3'>
+                        <div className="mt-3">
                             <Dropdown
                                 menu={{ items }}
                                 trigger={['click', 'hover']}
                             >
                                 <a
                                     onClick={(e) => e.preventDefault()}
-                                    className="cursor-pointer normal-case bg-white font-montserrat text-sm md:text-lg p-3 px-4 rounded-md text-black"
+                                    className=" text-nowrap cursor-pointer normal-case bg-white font-montserrat text-sm md:text-lg p-3 px-4 rounded-md text-black"
                                 >
                                     Выбрать напиток&nbsp;
                                     <DownOutlined />
