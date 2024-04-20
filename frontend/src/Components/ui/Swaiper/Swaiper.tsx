@@ -51,7 +51,7 @@ function Swaiper() {
                             >
                                 <a
                                     onClick={(e) => e.preventDefault()}
-                                    className=" text-nowrap cursor-pointer normal-case bg-white font-montserrat text-sm md:text-lg p-3 px-4 rounded-md text-black"
+                                    className=" text-nowrap cursor-pointer normal-case bg-white font-montserrat text-sm md:text-lg sm:p-3 sm:px-4 p-2 rounded-md text-black"
                                 >
                                     Выбрать напиток&nbsp;
                                     <DownOutlined />
