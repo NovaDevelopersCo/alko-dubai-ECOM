@@ -1,4 +1,5 @@
 export type category = {
+    id: number
     title: string
     image?: string
     items: number

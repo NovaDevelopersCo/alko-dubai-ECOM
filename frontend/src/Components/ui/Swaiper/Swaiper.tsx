@@ -1,8 +1,46 @@
+'use client'
+import { setCategory, setSearch } from '@/lib/features/filter/filter'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
+import { RootState } from '@/lib/store'
+import { category } from '@/type/interfaceCategory'
+import { DownOutlined } from '@ant-design/icons'
+import { Dropdown, MenuProps, Space } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { MouseEvent } from 'react'
 
 function Swaiper() {
+    const dispatch = useAppDispatch()
+    const categories = useAppSelector(
+        (state: RootState) => state.categories.posts,
+    ) as any
+    const categoriesArray = Array.from(categories) as category[]
+    const item = []
+    for (let i = 0; i < categoriesArray.length; i++) {
+        item.push({
+            key: i,
+            label: (
+                <Link
+                    href={`/store/catalog/${categoriesArray[i].title}`}
+                    className="flex justify-between w-60"
+                    key={categoriesArray[i].id}
+                    onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+                        dispatch(setCategory(categoriesArray[i].title))
+                        dispatch(setSearch(''))
+                        event as unknown as MouseEvent<HTMLAnchorElement>
+                    }}
+                >
+                    <div>{categoriesArray[i].title}</div>
+                    <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
+                        <p>{categoriesArray[i].items}</p>
+                    </div>
+                </Link>
+            ),
+        })
+    }
+    console.log(item)
+
+    const items: MenuProps['items'] = item
     return (
         <div className="bg-black rounded-xl flex items-center">
             <div className="flex-1">
@@ -15,6 +53,14 @@ function Swaiper() {
                                 Выбрать напиток
                             </button>
                         </Link>
+                        <Dropdown menu={{ items }} trigger={['click', 'hover']}>
+                            <a onClick={(e) => e.preventDefault()}>
+                                <Space>
+                                    Hover me
+                                    <DownOutlined />
+                                </Space>
+                            </a>
+                        </Dropdown>
                     </h1>
                     <span className="text-white text-2xl md:m-3 lg:m-6">
                         <svg
