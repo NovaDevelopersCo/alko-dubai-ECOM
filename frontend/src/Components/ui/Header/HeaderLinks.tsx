@@ -6,6 +6,7 @@ import { setSearch } from '@/lib/features/filter/filter'
 import { Switch } from '../Switch/Switch'
 import { CatalogLinks } from '../Catalog/CatalogLinks'
 import Image from 'next/image'
+import Link from "next/link";
 
 interface NavLink {
     name: string
@@ -40,16 +41,10 @@ const HeaderLinks: FC = () => {
     const dispatch = useAppDispatch()
     const menuRef = useRef<HTMLDivElement | null>(null)
 
-    const [catalog, setCatalog] = useState(false)
-    const [menu, setMenu] = useState(true)
+    const [activeTab, setActiveTab] = useState<'menu' | 'catalog'>('catalog') // default is 'catalog'
 
-    const handleCatalog = () => {
-        setMenu(false)
-        setCatalog(true)
-    }
-    const handleMenu = () => {
-        setCatalog(false)
-        setMenu(true)
+    const handleTabChange = (tab: 'menu' | 'catalog') => {
+        setActiveTab(tab)
     }
 
     const underlineClasses = clsx(
@@ -61,7 +56,7 @@ const HeaderLinks: FC = () => {
         'w-0',
         'group-hover:w-full',
         'transition-all',
-        'duration-300',
+        'duration-300'
     )
 
     const navClasses = clsx(
@@ -70,7 +65,7 @@ const HeaderLinks: FC = () => {
         'lg:bg-transparent lg:relative lg:h-auto lg:w-auto lg:order-2 lg:max-w-auto lg:block lg:translate-x-0 z-[35] flex-col',
         isBurgerOpen
             ? 'translate-x-0 customMenuShadow'
-            : '-translate-x-[130%] ',
+            : '-translate-x-[130%]'
     )
 
     useEffect(() => {
@@ -87,6 +82,7 @@ const HeaderLinks: FC = () => {
             document.removeEventListener('mousedown', handleClickOutside)
         }
     }, [menuRef, setIsBurgerOpen])
+
     return (
         <div className={navClasses} id="mobile-menu-2" ref={menuRef}>
             <div className="flex flex-col gap-[30px]">
@@ -102,20 +98,18 @@ const HeaderLinks: FC = () => {
                         height={12}
                     />
                 </div>
-                <span className="flex lg:hidden -ml-[40px] -mt-[20px] -mr-[40px]">
+                <div className="flex lg:hidden -ml-[40px] -mt-[20px] -mr-[40px]">
                     <Switch
-                        openMenu={menu}
-                        handleMenu={handleMenu}
-                        openCatalog={catalog}
-                        handleCatalog={handleCatalog}
+                        activeTab={activeTab}
+                        handleTabChange={handleTabChange}
                     />
-                </span>
+                </div>
             </div>
-            {menu && (
+            {activeTab === 'menu' && (
                 <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 lg:gap-[0px] gap-[13px]">
                     {Links.map((link, index) => (
                         <li className="relative group" key={index}>
-                            <a
+                            <Link
                                 href={link.href}
                                 className="block text-customBlack lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
                                 aria-current="page"
@@ -125,7 +119,7 @@ const HeaderLinks: FC = () => {
                                 }}
                             >
                                 {link.name}
-                            </a>
+                            </Link>
                             <span
                                 className={clsx(
                                     !isBurgerOpen && underlineClasses,
@@ -135,7 +129,7 @@ const HeaderLinks: FC = () => {
                     ))}
                 </ul>
             )}
-            {catalog && <CatalogLinks />}
+            {activeTab === 'catalog' && <CatalogLinks />}
         </div>
     )
 }
