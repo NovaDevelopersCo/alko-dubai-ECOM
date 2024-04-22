@@ -46,7 +46,7 @@ export const CatalogLinks = () => {
                 categoriesArray.map((category, id) => (
                     <Link
                         href={`/store/catalog/${category.title}`}
-                        className="flex justify-between"
+                        className="flex justify-between items-center"
                         key={id}
                         onClick={(event: MouseEvent<HTMLAnchorElement>) => {
                             dispatch(setCategory(category.title))
@@ -54,7 +54,7 @@ export const CatalogLinks = () => {
                         }}
                     >
                         <div>{category.title}</div>
-                        <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
+                        <div className="border-solid flex justify-center min-w-10 w-10 h-7 border-2 rounded-full border-[#D32B82]">
                             <p>{category.items}</p>
                         </div>
                     </Link>
