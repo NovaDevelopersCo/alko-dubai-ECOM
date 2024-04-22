@@ -249,3 +249,33 @@ select:focus-visible {
         @apply pl-[123px];
     }
 }
+/* Для всех устройств */
+.scroll-container {
+    max-height: 350px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Гарантирует плавную прокрутку на мобильных устройствах */
+    scrollbar-width: thin; /* для Firefox */
+    scrollbar-color: #D32B82 rgba(0, 0, 0, 0.1); /* цвет полосы и цвет фона */
+    padding-left: 10px; /* добавляем отступ слева */
+}
+
+/* Для WebKit (Chrome, Safari, Opera) */
+.scroll-container::-webkit-scrollbar {
+    width: 10px; /* ширина полосы прокрутки */
+    background-color: rgba(0, 0, 0, 0.1); /* цвет фона */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #D32B82; /* цвет полосы */
+    border-radius: 4px; /* скругление углов */
+}
+
+/* Сделаем полосу прокрутки всегда активной */
+.scroll-container::-webkit-scrollbar-thumb:vertical {
+    min-height: 20px; /* минимальная высота полосы прокрутки */
+}
+
+/* Эффект при наведении на полосу */
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #b7296f; /* изменение цвета при наведении */
+}

@@ -131,7 +131,7 @@ export default function Catalog() {
                         ФИЛЬТР
                     </button>
                     <h1 className="text-3xl mt-5">Каталог</h1>
-                    <div className="flex flex-col gap-3 mt-5" style={{ maxHeight: '300px', overflowY: 'auto' }}>
+                    <div className="flex flex-col gap-3 mt-5 scroll-container">
                         {categoriesArray.length > 0 ? (
                             categoriesArray.map((category, id) => (
                                 <Link
