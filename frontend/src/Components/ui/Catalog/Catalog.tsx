@@ -136,7 +136,7 @@ export default function Catalog() {
                             categoriesArray.map((category, id) => (
                                 <Link
                                     href={`/store/catalog/${category.title}`}
-                                    className="flex justify-between w-60"
+                                    className="flex justify-between w-60 items-center"
                                     key={id}
                                     onClick={(
                                         event: MouseEvent<HTMLAnchorElement>,
@@ -147,7 +147,7 @@ export default function Catalog() {
                                     }}
                                 >
                                     <div>{category.title}</div>
-                                    <div className="border-solid flex justify-center w-10 border-2 rounded-full border-[#D32B82]">
+                                    <div className="border-solid flex justify-center w-10 h-7 border-2 rounded-full border-[#D32B82]">
                                         <p>{category.items}</p>
                                     </div>
                                 </Link>
