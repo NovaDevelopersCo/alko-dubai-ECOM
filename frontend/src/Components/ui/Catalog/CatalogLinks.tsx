@@ -41,7 +41,10 @@ export const CatalogLinks = () => {
     }, [dispatch])
 
     return (
-        <div className="flex flex-col gap-3 mt-5 lg:hidden">
+        <div
+            className="flex flex-col gap-3 mt-5 lg:hidden"
+            style={{ maxHeight: '300px', overflowY: 'auto' }}
+        >
             {categoriesArray.length > 0 ? (
                 categoriesArray.map((category, id) => (
                     <Link

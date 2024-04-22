@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat, Literata as LiterataFont } from 'next/font/google'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { ToastContainer } from 'react-toastify'
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css'
 import clsx from 'clsx'
 
 //const inter = Inter({subsets: ['latin']})
@@ -70,6 +70,8 @@ export const metadata: Metadata = {
         { name: 'Nova Developers', url: 'https://github.com/NovaDevelopersCo' },
         { name: 'Igor Zimin', url: 'https://github.com/merdernoty' },
         { name: 'Egor Rezvyi', url: 'https://github.com/Zoomish' },
+        { name: 'Roma Isak', url: 'https://github.com/Roma8642' },
+        { name: 'Amir Turgunov', url: 'https://github.com/TurgunovAmir07' },
     ],
     creator: 'https://github.com/merdernoty',
     publisher: 'https://github.com/merdernoty',
