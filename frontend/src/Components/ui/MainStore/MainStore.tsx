@@ -24,6 +24,28 @@ function MainStore() {
     const gridCount = useAppSelector((state) => state.filters.gridCount) // Получаем gridCount из Redux-стора
     const limit = useAppSelector((state) => state.filters.limit) // Получаем limit из Redux-стора
 
+    const elementRef = useRef(null)
+
+    useEffect(() => {
+        const handleMutation = () => {
+            window.scrollTo(0, 0)
+        }
+
+        const observer = new MutationObserver(handleMutation)
+
+        if (elementRef.current) {
+            observer.observe(elementRef.current, {
+                attributes: true,
+                childList: true,
+                subtree: true,
+            })
+        }
+
+        return () => {
+            observer.disconnect()
+        }
+    }, [])
+
     // Функция для обновления элементов
     const updateItems = () => {
         // Формируем объект inputFetch, учитывая выбор пользователя
@@ -76,23 +98,25 @@ function MainStore() {
                     Ничего не найдено😢
                 </div>
             )}
-            <Pagination
-                className="text-center"
-                showSizeChanger={false}
-                onChange={(page) => {
-                    setCurrentPage(page - 1)
-                }}
-                pageSize={
-                    items && Object.keys(items).length > 0
-                        ? Object.keys(items).length / pages
-                        : 1
-                }
-                total={
-                    items && Object.keys(items).length > 0
-                        ? Object.keys(items).length
-                        : 1
-                }
-            />
+            <div ref={elementRef}>
+                <Pagination
+                    className="text-center"
+                    showSizeChanger={false}
+                    onChange={(page) => {
+                        setCurrentPage(page - 1)
+                    }}
+                    pageSize={
+                        items && Object.keys(items).length > 0
+                            ? Object.keys(items).length / pages
+                            : 1
+                    }
+                    total={
+                        items && Object.keys(items).length > 0
+                            ? Object.keys(items).length
+                            : 1
+                    }
+                />
+            </div>
         </div>
     )
 }

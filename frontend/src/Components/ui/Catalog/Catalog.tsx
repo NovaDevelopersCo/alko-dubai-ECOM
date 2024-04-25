@@ -90,12 +90,10 @@ export default function Catalog() {
                     !visibleCatalog ? '-translate-x-80 ' : 'translate-x-0 ',
                 ])}
             >
-                <div
-                    className={clsx(['flex justify-start flex-col mb-8 mr-10'])}
-                >
+                <div className={clsx(['flex flex-col mb-4 '])}>
                     <div
                         onClick={() => setVisibleCatalog(false)}
-                        className="flex lg:hidden items-center cursor-pointer gap-[3px] justify-end pt-[13px] pb-[13px] -mr-[35px]"
+                        className="flex lg:hidden items-center cursor-pointer gap-[3px] justify-end pt-[13px] pb-[10px] "
                     >
                         <span>Закрыть</span>
                         <Image
@@ -106,7 +104,7 @@ export default function Catalog() {
                         />
                     </div>
                     {visibleCatalog && (
-                        <hr className="border-customPink -mr-[60px] -ml-[19px] mb-[10px] lg:hidden" />
+                        <hr className="border-customPink lg:border-none lg:hidden  mb-1 lg:mb-0" />
                     )}
                     <p className="text-base mt-[10px]">Цена</p>
                     <div className="w-52">

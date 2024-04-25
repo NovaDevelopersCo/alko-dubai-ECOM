@@ -7,6 +7,7 @@ import { setSearch } from '@/lib/features/filter/filter'
 import { Switch } from '../Switch/Switch'
 import { CatalogLinks } from '../Catalog/CatalogLinks'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface NavLink {
     name: string
@@ -129,7 +130,7 @@ const HeaderLinks: FC = () => {
                 <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 lg:gap-[0px] gap-[13px]">
                     {Links.map((link, index) => (
                         <li className="relative group" key={index}>
-                            <a
+                            <Link
                                 href={link.href}
                                 className="block text-customBlack lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
                                 aria-current="page"
@@ -139,7 +140,7 @@ const HeaderLinks: FC = () => {
                                 }}
                             >
                                 {link.name}
-                            </a>
+                            </Link>
                             <span
                                 className={clsx(
                                     !isBurgerOpen && underlineClasses,
