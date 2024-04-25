@@ -1,50 +1,50 @@
-import Link from 'next/link';
-import Skeleton from 'react-loading-skeleton';
-import { useContext, useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { RootState } from '@/lib/store';
-import { useParams } from 'next/navigation';
-import { setCategory } from '@/lib/features/filter/filter';
-import { fetchCategories } from '@/lib/features/categories/categories';
-import { BurgerContext } from '@/Components/context/AppContext';
+import Link from 'next/link'
+import Skeleton from 'react-loading-skeleton'
+import { useContext, useEffect, useState } from 'react'
+import { useAppSelector, useAppDispatch } from '@/lib/hooks'
+import { RootState } from '@/lib/store'
+import { useParams } from 'next/navigation'
+import { setCategory } from '@/lib/features/filter/filter'
+import { fetchCategories } from '@/lib/features/categories/categories'
+import { BurgerContext } from '@/Components/context/AppContext'
 
 export const CatalogLinks = () => {
-    const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext)
-    const params = useParams<{ title: string }>();
+    const [isBurgerOpen, setIsBurgerOpen] = useContext(BurgerContext) // eslint-disable-line no-unused-vars
+    const params = useParams<{ title: string }>()
     useEffect(() => {
         if (params.title) {
-            dispatch(setCategory(decodeURI(params.title)));
+            dispatch(setCategory(decodeURI(params.title)))
         }
-    }, []);
-    const [width, setWidth] = useState(true);
-    let flag = false;
-    const dispatch = useAppDispatch();
+    }, [])
+    const [width, setWidth] = useState(true)
+    let flag = false
+    const dispatch = useAppDispatch()
     const categories = useAppSelector(
-        (state: RootState) => state.categories.posts
-    ) as any;
+        (state: RootState) => state.categories.posts,
+    ) as any
     const categoriesArray = Array.from(categories) as {
-        title: string;
-        items: number;
-    }[];
+        title: string
+        items: number
+    }[]
     if (typeof window !== 'undefined') {
         window.addEventListener('resize', function resizeHandler() {
             if (window.innerWidth < 1024 && !flag && width) {
-                setWidth(false);
-                flag = true;
+                setWidth(false)
+                flag = true
             } else if (window.innerWidth >= 1024 && flag && width) {
-                setWidth(true);
-                flag = false;
+                setWidth(true)
+                flag = false
             }
-        });
+        })
     }
 
     useEffect(() => {
-        dispatch(fetchCategories());
-    }, [dispatch]);
+        dispatch(fetchCategories())
+    }, [dispatch])
 
     const handleCategoryClick = () => {
-         setIsBurgerOpen(false);
-    };
+        setIsBurgerOpen(false)
+    }
 
     return (
         <div className="flex flex-col gap-3 mt-5 lg:hidden scroll-container">
@@ -55,8 +55,8 @@ export const CatalogLinks = () => {
                         className="flex justify-between items-center"
                         key={id}
                         onClick={() => {
-                            handleCategoryClick();
-                            dispatch(setCategory(category.title));
+                            handleCategoryClick()
+                            dispatch(setCategory(category.title))
                         }}
                     >
                         <div>{category.title}</div>
@@ -76,5 +76,5 @@ export const CatalogLinks = () => {
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
