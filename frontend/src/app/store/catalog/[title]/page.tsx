@@ -18,7 +18,7 @@ export function generateMetadata({ params }: Props): Metadata {
         title: title,
         description: title,
         openGraph: {
-            images: ['moto.jpg'],
+            images: ['/moto.jpg'],
             siteName: 'АлкоДубай',
             title: title,
             description: title,
