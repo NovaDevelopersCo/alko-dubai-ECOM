@@ -5,9 +5,12 @@ import OurBenefits from '@/Components/ui/ourBenefits/OurBenefits'
 import { Text } from '@/Components/ui/Text/Text'
 import StartStore from '@/Components/ui/StartStore/StartStore'
 
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata(
+    parent: ResolvingMetadata,
+): Promise<Metadata> {
+    const previousImages = (await parent).openGraph?.images || []
     return {
         title: 'Главная - Магазин АлкоДубай ',
         description:
@@ -15,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
         openGraph: {
             siteName: 'АлкоДубай',
             title: 'Главная - АлкоДубай',
+            images: [...previousImages],
             description:
                 'Магазин алкоголя АлкоДубай, где вы можете заказать алкоголь на любой вкус и получить быструю доставку',
         },

@@ -1,9 +1,12 @@
 'use clinet'
 import Container from '@/Components/ui/Container/Container'
 
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata(
+    parent: ResolvingMetadata,
+): Promise<Metadata> {
+    const previousImages = (await parent).openGraph?.images || []
     return {
         title: 'Доставка - Магазин АлкоДубай ',
         description:
@@ -11,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
         openGraph: {
             siteName: 'АлкоДубай',
             title: 'Доставка - АлкоДубай',
+            images: [...previousImages],
             description:
                 'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',
         },

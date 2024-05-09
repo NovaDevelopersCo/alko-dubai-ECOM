@@ -2,22 +2,26 @@ import Catalog from '@/Components/ui/Catalog/Catalog'
 import Container from '@/Components/ui/Container/Container'
 import MainStore from '@/Components/ui/MainStore/MainStore'
 import Sort from '@/Components/ui/Sort/Sort'
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
-export function generateMetadata():Metadata {
+export async function generateMetadata(
+    parent: ResolvingMetadata,
+): Promise<Metadata> {
+    const previousImages = (await parent).openGraph?.images || []
     return {
         title: 'Магазин АлкоДубай',
         description:
             'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',
         openGraph: {
             siteName: 'АлкоДубай',
+            images: [...previousImages],
             title: 'Магазин АлкоДубай',
             description:
                 'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',
         },
     }
 }
-        
+
 const store = () => {
     return (
         <>
