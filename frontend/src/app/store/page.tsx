@@ -6,14 +6,10 @@ import type { Metadata } from 'next'
 
 export function generateMetadata():Metadata {
     return {
-        metadataBase: new URL('http://localhost:3000'),
         title: 'Магазин АлкоДубай',
         description:
             'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',
         openGraph: {
-            images: [
-                "/moto.jpg",
-            ],
             siteName: 'АлкоДубай',
             title: 'Магазин АлкоДубай',
             description:

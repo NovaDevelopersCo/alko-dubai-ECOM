@@ -35,6 +35,8 @@ const literata = LiterataFont({
 })
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://alkodostavka-dubai.ru'),
+
     title: {
         default:
             'Алкоголь в Дубае с Доставкой. Быстрая и бесплатная доставка спиртных напитков в Дубай',
@@ -66,6 +68,9 @@ export const metadata: Metadata = {
         'Alcohol',
         'delivery',
     ],
+    openGraph: {
+        images: '/moto.jpg',
+    },
     authors: [
         { name: 'Nova Developers', url: 'https://github.com/NovaDevelopersCo' },
         { name: 'Igor Zimin', url: 'https://github.com/merdernoty' },
