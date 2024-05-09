@@ -9,7 +9,7 @@ import type { Metadata } from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        metadataBase: new URL('https://alkodostavka-dubai.ru/'),
+        metadataBase: new URL('http://localhost:3000'),
         title: 'Главная - Магазин АлкоДубай ',
         description:
             'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',

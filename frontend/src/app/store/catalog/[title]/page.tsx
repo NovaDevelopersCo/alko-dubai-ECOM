@@ -14,7 +14,7 @@ export function generateMetadata({ params }: Props): Metadata {
     const title = params.id
 
     return {
-        metadataBase: new URL('https://alkodostavka-dubai.ru/'),
+        metadataBase: new URL('http://localhost:3000'),
         title: title,
         description: title,
         openGraph: {
