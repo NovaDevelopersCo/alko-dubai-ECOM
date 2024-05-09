@@ -1,7 +1,3 @@
-const nextConfig = {
-    images: {
-        domains: ['i.pinimg.com'],
-    },
-}
+const nextConfig = {}
 
 export default nextConfig

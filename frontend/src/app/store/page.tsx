@@ -6,12 +6,13 @@ import type { Metadata } from 'next'
 
 export function generateMetadata():Metadata {
     return {
+        metadataBase: new URL('https://alkodostavka-dubai.ru/'),
         title: 'Магазин АлкоДубай',
         description:
             'Магазин алкоголя АлкоДубай, где вы можите заказать алкоголь на любой вкус и получить быструю доставку',
         openGraph: {
             images: [
-                'https://i.pinimg.com/564x/73/6f/4f/736f4f807530749cf4859d41a03fce51.jpg',
+                "/moto.jpg",
             ],
             siteName: 'АлкоДубай',
             title: 'Магазин АлкоДубай',
