@@ -1,6 +1,5 @@
 import React from 'react'
 import { FaTelegram } from 'react-icons/fa'
-import { IoLogoWhatsapp } from 'react-icons/io'
 import Link from 'next/link'
 
 function FooterSocial() {
