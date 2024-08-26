@@ -24,7 +24,7 @@ function Footer() {
                         <span className="text-sm sm:text-center text-gray-400">
                             © 2024{' '}
                             <a
-                                href="https://www.instagram.com/nova_it_developers/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
+                                href="https://novadevelopers.co/"
                                 className="hover:underline"
                             >
                                 NovaDevCo™

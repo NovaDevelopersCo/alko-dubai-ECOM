@@ -129,7 +129,7 @@ const ItemPage = () => {
                                 <img
                                     src={item?.image}
                                     alt="png"
-                                    className="w-full ml-0"
+                                    className="w-1/2 h-1/2 object-contain"
                                 />
                             ) : (
                                 <Skeleton
@@ -140,30 +140,29 @@ const ItemPage = () => {
                             )}
                         </div>
                         <div className="md:mt-28">
-                            <span className="opacity-70 text-3xl ">
+                            <span className="opacity-70 text-3xl">
                                 {item?.title}
                             </span>
                             <div className="font-bold text-customPink mt-6">
                                 {item?.oldPrice &&
                                 item?.oldPrice > item?.price ? (
                                     <span className="text-3xl font-bold line-through text-customGray mr-1">
-                                        <span>{item?.oldPrice}AED </span>
+                                        <span>{item?.oldPrice} AED</span>
                                     </span>
                                 ) : (
                                     ''
                                 )}
                                 <span className="text-3xl">
-                                    {' '}
                                     {item?.price} AED
                                 </span>
                             </div>
-                            <div className="flex mt-7 mb-16 ">
+                            <div className="flex mt-7 mb-16">
                                 <div className="flex items-center mr-4">
                                     <Counter
                                         value={count}
                                         increment={increment}
                                         decrement={decrement}
-                                    ></Counter>
+                                    />
                                 </div>
                                 <button
                                     className="text-base font-semibold bg-customPink text-white py-3 px-14 rounded-3xl"
@@ -184,6 +183,7 @@ const ItemPage = () => {
                     </div>
                 </figure>
             </article>
+
             {result.length > 0 && (
                 <>
                     <div className="border-b-[1px] border-customPink max-w-64 mt-20">

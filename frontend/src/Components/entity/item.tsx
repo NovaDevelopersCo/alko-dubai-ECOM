@@ -15,7 +15,7 @@ export function Item({ title, category, price, image, id, oldPrice }: item) {
                             <img
                                 src={image}
                                 alt="png"
-                                className="rounded-md min-h-44"
+                                className="rounded-md object-contain w-full h-full"
                             />
                         )}
                     </figure>
