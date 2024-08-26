@@ -41,7 +41,7 @@ export class GetItemsFilterDto {
 
   @ApiProperty({
     example: false,
-    description: 'Скидака',
+    description: 'Скидка',
     required: false,
   })
   readonly sale: string;
@@ -52,6 +52,13 @@ export class GetItemsFilterDto {
     required: false,
   })
   readonly limit: number;
+
+  @ApiProperty({
+    example: false,
+    description: 'Есть ли в наличи',
+    required: false,
+  })
+  readonly soldOut: boolean;
 
   @ApiProperty({
     example: 'Виски',

@@ -95,11 +95,12 @@ export class ItemsService {
       items = items.filter((item) => item.price <= max_price);
     }
 
+    const filteredItems = items.filter((item) => !item.soldOut);
     // Рассчитываем общее количество страниц и возвращаем результат
     const totalPages = Math.ceil(items.length / limit);
     const response = {
       totalPages: totalPages,
-      items: items,
+      items: filteredItems,
     };
     return response;
   }
